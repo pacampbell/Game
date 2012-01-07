@@ -193,12 +193,6 @@ public class Vector2 implements Serializable
         return (veca.x * vecb.x) + (veca.y * vecb.y);
     }
     
-    public static Vector3_Old crossProduct()
-    {
-        return null;
-    }
-
-    
     /**
      * Checks if Vector B is equal with this Vector2.
      * @param object
@@ -428,9 +422,9 @@ public class Vector2 implements Serializable
      * multiplies this Vector2 by a float scalar
      * @param scalar 
      */
-    public void multiply(int scalar)
+    public Vector2 multiply(int scalar)
     {
-        multiply((float)scalar);
+        return multiply((float)scalar);
     }
 
     /**

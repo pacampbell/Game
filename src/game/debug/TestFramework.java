@@ -3,6 +3,7 @@ package game.debug;
 import game.framework.Game;
 import game.framework.GameTime;
 import game.framework.Point;
+import game.framework.Vector3;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 public class TestFramework extends Game
 {
     // Test for mouse
-    ArrayList<Point> points = new ArrayList<Point>();
+    ArrayList<Point> points = new ArrayList<>();
     
     /**
      * Any objects/variables that need to be Initialized should do so

@@ -192,6 +192,11 @@ public class Vector2 implements Serializable
     {
         return (veca.x * vecb.x) + (veca.y * vecb.y);
     }
+    
+    public static Vector3_Old crossProduct()
+    {
+        return null;
+    }
 
     
     /**

@@ -8,7 +8,13 @@ public class Rectangle
     public int y;
 
     //<editor-fold defaultstate="collapsed" desc="Constructors">
-    // Complete Constructor
+    /**
+     * Complete Constructor
+     * @param x 
+     * @param y
+     * @param width
+     * @param height 
+     */
     public Rectangle(int x, int y, int width, int height)
     {
         this.width = width;
@@ -17,12 +23,19 @@ public class Rectangle
         this.y = y;
     }
 
-    // Empty Constructor
+    /**
+     * Empty Constructor
+     */
     public Rectangle()
     {
         this(0, 0, 0, 0);
     }
 
+    /**
+     * Creates a rectangle with the provided width and height.
+     * @param width
+     * @param height 
+     */
     public Rectangle(int width, int height)
     {
         this(0, 0, width, height);

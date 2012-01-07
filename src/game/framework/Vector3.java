@@ -94,6 +94,9 @@ public class Vector3 extends Vector2 implements Serializable
     public static Vector3 add(Vector2 a, Vector3 b){return null;}
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Clamp">
+    //</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="Cross Product">
     public Vector3 crossProduct(Vector3 that){return null;}
     public Vector3 crossProduct(Vector2 that){return null;}
@@ -163,29 +166,24 @@ public class Vector3 extends Vector2 implements Serializable
     }
     //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc="Subtract">
-    public Vector3 subtract(Vector3 that){return null;}
-    public Vector3 subtract(Vector2 that){return null;}
+    //<editor-fold defaultstate="collapsed" desc="Dot product">
+    //</editor-fold>
     
-    public static Vector3 subtract(Vector3 a, Vector3 b){return null;}
-    
-    public static Vector3 subtract(Vector3 a, Vector2 b){return null;}
-    
-    public static Vector3 subtract(Vector2 a, Vector3 b){return null;}
+    //<editor-fold defaultstate="collapsed" desc="Equals">
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Magnitude">
-    public static Vector3 magnitude(Vector3 a, Vector3 b)
-    {
-        return null;
-    }
+    public static float magnitude(Vector3 a, Vector3 b){return -1;}
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Magnitude Squared">
-    public static Vector3 magnitudeSquared(Vector3 a, Vector3 b)
-    {
-        return null;
-    }
+    public static Vector3 magnitudeSquared(Vector3 a, Vector3 b){return null;}
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Max">
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Min">
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Multiply">
@@ -197,8 +195,96 @@ public class Vector3 extends Vector2 implements Serializable
     public static Vector3 multiply(Vector3 a, int scalar){return null;}
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Negate">
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Normalize">
+    /**
+     * Normalizes a input Vector3
+     * @param vec Vector3 that we want to normalize.
+     * @return Vector3 that is normalized.
+     */
+    public static Vector3 normalize(Vector3 vec)
+    {
+        float magnitude = magnitude(vec);
+        float normx = vec.x / magnitude;
+        float normy = vec.y / magnitude;
+        float normz = vec.z / magnitude;
+        return new Vector3(normx, normy, normz);
+    }
+    //</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="Projection">
-    public static Vector3 project(Vector3 a, Vector3 b){return null;}
+    public static Vector3 scalarProjection(Vector3 a, float scalar){return null;}
+    public static Vector3 scalarProjection(Vector3 a, int scalar){return null;}
+    
+    public static Vector3 vectorProjection(Vector3 a, float scalar){return null;}
+    public static Vector3 vectorProjection(Vector3 a, int scalar){return null;}
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Reflection">
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Special Vectors">
+    /**
+     * Special type of Vector3; The One vector, <1.0, 1.0 ,1.0>
+     * @return Returns a Vector3 with all components set to 1.0.
+     */
+    public static Vector3 one()
+    {
+        return new Vector3(1.0f);
+    }
+    
+    /**
+     * Returns the unit vector for the x-axis.
+     * @return Returns a Vector3 with the x component set to 1.0.
+     */
+    public static Vector3 unitX()
+    {
+        return new Vector3(1.0f, 0.0f, 0.0f);
+    }
+    
+    /**
+     * Returns the unit vector for the y-axis.
+     * @return Returns a Vector3 with the y component set to 1.0.
+     */
+    public static Vector3 unitY()
+    {
+        return new Vector3(0.0f, 1.0f, 0.0f);
+    }
+
+    /**
+     * Returns the unit vector for the z-axis.
+     * @return Returns a Vector3 with the z component set to 1.0.
+     */
+    public static Vector3 unitZ()
+    {
+        return new Vector3(0.0f, 0.0f, 1.0f);
+    }
+
+    /**
+     * Special type of Vector3; Zero vector also known as the null vector, <0.0, 0.0, 0.0>
+     * @return Returns a Vector3 with all components set to 0.0.
+     */
+    public static Vector3 zero()
+    {
+        return new Vector3(0.0f);
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Subtract">
+    public Vector3 subtract(Vector3 that){return null;}
+    public Vector3 subtract(Vector2 that){return null;}
+    
+    public static Vector3 subtract(Vector3 a, Vector3 b){return null;}
+    
+    public static Vector3 subtract(Vector3 a, Vector2 b){return null;}
+    
+    public static Vector3 subtract(Vector2 a, Vector3 b){return null;}
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Unit Vector">
     //</editor-fold>
     
     /**

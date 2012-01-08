@@ -273,15 +273,43 @@ public class Vector2 implements Serializable
     }
     //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc="Directional Cosine">
-    public float directionalAlpha(Vector2 vec)
+    //<editor-fold defaultstate="collapsed" desc="Direction Cosine">
+    /**
+     * Computes the angle between the Vector2 and the x-axis 
+     * @param vec Vector2 we want to find the angle with respect to the x-axis.
+     * @return Returns the angle between the Vector2 and the x-axis in radians.
+     */
+    public static float directionAlpha(Vector2 vec)
     {
         return (float)Math.acos(vec.x / Vector2.magnitude(vec));
     }
     
-    public float directionalBeta(Vector2 vec)
+    /**
+     * Computes the angle between this Vector2 and the x-axis 
+     * @return Returns the angle between this Vector2 and the x-axis in radians.
+     */
+    public float directionAlpha()
+    {
+        return Vector2.directionAlpha(this);
+    }
+    
+    /**
+     * Computes the angle between the Vector2 and the y-axis 
+     * @param vec Vector2 we want to find the angle with respect to the y-axis.
+     * @return Returns the angle between the Vector2 and the y-axis in radians.
+     */
+    public static float directionBeta(Vector2 vec)
     {
         return (float)Math.acos(vec.y / Vector2.magnitude(vec));
+    }
+    
+    /**
+     * Computes the angle between this Vector2 and the y-axis 
+     * @return Returns the angle between this Vector2 and the y-axis in radians.
+     */
+    public float directionBeta()
+    {
+        return Vector2.directionBeta(this);
     }
     //</editor-fold>
 

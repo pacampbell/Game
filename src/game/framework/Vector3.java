@@ -77,6 +77,16 @@ public class Vector3 extends Vector2 implements Serializable
     }
     
     /**
+     * Takes a Vector2 and float and converts it into a Vector3.
+     * @param vec2 Vector2 to be change to a Vector3.
+     * @param z z coordinate for Vector3
+     */
+    public Vector3(Vector2 vec2, float z)
+    {
+        this(vec2.x, vec2.y, z);
+    }
+    
+    /**
      * Copy Constructor
      * Make a copy of the Vector3 provided.
      * @param vec3 Vector3 to be copied.
@@ -88,14 +98,147 @@ public class Vector3 extends Vector2 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Add">
-    public Vector3 add(Vector3 that){return null;}
-    public Vector3 add(Vector2 that){return null;}
+    /**
+     * Performs Vector3 Addition on two Vector3
+     * @param a Vector3 to be added
+     * @param b Vector3 to be added
+     * @return Returns a new Vector3 with the result of a + b
+     */
+    public static Vector3 add(Vector3 a, Vector3 b)
+    {
+        return new Vector3(a.x + b.x, a.y + b.y, a.z + b.z);
+    }
     
-    public static Vector3 add(Vector3 a, Vector3 b){return null;}
+    /**
+     * Performs Vector3 Addition between a Vector3 and a Vector2
+     * @param a Vector3 to be added
+     * @param b Vector2 to be added
+     * @return Returns a new Vector3 with the result of a + b
+     */
+    public static Vector3 add(Vector3 a, Vector2 b)
+    {
+        return Vector3.add(a, new Vector3(b));
+    }
     
-    public static Vector3 add(Vector3 a, Vector2 b){return null;}
+    /**
+     * Performs addition with this Vector3 
+     * @param that Vector3 to be added
+     * @return Returns a new Vector3 with the result of this + that
+     */
+    public Vector3 add(Vector3 that)
+    {
+        return Vector3.add(this, that);
+    }
     
-    public static Vector3 add(Vector2 a, Vector3 b){return null;}
+    /**
+     * Performs addition with this Vector3 
+     * @param that Vector2 to be added
+     * @return Returns a new Vector3 with the result of this + that
+     */
+    public Vector3 add(Vector2 that)
+    {
+        return Vector3.add(this, new Vector3(that));
+    }
+    
+    /**
+     * Performs addition with this Vector3 and the x, y, and z values provided.
+     * @param x The x component we want to add to this Vector3.
+     * @param y The y component we want to add to this Vector3.
+     * @param z The z component we want to add to this Vector3.
+     * @return Returns a Vector3 with x added to this.x, y added to this.y, and z added to this.z
+     */
+    public Vector3 add(float x, float y, float z)
+    {
+        return Vector3.add(this, new Vector3(x, y, z));
+    }
+    
+    /**
+     * Performs addition with this Vector3 and the x, y, and z values provided.
+     * Converts integer arguments to float.
+     * @param x The x component we want to add to this Vector3.
+     * @param y The y component we want to add to this Vector3.
+     * @param z The z component we want to add to this Vector3.
+     * @return Returns a Vector3 with x added to this.x, y added to this.y, and z added to this.z
+     */
+    public Vector3 add(int x, int y, int z)
+    {
+        return Vector3.add(this, new Vector3(x, y, z));
+    }
+    
+    /**
+     * Performs addition with this Vector3 and the x, y, and z values provided.
+     * Converts integer arguments to float.
+     * @param vec A Vector2 we want to add to this Vector3.
+     * @param z The z component we want to add to this Vector3.
+     * @return Returns a Vector3 with x added to this.x, y added to this.y, and z added to this.z
+     */
+    public Vector3 add(Vector2 vec, float z)
+    {
+        return Vector3.add(this, new Vector3(vec, z));
+    }
+    
+    /**
+     * Adds the value provided to the x component.
+     * @param x The x component we want to add to this Vector3.
+     * @return Returns a Vector3 with x added to this.x
+     */
+    public Vector3 addX(float x)
+    {
+        return Vector3.add(this, new Vector3(x, 0.0f, 0.0f));
+    }
+    
+    /**
+     * Adds the value provided to the x component.
+     * Converts integer arguments to float.
+     * @param x The x component we want to add to this Vector3.
+     * @return Returns a Vector3 with x added to this.x
+     */
+    public Vector3 addX(int x)
+    {
+        return Vector3.add(this, new Vector3((float)x, 0.0f, 0.0f));
+    }
+    
+    /**
+     * Adds the value provided to the x component.
+     * @param y The y component we want to add to this Vector3.
+     * @return Returns a Vector3 with y added to this.y
+     */
+    public Vector3 addY(float y)
+    {
+        return Vector3.add(this, new Vector3(0.0f, y, 0.0f));
+    }
+    
+    /**
+     * Adds the value provided to the x component.
+     * Converts integer arguments to float.
+     * @param y The y component we want to add to this Vector3.
+     * @return Returns a Vector3 with y added to this.y
+     */
+    public Vector3 addY(int y)
+    {
+        return Vector3.add(this, new Vector3(0.0f, (float)y, 0.0f));
+    }
+    
+    /**
+     * Adds the value provided to the z component.
+     * @param z The z component we want to add to this Vector3.
+     * @return Returns a Vector3 with z added to this.z
+     */
+    public Vector3 addZ(float z)
+    {
+        return Vector3.add(this, new Vector3(0.0f, 0.0f, z));
+    }
+    
+    /**
+     * Adds the value provided to the z component.
+     * Converts integer arguments to float.
+     * @param z The z component we want to add to this Vector3.
+     * @return Returns a Vector3 with z added to this.z
+     */
+    public Vector3 addZ(int z)
+    {
+        return Vector3.add(this, new Vector3(0.0f, 0.0f, (float)z));
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Clamp">
@@ -287,6 +430,7 @@ public class Vector3 extends Vector2 implements Serializable
     public static Vector3 subtract(Vector2 a, Vector3 b){return null;}
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Test operations">
     /**
      * Test Method; Performs some operations
      * To check results
@@ -340,4 +484,5 @@ public class Vector3 extends Vector2 implements Serializable
          * 
          */
     }
+    //</editor-fold>
 }

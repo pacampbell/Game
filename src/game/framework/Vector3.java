@@ -7,6 +7,10 @@ import java.io.Serializable;
  */
 public class Vector3 extends Vector2 implements Serializable
 {
+    /**
+     * The z component of the Vector3.
+     * Also referred to as k component in vectorial notation. 
+     */
     public final float z;
     
     //<editor-fold defaultstate="collapsed" desc="Constructors">
@@ -270,7 +274,6 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return new Vector3(0.0f);
     }
-    
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Subtract">

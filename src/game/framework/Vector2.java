@@ -3,9 +3,6 @@ package game.framework;
 import java.io.Serializable;
 
 /**
- * There is not a very well defined cross product for 2d vectors
- * So we will not implement one..
- *
  * Need to implement Transform functions
  * Transforms one or more Vector2's by a Matrix or Quaternion.
  * Need to implement Transform Normal
@@ -21,7 +18,16 @@ import java.io.Serializable;
 
 public class Vector2 implements Serializable
 {
+    /**
+     * The x component of the Vector2.
+     * Also referred to as i component in vectorial notation. 
+     */
     public final float x;
+    
+    /**
+     * The y component of the Vector2.
+     * Also referred to as j component in vectorial notation.
+     */
     public final float y;
     
     //<editor-fold defaultstate="collapsed" desc="Constructors">

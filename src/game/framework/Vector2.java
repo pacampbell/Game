@@ -406,7 +406,7 @@ public class Vector2 implements Serializable
     public static boolean equals(Vector2 veca, Vector2 vecb)
     {
         boolean result = false;
-        if(magnitude(veca) == magnitude(vecb))
+        if(Vector2.magnitude(veca) == Vector2.magnitude(vecb))
             result = true;
         return result;
     }

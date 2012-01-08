@@ -681,6 +681,23 @@ public class Vector3 extends Vector2 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Reflection">
+    
+    /**
+     * r = 2 * (I.N) * N - I
+     * I is the incident vector
+     * N is the normal
+     * . is the dot product
+     * @param incident
+     * @param normal
+     * @return Vector3
+     */
+    public static Vector3 reflect(Vector3 incident, Vector3 normal)
+    {
+        float dotResult = dotProduct(incident, normal);
+        float dot2 =  dotResult * 2;
+        Vector3 normDot2 = Vector3.multiply(normal, dot2);
+        return Vector3.subtract(normDot2, incident);
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Special Vectors">
@@ -731,14 +748,14 @@ public class Vector3 extends Vector2 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Subtract">
+    public static Vector3 subtract(Vector3 a, Vector3 b){return null;}
+    public static Vector3 subtract(Vector3 a, Vector2 b){return null;}
+    public static Vector3 subtract(Vector2 a, Vector3 b){return null;}
+    
     public Vector3 subtract(Vector3 that){return null;}
     public Vector3 subtract(Vector2 that){return null;}
-    
-    public static Vector3 subtract(Vector3 a, Vector3 b){return null;}
-    
-    public static Vector3 subtract(Vector3 a, Vector2 b){return null;}
-    
-    public static Vector3 subtract(Vector2 a, Vector3 b){return null;}
+    public Vector3 subtract(float x, float y, float z){return null;}
+    public Vector3 subtract(int x, int y, int z){return null;}
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Test operations">

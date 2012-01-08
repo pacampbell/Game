@@ -115,6 +115,93 @@ public class Vector2 implements Serializable
     {
         return Vector2.add(this, that);
     }
+    
+    /**
+     * Performs addition with this Vector2 and the x and y values provided.
+     * @param x The x component we want to add to this Vector2.
+     * @param y The y component we want to add to this Vector2.
+     * @return Returns a Vector2 with x added to this.x and y added to this.y
+     */
+    public Vector2 add(float x, float y)
+    {
+        return Vector2.add(this, new Vector2(x, y));
+    }
+    
+    /**
+     * Performs addition with this Vector2 and the x and y values provided.
+     * Converts integer arguments to float.
+     * @param x The x component we want to add to this Vector2.
+     * @param y The y component we want to add to this Vector2.
+     * @return Returns a Vector2 with x added to this.x and y added to this.y
+     */
+    public Vector2 add(int x, float y)
+    {
+        return Vector2.add(this, new Vector2((float)x, y));
+    }
+    
+    /**
+     * Performs addition with this Vector2 and the x and y values provided.
+     * Converts integer arguments to float.
+     * @param x The x component we want to add to this Vector2.
+     * @param y The y component we want to add to this Vector2.
+     * @return Returns a Vector2 with x added to this.x and y added to this.y
+     */
+    public Vector2 add(float x, int y)
+    {
+        return Vector2.add(this, new Vector2(x, (float)y));
+    }
+    
+    /**
+     * Performs addition with this Vector2 and the x and y values provided.
+     * Converts integer arguments to float.
+     * @param x The x component we want to add to this Vector2.
+     * @param y The y component we want to add to this Vector2.
+     * @return Returns a Vector2 with x added to this.x and y added to this.y
+     */
+    public Vector2 add(int x, int y)
+    {
+        return Vector2.add(this, new Vector2(x, y));
+    }
+    
+    /**
+     * Adds the value provided to the x component.
+     * @param x The x component we want to add to this Vector2.
+     * @return Returns a Vector2 with x added to this.x
+     */
+    public Vector2 addX(float x)
+    {
+        return Vector2.add(this, new Vector2(x, 0.0f));
+    }
+    
+    /**
+     * Converts the integer to a float and adds the value provided to the x component.
+     * @param x The x component we want to add to this Vector2.
+     * @return Returns a Vector2 with x added to this.x
+     */
+    public Vector2 addX(int x)
+    {
+        return Vector2.add(this, new Vector2((float)x, 0.0f));
+    }
+    
+    /**
+     * Adds the value provided to the y component.
+     * @param y The y component we want to add to this Vector2.
+     * @return Returns a Vector2 with y added to this.y
+     */
+    public Vector2 addY(float y)
+    {
+        return Vector2.add(this, new Vector2(0.0f, y));
+    }
+    
+    /**
+     * Converts the integer to a float and adds the value provided to the y component.
+     * @param y The y component we want to add to this Vector2.
+     * @return Returns a Vector2 with y added to this.y
+     */
+    public Vector2 addY(int y)
+    {
+        return Vector2.add(this, new Vector2(0.0f, (float)y));
+    }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Barycentric">
@@ -484,6 +571,52 @@ public class Vector2 implements Serializable
     }
     //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Projection">
+    /**
+     * Calculates the scalar projection of b onto a.
+     * @param a A Vector2 we want to project onto.
+     * @param b A Vector2 we want project.
+     * @return Returns the scalar projection of b onto a.
+     */
+    public static float scalarProjection(Vector2 a, Vector2 b)
+    {
+        return Vector2.dotProduct(a, b) / Vector2.magnitude(a);
+    }
+    
+    /**
+     * Calculates the scalar projection of that onto this.
+     * @param that A vector2 we want to project.
+     * @return Returns the scalar projection of that onto this.
+     */ 
+    public float scalarProjection(Vector2 that)
+    {
+        return Vector2.scalarProjection(this, that);
+    }
+    
+    /**
+     * Calculates the vector projection of b onto a.
+     * @param a A Vector2 we want to project onto.
+     * @param b A Vector2 we want project.
+     * @return Returns the vector projection of b onto a.
+     */
+    public static Vector2 vectorProjection(Vector2 a, Vector2 b)
+    {
+        float scalar = Vector2.scalarProjection(a, b);
+        Vector2 normal = Vector2.normalize(a);
+        return Vector2.multiply(normal, scalar);
+    }
+    
+    /**
+     * Calculates the vector projection of that onto this.
+     * @param that A Vector2 we want project.
+     * @return Returns the vector projection of that onto this.
+     */
+    public Vector2 vectorProjection(Vector2 that)
+    {
+        return Vector2.vectorProjection(this, that);
+    }
+    //</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="Reflect">
     /**
      * r = 2 * (I.N) * N - I
@@ -565,6 +698,93 @@ public class Vector2 implements Serializable
     public Vector2 subtract(Vector2 that)
     {
         return Vector2.subtract(this, that);
+    }
+    
+    /**
+     * Performs subtraction with this Vector2 and the x and y values provided.
+     * @param x The x component we want to subtract from this Vector2.
+     * @param y The y component we want to subtract from this Vector2.
+     * @return Returns a Vector2 with x subtracted from this.x and y subtracted from this.y
+     */
+    public Vector2 subtract(float x, float y)
+    {
+        return Vector2.subtract(this, new Vector2(x, y));
+    }
+    
+    /**
+     * Performs subtraction with this Vector2 and the x and y values provided.
+     * Converts integer arguments to float.
+     * @param x The x component we want to subtract from this Vector2.
+     * @param y The y component we want to subtract from this Vector2.
+     * @return Returns a Vector2 with x subtracted from this.x and y subtracted from this.y
+     */
+    public Vector2 subtract(int x, float y)
+    {
+        return Vector2.subtract(this, new Vector2((float)x, y));
+    }
+    
+    /**
+     * Performs subtraction with this Vector2 and the x and y values provided.
+     * Converts integer arguments to float.
+     * @param x The x component we want to subtract from this Vector2.
+     * @param y The y component we want to subtract from this Vector2.
+     * @return Returns a Vector2 with x subtracted from this.x and y subtracted from this.y
+     */
+    public Vector2 subtract(float x, int y)
+    {
+        return Vector2.subtract(this, new Vector2(x, (float)y));
+    }
+    
+    /**
+     * Performs subtraction with this Vector2 and the x and y values provided.
+     * Converts integer arguments to float.
+     * @param x The x component we want to subtract from this Vector2.
+     * @param y The y component we want to subtract from this Vector2.
+     * @return Returns a Vector2 with x subtracted from this.x and y subtracted from this.y
+     */
+    public Vector2 subtract(int x, int y)
+    {
+        return Vector2.subtract(this, new Vector2(x, y));
+    }
+    
+    /**
+     * Subtracts the value provided from the x component.
+     * @param x The x component we want to subtract from this Vector2.
+     * @return Returns a Vector2 with x subtracted from this.x
+     */
+    public Vector2 subtractX(float x)
+    {
+        return Vector2.subtract(this, new Vector2(x, 0.0f));
+    }
+    
+    /**
+     * Converts the integer to a float and subtracts the value provided from the x component.
+     * @param x The x component we want to subtract from this Vector2.
+     * @return Returns a Vector2 with x subtracted from this.x
+     */
+    public Vector2 subtractX(int x)
+    {
+        return Vector2.subtract(this, new Vector2((float)x, 0.0f));
+    }
+    
+    /**
+     * Subtracts the value provided from the y component.
+     * @param y The y component we want to subtract from this Vector2.
+     * @return Returns a Vector2 with y subtracted from this.y
+     */
+    public Vector2 subtractY(float y)
+    {
+        return Vector2.subtract(this, new Vector2(0.0f, y));
+    }
+    
+    /**
+     * Converts the integer to a float and subtracts the value provided to the y component.
+     * @param y The y component we want to subtract from this Vector2.
+     * @return Returns a Vector2 with y subtracted from this.y
+     */
+    public Vector2 subtractY(int y)
+    {
+        return Vector2.subtract(this, new Vector2(0.0f, (float)y));
     }
     //</editor-fold>
 

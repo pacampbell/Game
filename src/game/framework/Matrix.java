@@ -176,4 +176,16 @@ public class Matrix implements Serializable {
     public Matrix multiply(Matrix matrix){
         return multiply(this,matrix);
     }
+    
+    @Override
+    public String toString(){
+        String str = "";
+        for (int i = 0; i < this.rows; i++) {
+            for (int j = 0; j < this.columns; j++) {
+                str += this.matrix[i][j] + " ";
+            }
+            str += "\n";
+        }
+        return str;
+    }
 }

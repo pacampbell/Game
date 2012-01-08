@@ -516,19 +516,78 @@ public class Vector3 extends Vector2 implements Serializable
     }
     //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc="Max">
-    //</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Max & Min">
+    /**
+     * @param veca A Vector3 we want to find a max value from.
+     * @param vecb A Vector3 we want to find a max value from.
+     * @return Returns a Vector3 containing the max value from each components.
+     */
+    public static Vector3 max(Vector3 a, Vector3 b)
+    {
+        float mx = (a.x > b.x) ? a.x : b.x;
+        float my = (a.y > b.y) ? a.y : b.y;
+        float mz = (a.z > b.z) ? a.z : b.z;
+        return new Vector3(mx, my, mz);
+    }
     
-    //<editor-fold defaultstate="collapsed" desc="Min">
+    /**
+     * @param veca A Vector3 we want to find a min value from.
+     * @param vecb A Vector3 we want to find a min value from.
+     * @return Returns a Vector3 containing the min value from each components.
+     */
+    public static Vector3 min(Vector3 a, Vector3 b)
+    {
+        float mx = (a.x < b.x) ? a.x : b.x;
+        float my = (a.y < b.y) ? a.y : b.y;
+        float mz = (a.z < b.z) ? a.z : b.z;
+        return new Vector3(mx, my, mz);
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Multiply">
-    public Vector3 multiply(float scalar){return null;}
-    public Vector3 multiply(int scalar){return null;}
+    /**
+     * Multiplies a Vector3 by a scalar
+     * @param veca A Vector3 we want to multiply.
+     * @param scalar A scalar value we want to multiply into the Vector3.
+     * @return Returns a new Vector3 multiplied by the scalar.
+     */
+    public static Vector3 multiply(Vector3 a, float scalar)
+    {
+        return new Vector3(a.x * scalar, a.y * scalar, a.z * scalar);
+    }
     
-    public static Vector3 multiply(Vector3 a, float scalar){return null;}
+    /**
+     * Multiplies a Vector3 by a scalar
+     * Converts integer values to float.
+     * @param veca A Vector3 we want to multiply.
+     * @param scalar A scalar value we want to multiply into the Vector3.
+     * @return Returns a new Vector3 multiplied by the scalar.
+     */
+    public static Vector3 multiply(Vector3 a, int scalar)
+    {
+        return Vector3.multiply(a, (float)scalar);
+    }
     
-    public static Vector3 multiply(Vector3 a, int scalar){return null;}
+    /**
+     * Multiplies this Vector3 by a scalar
+     * @param scalar A scalar value we want to multiply into this Vector3.
+     * @return Returns this Vector3 multiplied by the scalar
+     */
+    public Vector3 multiply(float scalar)
+    {
+        return Vector3.multiply(this, scalar);
+    }
+    
+    /**
+     * Multiplies this Vector3 by a scalar
+     * Converts integer values to float.
+     * @param scalar A scalar value we want to multiply into this Vector3.
+     * @return Returns this Vector3 multiplied by the scalar
+     */
+    public Vector3 multiply(int scalar)
+    {
+        return Vector3.multiply(this, (float)scalar);
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Negate">

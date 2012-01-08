@@ -591,6 +591,22 @@ public class Vector3 extends Vector2 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Negate">
+    /**
+     * @param a The Vector3 we want to negate.
+     * @return Returns A Vector3 that has been negated.
+     */
+    public static Vector3 negate(Vector3 a)
+    {
+        return new Vector3(a.x * -1.0f, a.y * -1.0f, a.z * -1.0f);
+    }
+    
+    /**
+     * @return Returns this Vector3 that has been negated.
+     */
+    public Vector3 negate()
+    {
+        return Vector3.negate(this);
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Normalize">
@@ -606,6 +622,15 @@ public class Vector3 extends Vector2 implements Serializable
         float normy = vec.y / magnitude;
         float normz = vec.z / magnitude;
         return new Vector3(normx, normy, normz);
+    }
+    
+    /**
+     * Normalizes this Vector3
+     * @return Returns this Vector3 normalized.
+     */
+    public Vector3 normalize()
+    {
+        return Vector3.normalize(this);
     }
     //</editor-fold>
     

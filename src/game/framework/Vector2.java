@@ -272,6 +272,18 @@ public class Vector2 implements Serializable
         return vec = new Vector2(newX, newY);
     }
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Directional Cosine">
+    public float directionalAlpha(Vector2 vec)
+    {
+        return (float)Math.acos(vec.x / Vector2.magnitude(vec));
+    }
+    
+    public float directionalBeta(Vector2 vec)
+    {
+        return (float)Math.acos(vec.y / Vector2.magnitude(vec));
+    }
+    //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Distance">
     /**

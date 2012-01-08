@@ -346,6 +346,65 @@ public class Vector3 extends Vector2 implements Serializable
     }
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Direction Cosine">
+    /**
+     * Computes the angle between the Vector3 and the x-axis 
+     * @param vec Vector3 we want to find the angle with respect to the x-axis.
+     * @return Returns the angle between the Vector3 and the x-axis in radians.
+     */
+    public static float directionAlpha(Vector3 vec)
+    {
+        return (float)Math.acos(vec.x / Vector3.magnitude(vec));
+    }
+    
+    /**
+     * Computes the angle between this Vector3 and the x-axis 
+     * @return Returns the angle between this Vector3 and the x-axis in radians.
+     */
+    public float directionAlpha()
+    {
+        return Vector3.directionAlpha(this);
+    }
+    
+    /**
+     * Computes the angle between the Vector3 and the y-axis 
+     * @param vec Vector3 we want to find the angle with respect to the y-axis.
+     * @return Returns the angle between the Vector3 and the y-axis in radians.
+     */
+    public static float directionBeta(Vector3 vec)
+    {
+        return (float)Math.acos(vec.y / Vector3.magnitude(vec));
+    }
+    
+    /**
+     * Computes the angle between this Vector3 and the y-axis 
+     * @return Returns the angle between this Vector3 and the y-axis in radians.
+     */
+    public float directionBeta()
+    {
+        return Vector3.directionBeta(this);
+    }
+    
+    /**
+     * Computes the angle between the Vector3 and the z-axis 
+     * @param vec Vector3 we want to find the angle with respect to the z-axis.
+     * @return Returns the angle between the Vector3 and the z-axis in radians.
+     */
+    public static float directionGamma(Vector3 vec)
+    {
+        return (float)Math.acos(vec.z / Vector3.magnitude(vec));
+    }
+    
+    /**
+     * Computes the angle between this Vector3 and the z-axis 
+     * @return Returns the angle between this Vector3 and the z-axis in radians.
+     */
+    public float directionGamma()
+    {
+        return Vector3.directionGamma(this);
+    }
+    //</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="Distance">
     /**
      * Computes the distance between two Vector3.
@@ -825,6 +884,14 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.subtract(this, new Vector3(x, y, z));
     }
+    
+    public Vector3 subtract(Vector3 a, float z){return null;}
+    public Vector3 subtractX(float x){return null;}
+    public Vector3 subtractX(int x){return null;}
+    public Vector3 subtractY(float y){return null;}
+    public Vector3 subtractY(int y){return null;}
+    public Vector3 subtractZ(float z){return null;}
+    public Vector3 subtractZ(int z){return null;}
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="To String">

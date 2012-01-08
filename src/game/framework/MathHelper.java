@@ -91,4 +91,39 @@ public class MathHelper
     {
         return value = (value > max) ? max : value;
     }
+    /**
+     * Do the dot product of two arrays
+     * @param a the first array
+     * @param b the second array
+     * @return the value of the dot product
+     */
+    public static int dotProduct(int[] a, int[] b){
+        int answer = 0;
+        
+        if(a.length == b.length){
+            for (int i = 0; i < a.length; i++) {
+                answer += (a[i] * b[i]);
+            }            
+        }else throw new IllegalArgumentException("can't use dotProduct with different sized vectors."
+                + "The two lengths were " + a.length + " and " + b.length);
+        return answer;
+    }
+    
+    /**
+     * Do the dot product of two arrays
+     * @param a the first array
+     * @param b the second array
+     * @return the value of the dot product
+     */
+    public static float dotProduct(float[] a, float[] b){
+        float answer = 0;
+        
+        if(a.length == b.length){
+            for (int i = 0; i < a.length; i++) {
+                answer += (a[i] * b[i]);
+            }            
+        }else throw new IllegalArgumentException("can't use dotProduct with different sized vectors."
+                + "The two lengths were " + a.length + " and " + b.length);
+        return answer;
+    }
 }

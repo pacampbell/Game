@@ -9,7 +9,7 @@ public class Matrix implements Serializable {
 
     private final static int DEFAULT_SIZE_ROW = 10;
     private final static int DEFAULT_SIZE_COlUMN = 10;
-    private Float[][] matrix;
+    private float[][] matrix;
     private int rows;
     private int columns;
 
@@ -19,7 +19,7 @@ public class Matrix implements Serializable {
      * @param matrix a 2D array containing all of that data to be included in
      * the new Matrix
      */
-    public Matrix(Float[][] matrix) {
+    public Matrix(float[][] matrix) {
         this.matrix = matrix;
         this.rows = matrix.length;
         this.columns = matrix[0].length;
@@ -32,7 +32,7 @@ public class Matrix implements Serializable {
      * @param columns the amount of columns the new Matrix will have.
      */
     public Matrix(int rows, int columns) {
-        this.matrix = new Float[rows][columns];
+        this.matrix = new float[rows][columns];
         this.rows = rows;
         this.columns = columns;
     }
@@ -43,7 +43,7 @@ public class Matrix implements Serializable {
      * DEFAULT_SIZE_COlUMN variables
      */
     public Matrix() {
-        this(new Float[DEFAULT_SIZE_ROW][DEFAULT_SIZE_COlUMN]);
+        this(new float[DEFAULT_SIZE_ROW][DEFAULT_SIZE_COlUMN]);
     }
 
     /**
@@ -69,7 +69,7 @@ public class Matrix implements Serializable {
      *
      * @return the data inside of this Matrix
      */
-    public Float[][] getMatrix() {
+    public float[][] getData() {
         return matrix.clone();
     }
 
@@ -82,12 +82,12 @@ public class Matrix implements Serializable {
      */
     public static Matrix add(Matrix matrix1, Matrix matrix2) {
         Boolean addable = (matrix1.rows == matrix2.rows) && (matrix1.columns == matrix2.columns);
-        Float[][] a = matrix1.getMatrix();
-        Float[][] b = matrix2.getMatrix();
-        Float[][] summed = null;
+        float[][] a = matrix1.getData();
+        float[][] b = matrix2.getData();
+        float[][] summed = null;
 
         if (addable) {
-            summed = new Float[matrix1.rows][matrix2.columns];
+            summed = new float[matrix1.rows][matrix2.columns];
             for (int i = 0; i < matrix1.rows; i++) {
                 for (int j = 0; j < matrix2.columns; j++) {
                     summed[i][j] = a[i][j] + b[i][j];
@@ -116,12 +116,12 @@ public class Matrix implements Serializable {
      */
     public static Matrix subtract(Matrix matrix1, Matrix matrix2) {
         Boolean subtractable = (matrix1.rows == matrix2.rows) && (matrix1.columns == matrix2.columns);
-        Float[][] a = matrix1.getMatrix();
-        Float[][] b = matrix2.getMatrix();
-        Float[][] differance = null;
+        float[][] a = matrix1.getData();
+        float[][] b = matrix2.getData();
+        float[][] differance = null;
 
         if (subtractable) {
-            differance = new Float[matrix1.rows][matrix2.columns];
+            differance = new float[matrix1.rows][matrix2.columns];
             for (int i = 0; i < matrix1.rows; i++) {
                 for (int j = 0; j < matrix2.columns; j++) {
                     differance[i][j] = a[i][j] - b[i][j];
@@ -141,8 +141,34 @@ public class Matrix implements Serializable {
         return subtract(this, matrix);
     }
 
-    //TODO: complete the multiply method for Matrix.
-    void multiply(Matrix matrix1, Matrix matrix2) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    /**
+     * Multiply two matrices together
+     * @param matrix1 the first Matrix
+     * @param matrix2 the second Matrix
+     * @return the result of matrix1 * matrix2
+     */
+    public static Matrix multiply(Matrix matrix1, Matrix matrix2) {
+        float[][] result = new float[0][0];
+        float[][] data1;
+        float[][] data2;
+        
+        if (matrix1.columns == matrix2.rows) {
+            data1 = matrix1.getData();
+            data2 = matrix2.getData();
+            result = new float[matrix1.rows][matrix2.columns];
+
+            for (int i = 0; i < matrix1.rows; i++) {
+                for (int j = 0; j < matrix2.columns; j++) {
+                    for (int k = 0; k < matrix1.columns; k++) {
+                        result[i][j] += data1[i][k] * data2[k][j];
+                    }
+                }
+            }
+        }
+        return new Matrix(result);
+    }
+    
+    public Matrix multiply(Matrix matrix){
+        return multiply(this,matrix);
     }
 }

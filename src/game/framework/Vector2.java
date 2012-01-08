@@ -250,23 +250,15 @@ public class Vector2 implements Serializable
         
         // Clamp min and max x values
         if(vec.x < min.x)
-        {
             newX = min.x;
-        }
         else if(vec.x > max.x)
-        {
             newX = max.x;
-        }
 
         // Clamp min and max y values
         if(vec.y < min.y)
-        {
             newY = min.y;
-        }
         else if(vec.y > max.y)
-        {
             newY = max.y;
-        }
 
         // Return the Clamped Vector
         return vec = new Vector2(newX, newY);

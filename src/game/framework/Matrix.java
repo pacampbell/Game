@@ -3,14 +3,34 @@ package game.framework;
 import java.io.Serializable;
 
 /**
+ * A class that represents a matrix using a 2D array
  * @author mike, paul
  */
 public class Matrix implements Serializable {
-
+    
+    /**
+     * A variable that stores the default amount of rows in a Matrix
+     */
     private final static int DEFAULT_SIZE_ROW = 10;
+    
+    /**
+     * A variable that stores the default amount of columns in a Matrix
+     */
     private final static int DEFAULT_SIZE_COlUMN = 10;
+    
+    /**
+     * The 2D array that stores the data inside of the Matrix
+     */
     private float[][] matrix;
+    
+    /**
+     * The amount of rows this Matrix has
+     */
     private int rows;
+    
+    /**
+     * The amount of columns this matrix has
+     */
     private int columns;
 
     /**

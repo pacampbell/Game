@@ -100,7 +100,7 @@ public class Vector2 implements Serializable
      * and returns a new Vector2
      * @param veca Vector2 to be added
      * @param vecb Vector2 to be added
-     * @return Vector2 returns a new Vector2 with the result of veca + vecb
+     * @return Returns a new Vector2 with the result of veca + vecb
      */
     public static Vector2 add(Vector2 veca, Vector2 vecb)
     {
@@ -110,6 +110,7 @@ public class Vector2 implements Serializable
     /**
      * Performs Vector2 addition with this Vector2
      * @param that Vector2 to be added to this Vector2
+     * @return Returns a new Vector2 with the result of this + that
      */
     public Vector2 add(Vector2 that)
     {
@@ -249,26 +250,58 @@ public class Vector2 implements Serializable
         
         // Clamp min and max x values
         if(vec.x < min.x)
-        {
             newX = min.x;
-        }
         else if(vec.x > max.x)
-        {
             newX = max.x;
-        }
 
         // Clamp min and max y values
         if(vec.y < min.y)
-        {
             newY = min.y;
-        }
         else if(vec.y > max.y)
-        {
             newY = max.y;
-        }
 
         // Return the Clamped Vector
         return vec = new Vector2(newX, newY);
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Direction Cosine">
+    /**
+     * Computes the angle between the Vector2 and the x-axis 
+     * @param vec Vector2 we want to find the angle with respect to the x-axis.
+     * @return Returns the angle between the Vector2 and the x-axis in radians.
+     */
+    public static float directionAlpha(Vector2 vec)
+    {
+        return (float)Math.acos(vec.x / Vector2.magnitude(vec));
+    }
+    
+    /**
+     * Computes the angle between this Vector2 and the x-axis 
+     * @return Returns the angle between this Vector2 and the x-axis in radians.
+     */
+    public float directionAlpha()
+    {
+        return Vector2.directionAlpha(this);
+    }
+    
+    /**
+     * Computes the angle between the Vector2 and the y-axis 
+     * @param vec Vector2 we want to find the angle with respect to the y-axis.
+     * @return Returns the angle between the Vector2 and the y-axis in radians.
+     */
+    public static float directionBeta(Vector2 vec)
+    {
+        return (float)Math.acos(vec.y / Vector2.magnitude(vec));
+    }
+    
+    /**
+     * Computes the angle between this Vector2 and the y-axis 
+     * @return Returns the angle between this Vector2 and the y-axis in radians.
+     */
+    public float directionBeta()
+    {
+        return Vector2.directionBeta(this);
     }
     //</editor-fold>
 
@@ -637,9 +670,7 @@ public class Vector2 implements Serializable
     
     //<editor-fold defaultstate="collapsed" desc="Special Vectors">
     /**
-     * Returns a special type of vector
-     * The one vector
-     * (1,1)
+     * Returns a special type of vector; The one vector <1,1>
      * @return returns the special one vector.
      */
     public static Vector2 one()
@@ -667,8 +698,7 @@ public class Vector2 implements Serializable
 
     /**
      * Returns a special type of Vector
-     * The Zero vector also known as the null vector
-     * (0,0)
+     * The Zero vector, also known as the null vector <0,0>
      * @return Vector2
      */
     public static Vector2 zero()

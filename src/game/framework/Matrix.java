@@ -168,6 +168,11 @@ public class Matrix implements Serializable {
         return new Matrix(result);
     }
     
+    /**
+     * Multiply this Matrix with another matrix
+     * @param matrix the second Matrix
+     * @return the result of this * matrix
+     */
     public Matrix multiply(Matrix matrix){
         return multiply(this,matrix);
     }

@@ -400,7 +400,7 @@ public class Vector3 extends Vector2 implements Serializable
      * The result of a dot product is a scalar value.
      * @param veca A Vector3 that we want to perform the dot product on.
      * @param vecb A Vector3 that we want to perform the dot product on.
-     * @return Returns the dot product between the two Vector3 provided.
+     * @return Returns a dot b.
      */
     public static float dotProduct(Vector3 a, Vector3 b)
     {
@@ -413,7 +413,7 @@ public class Vector3 extends Vector2 implements Serializable
      * The result of a dot product is a scalar value.
      * @param veca A Vector3 that we want to perform the dot product on.
      * @param vecb A Vector2 that we want to perform the dot product on.
-     * @return Returns the dot product between the Vector3 and Vector2 provided.
+     * @return Returns a dot b.
      */
     public static float dotProduct(Vector3 a, Vector2 b)
     {

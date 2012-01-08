@@ -160,7 +160,7 @@ public class Vector2 implements Serializable
      */
     public Vector2 add(int x, int y)
     {
-        return Vector2.add(this, new Vector2(x, y));
+        return Vector2.add(this, new Vector2((float)x, (float)y));
     }
     
     /**
@@ -744,7 +744,7 @@ public class Vector2 implements Serializable
      */
     public Vector2 subtract(int x, int y)
     {
-        return Vector2.subtract(this, new Vector2(x, y));
+        return Vector2.subtract(this, new Vector2((float)x, (float)y));
     }
     
     /**

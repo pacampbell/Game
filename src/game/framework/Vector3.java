@@ -635,11 +635,49 @@ public class Vector3 extends Vector2 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Projection">
-    public static Vector3 scalarProjection(Vector3 a, float scalar){return null;}
-    public static Vector3 scalarProjection(Vector3 a, int scalar){return null;}
+    /**
+     * Calculates the scalar projection of b onto a.
+     * @param a A Vector3 we want to project onto.
+     * @param b A Vector3 we want project.
+     * @return Returns the scalar projection of b onto a.
+     */
+    public static float scalarProjection(Vector3 a, Vector3 b)
+    {
+        return Vector3.dotProduct(a, b) / Vector3.magnitude(a);
+    }
     
-    public static Vector3 vectorProjection(Vector3 a, float scalar){return null;}
-    public static Vector3 vectorProjection(Vector3 a, int scalar){return null;}
+    /**
+     * Calculates the scalar projection of that onto this.
+     * @param that A Vector3 we want to project.
+     * @return Returns the scalar projection of that onto this.
+     */ 
+    public float scalarProjection(Vector3 that)
+    {
+        return Vector3.scalarProjection(this, that);
+    }
+    
+    /**
+     * Calculates the vector projection of b onto a.
+     * @param a A Vector3 we want to project onto.
+     * @param b A Vector3 we want project.
+     * @return Returns the vector projection of b onto a.
+     */
+    public static Vector3 vectorProjection(Vector3 a, Vector3 b)
+    {
+        float scalar = Vector3.scalarProjection(a, b);
+        Vector3 normal = Vector3.normalize(a);
+        return Vector3.multiply(normal, scalar);
+    }
+    
+    /**
+     * Calculates the vector projection of that onto this.
+     * @param that A Vector3 we want project.
+     * @return Returns the vector projection of that onto this.
+     */
+    public Vector3 vectorProjection(Vector3 that)
+    {
+        return Vector3.vectorProjection(this, that);
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Reflection">
@@ -656,7 +694,7 @@ public class Vector3 extends Vector2 implements Serializable
     }
     
     /**
-     * Returns the unit vector for the x-axis.
+     * Returns the unit vector for the x-axis. <1.0, 0.0, 0.0>
      * @return Returns a Vector3 with the x component set to 1.0.
      */
     public static Vector3 unitX()
@@ -665,7 +703,7 @@ public class Vector3 extends Vector2 implements Serializable
     }
     
     /**
-     * Returns the unit vector for the y-axis.
+     * Returns the unit vector for the y-axis. <0.0, 1.0, 0.0>
      * @return Returns a Vector3 with the y component set to 1.0.
      */
     public static Vector3 unitY()
@@ -674,7 +712,7 @@ public class Vector3 extends Vector2 implements Serializable
     }
 
     /**
-     * Returns the unit vector for the z-axis.
+     * Returns the unit vector for the z-axis. <0.0, 0.0, 1.0>
      * @return Returns a Vector3 with the z component set to 1.0.
      */
     public static Vector3 unitZ()

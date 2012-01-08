@@ -242,12 +242,39 @@ public class Vector3 extends Vector2 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Clamp">
+    /**
+     * Clamps a Vector3 between a min Vector3 and a max Vector3
+     * @param value The Vector3 we want to clamp.
+     * @param min A Vector3 containing the minimum values.
+     * @param max A Vector3 containing the maximum values.
+     * @return Returns a Vector3 clamped between min and max.
+     */
+    public static Vector3 clamp(Vector3 value, Vector3 min, Vector3 max)
+    {
+        float newX = value.x;
+        float newY = value.y;
+        float newZ = value.z;
+        // Clamp the x value between the min and max.
+        if(value.x < min.x)
+            newX = min.x;
+        else if(value.x > max.x)
+            newX = max.x;
+        // Clamp the y value between the min and max.
+        if(value.y < min.y)
+            newY = min.y;
+        else if(value.y > max.y)
+            newY = max.y;
+        // Clamp the z value between the min and max.
+        if(value.z < min.z)
+            newZ = min.z;
+        else if(value.z > max.z)
+            newZ = max.z;
+        // Return the clamped Vector3
+        return new Vector3(newX, newY, newZ);
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Cross Product">
-    public Vector3 crossProduct(Vector3 that){return null;}
-    public Vector3 crossProduct(Vector2 that){return null;}
-    
     /**
      * Performs the cross product between two Vector3
      * You have u = {ux, uy, uz}
@@ -266,6 +293,28 @@ public class Vector3 extends Vector2 implements Serializable
     }
     
     /**
+     * Performs the cross product between a Vector3 and a Vector2.
+     * @param u Vector3
+     * @param v Vector2
+     * @return Returns the result of the cross product as a Vector3.
+     */
+    public static Vector3 crossProduct(Vector3 u, Vector2 v)
+    {
+        return Vector3.crossProduct(u, new Vector3(v));
+    }
+    
+    /**
+     * Performs the cross product between a Vector2 and a Vector3.
+     * @param u Vector2
+     * @param v Vector3
+     * @return Returns the result of the cross product as a Vector3.
+     */
+    public static Vector3 crossProduct(Vector2 u, Vector3 v)
+    {
+        return Vector3.crossProduct(new Vector3(u), v);
+    }
+    
+    /**
      * Performs the cross product between two Vector2.
      * @param u Vector2
      * @param v Vector2
@@ -277,25 +326,23 @@ public class Vector3 extends Vector2 implements Serializable
     }
     
     /**
-     * Performs the cross product between two Vector2.
-     * @param u Vector3
-     * @param v Vector2
-     * @return Returns the result of the cross product as a Vector3.
+     * Performs the cross product with this Vector3
+     * @param that Vector3
+     * @return Returns this cross that
      */
-    public static Vector3 crossProduct(Vector3 u, Vector2 v)
+    public Vector3 crossProduct(Vector3 that)
     {
-        return Vector3.crossProduct(u, new Vector3(v));
+        return Vector3.crossProduct(this, that);
     }
     
     /**
-     * Performs the cross product between two Vector2.
-     * @param u Vector2
-     * @param v Vector3
-     * @return Returns the result of the cross product as a Vector3.
+     * Performs the cross product with this Vector3
+     * @param that Vector2
+     * @return Returns this cross that
      */
-    public static Vector3 crossProduct(Vector2 u, Vector3 v)
+    public Vector3 crossProduct(Vector2 that)
     {
-        return Vector3.crossProduct(new Vector3(u), v);
+        return Vector3.crossProduct(this, new Vector3(that));
     }
     //</editor-fold>
     

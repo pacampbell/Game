@@ -287,9 +287,6 @@ public class Vector3 extends Vector2 implements Serializable
     public static Vector3 subtract(Vector2 a, Vector3 b){return null;}
     //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc="Unit Vector">
-    //</editor-fold>
-    
     /**
      * Test Method; Performs some operations
      * To check results

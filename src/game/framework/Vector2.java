@@ -3,16 +3,17 @@ package game.framework;
 import java.io.Serializable;
 
 /**
- * Need to implement Transform functions
- * Transforms one or more Vector2's by a Matrix or Quaternion.
- * Need to implement Transform Normal
- *  Transforms a vector normal or array of vector normals by a matrix.
- * 
- * Also Missing:
- *  CatmullRom
- *  Divide; This normally is not defined for vectors but is in some frameworks component wise.
- *  Hermite
- *  SmoothStep
+ * Vector2 class representing a vector of <x, y> components.
+ * <br />
+ * <h1>Missing:</h1>
+ * <ul>
+ *  <li>CatmullRom</li>
+ *  <li>Divide</li>
+ *  <li>Hermite</li>
+ *  <li>SmoothStep</li>
+ *  <li>Transform</li>
+ *  <li>TransformNormal</li>
+ * </ul>
  * @author paul
  */
 
@@ -53,8 +54,7 @@ public class Vector2 implements Serializable
     }
 
     /**
-     * Takes a float value and sets it to the x and y
-     * component's of the vector.
+     * Takes a float value and sets it to the x and y component's of the Vector2.
      * @param value for x and y components of the Vector2
      */
     public Vector2(float value)
@@ -82,6 +82,16 @@ public class Vector2 implements Serializable
     {
         this(0.0f, 0.0f);
     }
+    
+    /**
+     * Copy Constructor
+     * copies the contents of of the provided vector and creates a new vector.
+     * @param vec A Vector2 to make a copy of.
+     */
+    public Vector2(Vector2 vec)
+    {
+        this(vec.x, vec.y);
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Add">
@@ -103,7 +113,7 @@ public class Vector2 implements Serializable
      */
     public Vector2 add(Vector2 that)
     {
-        return new Vector2(this.x + that.x, this.y + that.y);
+        return Vector2.add(this, that);
     }
     //</editor-fold>
 
@@ -140,7 +150,10 @@ public class Vector2 implements Serializable
     /**
      * Clamps a Vector2 between a min Vector2 and a max Vector2
      * and returns the modified Vector2
-     * @return Vector2
+     * @param vec The Vector2 we want to clamp.
+     * @param min The minimum value we want the Vector2 to fall on.
+     * @param max The maximum value we want the Vector2 to fall on.
+     * @return Returns a Vector2 that is between the two Vector2 provided.
      */
     public static Vector2 clamp(Vector2 vec, Vector2 min, Vector2 max)
     {
@@ -174,50 +187,83 @@ public class Vector2 implements Serializable
 
     //<editor-fold defaultstate="collapsed" desc="Distance">
     /**
-     * Finds the distance between two Vector2
-     * @param veca
-     * @param vecb
-     * @return float
+     * Calculates the distance between two Vector2
+     * @param veca A Vector2 we want to find the distance between.
+     * @param vecb A Vector2 we want to find the distance between.
+     * @return Returns the distance between the two provided Vector2.
      */
     public static float distance(Vector2 veca, Vector2 vecb)
     {
         return Math.abs(magnitude(veca) - magnitude(vecb));
     }
+    
+    /**
+     * Calculates the distance between two Vector2
+     * @param that A Vector2 we want to find the distance between.
+     * @return Returns the distance between this Vector2 and that Vector2.
+     */
+    public float distance(Vector2 that)
+    {
+        return Vector2.distance(this, that);
+    }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Distance Squared">
     /**
-     * Calculates the distance squared between two vectors
-     * @param veca
-     * @param vecb
-     * @return float
+     * Calculates the distance between two Vector2 squared.
+     * @param veca A Vector2 we want to find the distance squared between.
+     * @param vecb A Vector2 we want to find the distance squared between.
+     * @return Returns the distance squared between the two provided Vector2.
      */
     public static float distanceSquared(Vector2 veca, Vector2 vecb)
     {
-        float distance = distance(veca, vecb);
+        float distance = Vector2.distance(veca, vecb);
         return distance * distance;
+    }
+    
+    /**
+     * Calculates the distance between two Vector2 squared.
+     * @param that A Vector2 we want to find the distance squared between.
+     * @return Returns the distance squared between this Vector2 and that Vector2.
+     */
+    public float distanceSquared(Vector2 that)
+    {
+        return Vector2.distanceSquared(this, that);
     }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Dot Product">
     /**
-     * Performs the dot product between 2 Vector2's.
+     * Performs the dot product between two Vector2's.
      * Also known as the scalar product.
      * The result of a dot product is a scalar value.
-     * @param vecb
-     * @return float 
+     * @param veca A Vector2 that we want to perform the dot product on.
+     * @param vecb A Vector2 that we want to perform the dot product on.
+     * @return Returns the dot product between the two Vector2 provided.
      */
     public static float dotProduct(Vector2 veca, Vector2 vecb)
     {
         return (veca.x * vecb.x) + (veca.y * vecb.y);
+    }
+    
+    /**
+     * Performs the dot product between two Vector2's.
+     * Also known as the scalar product.
+     * The result of a dot product is a scalar value.
+     * @param that A Vector2 that we want to perform the dot product on.
+     * @return Returns the dot product between this Vector2 and that Vector2.
+     */
+    public float dotProduct(Vector2 that)
+    {
+        return Vector2.dotProduct(this, that);
     }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Equals">
     /**
      * Checks if Vector B is equal with this Vector2.
-     * @param object
-     * @return Returns the result of the comparison.
+     * @param object An object that is believed to be a Vector2.
+     * @return Returns the result of the comparison between this Vector2 and that Vector2.
      */
     @Override
     public boolean equals(Object object)
@@ -226,27 +272,22 @@ public class Vector2 implements Serializable
         if(object != null && object instanceof Vector2)
         {
             Vector2 that = (Vector2)object;
-            if(magnitude(this) == magnitude(that))
-            {
-                result = true;
-            }
+            result = Vector2.equals(this, that);
         }
         return result;
     }
 
     /**
      * Checks the equality between two Vector2
-     * @param veca
-     * @param vecb
-     * @return result
+     * @param veca A Vector2 that we want to compare.
+     * @param vecb A Vector2 that we want to compare.
+     * @return Returns the result of the comparison between the two Vector2.
      */
     public static boolean equals(Vector2 veca, Vector2 vecb)
     {
         boolean result = false;
         if(magnitude(veca) == magnitude(vecb))
-        {
             result = true;
-        }
         return result;
     }
     //</editor-fold>
@@ -283,21 +324,9 @@ public class Vector2 implements Serializable
     
     //<editor-fold defaultstate="collapsed" desc="Magnitude">
     /**
-     * Returns the magnitude of this Vector2.
-     * Magnitude is also known as the length of the vector.
-     * @return float magnitude
-     */
-    public float magnitude()
-    {
-        float xsq = this.x * this.x;
-        float ysq = this.y * this.y;
-        return (float)Math.sqrt(xsq + ysq);
-    }
-
-    /**
      * Computes the magnitude of a Vector2.
      * Magnitude is also known as the length of the vector.
-     * @return float magnitude
+     * @return Returns the magnitude of the Vector2.
      */
     public static float magnitude(Vector2 vec)
     {
@@ -305,29 +334,36 @@ public class Vector2 implements Serializable
         float ysq = vec.y * vec.y;
         return (float)Math.sqrt(xsq + ysq);
     }
+    
+    /**
+     * Computes the magnitude of this Vector2.
+     * Magnitude is also known as the length of the vector.
+     * @return Returns the magnitude of this Vector2.
+     */
+    public float magnitude()
+    {
+        return Vector2.magnitude(this);
+    }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Magnitide Squared">
     /**
-     * Calculates the magnitude of this Vector2 squared.
-     * Magnitude is also known as the length of the vector.
-     * @return float magnitudeSquared
-     */
-    public float magnitudeSquared()
-    {
-        float magnitude = magnitude();
-        return magnitude * magnitude;
-    }
-
-    /**
      * Calculates the magnitude of a Vector2 squared.
-     * Magnitude is also known as the length of the vector.
-     * @return float magnitudeSquared
+     * @return Returns the magnitude of the Vector2 squared.
      */
     public static float magnitudeSquared(Vector2 veca)
     {
-        float magnitude = magnitude(veca);
+        float magnitude = Vector2.magnitude(veca);
         return magnitude * magnitude;
+    }
+    
+    /**
+     * Calculates the magnitude of this Vector2 squared.
+     * @return Returns the magnitude of this Vector2 squared.
+     */
+    public float magnitudeSquared()
+    {
+        return Vector2.magnitudeSquared(this);
     }
     //</editor-fold>
 
@@ -364,77 +400,87 @@ public class Vector2 implements Serializable
     //<editor-fold defaultstate="collapsed" desc="Multiply">
     /**
      * Multiplies a Vector2 by a scalar
-     * and returns a new Vector2.
-     * @param veca
-     * @param scalar
-     * @return returns a new Vector2
+     * @param veca A Vector2 we want to multiply.
+     * @param scalar A scalar value we want to multiply into the Vector2.
+     * @return returns a new Vector2 multiplied by the scalar.
      */
     public static Vector2 multiply(Vector2 veca, float scalar)
     {
         return new Vector2(veca.x * scalar, veca.y * scalar);
     }
-
+    
     /**
-     * Converts an integer to float for scalar multiplication
-     * of a Vector2.
-     * @param veca
-     * @param scalar
+     * Converts an integer to float for scalar multiplication of a Vector2.
+     * @param veca A Vector2 we want to multiply.
+     * @param scalar A scalar value we want to multiply into the Vector2.
+     * @return returns a new Vector2 multiplied by the scalar.
      */
     public static Vector2 multiply(Vector2 veca, int scalar)
     {
-        return multiply(veca, (float)scalar);
+        return Vector2.multiply(veca, (float)scalar);
     }
     
     /**
-     * Multiplies this Vector2 by a float scalar
-     * @param scalar 
+     * Multiplies this Vector2 by a scalar.
+     * @param scalar A scalar value we want to multiply into the Vector2.
+     * @return returns this Vector2 multiplied by the scalar.
      */
     public Vector2 multiply(float scalar)
     {
-        return new Vector2(this.x * scalar, this.y * scalar);
+        return Vector2.multiply(this, scalar);
     }
     
     /**
-     * Converts an integer scalar to a float value and then
-     * multiplies this Vector2 by a float scalar
-     * @param scalar 
+     * Converts an integer to float then multiplies this Vector2 by a scalar.
+     * @param scalar A scalar value we want to multiply into the Vector2.
+     * @return returns this Vector2 multiplied by the scalar.
      */
     public Vector2 multiply(int scalar)
     {
-        return multiply((float)scalar);
+        return Vector2.multiply(this, (float)scalar);
     }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Negate">
     /**
      * Returns a new Vector2 pointing in the opposite direction.
-     * @param veca
-     * @return Vector2
+     * @param veca The Vector2 we want to negate.
+     * @return Returns A Vector2 that has been negated.
      */
     public static Vector2 negate(Vector2 veca)
     {
         return new Vector2(veca.x * -1, veca.y * -1);
     }
+    
+    /**
+     * Returns this Vector2 pointing in the opposite direction.
+     * @return Returns this Vector2 negated.
+     */
+    public Vector2 negate()
+    {
+        return Vector2.negate(this);
+    }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Normalize">
     /**
-     * Normalizes this Vector2
-     */
-    public Vector2 normalize()
-    {
-        float magnitude = magnitude();
-        return new Vector2(this.x / magnitude, this.y / magnitude);
-    }
-
-    /**
-     * Normalizes a  input Vector2 and
-     * @return a new Vector2 that is normalized.
+     * Normalizes a Vector2; Also know as the unit vector.
+     * @param vec A Vector2 we want to normalize.
+     * @return Returns a new Vector2 that is normalized.
      */
     public static Vector2 normalize(Vector2 vec)
     {
         float magnitude = magnitude(vec);
         return new Vector2(vec.x / magnitude, vec.y / magnitude);
+    }
+    
+    /**
+     * Normalizes this Vector2
+     * @return Returns this Vector2 that has been normalized.
+     */
+    public Vector2 normalize()
+    {
+        return Vector2.normalize(this);
     }
     //</editor-fold>
 
@@ -502,8 +548,8 @@ public class Vector2 implements Serializable
     /**
      * Performs Vector2 Subtraction on two Vector2
      * and returns a new Vector2
-     * @param veca
-     * @param vecb
+     * @param veca A Vector2 to be subtracted.
+     * @param vecb A Vector2 to be subtracted.
      * @return Returns a new Vector2 that is the difference between the two provided Vector2's
      */
     public static Vector2 subtract(Vector2 veca, Vector2 vecb)
@@ -513,18 +559,19 @@ public class Vector2 implements Serializable
     
     /**
      * Subtracts a Vector2 from this
-     * @param that Vector2 to be subtracted from this
+     * @param that A Vector2 to be subtracted.
+     * @return Returns a new Vector2 that is the difference between this Vector2 and that Vector2.
      */
     public Vector2 subtract(Vector2 that)
     {
-        return new Vector2(this.x - that.x, this.y - that.y);
+        return Vector2.subtract(this, that);
     }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="To String">
     /**
-     * Returns a string value to represent the Vector2
-     * @return String
+     * Converts the Vector2 to a string.
+     * @return Returns a string representing the Vector2.
      */
     @Override
     public String toString()

@@ -347,27 +347,105 @@ public class Vector3 extends Vector2 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Distance">
-    public static Vector3 distance(Vector3 a, Vector3 b)
+    /**
+     * Computes the distance between two Vector3.
+     * @param a A Vector3 we want to compute the distance with.
+     * @param b A Vector3 we want to compute the distance with.
+     * @return Returns the distance between a and b.
+     */
+    public static float distance(Vector3 a, Vector3 b)
     {
-        return null;
+        return Math.abs(Vector3.magnitude(a) - Vector3.magnitude(b));
+    }
+    
+    /**
+     * Computes the distance between this and that.
+     * @param that A Vector3 we want to compute the distance with this.
+     * @return Returns the distance between this and that.
+     */
+    public float distance(Vector3 that)
+    {
+        return Vector3.distance(this, that);
     }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Distance Squared">
-    public static Vector3 distanceSquared(Vector3 a, Vector3 b)
+    /**
+     * Computes the distance between two Vector3 squared.
+     * @param a A Vector3 we want to compute the distance squared with.
+     * @param b A Vector3 we want to compute the distance squared with.
+     * @return Returns the distance between a and b squared.
+     */
+    public static float distanceSquared(Vector3 a, Vector3 b)
     {
-        return null;
+        float distance = Vector3.distance(a, b);
+        return distance * distance;
+    }
+    
+    /**
+     * Computes the distance between this and that squared.
+     * @param that A Vector3 we want to compute the distance squared with this.
+     * @return Returns the distance between this and that squared.
+     */
+    public float distanceSquared(Vector3 that)
+    {
+        return Vector3.distanceSquared(this, that);
     }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Dot product">
+    /**
+     * Performs the dot product between two Vector3's.
+     * Also known as the scalar product.
+     * The result of a dot product is a scalar value.
+     * @param veca A Vector3 that we want to perform the dot product on.
+     * @param vecb A Vector3 that we want to perform the dot product on.
+     * @return Returns the dot product between the two Vector3 provided.
+     */
+    public static float dotProduct(Vector3 a, Vector3 b)
+    {
+        return (a.x + b.x) + (a.y + b.y) + (a.z + b.z);
+    }
+    
+    /**
+     * Performs the dot product between a Vector3 and a Vector2.
+     * Also known as the scalar product.
+     * The result of a dot product is a scalar value.
+     * @param veca A Vector3 that we want to perform the dot product on.
+     * @param vecb A Vector2 that we want to perform the dot product on.
+     * @return Returns the dot product between the Vector3 and Vector2 provided.
+     */
+    public static float dotProduct(Vector3 a, Vector2 b)
+    {
+        return Vector3.dotProduct(a, new Vector3(b));
+    }
+    
+    /**
+     * Performs the dot product between this Vector3 and that Vector3.
+     * @param that A Vector3 we want to perform the dot product on.
+     * @return Returns the dot product of this dot that.
+     */
+    public float dotProduct(Vector3 that)
+    {
+        return Vector3.dotProduct(this, that);
+    }
+    
+    /**
+     * Performs the dot product between this Vector3 and that Vector2.
+     * @param that A Vector2 we want to perform the dot product on.
+     * @return Returns the dot product of this dot that.
+     */
+    public float dotProduct(Vector2 that)
+    {
+        return Vector3.dotProduct(this, new Vector3(that));
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Equals">
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Magnitude">
-    public static float magnitude(Vector3 a, Vector3 b){return -1;}
+    public static float magnitude(Vector3 a){return -1;}
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Magnitude Squared">

@@ -23,7 +23,8 @@ public class Vector2 implements Serializable
 {
     public final float x;
     public final float y;
-
+    
+    //<editor-fold defaultstate="collapsed" desc="Constructors">
     /**
      * Complete Constructor
      * @param x x component of the Vector2
@@ -75,7 +76,9 @@ public class Vector2 implements Serializable
     {
         this(0.0f, 0.0f);
     }
-
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Add">
     /**
      * Performs Vector2 Addition on two Vector2
      * and returns a new Vector2
@@ -96,7 +99,9 @@ public class Vector2 implements Serializable
     {
         return new Vector2(this.x + that.x, this.y + that.y);
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Barycentric">
     /**
      * The Vector2 Barycentric method takes three vectors specifying the Cartesian coordinates of the triangle vertices, V1, V2, and V3), and 
      * two areal coordinates b2 and b3 of some point P (b2 is the amount1 argument, and b3 is the amount2 argument). The b2 coordinate relates 
@@ -123,7 +128,9 @@ public class Vector2 implements Serializable
         float py = (amount1 * value1.y) + (amount2 * value2.y) + (amount3 * value3.y);
         return new Vector2(px, py);
     }
+    //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Clamp">
     /**
      * Clamps a Vector2 between a min Vector2 and a max Vector2
      * and returns the modified Vector2
@@ -157,7 +164,9 @@ public class Vector2 implements Serializable
         // Return the Clamped Vector
         return vec = new Vector2(newX, newY);
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Distance">
     /**
      * Finds the distance between two Vector2
      * @param veca
@@ -168,7 +177,9 @@ public class Vector2 implements Serializable
     {
         return Math.abs(magnitude(veca) - magnitude(vecb));
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Distance Squared">
     /**
      * Calculates the distance squared between two vectors
      * @param veca
@@ -180,7 +191,9 @@ public class Vector2 implements Serializable
         float distance = distance(veca, vecb);
         return distance * distance;
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Dot Product">
     /**
      * Performs the dot product between 2 Vector2's.
      * Also known as the scalar product.
@@ -192,7 +205,9 @@ public class Vector2 implements Serializable
     {
         return (veca.x * vecb.x) + (veca.y * vecb.y);
     }
+    //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Equals">
     /**
      * Checks if Vector B is equal with this Vector2.
      * @param object
@@ -228,7 +243,9 @@ public class Vector2 implements Serializable
         }
         return result;
     }
+    //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Hash Code">
     /**
      * @return Returns a hash code for the object
      */
@@ -240,7 +257,9 @@ public class Vector2 implements Serializable
         hash = 61 * hash + Float.floatToIntBits(this.y);
         return hash;
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Linear Interpolation">
     /**
      * Linear interpolation
      * value1 + (value2 - value1) * amount
@@ -254,7 +273,9 @@ public class Vector2 implements Serializable
         float lerpY = value1.y + (value2.y - value1.y) * amount;
         return new Vector2(lerpX, lerpY);
     }
+    //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Magnitude">
     /**
      * Returns the magnitude of this Vector2.
      * Magnitude is also known as the length of the vector.
@@ -278,7 +299,9 @@ public class Vector2 implements Serializable
         float ysq = vec.y * vec.y;
         return (float)Math.sqrt(xsq + ysq);
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Magnitide Squared">
     /**
      * Calculates the magnitude of this Vector2 squared.
      * Magnitude is also known as the length of the vector.
@@ -300,7 +323,9 @@ public class Vector2 implements Serializable
         float magnitude = magnitude(veca);
         return magnitude * magnitude;
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Max & Min">
     /**
      * Returns a Vector2 that contains the highest value
      * from each matching pair of components.
@@ -328,63 +353,9 @@ public class Vector2 implements Serializable
         float cy = (veca.y < vecb.y) ? veca.y : vecb.y;
         return new Vector2(cx, cy);
     }
+    //</editor-fold>
 
-    /**
-     * Returns a new Vector2 pointing in the opposite direction.
-     * @param veca
-     * @return Vector2
-     */
-    public static Vector2 negate(Vector2 veca)
-    {
-        return new Vector2(veca.x * -1, veca.y * -1);
-    }
-
-    /**
-     * Normalizes this Vector2
-     */
-    public Vector2 normalize()
-    {
-        float magnitude = magnitude();
-        return new Vector2(this.x / magnitude, this.y / magnitude);
-    }
-
-    /**
-     * Normalizes a  input Vector2 and
-     * @return a new Vector2 that is normalized.
-     */
-    public static Vector2 normalize(Vector2 vec)
-    {
-        float magnitude = magnitude(vec);
-        return new Vector2(vec.x / magnitude, vec.y / magnitude);
-    }
-
-    /**
-     * Returns a special type of vector
-     * The one vector
-     * (1,1)
-     * @return returns the special one vector.
-     */
-    public static Vector2 one()
-    {
-        return new Vector2(1.0f, 1.0f);
-    }
-
-    /**
-     * r = 2 * (I.N) * N - I
-     * I is the incident vector
-     * N is the normal
-     * @param incident
-     * @param normal
-     * @return returns a reflect vector of type Vector2
-     */
-    public static Vector2 reflect(Vector2 incident, Vector2 normal)
-    {
-        float dotResult = dotProduct(incident, normal);
-        float dot2 =  dotResult * 2;
-        Vector2 normDot2 = multiply(normal, dot2);
-        return subtract(normDot2, incident);
-    }
-
+    //<editor-fold defaultstate="collapsed" desc="Multiply">
     /**
      * Multiplies a Vector2 by a scalar
      * and returns a new Vector2.
@@ -426,38 +397,71 @@ public class Vector2 implements Serializable
     {
         return multiply((float)scalar);
     }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Negate">
+    /**
+     * Returns a new Vector2 pointing in the opposite direction.
+     * @param veca
+     * @return Vector2
+     */
+    public static Vector2 negate(Vector2 veca)
+    {
+        return new Vector2(veca.x * -1, veca.y * -1);
+    }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Normalize">
+    /**
+     * Normalizes this Vector2
+     */
+    public Vector2 normalize()
+    {
+        float magnitude = magnitude();
+        return new Vector2(this.x / magnitude, this.y / magnitude);
+    }
 
     /**
-     * Performs Vector2 Subtraction on two Vector2
-     * and returns a new Vector2
-     * @param veca
-     * @param vecb
-     * @return Returns a new Vector2 that is the difference between the two provided Vector2's
+     * Normalizes a  input Vector2 and
+     * @return a new Vector2 that is normalized.
      */
-    public static Vector2 subtract(Vector2 veca, Vector2 vecb)
+    public static Vector2 normalize(Vector2 vec)
     {
-        return new Vector2(veca.x - vecb.x, veca.y - vecb.y);
+        float magnitude = magnitude(vec);
+        return new Vector2(vec.x / magnitude, vec.y / magnitude);
+    }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Reflect">
+    /**
+     * r = 2 * (I.N) * N - I
+     * I is the incident vector
+     * N is the normal
+     * @param incident
+     * @param normal
+     * @return returns a reflect vector of type Vector2
+     */
+    public static Vector2 reflect(Vector2 incident, Vector2 normal)
+    {
+        float dotResult = dotProduct(incident, normal);
+        float dot2 =  dotResult * 2;
+        Vector2 normDot2 = multiply(normal, dot2);
+        return subtract(normDot2, incident);
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Special Vectors">
+    /**
+     * Returns a special type of vector
+     * The one vector
+     * (1,1)
+     * @return returns the special one vector.
+     */
+    public static Vector2 one()
+    {
+        return new Vector2(1.0f, 1.0f);
     }
     
-    /**
-     * Subtracts a Vector2 from this
-     * @param that Vector2 to be subtracted from this
-     */
-    public Vector2 subtract(Vector2 that)
-    {
-        return new Vector2(this.x - that.x, this.y - that.y);
-    }
-
-    /**
-     * Returns a string value to represent the Vector2
-     * @return String
-     */
-    @Override
-    public String toString()
-    {
-        return "(" + x + "," + y + ")";
-    }
-
     /**
      * Returns the unit vector for the x-axis.
      * @return Vector2
@@ -486,4 +490,40 @@ public class Vector2 implements Serializable
     {
         return new Vector2(0.0f, 0.0f);
     }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="Subtraction">
+    /**
+     * Performs Vector2 Subtraction on two Vector2
+     * and returns a new Vector2
+     * @param veca
+     * @param vecb
+     * @return Returns a new Vector2 that is the difference between the two provided Vector2's
+     */
+    public static Vector2 subtract(Vector2 veca, Vector2 vecb)
+    {
+        return new Vector2(veca.x - vecb.x, veca.y - vecb.y);
+    }
+    
+    /**
+     * Subtracts a Vector2 from this
+     * @param that Vector2 to be subtracted from this
+     */
+    public Vector2 subtract(Vector2 that)
+    {
+        return new Vector2(this.x - that.x, this.y - that.y);
+    }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc="To String">
+    /**
+     * Returns a string value to represent the Vector2
+     * @return String
+     */
+    @Override
+    public String toString()
+    {
+        return "(" + x + "," + y + ")";
+    }
+    //</editor-fold>
 }

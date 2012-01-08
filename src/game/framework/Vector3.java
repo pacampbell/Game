@@ -475,11 +475,45 @@ public class Vector3 extends Vector2 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Magnitude">
-    public static float magnitude(Vector3 a){return -1;}
+    /**
+     * Computes the magnitude of a Vector3.
+     * @param a A Vector3 to find the magnitude of.
+     * @return Returns the magnitude of the Vector3 provided.
+     */
+    public static float magnitude(Vector3 a)
+    {
+        return (float)Math.sqrt((a.x * a.x) + (a.y * a.y) + (a.z * a.z));
+    }
+    
+    /**
+     * Computes the magnitude of this Vector3.
+     * @return Returns the magnitude of this Vector3.
+     */
+    public float magnitude()
+    {
+        return Vector3.magnitude(this);
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Magnitude Squared">
-    public static Vector3 magnitudeSquared(Vector3 a, Vector3 b){return null;}
+    /**
+     * Computes the magnitude squared of a Vector3
+     * @param a A Vector3 to find the magnitude squared of.
+     * @return Returns the magnitude squared of the Vector3 provided.
+     */
+    public static float magnitudeSquared(Vector3 a)
+    {
+        return Vector3.magnitude(a) * Vector3.magnitude(a);
+    }
+    
+    /**
+     * Computes the magnitude squared of this Vector3
+     * @return Returns the magnitude squared this Vector3.
+     */
+    public float magnitudeSquared()
+    {
+        return Vector3.magnitudeSquared(this);
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Max">

@@ -748,14 +748,86 @@ public class Vector3 extends Vector2 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Subtract">
-    public static Vector3 subtract(Vector3 a, Vector3 b){return null;}
-    public static Vector3 subtract(Vector3 a, Vector2 b){return null;}
-    public static Vector3 subtract(Vector2 a, Vector3 b){return null;}
+    /**
+     * Performs Vector3 Subtraction on two Vector3
+     * @param veca A Vector3 to be subtracted.
+     * @param vecb A Vector3 to be subtracted.
+     * @return Returns a new Vector3 that is the difference between the two provided Vector3.
+     */
+    public static Vector3 subtract(Vector3 a, Vector3 b)
+    {
+        return new Vector3(a.x - b.x, a.y - b.y, a.z - b.z);
+    }
     
-    public Vector3 subtract(Vector3 that){return null;}
-    public Vector3 subtract(Vector2 that){return null;}
-    public Vector3 subtract(float x, float y, float z){return null;}
-    public Vector3 subtract(int x, int y, int z){return null;}
+    /**
+     * Performs Vector3 Subtraction on a Vector3 and a Vector2
+     * @param veca A Vector3 to be subtracted.
+     * @param vecb A Vector2 to be subtracted.
+     * @return Returns a new Vector3 that is the difference between the Vector3 and the Vector2.
+     */
+    public static Vector3 subtract(Vector3 a, Vector2 b)
+    {
+        return Vector3.subtract(a, new Vector3(b));
+    }
+    
+    /**
+     * Performs Vector3 Subtraction on a Vector2 and a Vector3
+     * @param veca A Vector2 to be subtracted.
+     * @param vecb A Vector3 to be subtracted.
+     * @return Returns a new Vector3 that is the difference between the Vector2 and the Vector3.
+     */
+    public static Vector3 subtract(Vector2 a, Vector3 b)
+    {
+        return Vector3.subtract(new Vector3(a), b);
+    }
+    
+    /**
+     * Subtracts a Vector3 from this
+     * @param that A Vector3 to be subtracted.
+     * @return Returns a new Vector3 that is the difference between this Vector3 and that Vector3.
+     */
+    public Vector3 subtract(Vector3 that)
+    {
+        return Vector3.subtract(this, that);
+    }
+    
+    /**
+     * Subtracts a Vector2 from this
+     * @param that A Vector2 to be subtracted.
+     * @return Returns a new Vector3 that is the difference between this Vector3 and that Vector2.
+     */
+    public Vector3 subtract(Vector2 that)
+    {
+        return Vector3.subtract(this, new Vector3(that));
+    }
+    
+    /**
+     * Performs subtraction with this Vector3 and the x, y, and z values provided.
+     * @param x The x component we want to subtract from this Vector3.
+     * @param y The y component we want to subtract from this Vector3.
+     * @param z The z component we want to subtract from this Vector3.
+     * @return Returns a Vector3 with x subtracted from this.x, y subtracted from this.y, and z subtracted from this.z
+     */
+    public Vector3 subtract(float x, float y, float z)
+    {
+        return Vector3.subtract(this, new Vector3(x, y, z));
+    }
+    
+    /**
+     * Performs subtraction with this Vector3 and the x, y, and z values provided.
+     * Converts integer arguments to float.
+     * @param x The x component we want to subtract from this Vector3.
+     * @param y The y component we want to subtract from this Vector3.
+     * @param z The z component we want to subtract from this Vector3.
+     * @return Returns a Vector3 with x subtracted from this.x, y subtracted from this.y, and z subtracted from this.z
+     */
+    public Vector3 subtract(int x, int y, int z)
+    {
+        return Vector3.subtract(this, new Vector3(x, y, z));
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="To String">
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Test operations">

@@ -100,7 +100,7 @@ public class Vector2 implements Serializable
      * and returns a new Vector2
      * @param veca Vector2 to be added
      * @param vecb Vector2 to be added
-     * @return Vector2 returns a new Vector2 with the result of veca + vecb
+     * @return Returns a new Vector2 with the result of veca + vecb
      */
     public static Vector2 add(Vector2 veca, Vector2 vecb)
     {
@@ -110,6 +110,7 @@ public class Vector2 implements Serializable
     /**
      * Performs Vector2 addition with this Vector2
      * @param that Vector2 to be added to this Vector2
+     * @return Returns a new Vector2 with the result of this + that
      */
     public Vector2 add(Vector2 that)
     {
@@ -637,9 +638,7 @@ public class Vector2 implements Serializable
     
     //<editor-fold defaultstate="collapsed" desc="Special Vectors">
     /**
-     * Returns a special type of vector
-     * The one vector
-     * (1,1)
+     * Returns a special type of vector; The one vector <1,1>
      * @return returns the special one vector.
      */
     public static Vector2 one()
@@ -667,8 +666,7 @@ public class Vector2 implements Serializable
 
     /**
      * Returns a special type of Vector
-     * The Zero vector also known as the null vector
-     * (0,0)
+     * The Zero vector, also known as the null vector <0,0>
      * @return Vector2
      */
     public static Vector2 zero()

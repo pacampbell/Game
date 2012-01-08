@@ -442,6 +442,36 @@ public class Vector3 extends Vector2 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Equals">
+    /**
+     * Checks if Vector B is equal with this Vector3.
+     * @param object An object that is believed to be a Vector3.
+     * @return Returns the result of the comparison between this Vector3 and that Vector3.
+     */
+    @Override
+    public boolean equals(Object object)
+    {
+        boolean result = false;
+        if(object != null && object instanceof Vector3)
+        {
+            Vector2 that = (Vector3)object;
+            result = Vector3.equals(this, that);
+        }
+        return result;
+    }
+    
+    /**
+     * Checks the equality between two Vector3
+     * @param veca A Vector3 that we want to compare.
+     * @param vecb A Vector3 that we want to compare.
+     * @return Returns the result of the comparison between the two Vector3.
+     */
+    public static boolean equals(Vector3 veca, Vector3 vecb)
+    {
+        boolean result = false;
+        if(Vector3.magnitude(veca) == Vector3.magnitude(vecb))
+            result = true;
+        return result;
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Magnitude">

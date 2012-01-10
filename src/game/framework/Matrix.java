@@ -195,8 +195,12 @@ public class Matrix implements Serializable {
      */
     public Matrix multiply(Matrix matrix){
         return multiply(this,matrix);
-    }
-    
+    }    
+   
+     /**
+     * Generates a String representing all of the data in this Matrix
+     * @return the String that represents the data
+     */
     @Override
     public String toString(){
         String str = "";

@@ -44,6 +44,14 @@ public class Matrix implements Serializable {
         this.rows = matrix.length;
         this.columns = matrix[0].length;
     }
+    
+    /**
+     * A constructor that copies a Matrix
+     * @param matrix the Matrix that will be copied.
+     */
+    public Matrix(Matrix matrix){
+        this(matrix.getData());
+    }
 
     /**
      * Constructs a new Matrix with null data but with the dimensions specified
@@ -52,9 +60,7 @@ public class Matrix implements Serializable {
      * @param columns the amount of columns the new Matrix will have.
      */
     public Matrix(int rows, int columns) {
-        this.matrix = new float[rows][columns];
-        this.rows = rows;
-        this.columns = columns;
+        this(new float[rows][columns]);
     }
 
     /**
@@ -124,7 +130,7 @@ public class Matrix implements Serializable {
      * @return a Matrix containing the result of this + matrix
      */
     public Matrix add(Matrix matrix) {
-        return add(this, matrix);
+        return Matrix.add(this, matrix);
     }
 
     /**
@@ -194,7 +200,7 @@ public class Matrix implements Serializable {
      * @return the result of this * matrix
      */
     public Matrix multiply(Matrix matrix){
-        return multiply(this,matrix);
+        return Matrix.multiply(this,matrix);
     }    
    
      /**
@@ -211,5 +217,37 @@ public class Matrix implements Serializable {
             str += "\n";
         }
         return str;
+    }
+
+    public static Matrix identity(int i) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+    
+    public static Matrix identity(Matrix matrix){
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+    
+    public Matrix identity(){
+        return Matrix.identity(this);
+    }
+    
+    public static Matrix transpose(Matrix matrix){
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+    
+    public Matrix transpose(){
+        return Matrix.transpose(this);
+    }
+    
+    public static Matrix vectorToMatrix(Vector2 vector2){
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+    
+    public static Matrix vectorToMatrix(Vector3 vector3){
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+    
+    public static Matrix vectorToMatrix(Vector4 vector4){
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 }

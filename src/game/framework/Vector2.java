@@ -261,7 +261,7 @@ public class Vector2 implements Serializable
             newY = max.y;
 
         // Return the Clamped Vector
-        return vec = new Vector2(newX, newY);
+        return new Vector2(newX, newY);
     }
     //</editor-fold>
     

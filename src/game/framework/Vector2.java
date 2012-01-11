@@ -821,6 +821,7 @@ public class Vector2 implements Serializable
     }
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Unit Test">
     public static void unitTest()
     {
         Vector2 a = new Vector2(1, 2);
@@ -878,4 +879,5 @@ public class Vector2 implements Serializable
         System.out.println("Reflection of a and b: " + m);
         System.out.println("Barycentric a, b, c, 3, 4: " + n);
     }
+    //</editor-fold>
 }

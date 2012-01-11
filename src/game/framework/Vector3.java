@@ -526,7 +526,7 @@ public class Vector3 extends Vector2 implements Serializable
     public static boolean equals(Vector3 veca, Vector3 vecb)
     {
         boolean result = false;
-        if(Vector3.magnitude(veca) == Vector3.magnitude(vecb))
+        if(veca.x == vecb.x && veca.y == vecb.y && veca.z == vecb.z)
             result = true;
         return result;
     }
@@ -741,22 +741,15 @@ public class Vector3 extends Vector2 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Reflection">
-    
     /**
-     * r = 2 * (I.N) * N - I
-     * I is the incident vector
-     * N is the normal
-     * . is the dot product
-     * @param incident
-     * @param normal
-     * @return Vector3
+     * r = i - (2 * n * dot(i, n))
+     * @param incident Incident vector
+     * @param normal Surface normal vector
+     * @return Returns the reflected vector.
      */
     public static Vector3 reflect(Vector3 incident, Vector3 normal)
     {
-        float dotResult = dotProduct(incident, normal);
-        float dot2 =  dotResult * 2;
-        Vector3 normDot2 = Vector3.multiply(normal, dot2);
-        return Vector3.subtract(normDot2, incident);
+        return incident.subtract(Vector3.multiply(normal, 2.0f).multiply(Vector3.dotProduct(incident, normal)));
     }
     //</editor-fold>
     
@@ -896,6 +889,15 @@ public class Vector3 extends Vector2 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="To String">
+    /**
+     * Converts the Vector3 to a string. <x,y,z>
+     * @return Returns a string representing the Vector3.
+     */
+    @Override
+    public String toString()
+    {
+        return "<" + this.x + "," + this.y + "," + this.z + ">";
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Test operations">

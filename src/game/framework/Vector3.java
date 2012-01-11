@@ -414,7 +414,7 @@ public class Vector3 extends Vector2 implements Serializable
      */
     public static float distance(Vector3 a, Vector3 b)
     {
-        return Math.abs(Vector3.magnitude(a) - Vector3.magnitude(b));
+        return Vector3.subtract(a, b).magnitude();
     }
     
     /**
@@ -437,8 +437,7 @@ public class Vector3 extends Vector2 implements Serializable
      */
     public static float distanceSquared(Vector3 a, Vector3 b)
     {
-        float distance = Vector3.distance(a, b);
-        return distance * distance;
+        return Vector3.subtract(a, b).magnitudeSquared();
     }
     
     /**
@@ -541,13 +540,14 @@ public class Vector3 extends Vector2 implements Serializable
      */
     public static float magnitude(Vector3 a)
     {
-        return (float)Math.sqrt((a.x * a.x) + (a.y * a.y) + (a.z * a.z));
+        return (float)Math.sqrt(a.magnitudeSquared());
     }
     
     /**
      * Computes the magnitude of this Vector3.
      * @return Returns the magnitude of this Vector3.
      */
+    @Override
     public float magnitude()
     {
         return Vector3.magnitude(this);
@@ -562,13 +562,14 @@ public class Vector3 extends Vector2 implements Serializable
      */
     public static float magnitudeSquared(Vector3 a)
     {
-        return Vector3.magnitude(a) * Vector3.magnitude(a);
+        return (a.x * a.x) + (a.y * a.y) + (a.z * a.z);
     }
     
     /**
      * Computes the magnitude squared of this Vector3
      * @return Returns the magnitude squared this Vector3.
      */
+    @Override
     public float magnitudeSquared()
     {
         return Vector3.magnitudeSquared(this);

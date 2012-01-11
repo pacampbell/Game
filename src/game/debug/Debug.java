@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Debug
 {
-    private static ArrayList<String> list = new ArrayList<String>();
+    private static ArrayList<String> list = new ArrayList<>();
     private static Vector2 cursorPosition = new Vector2();
 
     public static void print(Graphics2D g2d)

@@ -314,7 +314,7 @@ public class Vector2 implements Serializable
      */
     public static float distance(Vector2 veca, Vector2 vecb)
     {
-        return Math.abs(magnitude(veca) - magnitude(vecb));
+        return Vector2.subtract(veca, vecb).magnitude();
     }
     
     /**
@@ -337,8 +337,7 @@ public class Vector2 implements Serializable
      */
     public static float distanceSquared(Vector2 veca, Vector2 vecb)
     {
-        float distance = Vector2.distance(veca, vecb);
-        return distance * distance;
+        return Vector2.subtract(veca, vecb).magnitudeSquared();
     }
     
     /**
@@ -450,7 +449,7 @@ public class Vector2 implements Serializable
      */
     public static float magnitude(Vector2 vec)
     {
-        return (float)Math.sqrt((vec.x * vec.x) + (vec.y * vec.y));
+        return (float)Math.sqrt(vec.magnitudeSquared());
     }
     
     /**
@@ -471,8 +470,7 @@ public class Vector2 implements Serializable
      */
     public static float magnitudeSquared(Vector2 veca)
     {
-        float magnitude = Vector2.magnitude(veca);
-        return magnitude * magnitude;
+        return (veca.x * veca.x) + (veca.y * veca.y);
     }
     
     /**

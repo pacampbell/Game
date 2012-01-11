@@ -135,6 +135,7 @@ public class Vector3 extends Vector2 implements Serializable
      * @param that Vector2 to be added
      * @return Returns a new Vector3 with the result of this + that
      */
+    @Override
     public Vector3 add(Vector2 that)
     {
         return Vector3.add(this, new Vector3(that));
@@ -182,6 +183,7 @@ public class Vector3 extends Vector2 implements Serializable
      * @param x The x component we want to add to this Vector3.
      * @return Returns a Vector3 with x added to this.x
      */
+    @Override
     public Vector3 addX(float x)
     {
         return Vector3.add(this, new Vector3(x, 0.0f, 0.0f));
@@ -193,6 +195,7 @@ public class Vector3 extends Vector2 implements Serializable
      * @param x The x component we want to add to this Vector3.
      * @return Returns a Vector3 with x added to this.x
      */
+    @Override
     public Vector3 addX(int x)
     {
         return Vector3.add(this, new Vector3((float)x, 0.0f, 0.0f));
@@ -203,6 +206,7 @@ public class Vector3 extends Vector2 implements Serializable
      * @param y The y component we want to add to this Vector3.
      * @return Returns a Vector3 with y added to this.y
      */
+    @Override
     public Vector3 addY(float y)
     {
         return Vector3.add(this, new Vector3(0.0f, y, 0.0f));
@@ -214,6 +218,7 @@ public class Vector3 extends Vector2 implements Serializable
      * @param y The y component we want to add to this Vector3.
      * @return Returns a Vector3 with y added to this.y
      */
+    @Override
     public Vector3 addY(int y)
     {
         return Vector3.add(this, new Vector3(0.0f, (float)y, 0.0f));
@@ -361,6 +366,7 @@ public class Vector3 extends Vector2 implements Serializable
      * Computes the angle between this Vector3 and the x-axis 
      * @return Returns the angle between this Vector3 and the x-axis in radians.
      */
+    @Override
     public float directionAlpha()
     {
         return Vector3.directionAlpha(this);
@@ -380,6 +386,7 @@ public class Vector3 extends Vector2 implements Serializable
      * Computes the angle between this Vector3 and the y-axis 
      * @return Returns the angle between this Vector3 and the y-axis in radians.
      */
+    @Override
     public float directionBeta()
     {
         return Vector3.directionBeta(this);
@@ -493,6 +500,7 @@ public class Vector3 extends Vector2 implements Serializable
      * @param that A Vector2 we want to perform the dot product on.
      * @return Returns the dot product of this dot that.
      */
+    @Override
     public float dotProduct(Vector2 that)
     {
         return Vector3.dotProduct(this, new Vector3(that));
@@ -633,6 +641,7 @@ public class Vector3 extends Vector2 implements Serializable
      * @param scalar A scalar value we want to multiply into this Vector3.
      * @return Returns this Vector3 multiplied by the scalar
      */
+    @Override
     public Vector3 multiply(float scalar)
     {
         return Vector3.multiply(this, scalar);
@@ -644,6 +653,7 @@ public class Vector3 extends Vector2 implements Serializable
      * @param scalar A scalar value we want to multiply into this Vector3.
      * @return Returns this Vector3 multiplied by the scalar
      */
+    @Override
     public Vector3 multiply(int scalar)
     {
         return Vector3.multiply(this, (float)scalar);
@@ -663,6 +673,7 @@ public class Vector3 extends Vector2 implements Serializable
     /**
      * @return Returns this Vector3 that has been negated.
      */
+    @Override
     public Vector3 negate()
     {
         return Vector3.negate(this);
@@ -688,6 +699,7 @@ public class Vector3 extends Vector2 implements Serializable
      * Normalizes this Vector3
      * @return Returns this Vector3 normalized.
      */
+    @Override
     public Vector3 normalize()
     {
         return Vector3.normalize(this);

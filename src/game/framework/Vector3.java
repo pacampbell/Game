@@ -849,9 +849,21 @@ public class Vector3 extends Vector2 implements Serializable
      * @param that A Vector2 to be subtracted.
      * @return Returns a new Vector3 that is the difference between this Vector3 and that Vector2.
      */
+    @Override
     public Vector3 subtract(Vector2 that)
     {
         return Vector3.subtract(this, new Vector3(that));
+    }
+    
+    /**
+     * Creates a new Vector3 from a Vector2 and a z value and subtracts it from this.
+     * @param a A Vector2 that we want to subtract.
+     * @param z A z value we want to append to the vector2.
+     * @return Returns a new Vector3 that is the difference between this Vector3 and that Vector2 and a z value.
+     */
+    public Vector3 subtract(Vector2 a, float z)
+    {
+        return Vector3.subtract(this, new Vector3(a, z));
     }
     
     /**
@@ -879,13 +891,69 @@ public class Vector3 extends Vector2 implements Serializable
         return Vector3.subtract(this, new Vector3(x, y, z));
     }
     
-    public Vector3 subtract(Vector3 a, float z){return null;}
-    public Vector3 subtractX(float x){return null;}
-    public Vector3 subtractX(int x){return null;}
-    public Vector3 subtractY(float y){return null;}
-    public Vector3 subtractY(int y){return null;}
-    public Vector3 subtractZ(float z){return null;}
-    public Vector3 subtractZ(int z){return null;}
+    /**
+     * Subtracts the value provided from the x component.
+     * @param x The x component we want to subtract from this Vector3.
+     * @return Returns a Vector3 with x subtracted from this.x
+     */
+    @Override
+    public Vector3 subtractX(float x)
+    {
+        return Vector3.subtract(this, new Vector3(x, 0.0f, 0.0f));
+    }
+    
+    /**
+     * Subtracts the value provided from the x component.
+     * @param x The x component we want to subtract from this Vector3.
+     * @return Returns a Vector3 with x subtracted from this.x
+     */
+    @Override
+    public Vector3 subtractX(int x)
+    {
+        return Vector3.subtract(this, new Vector3(x, 0.0f, 0.0f));
+    }
+    
+    /**
+     * Subtracts the value provided from the y component.
+     * @param y The y component we want to subtract from this Vector3.
+     * @return Returns a Vector3 with y subtracted from this.y
+     */
+    @Override
+    public Vector3 subtractY(float y)
+    {
+        return Vector3.subtract(this, new Vector3(0.0f, y, 0.0f));
+    }
+    
+    /**
+     * Subtracts the value provided from the y component.
+     * @param y The y component we want to subtract from this Vector3.
+     * @return Returns a Vector3 with y subtracted from this.y
+     */
+    @Override
+    public Vector3 subtractY(int y)
+    {
+        return Vector3.subtract(this, new Vector3(0.0f, y, 0.0f));
+    }
+    
+    /**
+     * Subtracts the value provided from the z component.
+     * @param z The z component we want to subtract from this Vector3.
+     * @return Returns a Vector3 with z subtracted from this.z
+     */
+    public Vector3 subtractZ(float z)
+    {
+        return Vector3.subtract(this, new Vector3(0.0f, 0.0f, z));
+    }
+    
+    /**
+     * Subtracts the value provided from the z component.
+     * @param z The z component we want to subtract from this Vector3.
+     * @return Returns a Vector3 with z subtracted from this.z
+     */
+    public Vector3 subtractZ(int z)
+    {
+        return Vector3.subtract(this, new Vector3(0.0f, 0.0f, z));
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="To String">

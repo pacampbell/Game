@@ -450,9 +450,7 @@ public class Vector2 implements Serializable
      */
     public static float magnitude(Vector2 vec)
     {
-        float xsq = vec.x * vec.x;
-        float ysq = vec.y * vec.y;
-        return (float)Math.sqrt(xsq + ysq);
+        return (float)Math.sqrt((vec.x * vec.x) + (vec.y * vec.y));
     }
     
     /**

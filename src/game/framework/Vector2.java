@@ -818,13 +818,13 @@ public class Vector2 implements Serializable
 
     //<editor-fold defaultstate="collapsed" desc="To String">
     /**
-     * Converts the Vector2 to a string.
+     * Converts the Vector2 to a string. <x,y>
      * @return Returns a string representing the Vector2.
      */
     @Override
     public String toString()
     {
-        return "(" + x + "," + y + ")";
+        return "<" + x + "," + y + ">";
     }
     //</editor-fold>
 }

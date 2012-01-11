@@ -1,9 +1,6 @@
 package game.debug;
 
-import game.framework.Game;
-import game.framework.GameTime;
-import game.framework.Point;
-import game.framework.Vector3;
+import game.framework.*;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -23,6 +20,7 @@ public class TestFramework extends Game
         // Initalize stuff in Base
         super.initialize();
         // TODO:
+        Vector2.unitTest();
     }
 
     /**

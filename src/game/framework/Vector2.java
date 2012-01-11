@@ -405,7 +405,7 @@ public class Vector2 implements Serializable
     public static boolean equals(Vector2 veca, Vector2 vecb)
     {
         boolean result = false;
-        if(Vector2.magnitude(veca) == Vector2.magnitude(vecb))
+        if(veca.x == vecb.x && veca.y == vecb.y)
             result = true;
         return result;
     }
@@ -648,19 +648,14 @@ public class Vector2 implements Serializable
     
     //<editor-fold defaultstate="collapsed" desc="Reflect">
     /**
-     * r = 2 * (I.N) * N - I
-     * I is the incident vector
-     * N is the normal
-     * @param incident
-     * @param normal
-     * @return returns a reflect vector of type Vector2
+     * r = i - (2 * n * dot(i, n))
+     * @param incident Incident vector
+     * @param normal Surface normal vector
+     * @return Returns the reflected vector.
      */
     public static Vector2 reflect(Vector2 incident, Vector2 normal)
-    {
-        float dotResult = dotProduct(incident, normal);
-        float dot2 =  dotResult * 2;
-        Vector2 normDot2 = multiply(normal, dot2);
-        return subtract(normDot2, incident);
+    {   
+        return incident.subtract(Vector2.multiply(normal, 2.0f).multiply(Vector2.dotProduct(incident, normal)));
     }
     //</editor-fold>
     
@@ -825,4 +820,62 @@ public class Vector2 implements Serializable
         return "<" + x + "," + y + ">";
     }
     //</editor-fold>
+    
+    public static void unitTest()
+    {
+        Vector2 a = new Vector2(1, 2);
+        Vector2 b = new Vector2(3, 4);
+        
+        Vector2 c, d, e, f, g, h, i, j, k, l, m, n;
+        float s1, s2, s3, s4, s5;
+        
+        // Add the two vectors together
+        c = Vector2.add(a, b);
+        // Subtract the two vectors from each other
+        d = Vector2.subtract(b, c);
+        // multiply two vectors
+        e = Vector2.multiply(d, -1);
+        // dot product
+        s1 = Vector2.dotProduct(a, b);
+        // Distance
+        s2 = Vector2.distance(a, b);
+        // Distance squared
+        s3 = Vector2.distanceSquared(a, b);
+        // Magnitude
+        s4 = Vector2.magnitude(e);
+        // Magnitude squared
+        s5 = Vector2.magnitudeSquared(e);
+        // Normalize/Unit Vector
+        f = Vector2.normalize(e);
+        // Equality Test
+        g = new Vector2(-1, -1);
+        h = new Vector2(1, 1);
+        boolean equals1 = Vector2.equals(g, h);
+        boolean equals2 = Vector2.equals(g, g);
+        // Min and Max Test
+        i = new Vector2(100, -100);
+        j = new Vector2(-100, 100);
+        k = Vector2.max(i, j);
+        l = Vector2.min(i, j);
+        // Reflect
+        m = Vector2.reflect(a, b);
+        // Barycentric
+        n = Vector2.barycentric(a, b, c, 3, 4);
+        
+        System.out.println("a + b = " + c);
+        System.out.println("b - c = " + d);
+        System.out.println("-1 * d = " + e);
+        System.out.println("a dot b = " + s1);
+        System.out.println("Distance between a and b: " + s2);
+        System.out.println("Distance squared between a and b: " + s3);
+        System.out.println("Magnitude of e = " + s4);
+        System.out.println("Magnitude squared of e = " + s5);
+        System.out.println("Unit Vector of e: " + f);
+        System.out.println("is g == h? " + equals1);
+        System.out.println("is g == g? " + equals2);
+        System.out.println("Max of i & j is " + k);
+        System.out.println("Min of i & j is " + l);
+        System.out.println("Reflection of a and b: " + m);
+        System.out.println("Barycentric a, b, c, 3, 4: " + n);
+    }
 }

@@ -8,6 +8,7 @@ import java.io.Serializable;
  */
 public class Matrix implements Serializable {
     
+    // <editor-fold defaultstate="collapsed" desc="Properties">
     /**
      * A variable that stores the default amount of rows in a Matrix
      */
@@ -32,7 +33,9 @@ public class Matrix implements Serializable {
      * The amount of columns this matrix has
      */
     private int columns;
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="Constructors">
     /**
      * Constructs a Matrix that contains all of the data from the 2D array input
      *
@@ -71,7 +74,9 @@ public class Matrix implements Serializable {
     public Matrix() {
         this(new float[DEFAULT_SIZE_ROW][DEFAULT_SIZE_COlUMN]);
     }
-
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="gets">
     /**
      * Returns the number of columns in the matrix
      *
@@ -98,7 +103,9 @@ public class Matrix implements Serializable {
     public float[][] getData() {
         return matrix.clone();
     }
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="add">
     /**
      * Adds two matrices together
      *
@@ -132,7 +139,9 @@ public class Matrix implements Serializable {
     public Matrix add(Matrix matrix) {
         return Matrix.add(this, matrix);
     }
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="subtract">
     /**
      * Subtracts two matrices from each other
      *
@@ -166,7 +175,9 @@ public class Matrix implements Serializable {
     public Matrix subtract(Matrix matrix) {
         return subtract(this, matrix);
     }
+    // </editor-fold>    
 
+    // <editor-fold defaultstate="collapsed" desc="multiply">
     /**
      * Multiply two matrices together
      * @param matrix1 the first Matrix
@@ -201,8 +212,10 @@ public class Matrix implements Serializable {
      */
     public Matrix multiply(Matrix matrix){
         return Matrix.multiply(this,matrix);
-    }    
+    }  
+    // </editor-fold>
    
+    // <editor-fold defaultstate="collapsed" desc="toString">
      /**
      * Generates a String representing all of the data in this Matrix
      * @return the String that represents the data
@@ -218,7 +231,9 @@ public class Matrix implements Serializable {
         }
         return str;
     }
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="identity">
     /**
      * returns An identity Matrix with the dimensions given
      * @param i The dimensions of the square Matrix to be returned
@@ -266,6 +281,7 @@ public class Matrix implements Serializable {
     public Matrix identity(){
         return Matrix.identity(this);
     }
+    // </editor-fold>
     
     public static Matrix transpose(Matrix matrix){
         throw new UnsupportedOperationException("Not yet implemented");

@@ -219,8 +219,26 @@ public class Matrix implements Serializable {
         return str;
     }
 
+    /**
+     * returns An identity Matrix with the dimensions given
+     * @param i The dimensions of the square Matrix to be returned
+     * @return The identity Matrix with the square dimensions given
+     */
     public static Matrix identity(int i) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        if (i < 1) return null;
+        
+        float[][] data = new float[i][i];
+        int oneSpot = 0;
+        
+        for (int j = 0; j < i; j++) {
+            for (int k = 0; k < i; k++) {
+                if ( k == oneSpot ){
+                    data[j][k] = 1.0f;
+                }else data[j][k] = 0.0f;
+            }
+            oneSpot++;
+        }
+        return new Matrix(data);
     }
     
     /**

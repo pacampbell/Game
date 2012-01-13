@@ -291,8 +291,14 @@ public class Matrix implements Serializable {
         return Matrix.transpose(this);
     }
     
+    /**
+     * Converts a Vector2 to a Matrix
+     * @param vector2 The Vector2 to be converted
+     * @return A Matrix with the same data as the Vector2
+     */
     public static Matrix vectorToMatrix(Vector2 vector2){
-        throw new UnsupportedOperationException("Not yet implemented");
+        float[][] data = {{vector2.x,vector2.y}};
+        return new Matrix(data);
     }
     
     public static Matrix vectorToMatrix(Vector3 vector3){
@@ -302,4 +308,6 @@ public class Matrix implements Serializable {
     public static Matrix vectorToMatrix(Vector4 vector4){
         throw new UnsupportedOperationException("Not yet implemented");
     }
+
+   
 }

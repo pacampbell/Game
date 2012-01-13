@@ -13,6 +13,9 @@ import game.framework.Matrix;
 public class MatrixTest {
     
     public static void main(String[] args){
+        
+        float[][] f = {{0f,0f},{0f,0f}};
+        
         //testing identity methods
         System.out.println("-----Testing identity methods.");
         Matrix mat = new Matrix(10,10);

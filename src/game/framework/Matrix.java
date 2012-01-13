@@ -241,6 +241,10 @@ public class Matrix implements Serializable {
         return identity(dimention);
     }
     
+    /**
+     * Returns an identity Matrix with the dimensions of this Matrix
+     * @return an identity Matrix with the dimensions of this Matrix
+     */
     public Matrix identity(){
         return Matrix.identity(this);
     }

@@ -223,8 +223,22 @@ public class Matrix implements Serializable {
         throw new UnsupportedOperationException("Not yet implemented");
     }
     
+    /**
+     * returns an identity matrix if and only if the matrix argument is square
+     * @param matrix the square matrix
+     * @return an identity Matrix that has the same dimensions as the Matrix argument
+     */
     public static Matrix identity(Matrix matrix){
-        throw new UnsupportedOperationException("Not yet implemented");
+        int dimention;
+        boolean isSquare;
+        
+        isSquare = matrix.rows == matrix.columns;
+        
+        if(isSquare){
+            dimention = matrix.rows;
+        }else dimention = 0;
+        
+        return identity(dimention);
     }
     
     public Matrix identity(){

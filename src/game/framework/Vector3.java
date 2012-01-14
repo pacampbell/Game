@@ -517,10 +517,10 @@ public class Vector3 extends Vector2 implements Serializable
     }
     
     /**
-     * Performs scalar division between this Vector2 and a scalar. 
+     * Performs scalar division between this Vector3 and a scalar. 
      * Converts integer arguments to float.
-     * @param scalar A scalar we want to divide the Vector2 by.
-     * @return Returns a new Vector2 divide by the scalar.
+     * @param scalar A scalar we want to divide the Vector3 by.
+     * @return Returns a new Vector3 divide by the scalar.
      */
     @Override
     public Vector3 divide(int scalar)

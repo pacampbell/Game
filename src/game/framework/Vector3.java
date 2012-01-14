@@ -3,8 +3,20 @@ package game.framework;
 import java.io.Serializable;
 
 /**
+ * Vector3 class representing a vector of <x, y, z> components.
+ * <br />
+ * <h1>Missing:</h1>
+ * <ul>
+ *  <li>Barycentric</li>
+ *  <li>CatmullRom</li>
+ *  <li>Hermite</li>
+ *  <li>SmoothStep</li>
+ *  <li>Transform</li>
+ *  <li>TransformNormal</li>
+ * </ul>
  * @author paul
  */
+
 public class Vector3 extends Vector2 implements Serializable
 {
     /**
@@ -470,6 +482,72 @@ public class Vector3 extends Vector2 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Division">
+    /**
+     * Performs scalar division between a Vector3 and a scalar. 
+     * @param vec A Vector3 we want to divide.
+     * @param scalar A scalar we want to divide the Vector3 by.
+     * @return Returns a new Vector3 divide by the scalar.
+     */
+    public static Vector3 divide(Vector3 vec, float scalar)
+    {
+        return new Vector3(vec.x / scalar, vec.y / scalar, vec.z / scalar);
+    }
+    
+    /**
+     * Performs scalar division between a Vector3 and a scalar. 
+     * Converts integer arguments to float.
+     * @param vec A Vector3 we want to divide.
+     * @param scalar A scalar we want to divide the Vector3 by.
+     * @return Returns a new Vector3 divide by the scalar.
+     */
+    public static Vector3 divide(Vector3 vec, int scalar)
+    {
+        return Vector3.divide(vec, scalar);
+    }
+    
+    /**
+     * Performs scalar division between this Vector3 and a scalar. 
+     * @param scalar A scalar we want to divide the Vector3 by.
+     * @return Returns a new Vector3 divide by the scalar.
+     */
+    @Override
+    public Vector3 divide(float scalar)
+    {
+        return Vector3.divide(this, scalar);
+    }
+    
+    /**
+     * Performs scalar division between this Vector2 and a scalar. 
+     * Converts integer arguments to float.
+     * @param scalar A scalar we want to divide the Vector2 by.
+     * @return Returns a new Vector2 divide by the scalar.
+     */
+    @Override
+    public Vector3 divide(int scalar)
+    {
+        return Vector3.divide(this, (float)scalar);
+    }
+    
+    /**
+     * Performs scalar division component wise between two Vector3's
+     * @param a A Vector3 we want to divide.
+     * @param b A Vector3 we want to divide by.
+     * @return Returns a new Vector3 divided component wise by another Vector3.
+     */
+    public static Vector3 divide(Vector3 a, Vector3 b)
+    {
+        return new Vector3(a.x / b.x, a.y / b.y, a.z / b.z);
+    }
+    
+    /**
+     * Performs scalar division component wise between this Vector3 and that Vector3
+     * @param that A Vector3 we want to divide by.
+     * @return Returns a new Vector3 divided component wise by another Vector3.
+     */
+    public Vector3 divide(Vector3 that)
+    {
+        return Vector3.divide(this, that);
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Dot product">
@@ -994,59 +1072,74 @@ public class Vector3 extends Vector2 implements Serializable
     }
     //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc="Test operations">
+    //<editor-fold defaultstate="collapsed" desc="Unit Test">
     /**
      * Test Method; Performs some operations
      * To check results
      */
-    public static void performTestVec3()
+    public static void unitTest()
     {
-        Vector2 veca = new Vector2(1.0f);
-        Vector3 vecb = new Vector3(2.0f);
-        Vector2 vecc = Vector2.add(veca, vecb);
-        System.out.println("Result: " + vecc);
+        Vector3 a = new Vector3(1, 2, 0);
+        Vector3 b = new Vector3(3, 4, 0);
         
-        /*
-        Vector3_Old u = new Vector3_Old(1.0f, 2.0f, 3.0f);
-
-        Vector3_Old v = new Vector3_Old(-2.0f, 1.0f, -3.0f);
-        Vector3_Old a;
-
-        Vector3_Old b, c, d, e;
-
-        // Vector Addition
-        a = Vector3.add(u, v);
-
-        // Vector Subtraction
-        b = Vector3.subtract(u, v);
-
-        // Scalar Multiplication
-        c = Vector3.scalarMultiply(u, 10.0f);
-
-        // Magnitude ||u||
-        float L = Vector3.magnitude(u);
-
-        // Normalize u
-        d = Vector3.normalize(u);
-
-        // Dot product between u * v
-        float s = Vector3.dotProduct(u, v);
-
-        // Cross Product u x v
-        e = Vector3_Old.crossProduct(u, v);
-
-        // Print Results
-        System.out.println("u               " + u.toString());
-        System.out.println("v               " + v.toString());
-        System.out.println("a = u + v       " + a.toString());
-        System.out.println("b = u - v       " + b.toString());
-        System.out.println("c = u * 10      " + c.toString());
-        System.out.println("d = u / ||u||   " + d.toString());
-        System.out.println("e = u x v       " + e.toString());
-        System.out.println("L = ||u||       " + L);
-        System.out.println("s = u . v       " + s);
-         * 
-         */
+        Vector3 c, d, e, f, g, h, i, j, k, l, m, n, o, p, q;
+        float s1, s2, s3, s4, s5;
+        
+        // Add the two vectors together
+        c = Vector3.add(a, b);
+        // Subtract the two vectors from each other
+        d = Vector3.subtract(b, c);
+        // multiply two vectors
+        e = Vector3.multiply(d, -1);
+        // dot product
+        s1 = Vector3.dotProduct(a, b);
+        // Distance
+        s2 = Vector3.distance(a, b);
+        // Distance squared
+        s3 = Vector3.distanceSquared(a, b);
+        // Magnitude
+        s4 = Vector3.magnitude(e);
+        // Magnitude squared
+        s5 = Vector3.magnitudeSquared(e);
+        // Normalize/Unit Vector
+        f = Vector3.normalize(e);
+        // Equality Test
+        g = new Vector3(-1, -1, 0);
+        h = new Vector3(1, 1, 0);
+        boolean equals1 = Vector3.equals(g, h);
+        boolean equals2 = Vector3.equals(g, g);
+        // Min and Max Test
+        i = new Vector3(100, -100, 0);
+        j = new Vector3(-100, 100, 0);
+        k = Vector3.max(i, j);
+        l = Vector3.min(i, j);
+        // Reflect
+        m = Vector3.reflect(a, b);
+        // Barycentric
+        //n = Vector3.barycentric(a, b, c, 3, 4);
+        // Scalar Division (Should = Infinity)
+        o = a.divide(0.0f);
+        p = Vector3.divide(a, 5.0f);
+        q = Vector3.divide(a, b);
+        
+        System.out.println("a + b = " + c);
+        System.out.println("b - c = " + d);
+        System.out.println("-1 * d = " + e);
+        System.out.println("a dot b = " + s1);
+        System.out.println("Distance between a and b: " + s2);
+        System.out.println("Distance squared between a and b: " + s3);
+        System.out.println("Magnitude of e = " + s4);
+        System.out.println("Magnitude squared of e = " + s5);
+        System.out.println("Unit Vector of e: " + f);
+        System.out.println("is g == h? " + equals1);
+        System.out.println("is g == g? " + equals2);
+        System.out.println("Max of i & j is " + k);
+        System.out.println("Min of i & j is " + l);
+        System.out.println("Reflection of a and b: " + m);
+        //System.out.println("Barycentric a, b, c, 3, 4: " + n);
+        System.out.println("a / 0 = " + o);
+        System.out.println("a / 5.0f = " + p);
+        System.out.println("a / b = " + q);
     }
     //</editor-fold>
 }

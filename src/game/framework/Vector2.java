@@ -366,7 +366,7 @@ public class Vector2 implements Serializable
     /**
      * Performs scalar division between a Vector2 and a scalar. 
      * @param vec A Vector2 we want to divide.
-     * @param scalar A scalar we want to divide the vector2 by.
+     * @param scalar A scalar we want to divide the Vector2 by.
      * @return Returns a new Vector2 divide by the scalar.
      */
     public static Vector2 divide(Vector2 vec, float scalar)
@@ -378,7 +378,7 @@ public class Vector2 implements Serializable
      * Performs scalar division between a Vector2 and a scalar. 
      * Converts integer arguments to float.
      * @param vec A Vector2 we want to divide.
-     * @param scalar A scalar we want to divide the vector2 by.
+     * @param scalar A scalar we want to divide the Vector2 by.
      * @return Returns a new Vector2 divide by the scalar.
      */
     public static Vector2 divide(Vector2 vec, int scalar)
@@ -388,7 +388,7 @@ public class Vector2 implements Serializable
     
     /**
      * Performs scalar division between this Vector2 and a scalar. 
-     * @param scalar A scalar we want to divide the vector2 by.
+     * @param scalar A scalar we want to divide the Vector2 by.
      * @return Returns a new Vector2 divide by the scalar.
      */
     public Vector2 divide(float scalar)
@@ -399,7 +399,7 @@ public class Vector2 implements Serializable
     /**
      * Performs scalar division between this Vector2 and a scalar. 
      * Converts integer arguments to float.
-     * @param scalar A scalar we want to divide the vector2 by.
+     * @param scalar A scalar we want to divide the Vector2 by.
      * @return Returns a new Vector2 divide by the scalar.
      */
     public Vector2 divide(int scalar)

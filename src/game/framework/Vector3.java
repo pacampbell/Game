@@ -469,6 +469,9 @@ public class Vector3 extends Vector2 implements Serializable
     }
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Division">
+    //</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="Dot product">
     /**
      * Performs the dot product between two Vector3's.

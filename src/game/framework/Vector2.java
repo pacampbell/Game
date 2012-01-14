@@ -8,7 +8,6 @@ import java.io.Serializable;
  * <h1>Missing:</h1>
  * <ul>
  *  <li>CatmullRom</li>
- *  <li>Divide</li>
  *  <li>Hermite</li>
  *  <li>SmoothStep</li>
  *  <li>Transform</li>
@@ -363,6 +362,73 @@ public class Vector2 implements Serializable
     }
     //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Division">
+    /**
+     * Performs scalar division between a Vector2 and a scalar. 
+     * @param vec A Vector2 we want to divide.
+     * @param scalar A scalar we want to divide the vector2 by.
+     * @return Returns a new Vector2 divide by the scalar.
+     */
+    public static Vector2 divide(Vector2 vec, float scalar)
+    {
+        return new Vector2(vec.x / scalar, vec.y / scalar);
+    }
+    
+    /**
+     * Performs scalar division between a Vector2 and a scalar. 
+     * Converts integer arguments to float.
+     * @param vec A Vector2 we want to divide.
+     * @param scalar A scalar we want to divide the vector2 by.
+     * @return Returns a new Vector2 divide by the scalar.
+     */
+    public static Vector2 divide(Vector2 vec, int scalar)
+    {
+        return new Vector2(vec.x / (float)scalar, vec.y / (float)scalar);
+    }
+    
+    /**
+     * Performs scalar division between this Vector2 and a scalar. 
+     * @param scalar A scalar we want to divide the vector2 by.
+     * @return Returns a new Vector2 divide by the scalar.
+     */
+    public Vector2 divide(float scalar)
+    {
+        return Vector2.divide(this, scalar);
+    }
+    
+    /**
+     * Performs scalar division between this Vector2 and a scalar. 
+     * Converts integer arguments to float.
+     * @param scalar A scalar we want to divide the vector2 by.
+     * @return Returns a new Vector2 divide by the scalar.
+     */
+    public Vector2 divide(int scalar)
+    {
+        return Vector2.divide(this, (float)scalar);
+    }
+    
+    /**
+     * Performs scalar division component wise between two Vector2's
+     * @param a A Vector2 we want to divide.
+     * @param b A Vector2 we want to divide by.
+     * @return Returns a new Vector2 divided component wise by another Vector2.
+     */
+    public static Vector2 divide(Vector2 a, Vector2 b)
+    {
+        return new Vector2(a.x / b.x, a.y / b.y);
+    }
+    
+    /**
+     * Performs scalar division component wise between this Vector2 and that Vector2
+     * @param that A Vector2 we want to divide by.
+     * @return Returns a new Vector2 divided component wise by another Vector2.
+     */
+    public Vector2 divide(Vector2 that)
+    {
+        return Vector2.divide(this, that);
+    }
+    //</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="Dot Product">
     /**
      * Performs the dot product between two Vector2's.
@@ -839,7 +905,7 @@ public class Vector2 implements Serializable
         Vector2 a = new Vector2(1, 2);
         Vector2 b = new Vector2(3, 4);
         
-        Vector2 c, d, e, f, g, h, i, j, k, l, m, n;
+        Vector2 c, d, e, f, g, h, i, j, k, l, m, n, o, p, q;
         float s1, s2, s3, s4, s5;
         
         // Add the two vectors together
@@ -874,6 +940,10 @@ public class Vector2 implements Serializable
         m = Vector2.reflect(a, b);
         // Barycentric
         n = Vector2.barycentric(a, b, c, 3, 4);
+        // Scalar Division (Should = Infinity)
+        o = a.divide(0.0f);
+        p = Vector2.divide(a, 5.0f);
+        q = Vector2.divide(a, b);
         
         System.out.println("a + b = " + c);
         System.out.println("b - c = " + d);
@@ -890,6 +960,9 @@ public class Vector2 implements Serializable
         System.out.println("Min of i & j is " + l);
         System.out.println("Reflection of a and b: " + m);
         System.out.println("Barycentric a, b, c, 3, 4: " + n);
+        System.out.println("a / 0 = " + o);
+        System.out.println("a / 5.0f = " + p);
+        System.out.println("a / b = " + q);
     }
     //</editor-fold>
 }

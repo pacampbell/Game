@@ -263,6 +263,18 @@ public class Vector2 implements Serializable
         // Return the Clamped Vector
         return new Vector2(newX, newY);
     }
+    
+    /**
+     * Clamps this Vector2 between a min Vector2 and a max Vector2
+     * and returns the modified Vector2
+     * @param min The minimum value we want the Vector2 to fall on.
+     * @param max The maximum value we want the Vector2 to fall on.
+     * @return Returns a Vector2 that is between the two Vector2 provided.
+     */
+    public Vector2 clamp(Vector2 min, Vector2 max)
+    {
+        return Vector2.clamp(this, min, max);
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Direction Cosine">

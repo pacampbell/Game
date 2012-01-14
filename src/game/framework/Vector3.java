@@ -277,6 +277,17 @@ public class Vector3 extends Vector2 implements Serializable
         // Return the clamped Vector3
         return new Vector3(newX, newY, newZ);
     }
+    
+    /**
+     * Clamps this Vector3 between a min Vector3 and a max Vector3
+     * @param min A Vector3 containing the minimum values.
+     * @param max A Vector3 containing the maximum values.
+     * @return Returns a Vector3 clamped between min and max.
+     */
+    public Vector3 clamp(Vector3 min, Vector3 max)
+    {
+        return Vector3.clamp(this, min, max);
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Cross Product">

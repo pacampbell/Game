@@ -22,7 +22,7 @@ public class Debug
         list.clear();
     }
 
-    //<editor-fold defaultstate="collapsed" desc="Add & Add variants">
+    //<editor-fold defaultstate="collapsed" desc="Add">
     public static void add(String item)
     {
         list.add(item);

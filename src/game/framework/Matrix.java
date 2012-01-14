@@ -297,7 +297,7 @@ public class Matrix implements Serializable {
      * @return A Matrix with the same data as the Vector2
      */
     public static Matrix vectorToMatrix(Vector2 vector2){
-        float[][] data = {{vector2.x,vector2.y}};
+        float[][] data = {{vector2.x},{vector2.y}};
         return new Matrix(data);
     }
     
@@ -307,7 +307,7 @@ public class Matrix implements Serializable {
      * @return A Matrix with the same data as the Vector3
      */
     public static Matrix vectorToMatrix(Vector3 vector3){
-        float[][] data = {{vector3.x,vector3.y,vector3.z}};
+        float[][] data = {{vector3.x},{vector3.y},{vector3.z}};
         return new Matrix(data);
     }
     

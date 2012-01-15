@@ -647,7 +647,6 @@ public class Vector3 extends Vector2 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Hermite">
-    @Override
     public static Vector3 hermite()
     {
         throw new UnsupportedOperationException("Not yet implemented.");

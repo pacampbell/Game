@@ -510,7 +510,7 @@ public class Vector2 implements Serializable
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Hermite">
-    public static void hermite()
+    public static Vector2 hermite()
     {
         throw new UnsupportedOperationException("Not yet implemented.");
     }

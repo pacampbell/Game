@@ -1,5 +1,7 @@
 package game.framework;
 
+import java.io.Serializable;
+
 /**
  * Vector4 class representing a vector of <x, y, z, w> components.
  * <br />
@@ -15,7 +17,7 @@ package game.framework;
  * @version incomplete
  * @author paul
  */
-public class Vector4 extends Vector3
+public class Vector4 extends Vector3 implements Serializable
 {
     /**
      * The w component of the Vector4.

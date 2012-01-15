@@ -1097,7 +1097,7 @@ public class Vector3 extends Vector2 implements Serializable
     
     //<editor-fold defaultstate="collapsed" desc="To String">
     /**
-     * Converts the Vector3 to a string. <x,y,z>
+     * Converts this Vector3 to string. <x,y,z>
      * @return Returns a string representing the Vector3.
      */
     @Override

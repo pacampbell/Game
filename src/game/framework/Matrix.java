@@ -22,7 +22,7 @@ public class Matrix implements Serializable {
     /**
      * The 2D array that stores the data inside of the Matrix
      */
-    private float[][] matrix;
+    private float[][] data;
     
     /**
      * The amount of rows this Matrix has
@@ -42,10 +42,10 @@ public class Matrix implements Serializable {
      * @param matrix a 2D array containing all of that data to be included in
      * the new Matrix
      */
-    public Matrix(float[][] matrix) {
-        this.matrix = matrix;
-        this.rows = matrix.length;
-        this.columns = matrix[0].length;
+    public Matrix(float[][] data) {
+        this.data = data;
+        this.rows = data.length;
+        this.columns = data[0].length;
     }
     
     /**
@@ -101,7 +101,17 @@ public class Matrix implements Serializable {
      * @return the data inside of this Matrix
      */
     public float[][] getData() {
-        return matrix.clone();
+        return data.clone();
+    }
+    
+    /**
+     * gets data from the Matrix at a position
+     * @param row the row that the desired data is at
+     * @param column the column that the desired data is at
+     * @return the data the specified position
+     */
+    public float getData(int row, int column){
+        return this.data[row][column];
     }
     // </editor-fold>
 
@@ -225,7 +235,7 @@ public class Matrix implements Serializable {
         String str = "";
         for (int i = 0; i < this.rows; i++) {
             for (int j = 0; j < this.columns; j++) {
-                str += this.matrix[i][j] + " ";
+                str += this.data[i][j] + " ";
             }
             str += "\n";
         }
@@ -283,6 +293,7 @@ public class Matrix implements Serializable {
     }
     // </editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="transpose">
     /**
      * Takes a Matrix and transposes it
      * @param matrix The Matrix to be transposed
@@ -307,7 +318,9 @@ public class Matrix implements Serializable {
     public Matrix transpose(){
         return Matrix.transpose(this);
     }
+    //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="vectorToMatrix">
     /**
      * Converts a Vector2 to a Matrix
      * @param vector2 The Vector2 to be converted
@@ -331,6 +344,7 @@ public class Matrix implements Serializable {
     public static Matrix vectorToMatrix(Vector4 vector4){
         throw new UnsupportedOperationException("Not yet implemented");
     }
+    //</editor-fold>
 
    
 }

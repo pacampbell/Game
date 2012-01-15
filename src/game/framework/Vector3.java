@@ -655,9 +655,32 @@ public class Vector3 extends Vector2 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Linear Interpolation">
-    public static Vector3 lerp()
+    /**
+     * Linear interpolation
+     * value1 + (value2 - value1) * amount
+     * @param value1 A Vector3 we want to interpolate with.
+     * @param value2 A Vector3 we want to interpolate with.
+     * @param amount A value between 0 and 1 indicating the weight of value2.
+     * @return Returns the linear interpolation between two Vector3.
+     */
+    public static Vector3 lerp(Vector3 value1, Vector3 value2, float amount)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        float lerpX = value1.x + (value2.x - value1.x) * amount;
+        float lerpY = value1.y + (value2.y - value1.y) * amount;
+        float lerpZ = value1.z + (value2.z - value1.z) * amount;
+        return new Vector3(lerpX, lerpY, lerpZ);
+    }
+    
+    /**
+     * Linear interpolation
+     * value1 + (value2 - value1) * amount
+     * @param value2 A Vector3 we want to interpolate with this Vector3.
+     * @param amount A value between 0 and 1 indicating the weight of value2.
+     * @return Returns the linear interpolation between two Vector3.
+     */
+    public Vector3 lerp(Vector3 that, float amount)
+    {
+        return Vector3.lerp(this, that, amount);
     }
     //</editor-fold>
     

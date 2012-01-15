@@ -366,26 +366,75 @@ public class Vector4 extends Vector3
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Clamp">
+    /**
+     * Clamps a Vector4 between a min Vector4 and a max Vector4
+     * @param value The Vector4 we want to clamp.
+     * @param min A Vector4 containing the minimum values.
+     * @param max A Vector4 containing the maximum values.
+     * @return Returns a Vector4 clamped between min and max inclusive.
+     */
     public static Vector4 clamp(Vector4 value, Vector4 min, Vector4 max)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        float newX = value.x;
+        float newY = value.y;
+        float newZ = value.z;
+        float newW = value.w;
+        // Clamp the x value between the min and max.
+        if(value.x < min.x)
+            newX = min.x;
+        else if(value.x > max.x)
+            newX = max.x;
+        // Clamp the y value between the min and max.
+        if(value.y < min.y)
+            newY = min.y;
+        else if(value.y > max.y)
+            newY = max.y;
+        // Clamp the z value between the min and max.
+        if(value.z < min.z)
+            newZ = min.z;
+        else if(value.z > max.z)
+            newZ = max.z;
+        // Clamp the w value between the min and max
+        if(value.w < min.w)
+            newW = min.w;
+        else if(value.w > max.w)
+            newW = max.w;
+        // Return the clamped Vector4
+        return new Vector4(newX, newY, newZ, newW);
     }
     
+    /**
+     * Clamps this Vector4 between a min Vector4 and a max Vector4
+     * @param min A Vector4 containing the minimum values.
+     * @param max A Vector4 containing the maximum values.
+     * @return Returns a Vector4 clamped between min and max inclusive.
+     */
     public Vector4 clamp(Vector4 min, Vector4 max)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.clamp(this, min, max);
     }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Distance">
-    public static Vector4 distance(Vector4 a, Vector4 b)
+    /**
+     * Computes the distance between two Vector4.
+     * @param a A Vector4 we want to compute the distance with.
+     * @param b A Vector4 we want to compute the distance with.
+     * @return Returns the distance between a and b.
+     */
+    public static float distance(Vector4 a, Vector4 b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(a, b).magnitude();
     }
     
-    public Vector4 distance(Vector4 that)
+    /**
+     * Computes the distance between this and that.
+     * @param that A Vector4 we want to compute the distance with this.
+     * @return Returns the distance between this and that.
+     */
+    public float distance(Vector4 that)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.distance(this, that);
     }
     //</editor-fold>
     
@@ -483,28 +532,46 @@ public class Vector4 extends Vector3
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Magnitude">
+    /**
+     * Computes the magnitude of a Vector4.
+     * @param a A Vector4 to find the magnitude of.
+     * @return Returns the magnitude of the Vector4 provided.
+     */
     public static float magnitude(Vector4 a)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return (float)Math.sqrt(a.magnitudeSquared());
     }
     
+    /**
+     * Computes the magnitude of this Vector4.
+     * @return Returns the magnitude of this Vector4.
+     */
     @Override
     public float magnitude()
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.magnitude(this);
     }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Magnitude Squared">
+    /**
+     * Computes the magnitude squared of a Vector4
+     * @param a A Vector4 to find the magnitude squared of.
+     * @return Returns the magnitude squared of the Vector4 provided.
+     */
     public static float magnitudeSquared(Vector4 a)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return (a.x * a.x) + (a.y * a.y) + (a.z * a.z) + (a.w * a.w);
     }
     
+    /**
+     * Computes the magnitude squared of this Vector3
+     * @return Returns the magnitude squared of this Vector4.
+     */
     @Override
     public float magnitudeSquared()
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.magnitude(this);
     }
     //</editor-fold>
     

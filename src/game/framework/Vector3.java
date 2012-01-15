@@ -14,6 +14,7 @@ import java.io.Serializable;
  *  <li>SmoothStep</li>
  *  <li>Transform</li>
  * </ul>
+ * @version incomplete
  * @author paul
  */
 

@@ -7,7 +7,6 @@ package game.framework;
  * <ul>
  *  <li>Barycentric</li>
  *  <li>CatmullRom</li>
- *  <li>Divide</li>
  *  <li>Dot Product</li>
  *  <li>Equals</li>
  *  <li>Hermite</li>
@@ -457,30 +456,71 @@ public class Vector4 extends Vector3
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Divide">
+    /**
+     * Performs scalar division between a Vector4 and a scalar. 
+     * @param vec A Vector4 we want to divide.
+     * @param scalar A scalar we want to divide the Vector4 by.
+     * @return Returns a new Vector4 divide by the scalar.
+     */
     public static Vector4 divide(Vector4 a, float scalar)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return new Vector4(a.x / scalar, a.y / scalar, a.z / scalar, a.w / scalar);
     }
     
+    /**
+     * Performs scalar division between a Vector4 and a scalar. 
+     * Converts integer arguments to float.
+     * @param vec A Vector4 we want to divide.
+     * @param scalar A scalar we want to divide the Vector4 by.
+     * @return Returns a new Vector4 divide by the scalar.
+     */
     public static Vector4 divide(Vector4 a, int scalar)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.divide(a, (float)scalar);
     }
+    
+    /**
+     * Performs scalar division between this Vector4 and a scalar. 
+     * @param scalar A scalar we want to divide the Vector4 by.
+     * @return Returns a new Vector4 divide by the scalar.
+     */
     @Override
     public Vector4 divide(float scalar)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.divide(this, scalar);
     }
     
+    /**
+     * Performs scalar division between this Vector4 and a scalar. 
+     * Converts integer arguments to float.
+     * @param scalar A scalar we want to divide the Vector4 by.
+     * @return Returns a new Vector4 divide by the scalar.
+     */
     @Override
     public Vector4 divide(int scalar)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.divide(this, (float)scalar);
     }
     
+    /**
+     * Performs scalar division component wise between two Vector4's
+     * @param a A Vector4 we want to divide.
+     * @param b A Vector4 we want to divide by.
+     * @return Returns a new Vector4 divided component wise by another Vector4.
+     */
     public static Vector4 divide(Vector4 a, Vector4 b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return new Vector4(a.x / b.x, a.y / b.y, a.z / b.z, a.w / b.w);
+    }
+    
+    /**
+     * Performs scalar division component wise between this Vector4 and that Vector4
+     * @param that A Vector4 we want to divide by.
+     * @return Returns a new Vector4 divided component wise by another Vector4.
+     */
+    public Vector4 divide(Vector4 that)
+    {
+        return Vector4.divide(this, that);
     }
     //</editor-fold>
     

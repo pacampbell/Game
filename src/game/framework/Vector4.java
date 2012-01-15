@@ -7,16 +7,11 @@ package game.framework;
  * <ul>
  *  <li>Barycentric</li>
  *  <li>CatmullRom</li>
- *  <li>Clamp</li>
- *  <li>Distance</li>
- *  <li>Distance Squared</li>
  *  <li>Divide</li>
  *  <li>Dot Product</li>
  *  <li>Equals</li>
  *  <li>Hermite</li>
  *  <li>Linear Interpolation</li>
- *  <li>Magnitude</li>
- *  <li>Magnitude Squared</li>
  *  <li>Max</li>
  *  <li>Min</li>
  *  <li>Multiply</li>
@@ -439,13 +434,25 @@ public class Vector4 extends Vector3
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Distance Squared">
-    public static Vector4 distanceSquared(Vector4 a, Vector4 b)
+    /**
+     * Computes the distance between two Vector4 squared.
+     * @param a A Vector4 we want to compute the distance squared with.
+     * @param b A Vector4 we want to compute the distance squared with.
+     * @return Returns the distance between a and b squared.
+     */
+    public static float distanceSquared(Vector4 a, Vector4 b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(a, b).magnitudeSquared();
     }
-    public Vector4 distanceSquared(Vector4 that)
+    
+    /**
+     * Computes the distance between this and that squared.
+     * @param that A Vector4 we want to compute the distance squared with this.
+     * @return Returns the distance between this and that squared.
+     */
+    public float distanceSquared(Vector4 that)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.distanceSquared(this, that);
     }
     //</editor-fold>
     

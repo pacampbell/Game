@@ -9,10 +9,7 @@ package game.framework;
  *  <li>CatmullRom</li>
  *  <li>Hermite</li>
  *  <li>Linear Interpolation</li>
- *  <li>Max</li>
- *  <li>Min</li>
  *  <li>Multiply</li>
- *  <li>Negate</li>
  *  <li>Normalize</li>
  *  <li>Subtract</li>
  *  <li>SmoothStep</li>
@@ -635,6 +632,13 @@ public class Vector4 extends Vector3
     }
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Linear Interpolation">
+    public static Vector4 lerp(Vector4 a, Vector4 b)
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    //</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="Magnitude">
     /**
      * Computes the magnitude of a Vector4.
@@ -676,13 +680,6 @@ public class Vector4 extends Vector3
     public float magnitudeSquared()
     {
         return Vector4.magnitude(this);
-    }
-    //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Linear Interpolation">
-    public static Vector4 lerp(Vector4 a, Vector4 b)
-    {
-        throw new UnsupportedOperationException("Not yet implemented.");
     }
     //</editor-fold>
     
@@ -741,15 +738,22 @@ public class Vector4 extends Vector3
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Negate">
+    /**
+     * @param a The Vector4 we want to negate.
+     * @return Returns A Vector4 that has been negated.
+     */
     public static Vector4 negate(Vector4 a)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return new Vector4(-1 * a.x,-1 * a.y, -1 * a.z, -1 * a.w);
     }
     
+    /**
+     * @return Returns this Vector4 that has been negated.
+     */
     @Override
     public Vector4 negate()
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.negate(this);
     }
     //</editor-fold>
     

@@ -7,7 +7,6 @@ package game.framework;
  * <ul>
  *  <li>Barycentric</li>
  *  <li>CatmullRom</li>
- *  <li>Dot Product</li>
  *  <li>Hermite</li>
  *  <li>Linear Interpolation</li>
  *  <li>Max</li>
@@ -524,36 +523,75 @@ public class Vector4 extends Vector3
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Dot Product">
+    /**
+     * Performs the dot product between two Vector4's.
+     * Also known as the scalar product.
+     * The result of a dot product is a scalar value.
+     * @param veca A Vector4 that we want to perform the dot product on.
+     * @param vecb A Vector4 that we want to perform the dot product on.
+     * @return Returns a dot b.
+     */
     public static float dotProduct(Vector4 a, Vector4 b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return (a.x * b.x) + (a.y * b.y) + (a.z * b.z) + (a.w * b.w); 
     }
     
+    /**
+     * Performs the dot product between a Vector4 and a Vector3.
+     * Also known as the scalar product.
+     * The result of a dot product is a scalar value.
+     * @param veca A Vector4 that we want to perform the dot product on.
+     * @param vecb A Vector3 that we want to perform the dot product on.
+     * @return Returns a dot b.
+     */
     public static float dotProduct(Vector4 a, Vector3 b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.dotProduct(a, new Vector4(b));
     }
     
+    /**
+     * Performs the dot product between a Vector4 and a Vector2.
+     * Also known as the scalar product.
+     * The result of a dot product is a scalar value.
+     * @param veca A Vector4 that we want to perform the dot product on.
+     * @param vecb A Vector2 that we want to perform the dot product on.
+     * @return Returns a dot b.
+     */
     public static float dotProduct(Vector4 a, Vector2 b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.dotProduct(a, new Vector4(b));
     }
     
+    /**
+     * Performs the dot product between this Vector4 and that Vector4.
+     * @param that A Vector4 we want to perform the dot product on.
+     * @return Returns the dot product of this dot that.
+     */
     public float dotProduct(Vector4 that)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.dotProduct(this, that);
     }
     
+    /**
+     * Performs the dot product between this Vector4 and that Vector3.
+     * @param that A Vector3 we want to perform the dot product on.
+     * @return Returns the dot product of this dot that.
+     */
     @Override
     public float dotProduct(Vector3 that)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.dotProduct(this, new Vector4(that));
     }
     
+    /**
+     * Performs the dot product between this Vector4 and that Vector2.
+     * @param that A Vector2 we want to perform the dot product on.
+     * @return Returns the dot product of this dot that.
+     */
     @Override
     public float dotProduct(Vector2 that)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.dotProduct(this, new Vector4(that));
     }
     //</editor-fold>
     

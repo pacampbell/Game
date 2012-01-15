@@ -283,10 +283,27 @@ public class Matrix implements Serializable {
     }
     // </editor-fold>
     
+    /**
+     * Takes a Matrix and transposes it
+     * @param matrix The Matrix to be transposed
+     * @return the transposition of the Matrix
+     */
     public static Matrix transpose(Matrix matrix){
-        throw new UnsupportedOperationException("Not yet implemented");
+        float[][] tMatrixData = new float[matrix.columns][matrix.rows];
+        float[][] matrixData = matrix.getData();
+        
+        for (int i = 0; i < matrix.rows; i++) {
+            for (int j = 0; j < matrix.columns; j++) {
+                tMatrixData[j][i] = matrixData[i][j];
+            }
+        }
+        return new Matrix(tMatrixData);
     }
     
+    /**
+     * Transposes this Matrix
+     * @return The transposition of this Matrix
+     */
     public Matrix transpose(){
         return Matrix.transpose(this);
     }

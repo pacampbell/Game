@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Vector2 class representing a vector of <x, y> components.
  * <br />
- * <h1>Missing:</h1>
+ * <h1>Not Yet Implemented</h1>
  * <ul>
  *  <li>CatmullRom</li>
  *  <li>Hermite</li>

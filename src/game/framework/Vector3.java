@@ -808,11 +808,8 @@ public class Vector3 extends Vector2 implements Serializable
      */
     public static Vector3 normalize(Vector3 vec)
     {
-        float magnitude = magnitude(vec);
-        float normx = vec.x / magnitude;
-        float normy = vec.y / magnitude;
-        float normz = vec.z / magnitude;
-        return new Vector3(normx, normy, normz);
+        float magnitude = vec.magnitude();
+        return new Vector3(vec.x / magnitude, vec.y / magnitude, vec.z / magnitude);
     }
     
     /**

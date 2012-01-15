@@ -532,6 +532,20 @@ public class Vector2 implements Serializable
         float lerpY = value1.y + (value2.y - value1.y) * amount;
         return new Vector2(lerpX, lerpY);
     }
+    
+    /**
+     * Linear interpolation
+     * value1 + (value2 - value1) * amount
+     * @param value2 A Vector2 we want to interpolate with this Vector2.
+     * @param amount A value between 0 and 1 indicating the weight of value2.
+     * @return Returns the linear interpolation between two Vector2.
+     */
+    public Vector2 lerp(Vector2 that, float amount)
+    {
+        float lerpX = this.x + (that.x - this.x) * amount;
+        float lerpY = this.y + (that.y - this.y) * amount;
+        return new Vector2(lerpX, lerpY);
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Magnitude">

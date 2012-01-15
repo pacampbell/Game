@@ -8,7 +8,6 @@ package game.framework;
  *  <li>Barycentric</li>
  *  <li>CatmullRom</li>
  *  <li>Dot Product</li>
- *  <li>Equals</li>
  *  <li>Hermite</li>
  *  <li>Linear Interpolation</li>
  *  <li>Max</li>
@@ -560,14 +559,34 @@ public class Vector4 extends Vector3
     
     //<editor-fold defaultstate="collapsed" desc="Equals">
     @Override
+    /**
+     * Checks if the object is a Vector4 and if so is it equal with this Vector4.
+     * @param object An object that is believed to be a Vector4.
+     * @return Returns the result of the comparison between this Vector4 and that Vector4.
+     */
     public boolean equals(Object object)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        boolean equals = false;
+        if(object != null && object instanceof Vector4)
+        {
+            Vector4 that = (Vector4)object;
+            equals = Vector4.equals(this, that);
+        }
+        return equals;
     }
     
+    /**
+     * Checks the equality between two Vector4
+     * @param veca A Vector4 that we want to compare.
+     * @param vecb A Vector4 that we want to compare.
+     * @return Returns the result of the comparison between the two Vector4.
+     */
     public static boolean equals(Vector4 a, Vector4 b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        boolean equals = false;
+        if(a.x == b.x && a.y == b.y && a.z == b.z && a.w == b.w)
+            equals = true;
+        return equals;
     }
     //</editor-fold>
     

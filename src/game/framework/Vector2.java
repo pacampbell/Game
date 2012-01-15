@@ -231,6 +231,13 @@ public class Vector2 implements Serializable
         return new Vector2(px, py);
     }
     //</editor-fold>
+ 
+    //<editor-fold defaultstate="collapsed" desc="CatmullRom">
+    public static Vector2 catmullRom()
+    {
+       throw new UnsupportedOperationException("Not yet implemented."); 
+    }
+    //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Clamp">
     /**
@@ -502,6 +509,13 @@ public class Vector2 implements Serializable
     }
     //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Hermite">
+    public static void hermite()
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    //</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="Linear Interpolation">
     /**
      * Linear interpolation
@@ -736,6 +750,13 @@ public class Vector2 implements Serializable
     }
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Smooth Step">
+    public static Vector2 smoothStep()
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    //</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="Special Vectors">
     /**
      * Returns a special type of vector; The one vector <1,1>
@@ -895,6 +916,13 @@ public class Vector2 implements Serializable
     public String toString()
     {
         return "<" + x + "," + y + ">";
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Transform">
+    public static Vector2 transform()
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     //</editor-fold>
     

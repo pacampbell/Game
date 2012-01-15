@@ -10,7 +10,6 @@ import java.io.Serializable;
  *  <li>Barycentric</li>
  *  <li>CatmullRom</li>
  *  <li>Hermite</li>
- *  <li>Linear Interpolation</li>
  *  <li>SmoothStep</li>
  *  <li>Transform</li>
  * </ul>
@@ -632,9 +631,33 @@ public class Vector4 extends Vector3 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Linear Interpolation">
-    public static Vector4 lerp(Vector4 a, Vector4 b)
+    /**
+     * Linear interpolation
+     * value1 + (value2 - value1) * amount
+     * @param value1 A Vector4 we want to interpolate with.
+     * @param value2 A Vector4 we want to interpolate with.
+     * @param amount A value between 0 and 1 indicating the weight of value2.
+     * @return Returns the linear interpolation between two Vector4.
+     */
+    public static Vector4 lerp(Vector4 value1, Vector4 value2, float amount)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        float lerpX = value1.x + (value2.x - value1.x) * amount;
+        float lerpY = value1.y + (value2.y - value1.y) * amount;
+        float lerpZ = value1.z + (value2.z - value1.z) * amount;
+        float lerpW = value1.w + (value2.w - value1.w) * amount;
+        return new Vector4(lerpX, lerpY, lerpZ, lerpW);
+    }
+    
+    /**
+     * Linear interpolation
+     * value1 + (value2 - value1) * amount
+     * @param value2 A Vector4 we want to interpolate with this Vector4.
+     * @param amount A value between 0 and 1 indicating the weight of value2.
+     * @return Returns the linear interpolation between two Vector4.
+     */
+    public Vector4 lerp(Vector4 that, float amount)
+    {
+        return Vector4.lerp(this, that, amount);
     }
     //</editor-fold>
     

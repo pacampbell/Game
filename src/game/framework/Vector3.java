@@ -10,7 +10,6 @@ import java.io.Serializable;
  *  <li>Barycentric</li>
  *  <li>CatmullRom</li>
  *  <li>Hermite</li>
- *  <li>Linear Interpolation</li>
  *  <li>SmoothStep</li>
  *  <li>Transform</li>
  * </ul>

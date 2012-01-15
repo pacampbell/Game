@@ -207,28 +207,29 @@ public class Vector2 implements Serializable
     //<editor-fold defaultstate="collapsed" desc="Barycentric">
     /**
      * The Vector2 Barycentric method takes three vectors specifying the Cartesian coordinates of the triangle vertices, V1, V2, and V3), and 
-     * two areal coordinates b2 and b3 of some point P (b2 is the amount1 argument, and b3 is the amount2 argument). The b2 coordinate relates 
-     * to vertex V2, and the b3coordinate relates to V3. Barycentric then calculates the Cartesian coordinate of P as follows:
-       Px = ( (1 - b2 - b3) * V1x ) + (b2 * V2x) + (b3 * V3x);
-       Py = ( (1 - b2 - b3) * V1y ) + (b2 * V2y) + (b3 * V3y);
+     * two areal coordinates b2 and b3 of some point P (b2 is the amount1 argument, and b3 is the amount2 argument). <br />
+     * The b2 coordinate relates to vertex V2, and the b3coordinate relates to V3. <br />
+     * Barycentric then calculates the Cartesian coordinate of P as follows: <br />
+       Px = ( (1 - b2 - b3) * V1x ) + (b2 * V2x) + (b3 * V3x); <br />
+       Py = ( (1 - b2 - b3) * V1y ) + (b2 * V2y) + (b3 * V3y); <br />
      * Thus, to calculate the 2D Cartesian coordinates of P, you would pass the coordinates of the triangle vertices to Barycentric together with the appropriate 
-     * normalized barycentric coordinates of P.
-     * If ( (amount1 <= 0) and (amount2 >= 0) and (1 − amount1 − amount2 >= 0) ), then the point is inside the triangle defined by value1, value2, and value3.
-     * If ( (amount1 == 0) and (amount2 >= 0) and (1 − amount1 − amount2 >= 0) ), then the point is on the line defined by value1 and value3.
-     * If ( (amount1 >= 0) and (amount2 == 0) and (1 − amount1 − amount2 >= 0) ), then the point is on the line defined by value1 and value2.
-     * If ( (amount1 >= 0) and (amount2 >= 0) and (1 − amount1 − amount2 == 0) ), then the point is on the line defined by value2 and value3.
-     * @param value1
-     * @param value2
-     * @param value3
-     * @param amount2
-     * @param amount3
-     * @return 
+     * normalized barycentric coordinates of P. <br />
+     * If ( (amount1 <= 0) and (amount2 >= 0) and (1 − amount1 − amount2 >= 0) ), then the point is inside the triangle defined by value1, value2, and value3.<br />
+     * If ( (amount1 == 0) and (amount2 >= 0) and (1 − amount1 − amount2 >= 0) ), then the point is on the line defined by value1 and value3.<br />
+     * If ( (amount1 >= 0) and (amount2 == 0) and (1 − amount1 − amount2 >= 0) ), then the point is on the line defined by value1 and value2.<br />
+     * If ( (amount1 >= 0) and (amount2 >= 0) and (1 − amount1 − amount2 == 0) ), then the point is on the line defined by value2 and value3.<br />
+     * @param v1 A Vector2 representing a vertex of a triangle.
+     * @param v2 A Vector2 representing a vertex of a triangle.
+     * @param v3 A Vector2 representing a vertex of a triangle.
+     * @param b2 Areal coordinate.
+     * @param b3 Areal coordinate.
+     * @return Returns the barycentric Cartesian coordinates as a Vector2.
      */
-    public static Vector2 barycentric(Vector2 value1, Vector2 value2, Vector2 value3, float amount2, float amount3)
+    public static Vector2 barycentric(Vector2 v1, Vector2 v2, Vector2 v3, float b2, float b3)
     {
-        float amount1 = 1 - amount2 - amount3;
-        float px = (amount1 * value1.x) + (amount2 * value2.x) + (amount3 * value3.x);
-        float py = (amount1 * value1.y) + (amount2 * value2.y) + (amount3 * value3.y);
+        float b1 = 1 - b2 - b3;
+        float px = (b1 * v1.x) + (b2 * v2.x) + (b3 * v3.x);
+        float py = (b1 * v1.y) + (b2 * v2.y) + (b3 * v3.y);
         return new Vector2(px, py);
     }
     //</editor-fold>

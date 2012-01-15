@@ -341,8 +341,14 @@ public class Matrix implements Serializable {
         return new Matrix(data);
     }
     
+    /**
+     * Converts a Vector4 to a Matrix
+     * @param vector4 The Vector4 to be converted
+     * @return A Matrix with the same data as the Vector4
+     */
     public static Matrix vectorToMatrix(Vector4 vector4){
-        throw new UnsupportedOperationException("Not yet implemented");
+        float[][] data = {{vector4.x},{vector4.y},{vector4.z},{vector4.w}};
+        return new Matrix(data);
     }
     //</editor-fold>
 

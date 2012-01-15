@@ -11,7 +11,6 @@ import java.io.Serializable;
  *  <li>Hermite</li>
  *  <li>SmoothStep</li>
  *  <li>Transform</li>
- *  <li>TransformNormal</li>
  * </ul>
  * @author paul
  */

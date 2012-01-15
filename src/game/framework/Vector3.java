@@ -13,7 +13,6 @@ import java.io.Serializable;
  *  <li>Linear Interpolation</li>
  *  <li>SmoothStep</li>
  *  <li>Transform</li>
- *  <li>TransformNormal</li>
  * </ul>
  * @author paul
  */

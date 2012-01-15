@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Vector3 class representing a vector of <x, y, z> components.
  * <br />
- * <h1>Missing:</h1>
+ * <h1>Not Yet Implemented</h1>
  * <ul>
  *  <li>Barycentric</li>
  *  <li>CatmullRom</li>
@@ -255,6 +255,20 @@ public class Vector3 extends Vector2 implements Serializable
     public Vector3 addZ(int z)
     {
         return Vector3.add(this, new Vector3(0.0f, 0.0f, (float)z));
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Barycentric">
+    public static Vector3 barycentric()
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="CatmulRom">
+    public static Vector4 catmulRom()
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     //</editor-fold>
     
@@ -632,6 +646,20 @@ public class Vector3 extends Vector2 implements Serializable
     }
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Hermite">
+    public static Vector3 hermite()
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Linear Interpolation">
+    public static Vector3 lerp()
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    //</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="Magnitude">
     /**
      * Computes the magnitude of a Vector3.
@@ -857,6 +885,13 @@ public class Vector3 extends Vector2 implements Serializable
     }
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Smooth Step">
+    public static Vector4 smoothStep()
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    //</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="Special Vectors">
     /**
      * Special type of Vector3; The One vector, <1.0, 1.0 ,1.0>
@@ -1069,6 +1104,13 @@ public class Vector3 extends Vector2 implements Serializable
     public String toString()
     {
         return "<" + this.x + "," + this.y + "," + this.z + ">";
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Transform">
+    public static void transform()
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     //</editor-fold>
     

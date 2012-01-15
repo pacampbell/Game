@@ -687,14 +687,32 @@ public class Vector4 extends Vector3
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Max and Min">
+    /**
+     * @param veca A Vector4 we want to find a max value from.
+     * @param vecb A Vector4 we want to find a max value from.
+     * @return Returns a Vector4 containing the max value from each components.
+     */
     public static Vector4 max(Vector4 a, Vector4 b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        float mx = (a.x > b.x) ? a.x : b.x;
+        float my = (a.y > b.y) ? a.y : b.y;
+        float mz = (a.z > b.z) ? a.z : b.z;
+        float mw = (a.w > b.w) ? a.w : b.w;
+        return new Vector4(mx, my, mz, mw);
     }
     
+    /**
+     * @param veca A Vector4 we want to find a min value from.
+     * @param vecb A Vector4 we want to find a min value from.
+     * @return Returns a Vector4 containing the min value from each components.
+     */
     public static Vector4 min(Vector4 a, Vector4 b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        float mx = (a.x < b.x) ? a.x : b.x;
+        float my = (a.y < b.y) ? a.y : b.y;
+        float mz = (a.z < b.z) ? a.z : b.z;
+        float mw = (a.w < b.w) ? a.w : b.w;
+        return new Vector4(mx, my, mz, mw);
     }
     //</editor-fold>
     

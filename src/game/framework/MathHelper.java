@@ -43,6 +43,19 @@ public class MathHelper
     }
     
     /**
+     * Linear interpolation
+     * value1 + (value2 - value1) * amount
+     * @param value1 A float value we want to interpolate with.
+     * @param value2 A float value we want to interpolate with.
+     * @param amount A value between 0 and 1 indicating the weight of value2.
+     * @return Returns the linear interpolation between two Vector2.
+     */
+    public static float lerp(float value1, float value2, float amount)
+    {
+        return value1 + (value2 - value1) * amount;
+    }
+    
+    /**
      * Check to see if a float value is smaller than the min value.
      * If it is below min, value is set to min.
      * @param value

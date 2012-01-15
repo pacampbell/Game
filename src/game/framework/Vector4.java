@@ -10,7 +10,6 @@ package game.framework;
  *  <li>Hermite</li>
  *  <li>Linear Interpolation</li>
  *  <li>Multiply</li>
- *  <li>Normalize</li>
  *  <li>Subtract</li>
  *  <li>SmoothStep</li>
  *  <li>Transform</li>
@@ -758,15 +757,25 @@ public class Vector4 extends Vector3
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Normalize">
+    /**
+     * Normalizes a input Vector4
+     * @param vec Vector4 that we want to normalize.
+     * @return Vector4 that is normalized.
+     */
     public static Vector4 normalize(Vector4 a)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        float magnitude = a.magnitude();
+        return new Vector4(a.x / magnitude, a.y / magnitude, a.z / magnitude, a.w / magnitude);
     }
     
+    /**
+     * Normalizes this Vector4
+     * @return Returns this Vector4 normalized.
+     */
     @Override
     public Vector4 normalize()
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.normalize(this);
     }
     //</editor-fold>
     

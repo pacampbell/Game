@@ -9,8 +9,6 @@ package game.framework;
  *  <li>CatmullRom</li>
  *  <li>Hermite</li>
  *  <li>Linear Interpolation</li>
- *  <li>Multiply</li>
- *  <li>Subtract</li>
  *  <li>SmoothStep</li>
  *  <li>Transform</li>
  * </ul>
@@ -869,112 +867,231 @@ public class Vector4 extends Vector3
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Subtract">
+    /**
+     * Performs Vector4 Subtraction on two Vector4
+     * @param veca A Vector4 to be subtracted.
+     * @param vecb A Vector4 to be subtracted.
+     * @return Returns a new Vector4 that is the difference between the two provided Vector4.
+     */
     public static Vector4 subtract(Vector4 a, Vector4 b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return new Vector4(a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w);
     }
     
+    /**
+     * Performs Vector4 Subtraction on a Vector4 and a Vector3
+     * @param veca A Vector4 to be subtracted.
+     * @param vecb A Vector3 to be subtracted.
+     * @return Returns a new Vector4 that is the difference between the Vector4 and the Vector3.
+     */
     public static Vector4 subtract(Vector4 a, Vector3 b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(a, new Vector4(b));
     }
     
+    /**
+     * Performs Vector4 Subtraction on a Vector3 and a Vector4
+     * @param veca A Vector3 to be subtracted.
+     * @param vecb A Vector4 to be subtracted.
+     * @return Returns a new Vector4 that is the difference between the Vector3 and the Vector4.
+     */
     public static Vector4 subtract(Vector3 a, Vector4 b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(new Vector4(a), b);
     }
     
+    /**
+     * Performs Vector4 Subtraction on a Vector4 and a Vector2
+     * @param veca A Vector4 to be subtracted.
+     * @param vecb A Vector2 to be subtracted.
+     * @return Returns a new Vector4 that is the difference between the Vector4 and the Vector2.
+     */
     public static Vector4 subtract(Vector4 a, Vector2 b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(a, new Vector4(b));
     }
     
+    /**
+     * Performs Vector4 Subtraction on a Vector2 and a Vector4
+     * @param veca A Vector2 to be subtracted.
+     * @param vecb A Vector4 to be subtracted.
+     * @return Returns a new Vector4 that is the difference between the Vector2 and the Vector4.
+     */
     public static Vector4 subtract(Vector2 a, Vector4 b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(new Vector4(a), b);
     }
     
+    /**
+     * Subtracts a Vector4 from this
+     * @param that A Vector4 to be subtracted.
+     * @return Returns a new Vector4 that is the difference between this Vector4 and that Vector4.
+     */
     public Vector4 subtract(Vector4 that)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(this, that);
     }
     
+    /**
+     * Subtracts a Vector4 from this
+     * @param that A Vector3 to be subtracted.
+     * @return Returns a new Vector4 that is the difference between this Vector4 and that Vector3.
+     */
     @Override
     public Vector4 subtract(Vector3 that)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(this, new Vector4(that));
     }
     
+    /**
+     * Subtracts a Vector4 from this
+     * @param that A Vector2 to be subtracted.
+     * @return Returns a new Vector4 that is the difference between this Vector4 and that Vector2.
+     */
     @Override
     public Vector4 subtract(Vector2 that)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(this, new Vector4(that));
     }
     
+    /**
+     * Performs subtraction with this Vector4 and the x, y, z, and w values provided.
+     * @param x The x component we want to subtract from this Vector4.
+     * @param y The y component we want to subtract from this Vector4.
+     * @param z The z component we want to subtract from this Vector4.
+     * @param w The w component we want to subtract from this Vector4.
+     * @return Returns a Vector4 with x subtracted from this.x, y subtracted from this.y, z subtracted from this.z, and w subtracted from this.w
+     */
     public Vector4 subtract(float x, float y, float z, float w)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(this, new Vector4(x, y, z, w));
     }
     
+    /**
+     * Performs subtraction with this Vector4 and the x, y, z, and w values provided.
+     * Converts integer arguments to float.
+     * @param x The x component we want to subtract from this Vector4.
+     * @param y The y component we want to subtract from this Vector4.
+     * @param z The z component we want to subtract from this Vector4.
+     * @param w The w component we want to subtract from this Vector4.
+     * @return Returns a Vector4 with x subtracted from this.x, y subtracted from this.y, z subtracted from this.z, and w subtracted from this.w
+     */
     public Vector4 subtract(int x, int y, int z, int w)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(this, new Vector4((int)x, (int)y, (int)z, (int)w));
     }
     
+    /**
+     * Creates a new Vector4 from a Vector3 and a w value and subtracts it from this.
+     * @param a A Vector3 that we want to subtract.
+     * @param w A w value we want to append to the Vector3.
+     * @return Returns a new Vector4 that is the difference between this Vector4 and that Vector3 and a w value.
+     */
     public Vector4 subtract(Vector3 vec, float w)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(this, new Vector4(vec, w));
     }
     
+    /**
+     * Creates a new Vector4 from a Vector2, a z value, and a w value and subtracts it from this.
+     * @param a A Vector2 that we want to subtract.
+     * @param z A z value we want to append to the Vector2.
+     * @param w A w value we want to append to the Vector2.
+     * @return Returns a new Vector4 that is the difference between this Vector4 and that Vector3 and a w value.
+     */
     public Vector4 subtract(Vector2 vec, float z, float w)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(this, new Vector4(vec, z, w));
     }
     
+    /**
+     * Subtracts the value provided from the x component.
+     * @param x The x component we want to subtract from this Vector4.
+     * @return Returns a Vector4 with x subtracted from this.x
+     */
     @Override
     public Vector4 subtractX(float x)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(this, new Vector4(x, 0.0f, 0.0f, 0.0f));
     }
     
+    /**
+     * Subtracts the value provided from the x component.
+     * Converts integer arguments to float.
+     * @param x The x component we want to subtract from this Vector4.
+     * @return Returns a Vector4 with x subtracted from this.x
+     */
     @Override
     public Vector4 subtractX(int x)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(this, new Vector4((float)x, 0.0f, 0.0f, 0.0f));
     }
     
+    /**
+     * Subtracts the value provided from the y component.
+     * @param y The y component we want to subtract from this Vector4.
+     * @return Returns a Vector4 with y subtracted from this.y
+     */
     @Override
     public Vector4 subtractY(float y)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(this, new Vector4(0.0f, y, 0.0f, 0.0f));
     }
     
+    /**
+     * Subtracts the value provided from the y component.
+     * Converts integer arguments to float.
+     * @param y The y component we want to subtract from this Vector4.
+     * @return Returns a Vector4 with y subtracted from this.y
+     */
     @Override
     public Vector4 subtractY(int y)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(this, new Vector4(0.0f, (float)y, 0.0f, 0.0f));
     }
     
+    /**
+     * Subtracts the value provided from the z component.
+     * @param z The z component we want to subtract from this Vector4.
+     * @return Returns a Vector4 with z subtracted from this.z
+     */
     @Override
     public Vector4 subtractZ(float z)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(this, new Vector4(0.0f, 0.0f, z, 0.0f));
     }
     
+    /**
+     * Subtracts the value provided from the z component.
+     * Converts integer arguments to float.
+     * @param z The z component we want to subtract from this Vector4.
+     * @return Returns a Vector4 with z subtracted from this.z
+     */
     @Override
     public Vector4 subtractZ(int z)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(this, new Vector4(0.0f, 0.0f, (float)z, 0.0f));
     }
     
+    /**
+     * Subtracts the value provided from the w component.
+     * @param w The w component we want to subtract from this Vector4.
+     * @return Returns a Vector4 with w subtracted from this.w
+     */
     public Vector4 subtractW(float w)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(this, new Vector4(0.0f, 0.0f, 0.0f, w));
     }
     
+    /**
+     * Subtracts the value provided from the w component.
+     * Converts integer arguments to float.
+     * @param w The w component we want to subtract from this Vector4.
+     * @return Returns a Vector4 with w subtracted from this.w
+     */
     public Vector4 subtractW(int w)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.subtract(this, new Vector4(0.0f, 0.0f, 0.0f, (float)w));
     }
     //</editor-fold>
     

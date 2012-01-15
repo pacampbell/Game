@@ -521,9 +521,10 @@ public class Vector2 implements Serializable
     /**
      * Linear interpolation
      * value1 + (value2 - value1) * amount
-     * @param value1
-     * @param value2
-     * @return 
+     * @param value1 A Vector2 we want to interpolate with.
+     * @param value2 A Vector2 we want to interpolate with.
+     * @param amount A value between 0 and 1 indicating the weight of value2.
+     * @return Returns the linear interpolation between two Vector2.
      */
     public static Vector2 lerp(Vector2 value1, Vector2 value2, float amount)
     {

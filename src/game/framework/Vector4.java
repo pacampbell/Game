@@ -713,26 +713,50 @@ public class Vector4 extends Vector3
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Multiply">
+    /**
+     * Multiplies a Vector4 by a scalar.
+     * @param veca A Vector4 we want to multiply.
+     * @param scalar A scalar value we want to multiply into the Vector4.
+     * @return Returns a new Vector4 multiplied by the scalar.
+     */
     public static Vector4 multiply(Vector4 a, float scalar)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return new Vector4(a.x * scalar, a.y * scalar, a.z * scalar, a.w * scalar);
     }
     
+    /**
+     * Multiplies a Vector4 by a scalar.
+     * Converts integer arguments to float.
+     * @param veca A Vector4 we want to multiply.
+     * @param scalar A scalar value we want to multiply into the Vector4.
+     * @return Returns a new Vector4 multiplied by the scalar.
+     */
     public static Vector4 multiply(Vector4 a, int scalar)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.multiply(a, (float)scalar);
     }
     
+    /**
+     * Multiplies this Vector4 by a scalar.
+     * @param scalar A scalar value we want to multiply into this Vector4.
+     * @return Returns this Vector4 multiplied by the scalar
+     */
     @Override
     public Vector4 multiply(float scalar)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.multiply(this, scalar);
     }
     
+    /**
+     * Multiplies this Vector4 by a scalar.
+     * Converts integer arguments to float.
+     * @param scalar A scalar value we want to multiply into this Vector4.
+     * @return Returns this Vector4 multiplied by the scalar
+     */
     @Override
     public Vector4 multiply(int scalar)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return Vector4.multiply(this, (float)scalar);
     }
     //</editor-fold>
     

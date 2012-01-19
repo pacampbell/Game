@@ -55,12 +55,19 @@ public class MathHelper
         return value1 + (value2 - value1) * amount;
     }
     
-    public static float smoothStep(float value1, float value2, float amount)
+    /**
+     * Performs a Smooth Step interpolation between two points.
+     * @param value1 A float value.
+     * @param value2 A float value.
+     * @param amount A float value between zero and one.
+     * @return Returns the interpolation between two values.
+     */
+    public static float smoothStep(float a, float b, float amount)
     {
         // smoothStep(t) = 3t2 − 2t3
         amount = (amount * amount) * (3 - (2 * amount));
         // (A * v) + (B * (1 - v));
-        return (value1 * amount) + (value2 * (1 - amount));
+        return (a * (1 - amount)) + (b * amount);
     }
     
     /**

@@ -95,7 +95,7 @@ public class MathPad
         System.out.println("Hermite: " + u);
         //System.out.println("Smooth Step: " + v);
         
-        System.out.println("SmoothStep a -> b: " + MathHelper.smoothStep(3.0f, 55.0f, .35f));
+        System.out.println("SmoothStep a -> b: " + MathHelper.smoothStep(3.0f, 55.0f, 0.35f));
     }
     //</editor-fold>
 

@@ -279,6 +279,9 @@ public abstract class Game extends JFrame
     }
 
     // Creates window and starts everything up
+    /**
+     * Initializes the Window, Keyboard, Mouse, and GameTime objects.    
+     */
     public void initialize()
     {
         running = true;
@@ -287,14 +290,15 @@ public abstract class Game extends JFrame
         this.addKeyListener(keyboard); // Add Keyboard
         this.canvas.addKeyListener(keyboard);
         mouse = new MouseInput(); // Mouse input
-        //this.addMouseListener(mouse);
-        //this.addMouseMotionListener(mouse);
         this.canvas.addMouseListener(mouse);
         this.canvas.addMouseMotionListener(mouse);
         gameTime = new GameTime(); // Create GameTime object
     }
 
-    // Draws Graphics on the screen
+    /**
+     * Clears and draws the frame.
+     * @param g2d 
+     */
     public void draw(Graphics2D g2d) // Draw Game
     {
         // Clear Background

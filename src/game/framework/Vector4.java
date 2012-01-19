@@ -7,7 +7,6 @@ import java.io.Serializable;
  * <br />
  * <h1>Not Yet Implemented</h1>
  * <ul>
- *  <li>Barycentric</li>
  *  <li>CatmullRom</li>
  *  <li>Hermite</li>
  *  <li>SmoothStep</li>
@@ -339,9 +338,25 @@ public class Vector4 extends Vector3 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Barycentric">
-    public static Vector4 barycentric()
+    /**
+     * The Vector3 Barycentric method takes three vectors specifying the Cartesian coordinates of the triangle 
+     * vertices, V1, V2, and V3), and two areal coordinates b2 and b3 of some point P (b2 is the amount1 argument 
+     * and b3 is the amount2 argument). The b2 coordinate relates to vertex V2, and the b3coordinate relates to V3.
+     * @param v1 A Vector4 representing a vertex of a triangle.
+     * @param v2 A Vector4 representing a vertex of a triangle.
+     * @param v3 A Vector4 representing a vertex of a triangle.
+     * @param b2 Areal coordinate.
+     * @param b3 Areal coordinate.
+     * @return Returns a Vector4 containing the 4D Cartesian coordinates of the specified point.
+     */
+    public static Vector4 barycentric(Vector4 v1, Vector4 v2, Vector4 v3, float b2, float b3)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        float b1 = 1 - b2 - b3;
+        float px = (b1 * v1.x) + (b2 * v2.x) + (b3 * v3.x);
+        float py = (b1 * v1.y) + (b2 * v2.y) + (b3 * v3.y);
+        float pz = (b1 * v1.z) + (b2 * v2.z) + (b3 * v3.z);
+        float pw = (b1 * v1.w) + (b2 * v2.w) + (b3 * v3.w);
+        return new Vector4(px, py, pz, pw);
     }
     //</editor-fold>
     

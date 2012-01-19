@@ -57,8 +57,8 @@ public class MathHelper
     
     /**
      * Performs a Smooth Step interpolation between two points.
-     * @param value1 A float value.
-     * @param value2 A float value.
+     * @param a A float value.
+     * @param b A float value.
      * @param amount A float value between zero and one.
      * @return Returns the interpolation between two values.
      */

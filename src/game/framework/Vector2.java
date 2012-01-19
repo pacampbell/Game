@@ -237,13 +237,12 @@ public class Vector2 implements Serializable
     //<editor-fold defaultstate="collapsed" desc="CatmullRom">
     /**
      * Definition found @ http://paulbourke.net/miscellaneous/interpolation/
-     * 
-     * @param v1
-     * @param v2
-     * @param v3
-     * @param v4
-     * @param amount
-     * @return 
+     * @param v1 The first position in the interpolation.
+     * @param v2 The second position in the interpolation.
+     * @param v3 The third position in the interpolation.
+     * @param v4 The fourth position in the interpolation.
+     * @param amount A float value between zero and one.
+     * @return Returns a Vector2 that is the result of the Catmull-Rom interpolation.
      */
     public static Vector2 catmullRom(Vector2 v1, Vector2 v2, Vector2 v3, Vector2 v4, float amount)
     {

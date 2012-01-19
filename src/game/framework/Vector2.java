@@ -975,7 +975,7 @@ public class Vector2 implements Serializable
         Vector2 a = new Vector2(1, 2);
         Vector2 b = new Vector2(3, 4);
         
-        Vector2 c, d, e, f, g, h, i, j, k, l, m, n, o, p, q;
+        Vector2 c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t;
         float s1, s2, s3, s4, s5;
         
         // Add the two vectors together
@@ -1014,6 +1014,10 @@ public class Vector2 implements Serializable
         o = a.divide(0.0f);
         p = Vector2.divide(a, 5.0f);
         q = Vector2.divide(a, b);
+        // Lerp, Barycentric, Catmull-Rom
+        r = Vector2.lerp(a, b, 0.5f);
+        s = Vector2.barycentric(a, b, c, 0.7f, 0.2f);
+        t = Vector2.catmullRom(a, b, c, d, 0.314f);
         
         System.out.println("a + b = " + c);
         System.out.println("b - c = " + d);
@@ -1033,6 +1037,9 @@ public class Vector2 implements Serializable
         System.out.println("a / 0 = " + o);
         System.out.println("a / 5.0f = " + p);
         System.out.println("a / b = " + q);
+        System.out.println("Lerp: " + r);
+        System.out.println("Barycentric: " + s);
+        System.out.println("Catmull-Rom: " + t);
     }
     //</editor-fold>
 }

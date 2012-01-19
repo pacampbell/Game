@@ -223,7 +223,7 @@ public class Vector2 implements Serializable
      * @param v3 A Vector2 representing a vertex of a triangle.
      * @param b2 Areal coordinate.
      * @param b3 Areal coordinate.
-     * @return Returns the barycentric Cartesian coordinates as a Vector2.
+     * @return Returns a Vector2 containing the 2D Cartesian coordinates of the specified point.
      */
     public static Vector2 barycentric(Vector2 v1, Vector2 v2, Vector2 v3, float b2, float b3)
     {

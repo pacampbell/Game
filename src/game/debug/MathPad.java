@@ -23,7 +23,7 @@ public class MathPad
         Vector2 a = new Vector2(1, 2);
         Vector2 b = new Vector2(3, 4);
         
-        Vector2 c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t;
+        Vector2 c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u;
         float s1, s2, s3, s4, s5;
         
         // Add the two vectors together
@@ -66,6 +66,8 @@ public class MathPad
         r = Vector2.lerp(a, b, 0.5f);
         s = Vector2.barycentric(a, b, c, 0.7f, 0.2f);
         t = Vector2.catmullRom(a, b, c, d, 0.314f);
+        // Hermite
+        u = Vector2.hermite(a, b, c, d, 0.6f);
         
         System.out.println("a + b = " + c);
         System.out.println("b - c = " + d);
@@ -88,6 +90,7 @@ public class MathPad
         System.out.println("Lerp: " + r);
         System.out.println("Barycentric: " + s);
         System.out.println("Catmull-Rom: " + t);
+        System.out.println("Hermite: " + u);
     }
     //</editor-fold>
 

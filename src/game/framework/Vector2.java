@@ -7,7 +7,6 @@ import java.io.Serializable;
  * <br />
  * <h1>Not Yet Implemented</h1>
  * <ul>
- *  <li>Hermite</li>
  *  <li>SmoothStep</li>
  *  <li>Transform</li>
  * </ul>
@@ -236,6 +235,7 @@ public class Vector2 implements Serializable
     //<editor-fold defaultstate="collapsed" desc="CatmullRom">
     /**
      * Definition found @ http://paulbourke.net/miscellaneous/interpolation/ & http://forums.indiegamer.com/showthread.php?4905-Teach-me-splines-for&p=66079#post66079
+     * Performs a Catmull-Rom interpolation with the provided points.
      * @param p0 The first position in the interpolation.
      * @param p1 The second position in the interpolation.
      * @param p2 The third position in the interpolation.
@@ -532,38 +532,27 @@ public class Vector2 implements Serializable
 
     //<editor-fold defaultstate="collapsed" desc="Hermite">
     /**
-     * v0, v1, v2, v3, x
-     * 
-     * p = 2 * x^3 - 3 * x^2 + 1
-     * q = -2 * x^3 + 3 * x^2
-     * r = x^3 - 2 * x^2 + x
-     * s = x^3 - x^2
-     * return (p * v1) + (q * v2) + (r * v0) + s * v3
-     
-     * @param p1
-     * @param t1
-     * @param p2
-     * @param t2
-     * @param amount
-     * @return 
+     * Definition found @ http://cubic.org/docs/hermite.htm
+     * Performs a Hermite spline interpolation.
+     * @param p1 Start-point of the curve.
+     * @param t1 Tangent(direction and speed) to how the curves leaves the start-point.
+     * @param p2 End-point of the curve.
+     * @param t2 Tangent (direction and speed) to how the curve meets the endpoint.
+     * @param amount Weight factor.
+     * @return Returns the result of the Hermite spline interpolation.
      */
     public static Vector2 hermite(Vector2 p1, Vector2 t1, Vector2 p2, Vector2 t2, float amount)
     {
-        float amount2 = amount * amount;
-        float amount3 = amount2 * amount;
+        float h1, h2, h3, h4, amount2, amount3, outX, outY;
         
-        float outX = (((2 * amount3) - (3 * amount2) + 1) * t1.x) + // p * t1
-                     (((-2 * amount3) + (3 * amount2)) * t2.x) + // q * t2
-                     ((amount3 - (2 * amount2) + amount) * p1.x) + // r * p1
-                     ((amount3 - amount2) * p2.x) // s * p2
-                ;
-        
-        float outY = (((2 * amount3) - (3 * amount2) + 1) * t1.y) + // p * t1
-                     (((-2 * amount3) + (3 * amount2)) * t2.y) + // q * t2
-                     ((amount3 - (2 * amount2) + amount) * p1.y) + // r * p1
-                     ((amount3 - amount2) * p2.y) // s * p2
-                ;
-        
+        amount2 = amount * amount; // amount^2
+        amount3 = amount2 * amount; // amount^3
+        h1 = (2 * amount3) - (3 * amount2) + 1; // weight for p1
+        h2 = (-2 * amount3) + (3 * amount2); // weight for p2
+        h3 = amount3 - (2 * amount2) + amount; // weight for t1
+        h4 = (amount3 - amount2); // weight for t2
+        outX = (h1 * p1.x) + (h2 * p2.x) + (h3 * t1.x) + (h4 * t2.x);
+        outY = (h1 * p1.y) + (h2 * p2.y) + (h3 * t1.y) + (h4 * t2.y);
         return new Vector2(outX, outY);
     }
     //</editor-fold>

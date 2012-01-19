@@ -165,7 +165,7 @@ public abstract class Game extends JFrame
      * You can enter a certain error code to provide exit status text
      * @param errorCode 
      */
-    public final void exitGame(int errorCode)
+    public static void exitGame(int errorCode)
     {
         switch(errorCode)
         {
@@ -181,17 +181,16 @@ public abstract class Game extends JFrame
                 break;  
         }
         System.out.println("Exit Code: " + errorCode);
-        // Set the running var to false
-        running = false;
+        System.exit(errorCode);
     }
     
     /**
      * Default way to exit game.
      * Sets error code to Zero.
      */
-    public final void exitGame()
+    public static void exitGame()
     {
-        this.exitGame(0); // 0 is proper exit code
+        Game.exitGame(0); // 0 is proper exit code
     }
     //</editor-fold>
     

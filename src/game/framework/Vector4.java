@@ -7,7 +7,6 @@ import java.io.Serializable;
  * <br />
  * <h1>Not Yet Implemented</h1>
  * <ul>
- *  <li>CatmullRom</li>
  *  <li>Hermite</li>
  *  <li>SmoothStep</li>
  *  <li>Transform</li>
@@ -361,9 +360,40 @@ public class Vector4 extends Vector3 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="CatmullRom">
-    public static Vector4 catmullRom()
+    /**
+     * Definition found @ http://paulbourke.net/miscellaneous/interpolation/ & http://forums.indiegamer.com/showthread.php?4905-Teach-me-splines-for&p=66079#post66079
+     * @param p0 The first position in the interpolation.
+     * @param p1 The second position in the interpolation.
+     * @param p2 The third position in the interpolation.
+     * @param p3 The fourth position in the interpolation.
+     * @param t A float value between zero and one.
+     * @return Returns a Vector4 that is the result of the Catmull-Rom interpolation.
+     */
+    public static Vector4 catmullRom(Vector4 p0, Vector4 p1, Vector4 p2, Vector4 p3, float t)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        float t2 = t * t;
+        float t3 = t2 * t;
+        float outX = 0.5f * ((2.0f * p1.x) +
+                    (-p0.x + p2.x) * t +
+                    (2.0f * p0.x - 5.0f * p1.x + 4 * p2.x - p3.x) * t2 +
+                    (-p0.x + 3.0f * p1.x - 3.0f * p2.x + p3.x) * t3);
+        
+        float outY = 0.5f * ((2.0f * p1.y) +
+                    (-p0.y + p2.y) * t +
+                    (2.0f * p0.y - 5.0f * p1.y + 4 * p2.y - p3.y) * t2 +
+                    (-p0.y + 3.0f * p1.y - 3.0f * p2.y + p3.y) * t3);
+        
+        float outZ = 0.5f * ((2.0f * p1.z) +
+                    (-p0.z + p2.z) * t +
+                    (2.0f * p0.z - 5.0f * p1.z + 4 * p2.z - p3.z) * t2 +
+                    (-p0.z + 3.0f * p1.z - 3.0f * p2.z + p3.z) * t3);
+        
+        float outW = 0.5f * ((2.0f * p1.w) +
+                    (-p0.w + p2.w) * t +
+                    (2.0f * p0.w - 5.0f * p1.w + 4 * p2.w - p3.w) * t2 +
+                    (-p0.w + 3.0f * p1.w - 3.0f * p2.w + p3.w) * t3);
+        
+        return new Vector4(outX, outY, outZ, outW);
     }
     //</editor-fold>
     

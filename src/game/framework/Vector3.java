@@ -7,7 +7,6 @@ import java.io.Serializable;
  * <br />
  * <h1>Not Yet Implemented</h1>
  * <ul>
- *  <li>Hermite</li>
  *  <li>SmoothStep</li>
  *  <li>Transform</li>
  * </ul>
@@ -686,9 +685,30 @@ public class Vector3 extends Vector2 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Hermite">
-    public static Vector3 hermite()
+    /**
+     * Definition found @ http://cubic.org/docs/hermite.htm
+     * Performs a Hermite spline interpolation.
+     * @param p1 Start-point of the curve.
+     * @param t1 Tangent(direction and speed) to how the curves leaves the start-point.
+     * @param p2 End-point of the curve.
+     * @param t2 Tangent (direction and speed) to how the curve meets the endpoint.
+     * @param amount Weight factor.
+     * @return Returns a Vector3 containing the result of the Hermite spline interpolation.
+     */
+    public static Vector3 hermite(Vector3 p1, Vector3 t1, Vector3 p2, Vector3 t2, float amount)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        float h1, h2, h3, h4, amount2, amount3, outX, outY, outZ;
+        
+        amount2 = amount * amount; // amount^2
+        amount3 = amount2 * amount; // amount^3
+        h1 = (2 * amount3) - (3 * amount2) + 1; // weight for p1
+        h2 = (-2 * amount3) + (3 * amount2); // weight for p2
+        h3 = amount3 - (2 * amount2) + amount; // weight for t1
+        h4 = (amount3 - amount2); // weight for t2
+        outX = (h1 * p1.x) + (h2 * p2.x) + (h3 * t1.x) + (h4 * t2.x);
+        outY = (h1 * p1.y) + (h2 * p2.y) + (h3 * t1.y) + (h4 * t2.y);
+        outZ = (h1 * p1.z) + (h2 * p2.z) + (h3 * t1.z) + (h4 * t2.z);
+        return new Vector3(outX, outY, outZ);
     }
     //</editor-fold>
     

@@ -811,14 +811,6 @@ public class Vector2 implements Serializable
     {
         // Traditional: smoothstep(t) = 3t2 − 2t3
         // Ken perlin: smootherstep(t) = 6t5 − 15t4 + 10t3
-        /*
-        float sx = (amount * cx) * (3.0f - (2.0f * cx));
-        float sy = (cy * cy) * (3.0f - (2.0f * cy));;  
-        //float sx = (cx * cx * cx) * ((6.0f * cx * cx) - (15.0f * cx) + 10.0f);
-        //float sy = (cy * cy * cy) * ((6.0f * cy * cy) - (15.0f * cy) + 10.0f);
-        return new Vector2(sx, sy);
-        * 
-        */
         throw new UnsupportedOperationException("Not yet implemented.");
     }
     //</editor-fold>

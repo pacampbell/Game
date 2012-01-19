@@ -55,6 +55,14 @@ public class MathHelper
         return value1 + (value2 - value1) * amount;
     }
     
+    public static float smoothStep(float value1, float value2, float amount)
+    {
+        // smoothStep(t) = 3t2 − 2t3
+        amount = (amount * amount) * (3 - (2 * amount));
+        // (A * v) + (B * (1 - v));
+        return (value1 * amount) + (value2 * (1 - amount));
+    }
+    
     /**
      * Check to see if a float value is smaller than the min value.
      * If it is below min, value is set to min.
@@ -64,7 +72,7 @@ public class MathHelper
      */
     public static float min(float value, float min)
     {
-        return value = (value < min) ? min : value;
+        return (value < min) ? min : value;
     }
     
     
@@ -77,7 +85,7 @@ public class MathHelper
      */
     public static int min(int value, int min)
     {
-        return value = (value < min) ? min : value;
+        return (value < min) ? min : value;
     }
     
     
@@ -90,7 +98,7 @@ public class MathHelper
      */
     public static float max(float value, float max)
     {
-        return value = (value > max) ? max : value;
+        return (value > max) ? max : value;
     }
     
     /**
@@ -102,7 +110,7 @@ public class MathHelper
      */
     public static int max(int value, int max)
     {
-        return value = (value > max) ? max : value;
+        return (value > max) ? max : value;
     }
     /**
      * Do the dot product of two arrays

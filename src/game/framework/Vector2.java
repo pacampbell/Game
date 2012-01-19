@@ -539,7 +539,7 @@ public class Vector2 implements Serializable
      * @param p2 End-point of the curve.
      * @param t2 Tangent (direction and speed) to how the curve meets the endpoint.
      * @param amount Weight factor.
-     * @return Returns the result of the Hermite spline interpolation.
+     * @return Returns a Vector2 containing the result of the Hermite spline interpolation.
      */
     public static Vector2 hermite(Vector2 p1, Vector2 t1, Vector2 p2, Vector2 t2, float amount)
     {

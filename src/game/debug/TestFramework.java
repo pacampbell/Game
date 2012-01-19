@@ -66,7 +66,7 @@ public class TestFramework extends Game
         //<editor-fold defaultstate="collapsed" desc="System & Menu Keys">
         if(keyboard.keyDownOnce(KeyEvent.VK_ESCAPE))
         {
-            this.exitGame();
+            Game.exitGame();
         }
         //</editor-fold>
     }

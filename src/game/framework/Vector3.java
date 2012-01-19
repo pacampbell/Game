@@ -7,7 +7,6 @@ import java.io.Serializable;
  * <br />
  * <h1>Not Yet Implemented</h1>
  * <ul>
- *  <li>CatmullRom</li>
  *  <li>Hermite</li>
  *  <li>SmoothStep</li>
  *  <li>Transform</li>
@@ -280,9 +279,35 @@ public class Vector3 extends Vector2 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="CatmulRom">
-    public static Vector4 catmulRom()
+    /**
+     * Definition found @ http://paulbourke.net/miscellaneous/interpolation/ & http://forums.indiegamer.com/showthread.php?4905-Teach-me-splines-for&p=66079#post66079
+     * @param p0 The first position in the interpolation.
+     * @param p1 The second position in the interpolation.
+     * @param p2 The third position in the interpolation.
+     * @param p3 The fourth position in the interpolation.
+     * @param t A float value between zero and one.
+     * @return Returns a Vector3 that is the result of the Catmull-Rom interpolation.
+     */
+    public static Vector3 catmullRom(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        float t2 = t * t;
+        float t3 = t2 * t;
+        float outX = 0.5f * ((2.0f * p1.x) +
+                    (-p0.x + p2.x) * t +
+                    (2.0f * p0.x - 5.0f * p1.x + 4 * p2.x - p3.x) * t2 +
+                    (-p0.x + 3.0f * p1.x - 3.0f * p2.x + p3.x) * t3);
+        
+        float outY = 0.5f * ((2.0f * p1.y) +
+                    (-p0.y + p2.y) * t +
+                    (2.0f * p0.y - 5.0f * p1.y + 4 * p2.y - p3.y) * t2 +
+                    (-p0.y + 3.0f * p1.y - 3.0f * p2.y + p3.y) * t3);
+        
+        float outZ = 0.5f * ((2.0f * p1.z) +
+                    (-p0.z + p2.z) * t +
+                    (2.0f * p0.z - 5.0f * p1.z + 4 * p2.z - p3.z) * t2 +
+                    (-p0.z + 3.0f * p1.z - 3.0f * p2.z + p3.z) * t3);
+        
+        return new Vector3(outX, outY, outZ);
     }
     //</editor-fold>
     

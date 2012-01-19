@@ -259,9 +259,24 @@ public class Vector3 extends Vector2 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Barycentric">
-    public static Vector3 barycentric()
+    /**
+     * The Vector3 Barycentric method takes three vectors specifying the Cartesian coordinates of the triangle 
+     * vertices, V1, V2, and V3), and two areal coordinates b2 and b3 of some point P (b2 is the amount1 argument 
+     * and b3 is the amount2 argument). The b2 coordinate relates to vertex V2, and the b3coordinate relates to V3.
+     * @param v1 A Vector3 representing a vertex of a triangle.
+     * @param v2 A Vector3 representing a vertex of a triangle.
+     * @param v3 A Vector3 representing a vertex of a triangle.
+     * @param b2 Areal coordinate.
+     * @param b3 Areal coordinate.
+     * @return Returns a Vector3 containing the 3D Cartesian coordinates of the specified point.
+     */
+    public static Vector3 barycentric(Vector3 v1, Vector3 v2, Vector3 v3, float b2, float b3)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        float b1 = 1 - b2 - b3;
+        float px = (b1 * v1.x) + (b2 * v2.x) + (b3 * v3.x);
+        float py = (b1 * v1.y) + (b2 * v2.y) + (b3 * v3.y);
+        float pz = (b1 * v1.z) + (b2 * v2.z) + (b3 * v3.z);
+        return new Vector3(px, py, pz);
     }
     //</editor-fold>
     

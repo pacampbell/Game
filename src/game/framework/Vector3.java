@@ -7,7 +7,6 @@ import java.io.Serializable;
  * <br />
  * <h1>Not Yet Implemented</h1>
  * <ul>
- *  <li>Barycentric</li>
  *  <li>CatmullRom</li>
  *  <li>Hermite</li>
  *  <li>SmoothStep</li>

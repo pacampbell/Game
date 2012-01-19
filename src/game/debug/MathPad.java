@@ -1,5 +1,6 @@
 package game.debug;
 
+import game.framework.MathHelper;
 import game.framework.Vector2;
 import game.framework.Vector3;
 
@@ -68,7 +69,7 @@ public class MathPad
         t = Vector2.catmullRom(a, b, c, d, 0.314f);
         // Hermite, and Smooth Step
         u = Vector2.hermite(a, b, c, d, 0.6f);
-        v = Vector2.smoothStep(a, b, 0.35f);
+        //v = Vector2.smoothStep(a, b, 0.35f);
         
         System.out.println("a + b = " + c);
         System.out.println("b - c = " + d);
@@ -92,7 +93,9 @@ public class MathPad
         System.out.println("Barycentric: " + s);
         System.out.println("Catmull-Rom: " + t);
         System.out.println("Hermite: " + u);
-        System.out.println("Smooth Step: " + v);
+        //System.out.println("Smooth Step: " + v);
+        
+        System.out.println("SmoothStep a -> b: " + MathHelper.smoothStep(3.0f, 55.0f, .35f));
     }
     //</editor-fold>
 

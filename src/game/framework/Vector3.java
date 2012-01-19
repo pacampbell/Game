@@ -7,7 +7,6 @@ import java.io.Serializable;
  * <br />
  * <h1>Not Yet Implemented</h1>
  * <ul>
- *  <li>SmoothStep</li>
  *  <li>Transform</li>
  * </ul>
  * @version incomplete
@@ -965,9 +964,22 @@ public class Vector3 extends Vector2 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Smooth Step">
-    public static Vector4 smoothStep()
+    /**
+     * Performs a Smooth Step interpolation between two points.
+     * Traditional: smoothstep(t) = 3t2 − 2t3
+     * Ken Perlin: smootherstep(t) = 6t5 − 15t4 + 10t3 
+     * @param a A Vector3 containing the starting point.
+     * @param b A Vector3 containing the ending point.
+     * @param amount A float value between zero and one.
+     * @return Returns the interpolation between two values.
+     */
+    public static Vector3 smoothStep(Vector3 a, Vector3 b, float amount)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        amount = (amount * amount) * (3 - (2 * amount));
+        float outX = (a.x * (1 - amount)) + (b.x * amount);
+        float outY = (a.y * (1 - amount)) + (b.y * amount);
+        float outZ = (a.z * (1 - amount)) + (b.z * amount);
+        return new Vector3(outX, outY, outZ);
     }
     //</editor-fold>
     

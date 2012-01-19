@@ -531,9 +531,40 @@ public class Vector2 implements Serializable
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Hermite">
-    public static Vector2 hermite()
+    /**
+     * v0, v1, v2, v3, x
+     * 
+     * p = 2 * x^3 - 3 * x^2 + 1
+     * q = -2 * x^3 + 3 * x^2
+     * r = x^3 - 2 * x^2 + x
+     * s = x^3 - x^2
+     * return (p * v1) + (q * v2) + (r * v0) + s * v3
+     
+     * @param p1
+     * @param t1
+     * @param p2
+     * @param t2
+     * @param amount
+     * @return 
+     */
+    public static Vector2 hermite(Vector2 p1, Vector2 t1, Vector2 p2, Vector2 t2, float amount)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        float amount2 = amount * amount;
+        float amount3 = amount2 * amount;
+        
+        float outX = (((2 * amount3) - (3 * amount2) + 1) * t1.x) + // p * t1
+                     (((-2 * amount3) + (3 * amount2)) * t2.x) + // q * t2
+                     ((amount3 - (2 * amount2) + amount) * p1.x) + // r * p1
+                     ((amount3 - amount2) * p2.x) // s * p2
+                ;
+        
+        float outY = (((2 * amount3) - (3 * amount2) + 1) * t1.y) + // p * t1
+                     (((-2 * amount3) + (3 * amount2)) * t2.y) + // q * t2
+                     ((amount3 - (2 * amount2) + amount) * p1.y) + // r * p1
+                     ((amount3 - amount2) * p2.y) // s * p2
+                ;
+        
+        return new Vector2(outX, outY);
     }
     //</editor-fold>
     

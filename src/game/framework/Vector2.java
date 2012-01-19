@@ -235,9 +235,37 @@ public class Vector2 implements Serializable
     //</editor-fold>
  
     //<editor-fold defaultstate="collapsed" desc="CatmullRom">
-    public static Vector2 catmullRom()
+    /**
+     * Definition found @ http://paulbourke.net/miscellaneous/interpolation/
+     * 
+     * @param v1
+     * @param v2
+     * @param v3
+     * @param v4
+     * @param amount
+     * @return 
+     */
+    public static Vector2 catmullRom(Vector2 v1, Vector2 v2, Vector2 v3, Vector2 v4, float amount)
     {
-       throw new UnsupportedOperationException("Not yet implemented."); 
+        /**
+        CubicInterpolate
+        a0 = v4.subtract(v3).subtract(v1).add(v2);
+        a1 = v1.subtract(v2).subtract(new Vector2(a0));
+        a2 = v3.subtract(v1);
+        return a0.multiply(amount * amount2).add(a1.multiply(amount2)).add(a2.multiply(amount)).add(v4);
+        
+        CatmullRom
+        a0 = v1.multiply(-0.5f).add(v2.multiply(1.5f)).subtract(v3.multiply(1.5f)).add(v4.multiply(0.5f));
+        a1 = v1.subtract(v2.multiply(2.5f)).add(v3.multiply(2.0f)).subtract(v4.multiply(0.5f));
+        a2 = v3.subtract(v1);
+        return a0.multiply(amount * amount2).add(a1.multiply(amount2)).add(a2.multiply(amount)).add(v4);
+        */
+        Vector2 a0, a1, a2;
+        float amount2 = amount * amount;
+        a0 = v1.multiply(-0.5f).add(v2.multiply(1.5f)).subtract(v3.multiply(1.5f)).add(v4.multiply(0.5f));
+        a1 = v1.subtract(v2.multiply(2.5f)).add(v3.multiply(2.0f)).subtract(v4.multiply(0.5f));
+        a2 = v3.subtract(v1);
+        return a0.multiply(amount * amount2).add(a1.multiply(amount2)).add(a2.multiply(amount)).add(v4);
     }
     //</editor-fold>
     

@@ -807,9 +807,16 @@ public class Vector2 implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Smooth Step">
-    public static Vector2 smoothStep()
+    public static Vector2 smoothStep(Vector2 p1, Vector2 p2, float amount)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        // Traditional: smoothstep(t) = 3t2 − 2t3
+        // Ken perlin: smootherstep(t) = 6t5 − 15t4 + 10t3
+        float cx = MathHelper.clamp((amount - p1.x) / (amount - p2.x), 0, 1);
+        float cy = MathHelper.clamp((amount - p1.y) / (amount - p2.y), 0, 1);
+        
+        float sx = (cx * cx) * (3 - (2 * cx));
+        float sy = (cy * cy) * (3 - (2 * cy));;  
+        return new Vector2(sx, sy);
     }
     //</editor-fold>
     

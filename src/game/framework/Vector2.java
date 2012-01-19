@@ -235,35 +235,28 @@ public class Vector2 implements Serializable
  
     //<editor-fold defaultstate="collapsed" desc="CatmullRom">
     /**
-     * Definition found @ http://paulbourke.net/miscellaneous/interpolation/
-     * @param v1 The first position in the interpolation.
-     * @param v2 The second position in the interpolation.
-     * @param v3 The third position in the interpolation.
-     * @param v4 The fourth position in the interpolation.
-     * @param amount A float value between zero and one.
+     * Definition found @ http://paulbourke.net/miscellaneous/interpolation/ & http://forums.indiegamer.com/showthread.php?4905-Teach-me-splines-for&p=66079#post66079
+     * @param p0 The first position in the interpolation.
+     * @param p1 The second position in the interpolation.
+     * @param p2 The third position in the interpolation.
+     * @param p3 The fourth position in the interpolation.
+     * @param t A float value between zero and one.
      * @return Returns a Vector2 that is the result of the Catmull-Rom interpolation.
      */
-    public static Vector2 catmullRom(Vector2 v1, Vector2 v2, Vector2 v3, Vector2 v4, float amount)
+    public static Vector2 catmullRom(Vector2 p0, Vector2 p1, Vector2 p2, Vector2 p3, float t)
     {
-        /**
-        CubicInterpolate
-        a0 = v4.subtract(v3).subtract(v1).add(v2);
-        a1 = v1.subtract(v2).subtract(new Vector2(a0));
-        a2 = v3.subtract(v1);
-        return a0.multiply(amount * amount2).add(a1.multiply(amount2)).add(a2.multiply(amount)).add(v4);
+        float t2 = t * t;
+        float t3 = t2 * t;
+        float outX = 0.5f * ((2.0f * p1.x) +
+                    (-p0.x + p2.x) * t +
+                    (2.0f * p0.x - 5.0f * p1.x + 4 * p2.x - p3.x) * t2 +
+                    (-p0.x + 3.0f * p1.x - 3.0f * p2.x + p3.x) * t3);
         
-        CatmullRom
-        a0 = v1.multiply(-0.5f).add(v2.multiply(1.5f)).subtract(v3.multiply(1.5f)).add(v4.multiply(0.5f));
-        a1 = v1.subtract(v2.multiply(2.5f)).add(v3.multiply(2.0f)).subtract(v4.multiply(0.5f));
-        a2 = v3.subtract(v1);
-        return a0.multiply(amount * amount2).add(a1.multiply(amount2)).add(a2.multiply(amount)).add(v4);
-        */
-        Vector2 a0, a1, a2;
-        float amount2 = amount * amount;
-        a0 = v1.multiply(-0.5f).add(v2.multiply(1.5f)).subtract(v3.multiply(1.5f)).add(v4.multiply(0.5f));
-        a1 = v1.subtract(v2.multiply(2.5f)).add(v3.multiply(2.0f)).subtract(v4.multiply(0.5f));
-        a2 = v3.subtract(v1);
-        return a0.multiply(amount * amount2).add(a1.multiply(amount2)).add(a2.multiply(amount)).add(v4);
+        float outY = 0.5f * ((2.0f * p1.y) +
+                    (-p0.y + p2.y) * t +
+                    (2.0f * p0.y - 5.0f * p1.y + 4 * p2.y - p3.y) * t2 +
+                    (-p0.y + 3.0f * p1.y - 3.0f * p2.y + p3.y) * t3);
+        return new Vector2(outX, outY);
     }
     //</editor-fold>
     

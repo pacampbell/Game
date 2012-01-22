@@ -17,8 +17,8 @@ public abstract class Game extends JFrame
     private GraphicsConfiguration gc;
     private BufferedImage bi;
     // Window Settings
-    public static int width;
-    public static int height;
+    public int width;
+    public int height;
     // Game Loop Variables
     private boolean running;
     private Color background; // Background color to clear too
@@ -40,8 +40,8 @@ public abstract class Game extends JFrame
     {
         this.setTitle(title);
         this.fps = new PerformanceTiming();
-        Game.width = width;
-        Game.height = height;
+        this.width = width;
+        this.height = height;
     }
     
     /**
@@ -223,7 +223,7 @@ public abstract class Game extends JFrame
      */
     public final void setWidth(int width)
     {
-        Game.width = width;
+        this.width = width;
     }
     
     /**
@@ -232,7 +232,7 @@ public abstract class Game extends JFrame
      */
     public final void setHeight(int height)
     {
-        Game.height = height;
+        this.height = height;
     }
     
     /**

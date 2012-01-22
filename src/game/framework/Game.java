@@ -215,6 +215,9 @@ public abstract class Game extends JFrame
         this.gc = gd.getDefaultConfiguration();
         // Create off-screen drawing surface
         this.bi = gc.createCompatibleImage(width, height);
+        // Set Properties in the GameHelper class
+        GameHelper.setScreenWidth(width);
+        GameHelper.setScreenHeight(height);
     }
     
     /**
@@ -224,6 +227,7 @@ public abstract class Game extends JFrame
     public final void setWidth(int width)
     {
         this.width = width;
+        GameHelper.setScreenWidth(width);
     }
     
     /**
@@ -233,6 +237,7 @@ public abstract class Game extends JFrame
     public final void setHeight(int height)
     {
         this.height = height;
+        GameHelper.setScreenHeight(height);
     }
     
     /**
@@ -269,7 +274,6 @@ public abstract class Game extends JFrame
         mouse.poll();
     }
 
-    // Creates window and starts everything up
     /**
      * Initializes the Window, Keyboard, Mouse, and GameTime objects.    
      */

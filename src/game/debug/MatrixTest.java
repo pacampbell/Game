@@ -4,7 +4,7 @@
  */
 package game.debug;
 
-import game.framework.Matrix;
+import game.framework.Matrix_OLD;
 
 /**
  *
@@ -18,10 +18,10 @@ public class MatrixTest {
         
         //testing identity methods
         System.out.println("-----Testing identity methods.");
-        Matrix mat = new Matrix(10,10);
+        Matrix_OLD mat = new Matrix_OLD(10,10);
         System.out.println(mat.identity().toString());        
-        System.out.println(Matrix.identity(5));
-        System.out.println(Matrix.identity(mat));
+        System.out.println(Matrix_OLD.identity(5));
+        System.out.println(Matrix_OLD.identity(mat));
     }
     
 }

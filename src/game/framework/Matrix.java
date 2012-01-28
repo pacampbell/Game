@@ -26,10 +26,8 @@ package game.framework;
  *  <li>Create World</li>
  *  <li>Decompose</li>
  *  <li>Determinant</li>
- *  <li>Divide</li>
  *  <li>Invert</li>
  *  <li>Lerp</li>
- *  <li>Negate</li>
  *  <li>Transform</li>
  *  <li>Transpose</li>
  * </ul>
@@ -379,9 +377,58 @@ public class Matrix
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Divide">
-    public static void divide()
+    /**
+     * Divides each component of a Matrix by a scalar value.
+     * @param a A Matrix we want to divide.
+     * @param scalar A scalar value we want to divide by.
+     * @return Returns a / scalar.
+     */
+    public static Matrix divide(Matrix a, float scalar)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return new Matrix
+                (
+                    a.M11 / scalar, a.M12 / scalar, a.M13 / scalar, a.M14 / scalar,
+                    a.M21 / scalar, a.M22 / scalar, a.M23 / scalar, a.M24 / scalar,
+                    a.M31 / scalar, a.M32 / scalar, a.M33 / scalar, a.M34 / scalar,
+                    a.M41 / scalar, a.M42 / scalar, a.M43 / scalar, a.M44 / scalar
+                );
+    }
+    
+    /**
+     * Divides each component of this Matrix by a scalar value.
+     * @param scalar A scalar value we want to divide by.
+     * @return Returns this / scalar.
+     */
+    public Matrix divide(float scalar)
+    {
+        return Matrix.divide(this, scalar);
+    }
+    
+    /**
+     * Matrix b divides Matrix a component wise.
+     * @param a A Matrix we want to divide.
+     * @param b A Matrix we want to divide. 
+     * @return Returns a / b.
+     */
+    public static Matrix divide(Matrix a, Matrix b)
+    {
+        return new Matrix
+                (
+                    a.M11 / b.M11, a.M12 / b.M12, a.M13 / b.M13, a.M14 / b.M14,
+                    a.M21 / b.M21, a.M22 / b.M22, a.M23 / b.M23, a.M24 / b.M24,
+                    a.M31 / b.M31, a.M32 / b.M32, a.M33 / b.M33, a.M34 / b.M34,
+                    a.M41 / b.M41, a.M42 / b.M42, a.M43 / b.M43, a.M44 / b.M44
+                );
+    }
+    
+    /**
+     * Matrix that divides Matrix this component wise.
+     * @param that A Matrix we want to divide.
+     * @return Returns this / that.
+     */
+    public Matrix divide(Matrix that)
+    {
+        return Matrix.divide(this, that);
     }
     //</editor-fold>
 

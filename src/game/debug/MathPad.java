@@ -181,6 +181,39 @@ public class MathPad
     {
         Matrix m = Matrix.identity();
         System.out.println(m);
+        
+        float[][] one = {
+                            {1, 1, 1, 1},
+                            {1, 1, 1, 1},
+                            {1, 1, 1, 1},
+                            {1, 1, 1, 1}
+                        };
+        Matrix a = new Matrix(one);
+        
+        System.out.println(a);
+        a = a.multiply(5.0f);
+        System.out.println(a);
+        
+        float[][] two = {
+                            {1, 2, 3, 1},
+                            {4, 5, 6, 1},
+                            {7, 8, 9, 1},
+                            {1, 1, 1, 1}
+                        };
+        
+        float[][] three = {
+                            {5, 7, 9, 1},
+                            {-2, 0, -5, 1},
+                            {1, -4, 8, 1},
+                            {1, 1, 1, 1}
+                        };
+        
+        Matrix b = new Matrix(two);
+        Matrix c = new Matrix(three);
+        Matrix d = b.multiply(c);
+        System.out.println(d);
+        
+        
     }
     //</editor-fold>
 }

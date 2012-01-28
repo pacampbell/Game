@@ -39,22 +39,87 @@ package game.framework;
 
 public class Matrix 
 {
+    //<editor-fold defaultstate="collapsed" desc="Properties">
+    /**
+     * Value at row 1 column 1 of this Matrix.
+     */
     public final float M11; 
+    
+    /**
+     * Value at row 1 column 2 of this Matrix.
+     */
     public final float M12;
+    
+    /**
+     * Value at row 1 column 3 of this Matrix.
+     */
     public final float M13; 
+    
+    /**
+     * Value at row 1 column 4 of this Matrix.
+     */
     public final float M14; 
+    
+    /**
+     * Value at row 2 column 1 of this Matrix.
+     */
     public final float M21; 
+    
+    /**
+     * Value at row 2 column 2 of this Matrix.
+     */
     public final float M22; 
+    
+    /**
+     * Value at row 2 column 3 of this Matrix.
+     */
     public final float M23; 
+    
+    /**
+     * Value at row 2 column 4 of this Matrix.
+     */
     public final float M24; 
+    
+    /**
+     * Value at row 3 column 1 of this Matrix.
+     */
     public final float M31; 
+    
+    /**
+     * Value at row 3 column 2 of this Matrix.
+     */
     public final float M32; 
+    
+    /**
+     * Value at row 3 column 3 of this Matrix.
+     */
     public final float M33; 
+    
+    /**
+     * Value at row 3 column 4 of this Matrix.
+     */
     public final float M34; 
+    
+    /**
+     * Value at row 4 column 1 of this Matrix.
+     */
     public final float M41; 
+    
+    /**
+     * Value at row 4 column 2 of this Matrix.
+     */
     public final float M42; 
+    
+    /**
+     * Value at row 4 column 3 of this Matrix.
+     */
     public final float M43; 
+    
+    /**
+     * Value at row 4 column 4 of this Matrix.
+     */
     public final float M44;
+    //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Constructors">
     /**
@@ -414,6 +479,11 @@ public class Matrix
     public Matrix multiply(Matrix that)
     {
         return Matrix.multiply(this, that);
+    }
+    
+    public Matrix multiply(Vector4 v)
+    {
+        return null;
     }
     
     /**

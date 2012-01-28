@@ -32,7 +32,6 @@ package game.framework;
  *  <li>Lerp</li>
  *  <li>Multiply</li>
  *  <li>Negate</li>
- *  <li>Subtract</li>
  *  <li>To String</li>
  *  <li>Transform</li>
  *  <li>Transpose</li>
@@ -345,9 +344,57 @@ public class Matrix
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Multiply">
-    public static void multiply()
+    /**
+     * Perform Matrix multiplication between two matrices.
+     * @param a A Matrix we want to multiply.
+     * @param b A matrix we want to multiply.
+     * @return Returns a * b.
+     */
+    public static Matrix multiply(Matrix a, Matrix b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return new Matrix
+                (
+                    (a.M11 * b.M11) + (a.M12 * b.M21) + (a.M13 * b.M31) + (a.M14 * b.M41), (a.M11 * b.M12) + (a.M12 * b.M22) + (a.M13 * b.M32) + (a.M14 * b.M42), (a.M11 * b.M13) + (a.M12 * b.M23) + (a.M13 * b.M33) + (a.M14 * b.M43), (a.M11 * b.M14) + (a.M12 * b.M24) + (a.M13 * b.M34) + (a.M14 * b.M44),   
+                    (a.M21 * b.M11) + (a.M22 * b.M21) + (a.M23 * b.M31) + (a.M24 * b.M41), (a.M21 * b.M12) + (a.M22 * b.M22) + (a.M23 * b.M32) + (a.M24 * b.M42), (a.M21 * b.M13) + (a.M22 * b.M23) + (a.M23 * b.M33) + (a.M24 * b.M43), (a.M21 * b.M14) + (a.M22 * b.M24) + (a.M23 * b.M34) + (a.M24 * b.M44),
+                    (a.M31 * b.M11) + (a.M32 * b.M21) + (a.M33 * b.M31) + (a.M34 * b.M41), (a.M31 * b.M12) + (a.M32 * b.M22) + (a.M33 * b.M32) + (a.M34 * b.M42), (a.M31 * b.M13) + (a.M32 * b.M23) + (a.M33 * b.M33) + (a.M34 * b.M43), (a.M31 * b.M14) + (a.M32 * b.M24) + (a.M33 * b.M34) + (a.M34 * b.M44),
+                    (a.M41 * b.M11) + (a.M42 * b.M21) + (a.M43 * b.M31) + (a.M44 * b.M41), (a.M41 * b.M12) + (a.M42 * b.M22) + (a.M43 * b.M32) + (a.M44 * b.M42), (a.M41 * b.M13) + (a.M42 * b.M23) + (a.M43 * b.M33) + (a.M44 * b.M43), (a.M41 * b.M14) + (a.M42 * b.M24) + (a.M43 * b.M34) + (a.M44 * b.M44)
+                );
+    }
+    
+    /**
+     * Perform Matrix multiplication between this Matrix and that Matrix.
+     * @param that A Matrix we want to multiply.
+     * @return Returns this * that.
+     */
+    public Matrix multiply(Matrix that)
+    {
+        return Matrix.multiply(this, that);
+    }
+    
+    /**
+     * Multiplies a scalar value into the Matrix.
+     * @param a A Matrix we want to multiply.
+     * @param scalar A scalar value we want to multiply into the provided Matrix.
+     * @return Returns scalar * Matrix.
+     */
+    public static Matrix multiply(Matrix a, float scalar)
+    {
+        return new Matrix
+                (
+                    scalar * a.M11, scalar * a.M12, scalar * a.M13, scalar * a.M14,
+                    scalar * a.M21, scalar * a.M22, scalar * a.M23, scalar * a.M24,
+                    scalar * a.M31, scalar * a.M32, scalar * a.M33, scalar * a.M34,
+                    scalar * a.M41, scalar * a.M42, scalar * a.M43, scalar * a.M44
+                );
+    }
+    /**
+     * Multiplies a scalar value into this Matrix.
+     * @param scalar A scalar value we want to multiply into the provided Matrix.
+     * @return Returns scalar * this.
+     */
+    public Matrix multiply(float scalar)
+    {
+        return Matrix.multiply(this, scalar);
     }
     //</editor-fold>
     

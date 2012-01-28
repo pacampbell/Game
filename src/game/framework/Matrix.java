@@ -27,9 +27,8 @@ package game.framework;
  *  <li>Decompose</li>
  *  <li>Determinant</li>
  *  <li>Invert</li>
- *  <li>Lerp</li>
+ *  <li>Linear Interpolation</li>
  *  <li>Transform</li>
- *  <li>Transpose</li>
  * </ul>
  * @version incomplete
  * @author paul
@@ -649,9 +648,29 @@ public class Matrix
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Transpose">
-    public static void transpose()
+    /**
+     * Transposes the provided Matrix.
+     * @param a A Matrix we want to transpose.
+     * @return Returns the transpose of Matrix a.
+     */
+    public static Matrix transpose(Matrix a)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return new Matrix
+                (
+                    a.M11, a.M21, a.M31, a.M41,
+                    a.M12, a.M22, a.M32, a.M42,
+                    a.M13, a.M23, a.M33, a.M43,
+                    a.M14, a.M24, a.M34, a.M44
+                );
+    }
+    
+    /**
+     * Transposes this Matrix.
+     * @return Returns the transpose of this Matrix.
+     */
+    public Matrix transpose()
+    {
+        return Matrix.transpose(this);
     }
     //</editor-fold>
 }

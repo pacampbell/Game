@@ -451,6 +451,9 @@ public class Matrix
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="To-String">
+    /**
+     * @return Returns a String representation of a Matrix. 
+     */
     @Override
     public String toString()
     {

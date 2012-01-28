@@ -78,9 +78,10 @@ public class Matrix
      * @param M43
      * @param M44 
      */
-    public Matrix(float M11, float M12, float M13, float M14, float M21, 
-            float M22, float M23, float M24, float M31, float M32, float M33, 
-            float M34, float M41, float M42, float M43, float M44)
+    public Matrix(float M11, float M12, float M13, float M14, 
+                  float M21, float M22, float M23, float M24, 
+                  float M31, float M32, float M33, float M34, 
+                  float M41, float M42, float M43, float M44)
     {
         this.M11 = M11;
         this.M12 = M12;
@@ -456,7 +457,7 @@ public class Matrix
         return  M11 + " " + M12 + " " + M13 + " " + M14 + "\n" + 
                 M21 + " " + M22 + " " + M23 + " " + M24 + "\n" + 
                 M31 + " " + M32 + " " + M33 + " " + M34 + "\n" + 
-                M11 + " " + M12 + " " + M13 + " " + M14 + "\n";
+                M41 + " " + M42 + " " + M43 + " " + M44 + "\n";
     }
     //</editor-fold>
     

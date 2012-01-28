@@ -1,6 +1,7 @@
 package game.debug;
 
 import game.framework.MathHelper;
+import game.framework.Matrix;
 import game.framework.Vector2;
 import game.framework.Vector3;
 
@@ -13,9 +14,11 @@ public class MathPad
     public static void main(String[] args)
     {
         // Tests out Vector2 methods and prints the results.
-        MathPad.vector2Test();
+        //MathPad.vector2Test();
         // Tests out Vector3 methods and prints the results.
         //MathPad.vector3Test();
+        // Tests out Matrix methods and prints the results.
+        MathPad.matrixTest();
     }
     
     //<editor-fold defaultstate="collapsed" desc="Vector2 Unit Test">
@@ -167,6 +170,17 @@ public class MathPad
         System.out.println("a / 0 = " + o);
         System.out.println("a / 5.0f = " + p);
         System.out.println("a / b = " + q);
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Matrix Unit Test">
+    /**
+     * Tests out Matrix operations.
+     */
+    public static void matrixTest()
+    {
+        Matrix m = Matrix.identity();
+        System.out.println(m);
     }
     //</editor-fold>
 }

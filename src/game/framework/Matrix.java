@@ -481,11 +481,6 @@ public class Matrix
         return Matrix.multiply(this, that);
     }
     
-    public Matrix multiply(Vector4 v)
-    {
-        return null;
-    }
-    
     /**
      * Multiplies a scalar value into the Matrix.
      * @param a A Matrix we want to multiply.
@@ -514,9 +509,29 @@ public class Matrix
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Negate">
-    public static void negate()
+    /**
+     * Negates all the components of a Matrix.
+     * @param a A Matrix we want to negate.
+     * @return Returns -a.
+     */
+    public static Matrix negate(Matrix a)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return new Matrix
+                (
+                    -1 * a.M11, -1 * a.M12, -1 * a.M13, -1 * a.M14,
+                    -1 * a.M21, -1 * a.M22, -1 * a.M23, -1 * a.M24,
+                    -1 * a.M31, -1 * a.M32, -1 * a.M33, -1 * a.M34,
+                    -1 * a.M41, -1 * a.M42, -1 * a.M43, -1 * a.M44
+                );
+    }
+    
+    /**
+     * Negates all the components of this Matrix.
+     * @return Returns -this.
+     */
+    public Matrix negate()
+    {
+        return Matrix.negate(this);
     }
     //</editor-fold>
     

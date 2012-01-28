@@ -5,7 +5,6 @@ package game.framework;
  * <br />
  * <h1>Not Yet Implemented</h1>
  * <ul>
- *  <li>Add</li>
  *  <li>Create Billboard</li>
  *  <li>Create Constrained Billboard</li>
  *  <li>Create from Axis Angle</li>
@@ -143,7 +142,7 @@ public class Matrix
     
     //<editor-fold defaultstate="collapsed" desc="Add">
     /**
-     * Adds performs addition with two matrices.
+     * Performs addition with two matrices.
      * @param a A Matrix we want to add.
      * @param b A Matrix we want to add.
      * @return Returns a + b.
@@ -160,7 +159,7 @@ public class Matrix
     }
     
     /**
-     * Adds this Matrix to that Matrix
+     * Performs addition with this Matrix and that Matrix.
      * @param that A matrix we want to add.
      * @return Returns this + that.
      */
@@ -376,9 +375,31 @@ public class Matrix
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Subtract">
-    public static void subtract()
+    /**
+     * Performs subtraction between two matrices.
+     * @param a A Matrix we want to subtract from.
+     * @param b A Matrix we want to subtract with.
+     * @return Returns a - b.
+     */
+    public static Matrix subtract(Matrix a, Matrix b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return new Matrix
+                (
+                    a.M11 - b.M11, a.M12 - b.M12, a.M13 - b.M13, a.M14 - b.M14,
+                    a.M21 - b.M21, a.M22 - b.M22, a.M23 - b.M23, a.M24 - b.M24,
+                    a.M31 - b.M31, a.M32 - b.M32, a.M33 - b.M33, a.M34 - b.M34,
+                    a.M41 - b.M41, a.M42 - b.M42, a.M43 - b.M43, a.M44 - b.M44
+                );
+    }
+    
+    /**
+     * Performs subtraction between this Matrix and that Matrix.
+     * @param that A matrix we want to subtract.
+     * @return Returns this - that.
+     */
+    public Matrix subtract(Matrix that)
+    {
+        return Matrix.subtract(this, that);
     }
     //</editor-fold>
     

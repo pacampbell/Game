@@ -30,7 +30,6 @@ package game.framework;
  *  <li>Equals</li>
  *  <li>Invert</li>
  *  <li>Lerp</li>
- *  <li>Multiply</li>
  *  <li>Negate</li>
  *  <li>To String</li>
  *  <li>Transform</li>
@@ -454,7 +453,10 @@ public class Matrix
     @Override
     public String toString()
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return  M11 + " " + M12 + " " + M13 + " " + M14 + "\n" + 
+                M21 + " " + M22 + " " + M23 + " " + M24 + "\n" + 
+                M31 + " " + M32 + " " + M33 + " " + M34 + "\n" + 
+                M11 + " " + M12 + " " + M13 + " " + M14 + "\n";
     }
     //</editor-fold>
     

@@ -375,7 +375,7 @@ public class Matrix
      * Multiplies a scalar value into the Matrix.
      * @param a A Matrix we want to multiply.
      * @param scalar A scalar value we want to multiply into the provided Matrix.
-     * @return Returns scalar * Matrix.
+     * @return Returns scalar * a
      */
     public static Matrix multiply(Matrix a, float scalar)
     {
@@ -440,7 +440,7 @@ public class Matrix
     }
     
     /**
-     * Performs subtraction between this Matrix and that Matrix.
+     * Subtracts that Matrix from this Matrix.
      * @param that A matrix we want to subtract.
      * @return Returns this - that.
      */

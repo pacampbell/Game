@@ -27,7 +27,6 @@ package game.framework;
  *  <li>Decompose</li>
  *  <li>Determinant</li>
  *  <li>Divide</li>
- *  <li>Equals</li>
  *  <li>Invert</li>
  *  <li>Lerp</li>
  *  <li>Negate</li>

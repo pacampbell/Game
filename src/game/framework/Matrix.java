@@ -496,9 +496,23 @@ public class Matrix
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Invert">
-    public static void invert()
+    /**
+     * Finds the Inverse of a Matrix.
+     * @param a A Matrix we want to find the inverse of.
+     * @return Returns the inverse of a.
+     */
+    public static Matrix invert(Matrix a)
     {
         throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    
+    /**
+     * Finds the Inverse of this Matrix.
+     * @return Returns the inverse of this Matrix.
+     */
+    public Matrix invert()
+    {
+        return Matrix.invert(this);
     }
     //</editor-fold>
     

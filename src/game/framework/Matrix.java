@@ -379,9 +379,27 @@ public class Matrix
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Determinant">
-    public static void determinant()
+    /**
+     * Calculates the determinant of the matrix.
+     * @param a A Matrix we want to find the determinant of.
+     * @return Returns det A.
+     */
+    public static float determinant(Matrix a)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        float r1 =  a.M11 * ((a.M22 * (a.M23 * a.M44 - a.M34 * a.M43)) - (a.M23 * (a.M32 * a.M44 - a.M34 * a.M42)) + (a.M24 * (a.M32 * a.M43 - a.M33 * a.M42))); 
+        float r2 = -a.M12 * ((a.M21 * (a.M33 * a.M44 - a.M34 * a.M43)) - (a.M22 * (a.M31 * a.M44 - a.M34 * a.M41)) + (a.M24 * (a.M31 * a.M42 - a.M32 * a.M41)));
+        float r3 =  a.M13 * ((a.M21 * (a.M32 * a.M44 - a.M34 * a.M42)) - (a.M22 * (a.M31 * a.M44 - a.M34 * a.M41)) + (a.M24 * (a.M31 * a.M42 - a.M32 * a.M41)));
+        float r4 = -a.M14 * ((a.M21 * (a.M32 * a.M43 - a.M33 * a.M42)) - (a.M22 * (a.M31 * a.M43 - a.M33 * a.M41)) + (a.M23 * (a.M31 * a.M42 - a.M32 * a.M41)));
+        return r1 + r2 + r3 + r4;
+    }
+    
+    /**
+     * Calculates the determinant of this Matrix.
+     * @return Returns det this.
+     */
+    public float determinant()
+    {
+        return Matrix.determinant(this);
     }
     //</editor-fold>
     

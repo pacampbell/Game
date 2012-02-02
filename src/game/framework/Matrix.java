@@ -120,68 +120,73 @@ public class Matrix
     /**
      * Internal Representation of the matrix to simplify certain calculations.
      */
-    private final float[] data;
+    private final float[][] data;
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Constructors">
     /**
      * Complete Constructor
-     * @param M11
-     * @param M12
-     * @param M13
-     * @param M14
-     * @param M21
-     * @param M22
-     * @param M23
-     * @param M24
-     * @param M31
-     * @param M32
-     * @param M33
-     * @param M34
-     * @param M41
-     * @param M42
-     * @param M43
-     * @param M44 
+     * Creates a Matrix with the float[][] provided.
+     * @param data An array of float[4][4] containing the representation of a Matrix. 
+     */
+    public Matrix(float[][] data)
+    {
+        this.data = data;
+        this.M11 = data[0][0];
+        this.M12 = data[0][1];
+        this.M13 = data[0][2];
+        this.M14 = data[0][3];
+        this.M21 = data[1][0];
+        this.M22 = data[1][1];
+        this.M23 = data[1][2];
+        this.M24 = data[1][3];
+        this.M31 = data[2][0];
+        this.M32 = data[2][1];
+        this.M33 = data[2][2];
+        this.M34 = data[2][3];
+        this.M41 = data[3][0];
+        this.M42 = data[3][1]; 
+        this.M43 = data[3][2];
+        this.M44 = data[3][3];
+    }
+    
+    /**
+     * Creates a Matrix with the elements provided.
+     * @param M11 Value at row 1 column 1 of Matrix.
+     * @param M12 Value at row 1 column 2 of Matrix.
+     * @param M13 Value at row 1 column 3 of Matrix.
+     * @param M14 Value at row 1 column 4 of Matrix.
+     * @param M21 Value at row 2 column 1 of Matrix.
+     * @param M22 Value at row 2 column 2 of Matrix.
+     * @param M23 Value at row 2 column 3 of Matrix.
+     * @param M24 Value at row 2 column 4 of Matrix.
+     * @param M31 Value at row 3 column 1 of Matrix.
+     * @param M32 Value at row 3 column 2 of Matrix.
+     * @param M33 Value at row 3 column 3 of Matrix.
+     * @param M34 Value at row 3 column 4 of Matrix.
+     * @param M41 Value at row 4 column 1 of Matrix.
+     * @param M42 Value at row 4 column 2 of Matrix.
+     * @param M43 Value at row 4 column 3 of Matrix.
+     * @param M44 Value at row 4 column 4 of Matrix. 
      */
     public Matrix(float M11, float M12, float M13, float M14, 
                   float M21, float M22, float M23, float M24, 
                   float M31, float M32, float M33, float M34, 
                   float M41, float M42, float M43, float M44)
     {
-        this.M11 = M11;
-        this.M12 = M12;
-        this.M13 = M13;
-        this.M14 = M14;
-        this.M21 = M21;
-        this.M22 = M22;
-        this.M23 = M23;
-        this.M24 = M24;
-        this.M31 = M31;
-        this.M32 = M32;
-        this.M33 = M33;
-        this.M34 = M34;
-        this.M41 = M41;
-        this.M42 = M42;
-        this.M43 = M43;
-        this.M44 = M44;
-    }
-    
-    /**
-     * @param data An array of float[4][4] containing the representation of a Matrix. 
-     */
-    public Matrix(float[][] data)
-    {
         this(
-                data[0][0], data[0][1], data[0][2], data[0][3],
-                data[1][0], data[1][1], data[1][2], data[1][3],
-                data[2][0], data[2][1], data[2][2], data[2][3],
-                data[3][0], data[3][1], data[3][2], data[3][3]
-            );
+                new float[][]
+                {
+                    {M11, M12, M13, M14},
+                    {M21, M22, M23, M24},
+                    {M31, M32, M33, M34},
+                    {M41, M42, M43, M44}
+                });
     }
     
     /**
      * Copy Constructor
-     * Takes in a matrix that we want to make a copy of.
+     * Creates a new Matrix with identical properties of the Matrix provided.
      * @param matrix A Matrix we want to copy. 
      */
     public Matrix(Matrix matrix)
@@ -196,7 +201,7 @@ public class Matrix
     
     /**
      * Empty Constructor / Default Constructor
-     * Creates a 4x4 identity matrix.
+     * Creates an identity matrix.
      */
     public Matrix()
     {

@@ -552,6 +552,33 @@ public class Matrix
     {
         return Matrix.multiply(this, scalar);
     }
+    
+    /**
+     * Matrix Vector multiplication
+     * @param a A Matrix that we want to multiply.
+     * @param x A Vector4 that we want to multiply.
+     * @return Returns a Vector4 containing the product of Ax.
+     */
+    public static Vector4 multiply(Matrix a, Vector4 x)
+    {
+        return new Vector4
+                (
+                    a.M11 * x.x + a.M12 * x.y + a.M13 * x.z + a.M14 * x.w,
+                    a.M21 * x.x + a.M22 * x.y + a.M23 * x.z + a.M24 * x.w,
+                    a.M31 * x.x + a.M32 * x.y + a.M33 * x.z + a.M34 * x.w,
+                    a.M41 * x.x + a.M42 * x.y + a.M43 * x.z + a.M44 * x.w
+                );
+    }
+    
+    /**
+     * Matrix Vector multiplication
+     * @param v A Vector4 that we want to multiply with this Matrix.
+     * @return Returns a Vector4 containing the product of Ax.
+     */
+    public Vector4 multiply(Vector4 x)
+    {
+        return Matrix.multiply(this, x);
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Negate">

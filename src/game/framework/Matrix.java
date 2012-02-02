@@ -116,6 +116,11 @@ public class Matrix
      * Value at row 4 column 4 of this Matrix.
      */
     public final float M44;
+    
+    /**
+     * Internal Representation of the matrix to simplify certain calculations.
+     */
+    private final float[] data;
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Constructors">

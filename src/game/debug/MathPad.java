@@ -213,6 +213,15 @@ public class MathPad
         Matrix d = b.multiply(c);
         System.out.println(d);
         
+        float[][] four = {
+                            {3, 0, 2, -1},
+                            {1, 2, 0, -2},
+                            {4, 0, 6, -3},
+                            {5, 0, 2, 0}
+                        };
+        float det = Matrix.determinant(new Matrix(four));
+        System.out.println(det);
+        
         
     }
     //</editor-fold>

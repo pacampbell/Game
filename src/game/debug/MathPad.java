@@ -222,6 +222,14 @@ public class MathPad
         float det = Matrix.determinant(new Matrix(four));
         System.out.println(det);
         
+        Matrix[] lud = Matrix.luDecomposition(new Matrix(four));
+        System.out.println("L");
+        System.out.println(lud[0]);
+        System.out.println("U");
+        System.out.println(lud[1]);
+        System.out.println("LU");
+        System.out.println(Matrix.multiply(lud[0], lud[1]));
+        System.out.println("Determinant using LU: " + (lud[1].M11 * lud[1].M22 * lud[1].M33 * lud[1].M44));
         
     }
     //</editor-fold>

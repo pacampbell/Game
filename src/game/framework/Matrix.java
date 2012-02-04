@@ -521,7 +521,16 @@ public class Matrix
      */
     public static Matrix invert(Matrix a)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        Matrix[] lud = Matrix.luDecomposition(a);
+        float[][] t = new float[4][4];
+        for(int j = 0; j < t.length; j++)
+        {
+            for(int i = 0; i < t.length; i++)
+            {
+                t[j][i] = lud[0].data[j][i] < 0 ? -lud[0].data[j][i] : lud[0].data[j][i]; 
+            }
+        }
+        return Matrix.multiply(new Matrix(t), lud[1]);
     }
     
     /**

@@ -541,6 +541,61 @@ public class Matrix
     }
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="LU Decomposition">
+    /**
+     * Performs LU Decomposition of a Matrix.
+     * @param a A Matrix we want to perform LU decomposition on.
+     * @return Returns an array containing a lower triangular Matrix L and a upper triangular Matrix U where LU = A.
+     */
+    public static Matrix[] luDecomposition(Matrix a)
+    {
+        float l21 = a.M21 / a.M11;
+        float l31 = a.M31 / a.M11;
+        float l41 = a.M41 / a.M11;
+        
+        
+        float u22 = a.M22 - (l21 * a.M12);
+        float u23 = a.M23 - (l21 * a.M13);
+        float u24 = a.M24 - (l21 * a.M14);
+        
+        float l32 = (a.M32 - (l31 * a.M12)) / u22;
+        float u33 = a.M33 - (l31 * a.M13) - (l32 * u23);
+        float u34 = a.M34 - (l31 * a.M14) - (l32 * u24);
+        
+        float l42 = (a.M42 - (l41 * a.M12)) / u22;
+        float l43 = (a.M43 - (l41 * a.M13) - (l42 * u23)) / u33;
+        float u44 = a.M44 - (l41 * a.M14) - (l43 * u34);
+        
+        
+        Matrix l = new Matrix(new float[][]
+        {
+            {1  ,   0,   0, 0},
+            {l21,   1,   0, 0},
+            {l31, l32,   1, 0},
+            {l41, l42, l43, 1}
+        });
+        
+        Matrix u = new Matrix(new float[][]
+        {
+            {a.M11, a.M12, a.M13, a.M14},
+            {0    ,   u22,   u23,   u24},
+            {0    ,     0,   u33,   u34},
+            {0    ,     0,     0,   u44}
+        });
+        
+        return new Matrix[]{l, u};
+    }
+    
+    /**
+     * Performs LU Decomposition of this Matrix.
+     * @return Returns an array containing a lower triangular Matrix and a upper triangular Matrix.
+     */
+    public Matrix[] luDecomposition()
+    {
+        return Matrix.luDecomposition(this);
+    }
+    //</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="Multiply">
     /**
      * Perform Matrix multiplication between two matrices.

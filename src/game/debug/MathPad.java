@@ -231,6 +231,10 @@ public class MathPad
         System.out.println(Matrix.multiply(lud[0], lud[1]));
         System.out.println("Determinant using LU: " + (lud[1].M11 * lud[1].M22 * lud[1].M33 * lud[1].M44));
         
+        Matrix inverse = Matrix.invert(new Matrix(four));
+        System.out.println("Inverse");
+        System.out.println(inverse);
+        
     }
     //</editor-fold>
 }

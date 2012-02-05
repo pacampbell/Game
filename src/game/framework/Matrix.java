@@ -79,7 +79,7 @@ public class Matrix implements Serializable
         Matrix sum = null;
         if(a.ROWS == b.ROWS && a.COLUMNS == b.COLUMNS)
         {
-            float[][] ws = new float[a.COLUMNS][a.ROWS];
+            float[][] ws = new float[a.ROWS][a.COLUMNS];
             for(int j = 0; j < a.ROWS; ++j)
             {
                 for(int i = 0; i < a.COLUMNS; ++i)
@@ -234,7 +234,7 @@ public class Matrix implements Serializable
         Matrix sum = null;
         if(a.ROWS == b.ROWS && a.COLUMNS == b.COLUMNS)
         {
-            float[][] ws = new float[a.COLUMNS][a.ROWS];
+            float[][] ws = new float[a.ROWS][a.COLUMNS];
             for(int j = 0; j < a.ROWS; ++j)
             {
                 for(int i = 0; i < a.COLUMNS; ++i)

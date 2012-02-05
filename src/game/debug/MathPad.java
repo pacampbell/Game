@@ -217,6 +217,13 @@ public class MathPad
             {4, 1, -1, 11},
         };
         
+        float[][] ex5 = {
+            {2, 4, -1, 5, -2},
+            {-4, -5, 3, -8, 1},
+            {2, -5, -4, 1, 8},
+            {-6, 0, 7, -3, 1}
+        };
+        
         Matrix a = new Matrix(one);
         Matrix b = new Matrix(two);
         Matrix c = new Matrix(three);
@@ -224,6 +231,7 @@ public class MathPad
         Matrix z = new Matrix(zeros);
         Matrix e = new Matrix(five);
         Matrix f = new Matrix(six);
+        Matrix example5 = new Matrix(ex5);
         
         System.out.println("A");
         System.out.println(a);
@@ -240,6 +248,9 @@ public class MathPad
         System.out.println("RREF");
         System.out.println(f.rref());
         System.out.println("Rank of f = " + f.rank());
+        System.out.println("REF ex5");
+        System.out.println(example5.ref());
+        System.out.println(example5.rref());
     }
     
     //<editor-fold defaultstate="collapsed" desc="Matrix4 Unit Test">

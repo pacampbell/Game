@@ -206,7 +206,7 @@ public class Matrix implements Serializable
      * @param b A matrix we want to multiply.
      * @return Returns a * b.
      */
-    public Matrix multiply(Matrix a, Matrix b)
+    public static Matrix multiply(Matrix a, Matrix b)
     {
         Matrix product = null;
         if(a.COLUMNS == b.ROWS)
@@ -234,7 +234,7 @@ public class Matrix implements Serializable
      */
     public Matrix multiply(Matrix that)
     {
-        return Matrix.divide(this, that);
+        return Matrix.multiply(this, that);
     }
     //</editor-fold>
     

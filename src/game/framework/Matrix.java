@@ -407,15 +407,15 @@ public class Matrix implements Serializable
     }
     //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc="Reduced Row Echelon Form (rref)">
+    //<editor-fold defaultstate="collapsed" desc="Row Echelon Form (ref)">
     /**
      * Step 1: Check for a row containing all zeros
      * Step 2: If a11 is zero swap places with another row to make it non-zero
      * Step 3: Start going through each row and setting up the pivot points through. Repeat until done.
-     * @param a A Matrix we want to find the Reduced Row Echelon Form of.
-     * @return Returns a Matrix in Reduced Row Echelon Form. 
+     * @param a A Matrix we want to find the Row Echelon Form of.
+     * @return Returns a Matrix in Row Echelon Form. 
      */
-    public static Matrix rref(Matrix a)
+    public static Matrix ref(Matrix a)
     {
         // Search to see if we have any rows that are all zero.
         // If there are any rows that contain all zero, we will swap them.
@@ -433,8 +433,7 @@ public class Matrix implements Serializable
         float scalar = 1;
         boolean skip = false;
         // Start Work!
-        //ws.length
-        for(int j = 0; j < 1; ++j)
+        for(int j = 0; j < ws.length; ++j)
         {
             // Find the pivot (first non-zero number in the row)
             for(int k = 0; k < ws[0].length; ++k)
@@ -454,7 +453,7 @@ public class Matrix implements Serializable
                     }
             }
             // If the Pivot was not one we need to do some work.
-            if(!skip)
+            if(!skip && !Matrix.zeroRow(ws, j))
             {
                 // multiply the row by the inverse of the pivot
                 workingRow = Matrix.multiplyRow(ws[j], inverseSign / ws[j][pivotIndex]);
@@ -463,44 +462,29 @@ public class Matrix implements Serializable
                 System.out.println("=== Normalize Pivot ===");
                 System.out.println(new Matrix(ws));
             }
-            System.out.println("J + 1 = " + (j + 1));
             // Make the values under the pivot zero.
-            for(int i = j + 1; i < ws.length; ++i)
+            for(int i = pivotIndex + 1; i < ws.length; ++i)
             {
-                scalar = ws[i][j] > 0 ? -1 : 1;
-                workingRow = Matrix.multiplyRow(ws[j], scalar * ws[i][j]);
-                System.out.println("Row After Multiplication");
-                for(int z = 0; z < workingRow.length; z++)
-                    System.out.print(workingRow[z] + " ");
-                System.out.println("");
-                System.out.println("Workingset after multilication");
-                for(int z = 0; z < workingRow.length; z++)
-                    System.out.print(ws[j][z] + " ");
-                System.out.println("");
-                
+                scalar = ws[i][pivotIndex] > 0 ? -1 : 1;
+                workingRow = Matrix.multiplyRow(ws[pivotIndex], scalar * ws[i][pivotIndex]);
                 workingRow = Matrix.addRow(workingRow, ws[i]);
                 Matrix.replaceRow(ws, i, workingRow);
                 System.out.println("=== Cancel out " + i + " ===");
                 System.out.println(new Matrix(ws));
             }
-            
-            
-            
-            System.out.println("Iteration " + j);
-            System.out.println(new Matrix(ws));
             skip = false; // reset skip
         }
-        
+        // Matrix is now in echelon form
         return new Matrix(ws);
     }
     
     /**
-     * Finds the Reduced Row Echelon Form(rref) of this Matrix.
-     * @return Returns a Matrix in Reduced Row Echelon Form.
+     * Finds the Row Echelon Form(ref) of this Matrix.
+     * @return Returns a Matrix in Row Echelon Form.
      */
-    public Matrix rref()
+    public Matrix ref()
     {
-        return Matrix.rref(this);
+        return Matrix.ref(this);
     }
     //</editor-fold>
  

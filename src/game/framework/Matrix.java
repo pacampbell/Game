@@ -208,9 +208,9 @@ public class Matrix implements Serializable
      */
     private static float[] multiplyRow(float[] row, float scalar)
     {
-        float[] ws = row;
+        float[] ws = new float[row.length];
         for(int i = 0; i < row.length; i++)
-            ws[i] = ws[i] * scalar;
+            ws[i] = row[i] * scalar;
         return ws;
     }
     
@@ -433,7 +433,8 @@ public class Matrix implements Serializable
         float scalar = 1;
         boolean skip = false;
         // Start Work!
-        for(int j = 0; j < ws.length; ++j)
+        //ws.length
+        for(int j = 0; j < 1; ++j)
         {
             // Find the pivot (first non-zero number in the row)
             for(int k = 0; k < ws[0].length; ++k)
@@ -459,17 +460,30 @@ public class Matrix implements Serializable
                 workingRow = Matrix.multiplyRow(ws[j], inverseSign / ws[j][pivotIndex]);
                 // Replace the row by its scaled Value
                 Matrix.replaceRow(ws, j, workingRow);
+                System.out.println("=== Normalize Pivot ===");
+                System.out.println(new Matrix(ws));
             }
-            /*
+            System.out.println("J + 1 = " + (j + 1));
             // Make the values under the pivot zero.
             for(int i = j + 1; i < ws.length; ++i)
             {
-                scalar = ws[i][j] < 0 ? -1 : 1;
+                scalar = ws[i][j] > 0 ? -1 : 1;
                 workingRow = Matrix.multiplyRow(ws[j], scalar * ws[i][j]);
+                System.out.println("Row After Multiplication");
+                for(int z = 0; z < workingRow.length; z++)
+                    System.out.print(workingRow[z] + " ");
+                System.out.println("");
+                System.out.println("Workingset after multilication");
+                for(int z = 0; z < workingRow.length; z++)
+                    System.out.print(ws[j][z] + " ");
+                System.out.println("");
+                
                 workingRow = Matrix.addRow(workingRow, ws[i]);
                 Matrix.replaceRow(ws, i, workingRow);
+                System.out.println("=== Cancel out " + i + " ===");
+                System.out.println(new Matrix(ws));
             }
-            */
+            
             
             
             System.out.println("Iteration " + j);

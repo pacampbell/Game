@@ -223,11 +223,35 @@ public class Matrix implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Subtract">
+    /**
+     * Performs subtraction between two Matrices.
+     * @param a A Matrix to be subtracted from.
+     * @param b A Matrix to subtract by. 
+     * @return Returns a - b.
+     */
     public static Matrix subtract(Matrix a, Matrix b)
     {
-        return null;
+        Matrix sum = null;
+        if(a.ROWS == b.ROWS && a.COLUMNS == b.COLUMNS)
+        {
+            float[][] ws = new float[a.COLUMNS][a.ROWS];
+            for(int j = 0; j < a.ROWS; ++j)
+            {
+                for(int i = 0; i < a.COLUMNS; ++i)
+                {
+                    ws[j][i] = a.data[j][i] - b.data[j][i];
+                }
+            }
+            sum = new Matrix(ws);
+        }
+        return sum;
     }
     
+    /**
+     * Performs subtraction between this Matrix and that Matrix. 
+     * @param that A Matrix to subtract by.
+     * @return Returns this - that.
+     */
     public Matrix subtract(Matrix that)
     {
         return Matrix.subtract(this, that);

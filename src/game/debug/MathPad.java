@@ -196,10 +196,18 @@ public class MathPad
             {5,6}
         };
         
+        float[][] zeros ={
+            {1, 2, 3, 4},
+            {0, 0, 0, 0},
+            {5, 6, 7, 8},
+            {0, 0, 0, 0}
+        };
+        
         Matrix a = new Matrix(one);
         Matrix b = new Matrix(two);
         Matrix c = new Matrix(three);
         Matrix d = new Matrix(four);
+        Matrix z = new Matrix(zeros);
         
         System.out.println("A");
         System.out.println(a);
@@ -211,6 +219,8 @@ public class MathPad
         System.out.println(b.transpose());
         System.out.println("C * D");
         System.out.println(c.multiply(d));
+        System.out.println("RREF");
+        System.out.println(c.rref());
     }
     
     //<editor-fold defaultstate="collapsed" desc="Matrix4 Unit Test">

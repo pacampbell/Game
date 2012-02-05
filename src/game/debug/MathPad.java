@@ -239,6 +239,7 @@ public class MathPad
         System.out.println(f.ref());
         System.out.println("RREF");
         System.out.println(f.rref());
+        System.out.println("Rank of f = " + f.rank());
     }
     
     //<editor-fold defaultstate="collapsed" desc="Matrix4 Unit Test">

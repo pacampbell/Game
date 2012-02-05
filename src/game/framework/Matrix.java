@@ -356,13 +356,23 @@ public class Matrix implements Serializable
     {
         // Search to see if we have any rows that are all zero.
         // If there are any rows that contain all zero, we will swap them.
-        System.out.println("A Before");
-        System.out.println(a);
-        
         float[][] ws = Matrix.swapZeros(a.data);
-        
-        System.out.println("A After");
-        System.out.println(new Matrix(ws));
+        // Check to see if a11 is zero.
+        if(ws[0][0] == 0)
+            // try to find a row that the first element is not zero.
+            for(int i = 1; i < ws.length; ++i)
+                if(ws[i][0] != 0)
+                    Matrix.swapRows(ws, 0, i);
+        // Use gaussian elimination to reduce the rows.
+        int pivotIndex = 0;
+        for(int j = 0; j < ws.length; ++j)
+        {
+            // Find the pivot (first non-zero number in the row)
+            for(int k = 0; k < ws[0].length; ++k)
+                    if(ws[j][k] != 0)
+                        pivotIndex = k;
+            // multiply the row by the inverse of the pivot   
+        }
         
         return new Matrix(ws);
     }

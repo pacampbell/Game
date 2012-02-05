@@ -396,11 +396,33 @@ public class Matrix implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Rank">
+    /**
+     * Computes the rank of the provided Matrix.
+     * @param a A Matrix we want to find the rank of.
+     * @return Returns the ran of the Matrix.
+     */
     public static int rank(Matrix a)
     {
-        return 0;
+        Matrix rref = Matrix.rref(a);
+        int rank = 0;
+        for(int j = 0; j < rref.ROWS; ++j)
+        {
+            for(int i = 0; i < rref.COLUMNS; ++i)
+            {
+                if(rref.data[j][i] == 0)
+                {
+                    ++rank;
+                    break;
+                }
+            }
+        }
+        return rank;
     }
     
+    /**
+     * Computes the rank of this Matrix.
+     * @return Returns the rank of this Matrix.
+     */
     public int rank()
     {
         return Matrix.rank(this);

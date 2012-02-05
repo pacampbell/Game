@@ -183,28 +183,59 @@ public class Matrix implements Serializable
     
     //<editor-fold defaultstate="collapsed" desc="Helper Methods">
     /**
-     * Search an array to see if any rows contain all zero.
-     * @param a A Matrix we want to search for all zero rows.
-     * @return Returns an array listing which rows contain all zeros.
+     * Moves all rows containing all zero to the bottom of the Matrix.
+     * @param a A float[][] containing the data of a Matrix. 
+     * @return Returns A Matrix with zeros in the proper locations for methods like rref.
      */
-    private static boolean[] findZeros(Matrix a)
+    private static float[][] swapZeros(float[][] a)
     {
-        boolean[] zeros = new boolean[a.ROWS];
-        // Search for any rows containing all zeros.
-        for(int j = 0; j < a.ROWS; ++j)
+        float[][] ws = a; 
+        for(int i = 0; i < a.length; ++i)
         {
-            int count = 0;
-            for(int i = 0; i < a.COLUMNS; ++i)
+            if(Matrix.zeroRow(ws, i))
             {
-                if(a.data[j][i] == 0)
-                    ++count;
+                for(int j = ws.length - 1; j >=0; --j)
+                {
+                    if(!Matrix.zeroRow(a, j))
+                    {
+                        ws = Matrix.swapRows(a, i, j);
+                    }
+                }
             }
-            if(count == a.COLUMNS)
-                zeros[j] = true;
         }
-        return zeros;
+        return ws;
     }
     
+    /**
+     * Swaps the rows of a float[][].
+     * @param a A float[][] containing the data we want to swap the rows of.
+     * @param r1 The index of a row we want to swap.
+     * @param r2 The index of a row we want to swap.
+     * @return Returns a float[][] with the desired rows swapped.
+     */
+    private static float[][] swapRows(float[][] a, int r1, int r2)
+    {
+        float[][] ws = a;
+        for(int i = 0; i < a[0].length; ++i)
+            ws[r1][i] = a[r2][i];
+        for(int i = 0; i < a[0].length; ++i)
+            ws[r2][i] = a[r1][i];
+        return ws;
+    }
+    
+    /**
+     * Checks to see if a row is zero.
+     * @param a A float[][] containing the data of a Matrix.
+     * @param row The row index that we want to check.
+     * @return Returns true if the row is all zeros.
+     */
+    private static boolean zeroRow(float[][] a, int row)
+    {
+        boolean zero = false;
+        for(int i = 0; i < a[0].length; ++i)
+            zero &= a[row][i] == 0;
+        return zero;
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Inverse">
@@ -318,17 +349,20 @@ public class Matrix implements Serializable
      * Step 2: If a11 is zero swap places with another row to make it non-zero
      * Step 3: Start going through each row and setting up the pivot points through. Repeat until done.
      * @param a A Matrix we want to find the Reduced Row Echelon Form of.
-     * @return Returns the Reduced Row Echelon Form of A. 
+     * @return Returns a Matrix in Reduced Row Echelon Form. 
      */
     public static Matrix rref(Matrix a)
     {
-        Matrix rref = null;
-        boolean[] zeroRows = Matrix.findZeros(a);
-        for(int i = 0; i < zeroRows.length; ++i)
-            System.out.println("Is row[" + i + "] zero?" + zeroRows[i]);
-        return rref;
+        // Search to see if we have any rows that are all zero.
+        // If there are any rows that contain all zero, we will swap them.
+        float[][] ws = Matrix.swapZeros(a.data);
+        return new Matrix(ws);
     }
     
+    /**
+     * Finds the Reduced Row Echelon Form(rref) of this Matrix.
+     * @return Returns a Matrix in Reduced Row Echelon Form.
+     */
     public Matrix rref()
     {
         return Matrix.rref(this);

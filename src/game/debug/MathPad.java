@@ -203,11 +203,20 @@ public class MathPad
             {0, 0, 0, 0}
         };
         
+        float[][] five ={
+            {7, 2, 0, 1},
+            {4, 9, 3, -3},
+            {1, 1, 2, 3},
+            {0, 0, 0, 0},
+            {5, 8, 13, 21}
+        };
+        
         Matrix a = new Matrix(one);
         Matrix b = new Matrix(two);
         Matrix c = new Matrix(three);
         Matrix d = new Matrix(four);
         Matrix z = new Matrix(zeros);
+        Matrix e = new Matrix(five);
         
         System.out.println("A");
         System.out.println(a);

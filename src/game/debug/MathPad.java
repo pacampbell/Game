@@ -228,8 +228,8 @@ public class MathPad
         System.out.println(b.transpose());
         System.out.println("C * D");
         System.out.println(c.multiply(d));
-        System.out.println("RREF");
-        System.out.println(e.rref());
+        System.out.println("REF");
+        System.out.println(e.ref());
     }
     
     //<editor-fold defaultstate="collapsed" desc="Matrix4 Unit Test">

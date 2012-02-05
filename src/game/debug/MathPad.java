@@ -220,7 +220,7 @@ public class MathPad
         System.out.println("C * D");
         System.out.println(c.multiply(d));
         System.out.println("RREF");
-        System.out.println(c.rref());
+        System.out.println(z.rref());
     }
     
     //<editor-fold defaultstate="collapsed" desc="Matrix4 Unit Test">

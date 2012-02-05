@@ -26,10 +26,12 @@ import java.io.Serializable;
  */
 public class Matrix implements Serializable 
 {
+    //<editor-fold defaultstate="collapsed" desc="Properties">
     /**
      * 2D array of floats representing the data in the Matrix.
      */
     public final float[][] data;
+    //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Constructors">
     /**

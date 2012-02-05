@@ -7,19 +7,13 @@ import java.io.Serializable;
  * <br />
  * <h1>Not Yet Implemented</h1>
  * <ul>
- *  <li>Add</li>
  *  <li>Determinant</li>
- *  <li>Divide</li>
  *  <li>Equals</li>
  *  <li>Identity</li>
  *  <li>Inverse</li>
  *  <li>LU-Decomposition</li>
- *  <li>Multiply</li>
  *  <li>Rank</li>
  *  <li>Reduced Row Echelon Form</li>
- *  <li>Subtract</li>
- *  <li>To-String</li>
- *  <li>Transpose</li>
  * </ul>
  * @version incomplete
  * @author mike, paul
@@ -116,21 +110,64 @@ public class Matrix implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Divide">
+    /**
+     * Divides each component of a Matrix by a scalar value.
+     * @param a A Matrix we want to divide.
+     * @param scalar A scalar value we want to divide by.
+     * @return Returns a / scalar.
+     */
     public static Matrix divide(Matrix a, float scalar)
     {
-        return null;
+        float[][] ws = new float[a.ROWS][a.COLUMNS];
+        for(int j = 0; j < a.ROWS; ++j)
+        {
+            for(int i = 0; i < a.COLUMNS; ++i)
+            {
+                ws[j][i] = a.data[j][i] / scalar; 
+            }
+        }
+        return new Matrix(ws);
     }
     
+    /**
+     * Divides each component of this Matrix by a scalar value.
+     * @param scalar A scalar value we want to divide by.
+     * @return Returns this / scalar.
+     */
     public Matrix divide(float scalar)
     {
         return Matrix.divide(this, scalar);
     }
     
+    /**
+     * b Matrix divides a Matrix component wise.
+     * @param a A Matrix we want to divide.
+     * @param b A Matrix we want to divide. 
+     * @return Returns a / b.
+     */
     public static Matrix divide(Matrix a, Matrix b)
     {
-        return null;
+        Matrix quotient = null;
+        if(a.ROWS == b.ROWS && a.COLUMNS == b.COLUMNS)
+        {
+            float[][] ws = new float[a.ROWS][a.COLUMNS];
+            for(int j = 0; j < a.ROWS; ++j)
+            {
+                for(int i = 0; i < a.COLUMNS; ++i)
+                {
+                    ws[j][i] = a.data[j][i] / b.data[j][i]; 
+                }
+            }
+            quotient = new Matrix(ws);
+        }
+        return quotient;
     }
     
+    /**
+     * that Matrix divides this Matrix component wise.
+     * @param that A Matrix we want to divide.
+     * @return Returns this / that.
+     */
     public Matrix divide(Matrix that)
     {
         return Matrix.divide(this, that);

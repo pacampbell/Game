@@ -11,8 +11,6 @@ import java.io.Serializable;
  *  <li>Equals</li>
  *  <li>Inverse</li>
  *  <li>LU-Decomposition</li>
- *  <li>Rank</li>
- *  <li>Reduced Row Echelon Form</li>
  * </ul>
  * @version incomplete
  * @author mike, paul

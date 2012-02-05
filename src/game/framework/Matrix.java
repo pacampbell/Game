@@ -267,18 +267,32 @@ public class Matrix implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Transpose">
+    /**
+     * Creates the transpose of a Matrix.
+     * @param a A Matrix we want to transpose.
+     * @return Returns the transpose of A.
+     */
     public static Matrix transpose(Matrix a)
     {
-        return null;
+        float[][] t = new float[a.COLUMNS][a.ROWS];
+        for(int j = 0; j < a.ROWS; ++j)
+        {
+            for(int i = 0; i < a.COLUMNS; ++i)
+            {
+                t[i][j] = a.data[j][i];
+            }
+        }
+        return new Matrix(t);
     }
     
+    /**
+     * Creates the transpose of this Matrix.
+     * @return Returns the transpose of this.
+     */
     public Matrix transpose()
     {
         return Matrix.transpose(this);
     }
     //</editor-fold>
-    
-    
-    
     
 }

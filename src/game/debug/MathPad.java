@@ -1,7 +1,7 @@
 package game.debug;
 
 import game.framework.MathHelper;
-import game.framework.Matrix;
+import game.framework.Matrix4;
 import game.framework.Vector2;
 import game.framework.Vector3;
 
@@ -179,7 +179,7 @@ public class MathPad
      */
     public static void matrixTest()
     {
-        Matrix m = Matrix.identity();
+        Matrix4 m = Matrix4.identity();
         System.out.println(m);
         
         float[][] one = {
@@ -188,7 +188,7 @@ public class MathPad
                             {1, 1, 1, 1},
                             {1, 1, 1, 1}
                         };
-        Matrix a = new Matrix(one);
+        Matrix4 a = new Matrix4(one);
         
         System.out.println(a);
         a = a.multiply(5.0f);
@@ -208,9 +208,9 @@ public class MathPad
                             {6, 5, 4, 3}
                         };
         
-        Matrix b = new Matrix(two);
-        Matrix c = new Matrix(three);
-        Matrix d = b.multiply(c);
+        Matrix4 b = new Matrix4(two);
+        Matrix4 c = new Matrix4(three);
+        Matrix4 d = b.multiply(c);
         System.out.println(d);
         
         float[][] four = {
@@ -219,19 +219,19 @@ public class MathPad
                             {4, 0, 6, -3},
                             {5, 0, 2, 0}
                         };
-        float det = Matrix.determinant(new Matrix(four));
+        float det = Matrix4.determinant(new Matrix4(four));
         System.out.println(det);
         
-        Matrix[] lud = Matrix.luDecomposition(new Matrix(four));
+        Matrix4[] lud = Matrix4.luDecomposition(new Matrix4(four));
         System.out.println("L");
         System.out.println(lud[0]);
         System.out.println("U");
         System.out.println(lud[1]);
         System.out.println("LU");
-        System.out.println(Matrix.multiply(lud[0], lud[1]));
+        System.out.println(Matrix4.multiply(lud[0], lud[1]));
         System.out.println("Determinant using LU: " + (lud[1].M11 * lud[1].M22 * lud[1].M33 * lud[1].M44));
         
-        Matrix inverse = Matrix.invert(new Matrix(four));
+        Matrix4 inverse = Matrix4.invert(new Matrix4(four));
         System.out.println("Inverse");
         System.out.println(inverse);
         

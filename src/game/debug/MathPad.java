@@ -230,6 +230,8 @@ public class MathPad
         System.out.println(c.multiply(d));
         System.out.println("REF");
         System.out.println(e.ref());
+        System.out.println("RREF");
+        System.out.println(e.rref());
     }
     
     //<editor-fold defaultstate="collapsed" desc="Matrix4 Unit Test">

@@ -31,6 +31,16 @@ public class Matrix implements Serializable
      * 2D array of floats representing the data in the Matrix.
      */
     public final float[][] data;
+    
+    /**
+     * A integer that contains the number of rows in the Matrix.
+     */
+    public final int ROWS; 
+    
+    /**
+     * A integer that contains the number of columns in the Matrix.
+     */
+    public final int COLUMNS;
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Constructors">
@@ -42,6 +52,8 @@ public class Matrix implements Serializable
     public Matrix(float[][] data)
     {
         this.data = data;
+        this.ROWS = data.length;
+        this.COLUMNS = data[0].length;
     }
     
     /**

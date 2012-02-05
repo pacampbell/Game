@@ -447,44 +447,42 @@ public class Matrix implements Serializable
                 if(ws[i][0] != 0)
                     Matrix.swapRows(ws, 0, i);
         // Use gaussian elimination to reduce the rows.
-        int pivotIndex = 0;
-        float[] workingRow = null;
-        float sign = 1;
+        float[] tempRow;
+        int pivot = 0;
+        float sign;
         boolean skip = false;
         // Start Work!
-        for(int j = 0; j < ws.length; ++j)
+        for(int i = 0; i < ws.length; i++)
         {
-            // Find the pivot (first non-zero number in the row)
-            for(int k = 0; k < ws[0].length; ++k)
+            // Find the pivot(first non-zero entry in the row)
+            for(int k = 0; k < ws[0].length; k++)
             {
-                    if(ws[j][k] != 0)
-                    {
-                        pivotIndex = k;
-                        // if The pivot is already 1 we dont need to scale the row.
-                        if(ws[j][k] == 1)
-                            skip = true;
-                        // Figure out the sign we need to scale by.
-                        //sign = ws[j][k] < 0 ? -1 : 1;
-                        break;
-                    }
+                // Found a Pivot
+                if(ws[i][k] > 0)
+                {
+                    pivot = k;
+                    skip = ws[i][k] == 1 ? true : false; 
+                    break;
+                }
             }
-            // If the Pivot was not one we need to do some work.
-            if(!skip && !Matrix.zeroRow(ws, j))
+            // Normalize the Pivot
+            if(!skip && !Matrix.zeroRow(ws, i))
             {
                 // multiply the row by the inverse of the pivot
-                workingRow = Matrix.multiplyRow(ws[j], 1 / ws[j][pivotIndex]);
+                tempRow = Matrix.multiplyRow(ws[i], 1 / ws[i][pivot]);
                 // Replace the row by its scaled Value
-                Matrix.replaceRow(ws, j, workingRow);
+                Matrix.replaceRow(ws, i, tempRow);
             }
-            // Make the values under the pivot zero.
-            for(int i = pivotIndex + 1; i < ws.length; ++i)
+            // Convert Values under the pivot to zero.
+            for(int j = i + 1; j < ws.length; j++)
             {
-                sign = ws[i][pivotIndex] > 0 ? -1 : 1;
-                workingRow = Matrix.multiplyRow(ws[pivotIndex], sign * ws[i][pivotIndex]);
-                workingRow = Matrix.addRow(workingRow, ws[i]);
-                Matrix.replaceRow(ws, i, workingRow);
+                sign = ws[j][i] > 0 ? -1 : 1;
+                tempRow = Matrix.multiplyRow(ws[i], sign * ws[j][i]);
+                tempRow = Matrix.addRow(tempRow, ws[j]);
+                Matrix.replaceRow(ws, i, tempRow);
             }
-            skip = false; // reset skip
+            // Reset the skip flag
+            skip = false;
         }
         return new Matrix(ws);
     }

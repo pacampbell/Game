@@ -181,6 +181,32 @@ public class Matrix implements Serializable
     }
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Helper Methods">
+    /**
+     * Search an array to see if any rows contain all zero.
+     * @param a A Matrix we want to search for all zero rows.
+     * @return Returns an array listing which rows contain all zeros.
+     */
+    private static boolean[] findZeros(Matrix a)
+    {
+        boolean[] zeros = new boolean[a.ROWS];
+        // Search for any rows containing all zeros.
+        for(int j = 0; j < a.ROWS; ++j)
+        {
+            int count = 0;
+            for(int i = 0; i < a.COLUMNS; ++i)
+            {
+                if(a.data[j][i] == 0)
+                    ++count;
+            }
+            if(count == a.COLUMNS)
+                zeros[j] = true;
+        }
+        return zeros;
+    }
+    
+    //</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="Inverse">
     public static Matrix inverse(Matrix a)
     {
@@ -287,9 +313,20 @@ public class Matrix implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Reduced Row Echelon Form (rref)">
+    /**
+     * Step 1: Check for a row containing all zeros
+     * Step 2: If a11 is zero swap places with another row to make it non-zero
+     * Step 3: Start going through each row and setting up the pivot points through. Repeat until done.
+     * @param a A Matrix we want to find the Reduced Row Echelon Form of.
+     * @return Returns the Reduced Row Echelon Form of A. 
+     */
     public static Matrix rref(Matrix a)
     {
-        return null;
+        Matrix rref = null;
+        boolean[] zeroRows = Matrix.findZeros(a);
+        for(int i = 0; i < zeroRows.length; ++i)
+            System.out.println("Is row[" + i + "] zero?" + zeroRows[i]);
+        return rref;
     }
     
     public Matrix rref()

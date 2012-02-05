@@ -517,20 +517,51 @@ public class Matrix
     /**
      * Finds the Inverse of a Matrix.
      * @param a A Matrix we want to find the inverse of.
-     * @return Returns the inverse of a.
+     * @return Returns the inverse of a. If no inverse exists a null Matrix is returned.
      */
     public static Matrix invert(Matrix a)
     {
         Matrix[] lud = Matrix.luDecomposition(a);
-        float[][] t = new float[4][4];
-        for(int j = 0; j < t.length; j++)
+        Matrix inverse = null;
+        if((lud[1].M11 * lud[1].M22 * lud[1].M33 * lud[1].M44) != 0)
         {
-            for(int i = 0; i < t.length; i++)
+            /**
+             * Solve L * Z = C
+             * Solve U * B = Z
+             * B = i-th Column of the Inverse Matrix
+             */
+            Matrix identity = Matrix.identity();
+            float[] z = new float[4];
+            float[] c = new float[4];
+            float[] b = new float[4];
+            float[][] finverse = new float[4][4];
+            
+            for(int col = 0; col < z.length; ++col)
             {
-                t[j][i] = lud[0].data[j][i] < 0 ? -lud[0].data[j][i] : lud[0].data[j][i]; 
+                for(int row = 0; row < identity.data.length; ++row)
+                {
+                    c[row] = identity.data[row][col];
+                }
+                
+                z[0] = c[0]; // Z1 will always be equal to c1 at this stage.
+                z[1] = -(lud[0].M21 * z[0]);
+                z[2] = -(lud[0].M31 * z[0]) - (lud[0].M32 * z[1]);
+                z[3] = -(lud[0].M41 * z[0]) - lud[0].M42 * z[1] - lud[0].M43 * z[2]; 
+                
+                b[3] = z[3] / lud[1].M44;
+                b[2] = (z[2] - (lud[1].M34 * b[3])) / lud[1].M33;
+                b[1] = (z[1] - (lud[1].M23 * b[2]) - (lud[1].M24 * b[3])) / lud[1].M22;
+                b[0] = (z[0] - (lud[1].M12 * b[1]) - (lud[1].M13 * b[2]) - (lud[1].M14 * b[3])) /  lud[1].M11;
+                
+                for(int i = 0; i < b.length; ++i)
+                    finverse[i][col] = b[i];
+                
+                z = b = new float[4];
             }
+            inverse = new Matrix(finverse);
+            
         }
-        return Matrix.multiply(new Matrix(t), lud[1]);
+        return inverse;
     }
     
     /**

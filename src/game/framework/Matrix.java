@@ -407,18 +407,6 @@ public class Matrix implements Serializable
     }
     //</editor-fold>
  
-    //<editor-fold defaultstate="collapsed" desc="Reduced Row Echelon Form (rref)">
-    public static Matrix rref(Matrix a)
-    {
-        return null;
-    }
-    
-    public Matrix rref()
-    {
-        return Matrix.rref(this);
-    }
-    //</editor-fold>
-    
     //<editor-fold defaultstate="collapsed" desc="Row Echelon Form (ref)">
     /**
      * Step 1: Check for a row containing all zeros
@@ -471,8 +459,6 @@ public class Matrix implements Serializable
                 workingRow = Matrix.multiplyRow(ws[j], inverseSign / ws[j][pivotIndex]);
                 // Replace the row by its scaled Value
                 Matrix.replaceRow(ws, j, workingRow);
-                System.out.println("=== Normalize Pivot ===");
-                System.out.println(new Matrix(ws));
             }
             // Make the values under the pivot zero.
             for(int i = pivotIndex + 1; i < ws.length; ++i)
@@ -481,8 +467,6 @@ public class Matrix implements Serializable
                 workingRow = Matrix.multiplyRow(ws[pivotIndex], scalar * ws[i][pivotIndex]);
                 workingRow = Matrix.addRow(workingRow, ws[i]);
                 Matrix.replaceRow(ws, i, workingRow);
-                System.out.println("=== Cancel out " + i + " ===");
-                System.out.println(new Matrix(ws));
             }
             skip = false; // reset skip
         }
@@ -496,6 +480,30 @@ public class Matrix implements Serializable
     public Matrix ref()
     {
         return Matrix.ref(this);
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Reduced Row Echelon Form (rref)">
+    /**
+     * Finds the Reduced Row Echelon Form(rref) of the provided Matrix.
+     * @param a A Matrix we want to find the rref of.
+     * @return Returns a Matrix in Reduced Row Echelon Form.
+     */
+    public static Matrix rref(Matrix a)
+    {
+        Matrix ref = Matrix.ref(a);
+        System.out.println(ref);
+        
+        return null;
+    }
+    
+    /**
+     * Finds the Reduced Row Echelon Form(rref) of this Matrix.
+     * @return Returns a Matrix in Reduced Row Echelon Form.
+     */
+    public Matrix rref()
+    {
+        return Matrix.rref(this);
     }
     //</editor-fold>
  

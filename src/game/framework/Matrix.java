@@ -448,9 +448,8 @@ public class Matrix implements Serializable
                     Matrix.swapRows(ws, 0, i);
         // Use gaussian elimination to reduce the rows.
         int pivotIndex = 0;
-        float inverseSign = 1;
         float[] workingRow = null;
-        float scalar = 1;
+        float sign = 1;
         boolean skip = false;
         // Start Work!
         for(int j = 0; j < ws.length; ++j)
@@ -465,10 +464,7 @@ public class Matrix implements Serializable
                         if(ws[j][k] == 1)
                             skip = true;
                         // Figure out the sign we need to scale by.
-                        if(ws[j][k] > 0)
-                            inverseSign = 1;
-                        else
-                            inverseSign = -1;
+                        //sign = ws[j][k] < 0 ? -1 : 1;
                         break;
                     }
             }
@@ -476,15 +472,15 @@ public class Matrix implements Serializable
             if(!skip && !Matrix.zeroRow(ws, j))
             {
                 // multiply the row by the inverse of the pivot
-                workingRow = Matrix.multiplyRow(ws[j], inverseSign / ws[j][pivotIndex]);
+                workingRow = Matrix.multiplyRow(ws[j], 1 / ws[j][pivotIndex]);
                 // Replace the row by its scaled Value
                 Matrix.replaceRow(ws, j, workingRow);
             }
             // Make the values under the pivot zero.
             for(int i = pivotIndex + 1; i < ws.length; ++i)
             {
-                scalar = ws[i][pivotIndex] > 0 ? -1 : 1;
-                workingRow = Matrix.multiplyRow(ws[pivotIndex], scalar * ws[i][pivotIndex]);
+                sign = ws[i][pivotIndex] > 0 ? -1 : 1;
+                workingRow = Matrix.multiplyRow(ws[pivotIndex], sign * ws[i][pivotIndex]);
                 workingRow = Matrix.addRow(workingRow, ws[i]);
                 Matrix.replaceRow(ws, i, workingRow);
             }

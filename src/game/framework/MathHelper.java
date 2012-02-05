@@ -119,6 +119,7 @@ public class MathHelper
     {
         return (value > max) ? max : value;
     }
+    
     /**
      * Do the dot product of two arrays
      * @param a the first array

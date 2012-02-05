@@ -189,19 +189,24 @@ public class Matrix implements Serializable
      */
     private static float[][] swapZeros(float[][] a)
     {
-        float[][] ws = a; 
+        float[][] ws = a.clone();
+        int startIndex = ws.length - 1;
+        int endIndex = 0;
         for(int i = 0; i < a.length; ++i)
         {
-            if(Matrix.zeroRow(ws, i))
+            if(startIndex > endIndex && Matrix.zeroRow(ws, i))
             {
-                for(int j = ws.length - 1; j >=0; --j)
+                for(int j = startIndex; j >= endIndex; --j)
                 {
-                    if(!Matrix.zeroRow(a, j))
+                    if(!Matrix.zeroRow(ws, j))
                     {
-                        ws = Matrix.swapRows(a, i, j);
+                        Matrix.swapRows(ws, i, j);
+                        --startIndex; // With Each successfull swap this zero row is now in place. 
+                        break;
                     }
                 }
             }
+            ++endIndex; // After Each iteration that row is considered sorted.
         }
         return ws;
     }
@@ -211,16 +216,12 @@ public class Matrix implements Serializable
      * @param a A float[][] containing the data we want to swap the rows of.
      * @param r1 The index of a row we want to swap.
      * @param r2 The index of a row we want to swap.
-     * @return Returns a float[][] with the desired rows swapped.
      */
-    private static float[][] swapRows(float[][] a, int r1, int r2)
+    private static void swapRows(float[][] a, int r1, int r2)
     {
-        float[][] ws = a;
-        for(int i = 0; i < a[0].length; ++i)
-            ws[r1][i] = a[r2][i];
-        for(int i = 0; i < a[0].length; ++i)
-            ws[r2][i] = a[r1][i];
-        return ws;
+        float[] temp = a[r1];
+        a[r1] = a[r2];
+        a[r2] = temp;
     }
     
     /**
@@ -231,7 +232,7 @@ public class Matrix implements Serializable
      */
     private static boolean zeroRow(float[][] a, int row)
     {
-        boolean zero = false;
+        boolean zero = true;
         for(int i = 0; i < a[0].length; ++i)
             zero &= a[row][i] == 0;
         return zero;
@@ -355,7 +356,14 @@ public class Matrix implements Serializable
     {
         // Search to see if we have any rows that are all zero.
         // If there are any rows that contain all zero, we will swap them.
+        System.out.println("A Before");
+        System.out.println(a);
+        
         float[][] ws = Matrix.swapZeros(a.data);
+        
+        System.out.println("A After");
+        System.out.println(new Matrix(ws));
+        
         return new Matrix(ws);
     }
     

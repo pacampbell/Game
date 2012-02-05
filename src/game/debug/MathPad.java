@@ -250,6 +250,7 @@ public class MathPad
         //System.out.println("Rank of f = " + f.rank());
         System.out.println("REF ex5");
         System.out.println(example5.ref());
+        System.out.println("RREF");
         System.out.println(example5.rref());
     }
     

@@ -406,6 +406,18 @@ public class Matrix implements Serializable
         return Matrix.rank(this);
     }
     //</editor-fold>
+ 
+    //<editor-fold defaultstate="collapsed" desc="Reduced Row Echelon Form (rref)">
+    public static Matrix rref(Matrix a)
+    {
+        return null;
+    }
+    
+    public Matrix rref()
+    {
+        return Matrix.rref(this);
+    }
+    //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Row Echelon Form (ref)">
     /**
@@ -474,7 +486,6 @@ public class Matrix implements Serializable
             }
             skip = false; // reset skip
         }
-        // Matrix is now in echelon form
         return new Matrix(ws);
     }
     

@@ -492,9 +492,37 @@ public class Matrix implements Serializable
     public static Matrix rref(Matrix a)
     {
         Matrix ref = Matrix.ref(a);
-        System.out.println(ref);
-        
-        return null;
+        float[][] ws = ref.data;
+        int pivot = 0;
+        float sign = 1;
+        float[] tempRow;
+        // Reduce remaining elements to get a perfect form.
+        for(int i = 0; i < ws.length - 1; ++i)
+        {
+            // find pivot
+            for(int k = 0; k < ws[0].length; ++k)
+            {
+                if(ws[i][k] == 1)
+                {
+                    pivot = k;
+                    break;
+                }
+            }
+            //find non-zero answers that is not the pivot or the augmented matrix
+            int shift = 1;
+            for(int j = pivot + 1; j < ws[0].length - 1; ++j)
+            {
+                if(ws[i][j] != 0)
+                {
+                    sign = (ws[i][j] < 0) ? -1 : 1;
+                    tempRow = Matrix.multiplyRow(ws[i + shift], sign * ws[i][j]);
+                    tempRow = Matrix.addRow(tempRow, ws[i]);
+                    Matrix.replaceRow(ws, i, tempRow);
+                }
+                shift++;
+            }
+        } 
+        return new Matrix(ws);
     }
     
     /**

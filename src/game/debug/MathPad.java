@@ -1,9 +1,6 @@
 package game.debug;
 
-import game.framework.MathHelper;
-import game.framework.Matrix4;
-import game.framework.Vector2;
-import game.framework.Vector3;
+import game.framework.*;
 
 /**
  * Place to test out Math classes without launching a Game Window.
@@ -18,7 +15,9 @@ public class MathPad
         // Tests out Vector3 methods and prints the results.
         //MathPad.vector3Test();
         // Tests out Matrix methods and prints the results.
-        MathPad.matrixTest();
+        //MathPad.matrixTest();
+        // Tests out Matrix4 methods and prints the results.
+        //MathPad.matrix4Test();
     }
     
     //<editor-fold defaultstate="collapsed" desc="Vector2 Unit Test">
@@ -173,11 +172,35 @@ public class MathPad
     }
     //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc="Matrix Unit Test">
-    /**
-     * Tests out Matrix operations.
-     */
     public static void matrixTest()
+    {
+        float[][] one = {
+                            {1, 0, 1},
+                            {1, 0, 1}
+                        };
+        
+        float[][] two = {
+            {5, 4, 3},
+            {2, 1, 0}
+        };
+        
+        Matrix a = new Matrix(one);
+        Matrix b = new Matrix(two);
+        System.out.println("A");
+        System.out.println(a);
+        System.out.println("B");
+        System.out.println(b);
+        System.out.println("A + B");
+        System.out.println(a.add(b));
+        System.out.println("B transpose");
+        System.out.println(b.transpose());
+    }
+    
+    //<editor-fold defaultstate="collapsed" desc="Matrix4 Unit Test">
+    /**
+     * Tests out Matrix4 operations.
+     */
+    public static void matrix4Test()
     {
         Matrix4 m = Matrix4.identity();
         System.out.println(m);

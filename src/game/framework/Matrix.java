@@ -745,6 +745,31 @@ public class Matrix
     }
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Reduced Row Echelon Form">
+    /**
+     * Finds the Reduced Row Echelon Form(rref) of the provided Matrix.
+     * @param a A Matrix we want to find the rref of.
+     * @return Returns a Matrix in Reduced Row Echelon Form.
+     */
+    public static Matrix rref(Matrix a)
+    {
+        Matrix rref = null;
+        float[][] ws = a.data; // Set the Working Set to the inital data.
+        
+        
+        return rref;
+    }
+    
+    /**
+     * Finds the Reduced Row Echelon Form(rref) of this Matrix.
+     * @return Returns a Matrix in Reduced Row Echelon Form.
+     */
+    public Matrix rref()
+    {
+        return Matrix.rref(this);
+    }
+    //</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="Special Matrices">
     /**
      * @return Returns the identity of a 4x4 matrix. 

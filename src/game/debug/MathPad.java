@@ -184,8 +184,23 @@ public class MathPad
             {2, 1, 0}
         };
         
+        float[][] three = {
+            {1,2,3},
+            {4,5,6},
+            {7,8,9}
+        };
+        
+        float[][] four ={
+            {1,2},
+            {3,4},
+            {5,6}
+        };
+        
         Matrix a = new Matrix(one);
         Matrix b = new Matrix(two);
+        Matrix c = new Matrix(three);
+        Matrix d = new Matrix(four);
+        
         System.out.println("A");
         System.out.println(a);
         System.out.println("B");
@@ -194,6 +209,8 @@ public class MathPad
         System.out.println(a.add(b));
         System.out.println("B transpose");
         System.out.println(b.transpose());
+        System.out.println("C * D");
+        System.out.println(c.multiply(d));
     }
     
     //<editor-fold defaultstate="collapsed" desc="Matrix4 Unit Test">

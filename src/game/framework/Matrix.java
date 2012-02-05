@@ -170,21 +170,68 @@ public class Matrix implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Multiply">
+    /**
+     * Multiplies a scalar value into the Matrix.
+     * @param a A Matrix we want to multiply.
+     * @param scalar A scalar value we want to multiply into the provided Matrix.
+     * @return Returns scalar * A.
+     */
     public static Matrix multiply(Matrix a, float scalar)
     {
-        return null;
+        float[][] ws = new float[a.ROWS][a.COLUMNS];
+        for(int j = 0; j < a.ROWS; ++j)
+        {
+            for(int i = 0; i < a.COLUMNS; ++i)
+            {
+                ws[j][i] = a.data[j][i] * scalar;
+            }
+        }
+        return new Matrix(ws);
     }
     
+    /**
+     * Multiplies a scalar value into this Matrix.
+     * @param scalar A scalar value we want to multiply into the provided Matrix.
+     * @return Returns scalar * this.
+     */
     public Matrix multiply(float scalar)
     {
         return Matrix.multiply(this, scalar);
     }
     
+    
+    /**
+     * Perform Matrix multiplication between two matrices.
+     * @param a A Matrix we want to multiply.
+     * @param b A matrix we want to multiply.
+     * @return Returns a * b.
+     */
     public Matrix multiply(Matrix a, Matrix b)
     {
-        return null;
+        Matrix product = null;
+        if(a.COLUMNS == b.ROWS)
+        {
+            float[][] ws = new float[a.ROWS][b.COLUMNS];
+            for(int j = 0; j < a.ROWS; ++j)
+            {
+                for(int i = 0; i < b.COLUMNS; ++i)
+                {
+                    for(int k = 0; k < a.COLUMNS; ++k)
+                    {
+                        ws[j][i] += a.data[j][k] * b.data[k][i]; 
+                    }
+                }
+            }
+            product = new Matrix(ws);
+        }
+        return product;
     }
     
+    /**
+     * Perform Matrix multiplication between this Matrix and that Matrix.
+     * @param that A Matrix we want to multiply.
+     * @return Returns this * that.
+     */
     public Matrix multiply(Matrix that)
     {
         return Matrix.divide(this, that);

@@ -428,13 +428,53 @@ public class Matrix implements Serializable
                     Matrix.swapRows(ws, 0, i);
         // Use gaussian elimination to reduce the rows.
         int pivotIndex = 0;
+        float inverseSign = 1;
+        float[] workingRow = null;
+        float scalar = 1;
+        boolean skip = false;
+        // Start Work!
         for(int j = 0; j < ws.length; ++j)
         {
             // Find the pivot (first non-zero number in the row)
             for(int k = 0; k < ws[0].length; ++k)
+            {
                     if(ws[j][k] != 0)
+                    {
                         pivotIndex = k;
-            // multiply the row by the inverse of the pivot   
+                        // if The pivot is already 1 we dont need to scale the row.
+                        if(ws[j][k] == 1)
+                            skip = true;
+                        // Figure out the sign we need to scale by.
+                        if(ws[j][k] > 0)
+                            inverseSign = 1;
+                        else
+                            inverseSign = -1;
+                        break;
+                    }
+            }
+            // If the Pivot was not one we need to do some work.
+            if(!skip)
+            {
+                // multiply the row by the inverse of the pivot
+                workingRow = Matrix.multiplyRow(ws[j], inverseSign / ws[j][pivotIndex]);
+                // Replace the row by its scaled Value
+                Matrix.replaceRow(ws, j, workingRow);
+            }
+            /*
+            // Make the values under the pivot zero.
+            for(int i = j + 1; i < ws.length; ++i)
+            {
+                scalar = ws[i][j] < 0 ? -1 : 1;
+                workingRow = Matrix.multiplyRow(ws[j], scalar * ws[i][j]);
+                workingRow = Matrix.addRow(workingRow, ws[i]);
+                Matrix.replaceRow(ws, i, workingRow);
+            }
+            */
+            
+            
+            System.out.println("Iteration " + j);
+            System.out.println(new Matrix(ws));
+            skip = false; // reset skip
         }
         
         return new Matrix(ws);

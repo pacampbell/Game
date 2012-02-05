@@ -15,7 +15,7 @@ public class MathPad
         // Tests out Vector3 methods and prints the results.
         //MathPad.vector3Test();
         // Tests out Matrix methods and prints the results.
-        //MathPad.matrixTest();
+        MathPad.matrixTest();
         // Tests out Matrix4 methods and prints the results.
         //MathPad.matrix4Test();
     }

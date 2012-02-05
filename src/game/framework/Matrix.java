@@ -262,7 +262,16 @@ public class Matrix implements Serializable
     @Override
     public String toString()
     {
-        return "";
+        String out = "";
+        for(int j = 0; j < this.ROWS; ++j)
+        {
+            for(int i = 0; i < this.COLUMNS; ++i)
+            {
+                out += this.data[j][i] + " ";
+            }
+            out += "\n";
+        }
+        return out;
     }
     //</editor-fold>
     
@@ -293,6 +302,5 @@ public class Matrix implements Serializable
     {
         return Matrix.transpose(this);
     }
-    //</editor-fold>
-    
+    //</editor-fold> 
 }

@@ -9,7 +9,6 @@ import java.io.Serializable;
  * <ul>
  *  <li>Determinant</li>
  *  <li>Equals</li>
- *  <li>Identity</li>
  *  <li>Inverse</li>
  *  <li>LU-Decomposition</li>
  *  <li>Rank</li>
@@ -300,9 +299,19 @@ public class Matrix implements Serializable
     //</editor-fold>
  
     //<editor-fold defaultstate="collapsed" desc="Special Matrices">
-    public static Matrix identity(int size)
+    /**
+     * nxn Identity Matrix
+     * @param n A integer defininf the size of the Identity Matrix.
+     * @return Returns a nxn Identity Matrix.
+     */
+    public static Matrix identity(int n)
     {
-        return null;
+        float[][] ws = new float[n][n];
+        for(int i = 0; i < n; ++i)
+        {
+            ws[i][i] = 1;
+        }
+        return new Matrix(ws);
     }
     //</editor-fold>
     

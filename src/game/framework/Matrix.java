@@ -224,6 +224,16 @@ public class Matrix implements Serializable
     }
     
     /**
+     * Debug Method prints out row contents
+     */
+    private static void rowPrinter(float[] row)
+    {
+        for(int i = 0; i < row.length; i++)
+            System.out.print(row[i] + " ");
+        System.out.println("");
+    }
+    
+    /**
      * Moves all rows containing all zero to the bottom of the Matrix.
      * @param a A float[][] containing the data of a Matrix. 
      * @return Returns A Matrix with zeros in the proper locations for methods like rref.
@@ -429,9 +439,7 @@ public class Matrix implements Serializable
  
     //<editor-fold defaultstate="collapsed" desc="Row Echelon Form (ref)">
     /**
-     * Step 1: Check for a row containing all zeros
-     * Step 2: If a11 is zero swap places with another row to make it non-zero
-     * Step 3: Start going through each row and setting up the pivot points through. Repeat until done.
+     * Finds the Row Echelon Form(ref) of the provided Matrix.
      * @param a A Matrix we want to find the Row Echelon Form of.
      * @return Returns a Matrix in Row Echelon Form. 
      */
@@ -449,8 +457,6 @@ public class Matrix implements Serializable
         // Use gaussian elimination to reduce the rows.
         float[] tempRow;
         int pivot = 0;
-        float sign;
-        boolean skip = false;
         // Start Work!
         for(int i = 0; i < ws.length; i++)
         {
@@ -461,28 +467,24 @@ public class Matrix implements Serializable
                 if(ws[i][k] > 0)
                 {
                     pivot = k;
-                    skip = ws[i][k] == 1 ? true : false; 
                     break;
                 }
             }
-            // Normalize the Pivot
-            if(!skip && !Matrix.zeroRow(ws, i))
+            // Operate on the row if it does notcontain all zeros.
+            if(!Matrix.zeroRow(ws, i))
             {
                 // multiply the row by the inverse of the pivot
                 tempRow = Matrix.multiplyRow(ws[i], 1 / ws[i][pivot]);
                 // Replace the row by its scaled Value
                 Matrix.replaceRow(ws, i, tempRow);
+                // Convert Values under the pivot to zero.
+                for(int j = i + 1; j < ws.length; j++)
+                {
+                    tempRow = Matrix.multiplyRow(ws[i], -1 * ws[j][pivot]);
+                    tempRow = Matrix.addRow(tempRow, ws[j]);
+                    Matrix.replaceRow(ws, j, tempRow);
+                }
             }
-            // Convert Values under the pivot to zero.
-            for(int j = i + 1; j < ws.length; j++)
-            {
-                sign = ws[j][i] > 0 ? -1 : 1;
-                tempRow = Matrix.multiplyRow(ws[i], sign * ws[j][i]);
-                tempRow = Matrix.addRow(tempRow, ws[j]);
-                Matrix.replaceRow(ws, i, tempRow);
-            }
-            // Reset the skip flag
-            skip = false;
         }
         return new Matrix(ws);
     }

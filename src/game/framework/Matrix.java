@@ -183,6 +183,49 @@ public class Matrix implements Serializable
     
     //<editor-fold defaultstate="collapsed" desc="Helper Methods">
     /**
+     * Adds the data of two rows together.
+     * @param row1 Data of a row to be added.
+     * @param row2 Data of a row to be added.
+     * @return row1 + row2.
+     */
+    private static float[] addRow(float[] row1, float[] row2)
+    {
+        float[] n_row = null;
+        if(row1.length == row2.length)
+        {
+            n_row = new float[row1.length];
+            for(int i = 0; i < row1.length; ++i)
+                n_row[i] = row1[i] + row2[i];
+        }
+        return n_row;
+    }
+    
+    /**
+     * Multiplies the data of a row by a scalar value.
+     * @param row Data of a row to scale.
+     * @param scalar A value to scale the row by.
+     * @return Returns row * scalar.
+     */
+    private static float[] multiplyRow(float[] row, float scalar)
+    {
+        float[] ws = row;
+        for(int i = 0; i < row.length; i++)
+            ws[i] = ws[i] * scalar;
+        return ws;
+    }
+    
+    /**
+     * Replaces a row in a 2D-Array.
+     * @param a Data of Matrix with row to be replaced.
+     * @param index Index of row to be replaced.
+     * @param row Data of new row.
+     */
+    private static void replaceRow(float[][] a, int index, float[] row)
+    {
+        a[index] = row;
+    }
+    
+    /**
      * Moves all rows containing all zero to the bottom of the Matrix.
      * @param a A float[][] containing the data of a Matrix. 
      * @return Returns A Matrix with zeros in the proper locations for methods like rref.
@@ -265,6 +308,25 @@ public class Matrix implements Serializable
     
     //<editor-fold defaultstate="collapsed" desc="Multiply">
     /**
+     * Helper Method for multiplying the data of a Matrix
+     * @param a Data of a matrix we want to multiply.
+     * @param scalar A scalar value we want to multiply into the provided data.
+     * @return Returns scalar * A
+     */
+    private static float[][] multiply(float[][] a, float scalar)
+    {
+        float[][] ws = new float[a.length][a[0].length];
+        for(int j = 0; j < a.length; ++j)
+        {
+            for(int i = 0; i < a[0].length; ++i)
+            {
+                ws[j][i] = a[j][i] * scalar;
+            }
+        }
+        return ws;
+    }
+    
+    /**
      * Multiplies a scalar value into the Matrix.
      * @param a A Matrix we want to multiply.
      * @param scalar A scalar value we want to multiply into the provided Matrix.
@@ -272,15 +334,7 @@ public class Matrix implements Serializable
      */
     public static Matrix multiply(Matrix a, float scalar)
     {
-        float[][] ws = new float[a.ROWS][a.COLUMNS];
-        for(int j = 0; j < a.ROWS; ++j)
-        {
-            for(int i = 0; i < a.COLUMNS; ++i)
-            {
-                ws[j][i] = a.data[j][i] * scalar;
-            }
-        }
-        return new Matrix(ws);
+        return new Matrix(Matrix.multiply(a.data, scalar));
     }
     
     /**
@@ -293,6 +347,31 @@ public class Matrix implements Serializable
         return Matrix.multiply(this, scalar);
     }
     
+    /**
+     * Helper Method for Multiplying the data of two matrices. 
+     * @param a Data of a matrix we want to multiply.
+     * @param b Data of a Matrix we want to multiply.
+     * @return Returns a * b;
+     */
+    private static float[][] multiply(float[][] a, float[][] b)
+    {
+        float[][] product = null;
+        if(a[0].length == b.length)
+        {
+            product = new float[a.length][b[0].length];
+            for(int j = 0; j < a.length; ++j)
+            {
+                for(int i = 0; i < b[0].length; ++i)
+                {
+                    for(int k = 0; k < a[0].length; ++k)
+                    {
+                        product[j][i] += a[j][k] * b[k][i]; 
+                    }
+                }
+            }
+        }
+        return product;
+    }
     
     /**
      * Perform Matrix multiplication between two matrices.
@@ -302,23 +381,7 @@ public class Matrix implements Serializable
      */
     public static Matrix multiply(Matrix a, Matrix b)
     {
-        Matrix product = null;
-        if(a.COLUMNS == b.ROWS)
-        {
-            float[][] ws = new float[a.ROWS][b.COLUMNS];
-            for(int j = 0; j < a.ROWS; ++j)
-            {
-                for(int i = 0; i < b.COLUMNS; ++i)
-                {
-                    for(int k = 0; k < a.COLUMNS; ++k)
-                    {
-                        ws[j][i] += a.data[j][k] * b.data[k][i]; 
-                    }
-                }
-            }
-            product = new Matrix(ws);
-        }
-        return product;
+        return new Matrix(Matrix.multiply(a.data, b.data));
     }
     
     /**

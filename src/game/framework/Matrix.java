@@ -530,12 +530,28 @@ public class Matrix implements Serializable
             {
                 if(ws[i][j] != 0)
                 {
-                    sign = (ws[i][j] < 0) ? -1 : 1;
-                    tempRow = Matrix.multiplyRow(ws[i + shift], sign * ws[i][j]);
+                    //System.out.println("(" + i + "," + j + ") is non-zero.");
+                    System.out.println("=== Temp Row Before ===");
+                    Matrix.rowPrinter(ws[i]);
+                    System.out.println("=== End Temp Row Before ===\n");
+                    
+                    System.out.println("Get Row: " + (i+shift) + " and multiply by " + (-1 * ws[i][j]));
+                    
+                    tempRow = Matrix.multiplyRow(ws[i + shift], -1 * ws[i][j]);
+                    
+                    System.out.println("=== Temp Row After Multiply ===");
+                    Matrix.rowPrinter(tempRow);
+                    System.out.println("=== End Temp Row After Multiply ===\n");
+                    
                     tempRow = Matrix.addRow(tempRow, ws[i]);
+                    
+                    System.out.println("=== Temp Row After Add ===");
+                    Matrix.rowPrinter(tempRow);
+                    System.out.println("=== End Temp Row After Add ===\n");
+                    
                     Matrix.replaceRow(ws, i, tempRow);
                 }
-                shift++;
+                ++shift;
             }
         } 
         return new Matrix(ws);

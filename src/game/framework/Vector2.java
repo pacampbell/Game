@@ -745,6 +745,27 @@ public class Vector2 implements Serializable
         return Vector2.normalize(this);
     }
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Perpendicular">
+    /**
+     * Creates a Vector2 perpendicular to the provided Vector2. 
+     * @param a A Vector2 we want to find a perpendicular Vector2 of.
+     * @return Returns a Vector2 perpendicular to the Vector2 provided.
+     */ 
+    public static Vector2 perpendicular(Vector2 a)
+    {
+        return new Vector2(-a.y, a.x);
+    }
+    
+    /**
+     * Creates a Vector2 perpendicular to this Vector2. 
+     * @return Returns a Vector2 perpendicular to this Vector2.
+     */
+    public Vector2 perpendicular()
+    {
+        return Vector2.perpendicular(this);
+    }
+    //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Projection">
     /**

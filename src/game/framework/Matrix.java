@@ -507,53 +507,13 @@ public class Matrix implements Serializable
      */
     public static Matrix rref(Matrix a)
     {
+        /**
+         * All Columns where a pivot exists, the pivot must by the only non-zero value
+         * in that column.
+         */
         Matrix ref = Matrix.ref(a);
         float[][] ws = ref.data;
-        int pivot = 0;
-        float sign = 1;
-        float[] tempRow;
-        // Reduce remaining elements to get a perfect form.
-        for(int i = 0; i < ws.length - 1; ++i)
-        {
-            // find pivot
-            for(int k = 0; k < ws[0].length; ++k)
-            {
-                if(ws[i][k] == 1)
-                {
-                    pivot = k;
-                    break;
-                }
-            }
-            //find non-zero answers that is not the pivot or the augmented matrix
-            int shift = 1;
-            for(int j = pivot + 1; j < ws[0].length - 1; ++j)
-            {
-                if(ws[i][j] != 0)
-                {
-                    //System.out.println("(" + i + "," + j + ") is non-zero.");
-                    System.out.println("=== Temp Row Before ===");
-                    Matrix.rowPrinter(ws[i]);
-                    System.out.println("=== End Temp Row Before ===\n");
-                    
-                    System.out.println("Get Row: " + (i+shift) + " and multiply by " + (-1 * ws[i][j]));
-                    
-                    tempRow = Matrix.multiplyRow(ws[i + shift], -1 * ws[i][j]);
-                    
-                    System.out.println("=== Temp Row After Multiply ===");
-                    Matrix.rowPrinter(tempRow);
-                    System.out.println("=== End Temp Row After Multiply ===\n");
-                    
-                    tempRow = Matrix.addRow(tempRow, ws[i]);
-                    
-                    System.out.println("=== Temp Row After Add ===");
-                    Matrix.rowPrinter(tempRow);
-                    System.out.println("=== End Temp Row After Add ===\n");
-                    
-                    Matrix.replaceRow(ws, i, tempRow);
-                }
-                ++shift;
-            }
-        } 
+         
         return new Matrix(ws);
     }
     

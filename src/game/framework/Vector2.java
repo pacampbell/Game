@@ -992,4 +992,28 @@ public class Vector2 implements Serializable
         throw new UnsupportedOperationException("Not yet implemented.");
     }
     //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Wedge Product">
+    /**
+     * Performs the wedge product with two Vector2.
+     * Calculates the signed area of the parallelogram created using the two Vector2. 
+     * @param a A Vector2 we want to use; 1 Component of a BiVector.
+     * @param b A Vector2 we want to use; 1 Component of a BiVector.
+     * @return Returns a ^ b.
+     */
+    public static float wedgeProduct(Vector2 a, Vector2 b)
+    {
+        return (a.x * b.y) - (a.y * b.x);
+    }
+    
+    /**
+     * Performs the wedge product with this Vector2 and that Vector2.
+     * @param that A Vector2 we want to use; 1 Component of a BiVector.
+     * @return Returns this ^ that.
+     */
+    public float wedgeProduct(Vector2 that)
+    {
+        return Vector2.wedgeProduct(this, that);
+    }
+    //</editor-fold>
 }

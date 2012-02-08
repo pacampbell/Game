@@ -97,7 +97,7 @@ public class Matrix implements Serializable
     //<editor-fold defaultstate="collapsed" desc="Determinant">
     public static float determinant(Matrix a)
     {
-        return 0;
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     public float determinant()
@@ -307,7 +307,7 @@ public class Matrix implements Serializable
     //<editor-fold defaultstate="collapsed" desc="Inverse">
     public static Matrix inverse(Matrix a)
     {
-        return null;
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     public Matrix inverse()
@@ -319,7 +319,7 @@ public class Matrix implements Serializable
     //<editor-fold defaultstate="collapsed" desc="LU Decomposition">
     public static Matrix[] luDecomposition(Matrix a)
     {
-        return null;
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     public Matrix[] luDecomposition()

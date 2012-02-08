@@ -513,7 +513,41 @@ public class Matrix implements Serializable
          */
         Matrix ref = Matrix.ref(a);
         float[][] ws = ref.data;
-         
+        float[] tempRow;
+        int pivotIndex = 0;
+        boolean pivotExists = false;
+        // Go to each row
+        for(int j = 0; j < ref.ROWS; ++j)
+        {
+            // Search for pivot
+            for(int i = 0; i < ref.COLUMNS; ++i)
+            {
+                // If a pivot was found break.
+                if(ws[j][i] == 1)
+                {
+                    pivotIndex = i;
+                    pivotExists = true;
+                    break;
+                }
+            }
+            // If a pivot exists check the contents of the column.
+            if(pivotExists)
+            {
+                // Search the column for other non-zero values.
+                for(int k = 0; k < ref.ROWS; ++k)
+                {
+                    // If we found a non-zero value in the column we need to remove it.
+                    if(k != j && ws[k][pivotIndex] != 0)
+                    {
+                        tempRow = Matrix.multiplyRow(ws[j], -1 * ws[k][pivotIndex]);
+                        tempRow = Matrix.addRow(tempRow, ws[k]);
+                        Matrix.replaceRow(ws, k, tempRow);
+                    }
+                }
+            }
+            // Reset the pivot exists flag
+            pivotExists = false;
+        }
         return new Matrix(ws);
     }
     

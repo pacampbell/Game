@@ -1,6 +1,7 @@
 package game.framework;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  * A generalized Matrix with n x m dimensions.
@@ -8,7 +9,6 @@ import java.io.Serializable;
  * <h1>Not Yet Implemented</h1>
  * <ul>
  *  <li>Determinant</li>
- *  <li>Equals</li>
  *  <li>Inverse</li>
  *  <li>LU-Decomposition</li>
  * </ul>
@@ -172,10 +172,24 @@ public class Matrix implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Equals">
+    /**
+     * Compares this Matrix with another Object believed to be a Matrix.
+     * @param obj An object believed to be a Matrix.
+     * @return Returns the comparison of this == that.
+     */
     @Override
     public boolean equals(Object obj)
     {
-        return false;
+        boolean equals = false;
+        if(obj == this)
+            equals = true;
+        else if(obj != false && obj instanceof Matrix)
+        {
+            Matrix that = (Matrix)obj;
+            if(Arrays.deepEquals(this.data, that.data))
+                equals = true;
+        }
+        return equals;
     }
     //</editor-fold>
     

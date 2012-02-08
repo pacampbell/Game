@@ -16,7 +16,7 @@ public class MathPad
         //MathPad.vector3Test();
         // Tests out Matrix methods and prints the results.
         MathPad.matrixTest();
-        // Tests out Matrix4 methods and prints the results.
+        // Tests out Matrix3 methods and prints the results.
         //MathPad.matrix4Test();
     }
     
@@ -254,13 +254,13 @@ public class MathPad
         System.out.println(example5.rref());
     }
     
-    //<editor-fold defaultstate="collapsed" desc="Matrix4 Unit Test">
+    //<editor-fold defaultstate="collapsed" desc="Matrix3 Unit Test">
     /**
-     * Tests out Matrix4 operations.
+     * Tests out Matrix3 operations.
      */
     public static void matrix4Test()
     {
-        Matrix4 m = Matrix4.identity();
+        Matrix3 m = Matrix3.identity();
         System.out.println(m);
         
         float[][] one = {
@@ -269,7 +269,7 @@ public class MathPad
                             {1, 1, 1, 1},
                             {1, 1, 1, 1}
                         };
-        Matrix4 a = new Matrix4(one);
+        Matrix3 a = new Matrix3(one);
         
         System.out.println(a);
         a = a.multiply(5.0f);
@@ -289,9 +289,9 @@ public class MathPad
                             {6, 5, 4, 3}
                         };
         
-        Matrix4 b = new Matrix4(two);
-        Matrix4 c = new Matrix4(three);
-        Matrix4 d = b.multiply(c);
+        Matrix3 b = new Matrix3(two);
+        Matrix3 c = new Matrix3(three);
+        Matrix3 d = b.multiply(c);
         System.out.println(d);
         
         float[][] four = {
@@ -300,19 +300,19 @@ public class MathPad
                             {4, 0, 6, -3},
                             {5, 0, 2, 0}
                         };
-        float det = Matrix4.determinant(new Matrix4(four));
+        float det = Matrix3.determinant(new Matrix3(four));
         System.out.println(det);
         
-        Matrix4[] lud = Matrix4.luDecomposition(new Matrix4(four));
+        Matrix3[] lud = Matrix3.luDecomposition(new Matrix3(four));
         System.out.println("L");
         System.out.println(lud[0]);
         System.out.println("U");
         System.out.println(lud[1]);
         System.out.println("LU");
-        System.out.println(Matrix4.multiply(lud[0], lud[1]));
+        System.out.println(Matrix3.multiply(lud[0], lud[1]));
         System.out.println("Determinant using LU: " + (lud[1].M11 * lud[1].M22 * lud[1].M33 * lud[1].M44));
         
-        Matrix4 inverse = Matrix4.invert(new Matrix4(four));
+        Matrix3 inverse = Matrix3.invert(new Matrix3(four));
         System.out.println("Inverse");
         System.out.println(inverse);
         

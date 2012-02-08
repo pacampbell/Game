@@ -1,7 +1,8 @@
 package game.framework;
 
 /**
- * Matrix class representing a 4x4 matrix.
+ * Matrix class representing a 3x3 matrix.
+ * Can be used with the java AffineTransform.
  * <br />
  * <h1>Not Yet Implemented</h1>
  * <ul>
@@ -34,7 +35,7 @@ package game.framework;
  * @author paul
  */
 
-public class Matrix4 
+public class Matrix3 
 {
     //<editor-fold defaultstate="collapsed" desc="Properties">
     /**
@@ -129,7 +130,7 @@ public class Matrix4
      * Creates a Matrix with the float[][] provided.
      * @param data An array of float[4][4] containing the representation of a Matrix. 
      */
-    public Matrix4(float[][] data)
+    public Matrix3(float[][] data)
     {
         this.data = data;
         this.M11 = data[0][0];
@@ -169,7 +170,7 @@ public class Matrix4
      * @param M43 Value at row 4 column 3 of Matrix.
      * @param M44 Value at row 4 column 4 of Matrix. 
      */
-    public Matrix4(float M11, float M12, float M13, float M14, 
+    public Matrix3(float M11, float M12, float M13, float M14, 
                   float M21, float M22, float M23, float M24, 
                   float M31, float M32, float M33, float M34, 
                   float M41, float M42, float M43, float M44)
@@ -189,7 +190,7 @@ public class Matrix4
      * Creates a new Matrix with identical properties of the Matrix provided.
      * @param matrix A Matrix we want to copy. 
      */
-    public Matrix4(Matrix4 matrix)
+    public Matrix3(Matrix3 matrix)
     {
         this(
                 matrix.M11, matrix.M12, matrix.M13, matrix.M14,
@@ -203,9 +204,9 @@ public class Matrix4
      * Empty Constructor / Default Constructor
      * Creates an identity matrix.
      */
-    public Matrix4()
+    public Matrix3()
     {
-        this(Matrix4.identity());
+        this(Matrix3.identity());
     }
     //</editor-fold>
     
@@ -216,9 +217,9 @@ public class Matrix4
      * @param b A Matrix we want to add.
      * @return Returns a + b.
      */
-    public static Matrix4 add(Matrix4 a, Matrix4 b)
+    public static Matrix3 add(Matrix3 a, Matrix3 b)
     {
-        return new Matrix4
+        return new Matrix3
                 (
                     a.M11 + b.M11, a.M12 + b.M12, a.M13 + b.M13, a.M14 + b.M14,
                     a.M21 + b.M21, a.M22 + b.M22, a.M23 + b.M23, a.M24 + b.M24,
@@ -232,9 +233,9 @@ public class Matrix4
      * @param that A matrix we want to add.
      * @return Returns this + that.
      */
-    public Matrix4 add(Matrix4 that)
+    public Matrix3 add(Matrix3 that)
     {
-        return Matrix4.add(this, that);
+        return Matrix3.add(this, that);
     }
     //</editor-fold>
     
@@ -384,7 +385,7 @@ public class Matrix4
      * @param a A Matrix we want to find the determinant of.
      * @return Returns det A.
      */
-    public static float determinant(Matrix4 a)
+    public static float determinant(Matrix3 a)
     {
         float r1 =  a.M11 * ((a.M22 * (a.M23 * a.M44 - a.M34 * a.M43)) - (a.M23 * (a.M32 * a.M44 - a.M34 * a.M42)) + (a.M24 * (a.M32 * a.M43 - a.M33 * a.M42))); 
         float r2 = -a.M12 * ((a.M21 * (a.M33 * a.M44 - a.M34 * a.M43)) - (a.M22 * (a.M31 * a.M44 - a.M34 * a.M41)) + (a.M24 * (a.M31 * a.M42 - a.M32 * a.M41)));
@@ -399,7 +400,7 @@ public class Matrix4
      */
     public float determinant()
     {
-        return Matrix4.determinant(this);
+        return Matrix3.determinant(this);
     }
     //</editor-fold>
     
@@ -410,9 +411,9 @@ public class Matrix4
      * @param scalar A scalar value we want to divide by.
      * @return Returns a / scalar.
      */
-    public static Matrix4 divide(Matrix4 a, float scalar)
+    public static Matrix3 divide(Matrix3 a, float scalar)
     {
-        return new Matrix4
+        return new Matrix3
                 (
                     a.M11 / scalar, a.M12 / scalar, a.M13 / scalar, a.M14 / scalar,
                     a.M21 / scalar, a.M22 / scalar, a.M23 / scalar, a.M24 / scalar,
@@ -426,9 +427,9 @@ public class Matrix4
      * @param scalar A scalar value we want to divide by.
      * @return Returns this / scalar.
      */
-    public Matrix4 divide(float scalar)
+    public Matrix3 divide(float scalar)
     {
-        return Matrix4.divide(this, scalar);
+        return Matrix3.divide(this, scalar);
     }
     
     /**
@@ -437,9 +438,9 @@ public class Matrix4
      * @param b A Matrix we want to divide. 
      * @return Returns a / b.
      */
-    public static Matrix4 divide(Matrix4 a, Matrix4 b)
+    public static Matrix3 divide(Matrix3 a, Matrix3 b)
     {
-        return new Matrix4
+        return new Matrix3
                 (
                     a.M11 / b.M11, a.M12 / b.M12, a.M13 / b.M13, a.M14 / b.M14,
                     a.M21 / b.M21, a.M22 / b.M22, a.M23 / b.M23, a.M24 / b.M24,
@@ -453,9 +454,9 @@ public class Matrix4
      * @param that A Matrix we want to divide.
      * @return Returns this / that.
      */
-    public Matrix4 divide(Matrix4 that)
+    public Matrix3 divide(Matrix3 that)
     {
-        return Matrix4.divide(this, that);
+        return Matrix3.divide(this, that);
     }
     //</editor-fold>
 
@@ -470,9 +471,9 @@ public class Matrix4
     public boolean equals(Object obj)
     {
         boolean equals = false;
-        if(obj != null && obj instanceof Matrix4)
+        if(obj != null && obj instanceof Matrix3)
         {
-            Matrix4 that = (Matrix4)obj;
+            Matrix3 that = (Matrix3)obj;
             if(this.M11 == that.M11 && this.M12 == that.M12 && this.M13 == that.M13 && this.M14 == that.M14 &&
                this.M21 == that.M21 && this.M22 == that.M22 && this.M23 == that.M23 && this.M24 == that.M24 &&
                this.M31 == that.M31 && this.M32 == that.M32 && this.M33 == that.M33 && this.M34 == that.M34 &&
@@ -519,10 +520,10 @@ public class Matrix4
      * @param a A Matrix we want to find the inverse of.
      * @return Returns the inverse of a. If no inverse exists a null Matrix is returned.
      */
-    public static Matrix4 invert(Matrix4 a)
+    public static Matrix3 invert(Matrix3 a)
     {
-        Matrix4[] lud = Matrix4.luDecomposition(a);
-        Matrix4 inverse = null;
+        Matrix3[] lud = Matrix3.luDecomposition(a);
+        Matrix3 inverse = null;
         if((lud[1].M11 * lud[1].M22 * lud[1].M33 * lud[1].M44) != 0)
         {
             /**
@@ -530,7 +531,7 @@ public class Matrix4
              * Solve U * B = Z
              * B = i-th Column of the Inverse Matrix
              */
-            Matrix4 identity = Matrix4.identity();
+            Matrix3 identity = Matrix3.identity();
             float[] z = new float[4];
             float[] c = new float[4];
             float[] b = new float[4];
@@ -558,7 +559,7 @@ public class Matrix4
                 
                 z = b = new float[4];
             }
-            inverse = new Matrix4(finverse);
+            inverse = new Matrix3(finverse);
             
         }
         return inverse;
@@ -568,9 +569,9 @@ public class Matrix4
      * Finds the Inverse of this Matrix.
      * @return Returns the inverse of this Matrix.
      */
-    public Matrix4 invert()
+    public Matrix3 invert()
     {
-        return Matrix4.invert(this);
+        return Matrix3.invert(this);
     }
     //</editor-fold>
     
@@ -587,7 +588,7 @@ public class Matrix4
      * @param a A Matrix we want to perform LU decomposition on.
      * @return Returns an array containing a lower triangular Matrix L and a upper triangular Matrix U where LU = A.
      */
-    public static Matrix4[] luDecomposition(Matrix4 a)
+    public static Matrix3[] luDecomposition(Matrix3 a)
     {
         float l21 = a.M21 / a.M11;
         float l31 = a.M31 / a.M11;
@@ -607,7 +608,7 @@ public class Matrix4
         float u44 = a.M44 - (l41 * a.M14) - (l43 * u34);
         
         
-        Matrix4 l = new Matrix4(new float[][]
+        Matrix3 l = new Matrix3(new float[][]
         {
             {1  ,   0,   0, 0},
             {l21,   1,   0, 0},
@@ -615,7 +616,7 @@ public class Matrix4
             {l41, l42, l43, 1}
         });
         
-        Matrix4 u = new Matrix4(new float[][]
+        Matrix3 u = new Matrix3(new float[][]
         {
             {a.M11, a.M12, a.M13, a.M14},
             {0    ,   u22,   u23,   u24},
@@ -623,16 +624,16 @@ public class Matrix4
             {0    ,     0,     0,   u44}
         });
         
-        return new Matrix4[]{l, u};
+        return new Matrix3[]{l, u};
     }
     
     /**
      * Performs LU Decomposition of this Matrix.
      * @return Returns an array containing a lower triangular Matrix and a upper triangular Matrix.
      */
-    public Matrix4[] luDecomposition()
+    public Matrix3[] luDecomposition()
     {
-        return Matrix4.luDecomposition(this);
+        return Matrix3.luDecomposition(this);
     }
     //</editor-fold>
     
@@ -643,9 +644,9 @@ public class Matrix4
      * @param b A matrix we want to multiply.
      * @return Returns a * b.
      */
-    public static Matrix4 multiply(Matrix4 a, Matrix4 b)
+    public static Matrix3 multiply(Matrix3 a, Matrix3 b)
     {
-        return new Matrix4
+        return new Matrix3
                 (
                     (a.M11 * b.M11) + (a.M12 * b.M21) + (a.M13 * b.M31) + (a.M14 * b.M41), (a.M11 * b.M12) + (a.M12 * b.M22) + (a.M13 * b.M32) + (a.M14 * b.M42), (a.M11 * b.M13) + (a.M12 * b.M23) + (a.M13 * b.M33) + (a.M14 * b.M43), (a.M11 * b.M14) + (a.M12 * b.M24) + (a.M13 * b.M34) + (a.M14 * b.M44),   
                     (a.M21 * b.M11) + (a.M22 * b.M21) + (a.M23 * b.M31) + (a.M24 * b.M41), (a.M21 * b.M12) + (a.M22 * b.M22) + (a.M23 * b.M32) + (a.M24 * b.M42), (a.M21 * b.M13) + (a.M22 * b.M23) + (a.M23 * b.M33) + (a.M24 * b.M43), (a.M21 * b.M14) + (a.M22 * b.M24) + (a.M23 * b.M34) + (a.M24 * b.M44),
@@ -659,9 +660,9 @@ public class Matrix4
      * @param that A Matrix we want to multiply.
      * @return Returns this * that.
      */
-    public Matrix4 multiply(Matrix4 that)
+    public Matrix3 multiply(Matrix3 that)
     {
-        return Matrix4.multiply(this, that);
+        return Matrix3.multiply(this, that);
     }
     
     /**
@@ -670,9 +671,9 @@ public class Matrix4
      * @param scalar A scalar value we want to multiply into the provided Matrix.
      * @return Returns scalar * a
      */
-    public static Matrix4 multiply(Matrix4 a, float scalar)
+    public static Matrix3 multiply(Matrix3 a, float scalar)
     {
-        return new Matrix4
+        return new Matrix3
                 (
                     scalar * a.M11, scalar * a.M12, scalar * a.M13, scalar * a.M14,
                     scalar * a.M21, scalar * a.M22, scalar * a.M23, scalar * a.M24,
@@ -685,9 +686,9 @@ public class Matrix4
      * @param scalar A scalar value we want to multiply into the provided Matrix.
      * @return Returns scalar * this.
      */
-    public Matrix4 multiply(float scalar)
+    public Matrix3 multiply(float scalar)
     {
-        return Matrix4.multiply(this, scalar);
+        return Matrix3.multiply(this, scalar);
     }
     
     /**
@@ -696,7 +697,7 @@ public class Matrix4
      * @param x A Vector4 that we want to multiply.
      * @return Returns a Vector4 containing the product of Ax.
      */
-    public static Vector4 multiply(Matrix4 a, Vector4 x)
+    public static Vector4 multiply(Matrix3 a, Vector4 x)
     {
         return new Vector4
                 (
@@ -714,7 +715,7 @@ public class Matrix4
      */
     public Vector4 multiply(Vector4 x)
     {
-        return Matrix4.multiply(this, x);
+        return Matrix3.multiply(this, x);
     }
     //</editor-fold>
     
@@ -724,9 +725,9 @@ public class Matrix4
      * @param a A Matrix we want to negate.
      * @return Returns -a.
      */
-    public static Matrix4 negate(Matrix4 a)
+    public static Matrix3 negate(Matrix3 a)
     {
-        return new Matrix4
+        return new Matrix3
                 (
                     -1 * a.M11, -1 * a.M12, -1 * a.M13, -1 * a.M14,
                     -1 * a.M21, -1 * a.M22, -1 * a.M23, -1 * a.M24,
@@ -739,9 +740,9 @@ public class Matrix4
      * Negates all the components of this Matrix.
      * @return Returns -this.
      */
-    public Matrix4 negate()
+    public Matrix3 negate()
     {
-        return Matrix4.negate(this);
+        return Matrix3.negate(this);
     }
     //</editor-fold>
     
@@ -751,9 +752,9 @@ public class Matrix4
      * @param a A Matrix we want to find the rref of.
      * @return Returns a Matrix in Reduced Row Echelon Form.
      */
-    public static Matrix4 rref(Matrix4 a)
+    public static Matrix3 rref(Matrix3 a)
     {
-        Matrix4 rref = null;
+        Matrix3 rref = null;
         float[][] ws = a.data; // Set the Working Set to the inital data.
         
         
@@ -766,9 +767,9 @@ public class Matrix4
      * Finds the Reduced Row Echelon Form(rref) of this Matrix.
      * @return Returns a Matrix in Reduced Row Echelon Form.
      */
-    public Matrix4 rref()
+    public Matrix3 rref()
     {
-        return Matrix4.rref(this);
+        return Matrix3.rref(this);
     }
     //</editor-fold>
     
@@ -776,7 +777,7 @@ public class Matrix4
     /**
      * @return Returns the identity of a 4x4 matrix. 
      */
-    public static Matrix4 identity()
+    public static Matrix3 identity()
     {
         float temp[][] = {
                             {1, 0, 0, 0},
@@ -784,7 +785,7 @@ public class Matrix4
                             {0, 0, 1, 0},
                             {0, 0, 0, 1}
                          };
-        return new Matrix4(temp);
+        return new Matrix3(temp);
     }
     //</editor-fold>
     
@@ -795,9 +796,9 @@ public class Matrix4
      * @param b A Matrix we want to subtract with.
      * @return Returns a - b.
      */
-    public static Matrix4 subtract(Matrix4 a, Matrix4 b)
+    public static Matrix3 subtract(Matrix3 a, Matrix3 b)
     {
-        return new Matrix4
+        return new Matrix3
                 (
                     a.M11 - b.M11, a.M12 - b.M12, a.M13 - b.M13, a.M14 - b.M14,
                     a.M21 - b.M21, a.M22 - b.M22, a.M23 - b.M23, a.M24 - b.M24,
@@ -811,9 +812,9 @@ public class Matrix4
      * @param that A matrix we want to subtract.
      * @return Returns this - that.
      */
-    public Matrix4 subtract(Matrix4 that)
+    public Matrix3 subtract(Matrix3 that)
     {
-        return Matrix4.subtract(this, that);
+        return Matrix3.subtract(this, that);
     }
     //</editor-fold>
     
@@ -844,9 +845,9 @@ public class Matrix4
      * @param a A Matrix we want to transpose.
      * @return Returns the transpose of Matrix a.
      */
-    public static Matrix4 transpose(Matrix4 a)
+    public static Matrix3 transpose(Matrix3 a)
     {
-        return new Matrix4
+        return new Matrix3
                 (
                     a.M11, a.M21, a.M31, a.M41,
                     a.M12, a.M22, a.M32, a.M42,
@@ -859,9 +860,9 @@ public class Matrix4
      * Transposes this Matrix.
      * @return Returns the transpose of this Matrix.
      */
-    public Matrix4 transpose()
+    public Matrix3 transpose()
     {
-        return Matrix4.transpose(this);
+        return Matrix3.transpose(this);
     }
     //</editor-fold>
 }

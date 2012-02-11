@@ -79,30 +79,37 @@ public class MouseInput implements MouseListener, MouseMotionListener
            poll[ button-1 ] == MouseState.PRESSED;
   }
   
+  @Override
   public synchronized void mousePressed( MouseEvent e ) {
     state[ e.getButton()-1 ] = true;
   }
 
+  @Override
   public synchronized void mouseReleased( MouseEvent e ) {
     state[ e.getButton()-1 ] = false;
   }
 
+  @Override
   public synchronized void mouseEntered( MouseEvent e ) {
     mouseMoved( e );
   }
   
+  @Override
   public synchronized void mouseExited( MouseEvent e ) {
     mouseMoved( e );
   }
   
+  @Override
   public synchronized void mouseDragged( MouseEvent e ) {
     mouseMoved( e );
   }
 
+  @Override
   public synchronized void mouseMoved( MouseEvent e ) {
     currentPos = e.getPoint();
   }
   
+  @Override
   public void mouseClicked( MouseEvent e ) {
     // Not needed
   }

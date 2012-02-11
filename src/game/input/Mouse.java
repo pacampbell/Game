@@ -9,6 +9,9 @@ import java.awt.event.MouseEvent;
  */
 public class Mouse 
 {
+    /**
+     * MouseInput object to be used for this static instance of the mouse.
+     */
     private static MouseInput mouse = new MouseInput(); 
     
     /**

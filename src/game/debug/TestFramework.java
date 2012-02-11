@@ -3,6 +3,7 @@ package game.debug;
 import game.framework.Game;
 import game.framework.GameTime;
 import game.framework.Point;
+import game.input.Mouse;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -80,7 +81,7 @@ public class TestFramework extends Game
         super.draw(g2d);
         // TODO:
         this.fps.draw(g2d);
-        g2d.drawString("Mouse: (" + mouse.getPosition().x + "," + mouse.getPosition().y + ")", 10, 60);
+        g2d.drawString("Mouse: (" + Mouse.getPosition().x + "," + Mouse.getPosition().y + ")", 10, 60);
         
         //g2d.fillRect(mouse.getPosition().x, mouse.getPosition().y, 10, 10);   
     }

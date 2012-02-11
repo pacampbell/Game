@@ -12,7 +12,7 @@ public class Mouse
     /**
      * MouseInput object to be used for this static instance of the mouse.
      */
-    private static MouseInput mouse = new MouseInput(); 
+    public static MouseInput mouse = new MouseInput(); 
     
     /**
      * Polls the mouse for new buttons that might be pressed this update.

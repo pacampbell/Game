@@ -16,7 +16,7 @@ public class Keyboard
     /**
      * Polls the keyboard for new keys that might be pressed this update.
      */
-    public void poll()
+    public static void poll()
     {
         keyboard.poll();
     }

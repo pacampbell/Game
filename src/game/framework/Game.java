@@ -1,8 +1,8 @@
 package game.framework;
 import game.debug.PerformanceTiming;
+import game.input.Keyboard;
 import game.input.KeyboardInput;
 import game.input.Mouse;
-import game.input.MouseInput;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -24,7 +24,7 @@ public abstract class Game extends JFrame
     private boolean running;
     private Color background; // Background color to clear too
     private GameTime gameTime; // Keeps Track of time in the game
-    protected KeyboardInput keyboard; // KeyboardInput
+    //protected KeyboardInput keyboard; // KeyboardInput
     //protected MouseInput mouse; // MouseInput
     // Debug Variable (User needs to implement update and draw if they want to use)
     protected PerformanceTiming fps;
@@ -270,7 +270,7 @@ public abstract class Game extends JFrame
     public void update(GameTime gameTime)
     {
         // Poll the keyboard
-        keyboard.poll(); 
+        Keyboard.poll(); 
         // Poll the mouse
         Mouse.poll();
     }
@@ -282,9 +282,9 @@ public abstract class Game extends JFrame
     {
         running = true;
         background = new Color(100, 149, 237); // Default is Cornflower blue
-        keyboard = new KeyboardInput(); // Keyboard polling
-        this.addKeyListener(keyboard); // Add Keyboard
-        this.canvas.addKeyListener(keyboard);
+        //keyboard = new KeyboardInput(); // Keyboard polling
+        this.addKeyListener(Keyboard.keyboard); // Add Keyboard
+        this.canvas.addKeyListener(Keyboard.keyboard);
         //mouse = new MouseInput(); // Mouse input
         this.canvas.addMouseListener(Mouse.mouse);
         this.canvas.addMouseMotionListener(Mouse.mouse);

@@ -3,6 +3,7 @@ package game.debug;
 import game.framework.Game;
 import game.framework.GameTime;
 import game.framework.Point;
+import game.input.Keyboard;
 import game.input.Mouse;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
@@ -63,7 +64,7 @@ public class TestFramework extends Game
         // TODO:
         this.fps.update(gameTime);
         //<editor-fold defaultstate="collapsed" desc="System & Menu Keys">
-        if(keyboard.keyDownOnce(KeyEvent.VK_ESCAPE))
+        if(Keyboard.keyDownOnce(KeyEvent.VK_ESCAPE))
         {
             Game.exitGame();
         }

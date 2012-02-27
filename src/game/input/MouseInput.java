@@ -73,10 +73,20 @@ public class MouseInput implements MouseListener, MouseMotionListener
   {
       return poll[ button-1 ] == MouseState.ONCE;
   }
+  
+  public boolean buttonDownOnce(MouseKeys key)
+  {
+      return buttonDownOnce(key.KEYCODE);
+  }
 
   public boolean buttonDown( int button ) {
     return poll[ button-1 ] == MouseState.ONCE ||
            poll[ button-1 ] == MouseState.PRESSED;
+  }
+  
+  public boolean buttonDown(MouseKeys key)
+  {
+      return buttonDown(key.KEYCODE);
   }
   
   @Override

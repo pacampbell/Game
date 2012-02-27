@@ -1,7 +1,6 @@
 package game.framework;
 import game.debug.PerformanceTiming;
 import game.input.Keyboard;
-import game.input.KeyboardInput;
 import game.input.Mouse;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -33,9 +32,9 @@ public abstract class Game extends JFrame
     /**
      * Full Constructor
      * Sets game window title, width, and height.
-     * @param title
-     * @param width
-     * @param height 
+     * @param title String containing the title of the window.
+     * @param width Integer that represents the width of the screen.
+     * @param height Integer that represents the height of the screen.
      */
     public Game(String title, int width, int height)
     {
@@ -46,9 +45,9 @@ public abstract class Game extends JFrame
     }
     
     /**
-     * Sets Default Window Title to "Game"
-     * @param width
-     * @param height 
+     * Sets default window title to "Game"
+     * @param width Integer that represents the width of the screen.
+     * @param height Integer that represents the height of the screen.
      */
     public Game(int width, int height)
     {
@@ -56,9 +55,9 @@ public abstract class Game extends JFrame
     }
     
     /**
-     * Sets the window title to title
-     * sets Window Dimensions to 640 x 480
-     * @param title 
+     * Sets the window title to String provided.
+     * Sets default window dimensions to 640 x 480.
+     * @param title String containing the title of the window.
      */
     public Game(String title)
     {
@@ -66,8 +65,9 @@ public abstract class Game extends JFrame
     }
     
     /**
-     * Empty Constructor
-     * sets all window defaults
+     * Empty Constructor.
+     * Sets default window Dimensions to 640 x 480.
+     * Sets default window title to "Game"
      */
     public Game()
     {
@@ -103,9 +103,9 @@ public abstract class Game extends JFrame
     
     //<editor-fold defaultstate="collapsed" desc="Game Loop">
     /**
-     * Everything that happens in the program happens here
-     * Input -> Game Logic -> Draw
-     * ^                        |
+     * Everything that happens in the program happens here. <br />
+     * Input -> Game Logic -> Draw <br />
+     * ^                        | <br />
      * |________________________|
      */
     public final void gameLoop()
@@ -129,7 +129,7 @@ public abstract class Game extends JFrame
                 g2d = bi.createGraphics();
                 // Draw 
                 draw(g2d);
-                // Sync Screen More For Linux/Mac
+                // Sync Screen For Linux/Mac
                 Toolkit.getDefaultToolkit().sync();
                 // Blit image and flip...
                 graphics = buffer.getDrawGraphics();
@@ -155,7 +155,7 @@ public abstract class Game extends JFrame
     /**
      * Proper way to exit/quit game
      * You can enter a certain error code to provide exit status text
-     * @param errorCode 
+     * @param errorCode Integer containing the error code. 
      */
     public static void exitGame(int errorCode)
     {
@@ -263,9 +263,9 @@ public abstract class Game extends JFrame
      */
     public abstract void unloadContent(); 
     /**
-     * Update game logic, etc
-     * Abstract Game handles updating Keyboard and Mouse polling 
-     * @param gameTime 
+     * Update Human interface states, game logic, etc.
+     * Abstract Game handles updating Keyboard and Mouse polling. 
+     * @param gameTime GameTime object containing the timing of the current session.
      */
     public void update(GameTime gameTime)
     {
@@ -293,9 +293,9 @@ public abstract class Game extends JFrame
 
     /**
      * Clears and draws the frame.
-     * @param g2d 
+     * @param g2d Graphics2D object containing the drawable surface of the window. 
      */
-    public void draw(Graphics2D g2d) // Draw Game
+    public void draw(Graphics2D g2d)
     {
         // Clear Background
         g2d.setColor(background); // Cornflower blue by default

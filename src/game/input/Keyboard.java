@@ -41,11 +41,19 @@ public class Keyboard
         return keyboard.keyDownOnce(keyCode);
     }
     
+    /**
+     * Detects if a key was pressed for Swing/AWT components.
+     * @param e KeyEvent related to key that was pressed. 
+     */
     public static void keyPressed(KeyEvent e)
     {
         keyboard.keyPressed(e);
     }
     
+    /**
+     * Detects if a key was released for Swing/AWT components.
+     * @param e KeyEvent related to key that was released.
+     */
     public static void keyReleased(KeyEvent e)
     {
         keyboard.keyReleased(e);

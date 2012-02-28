@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
  * Static wrapper class for the KeyboardInput object.
  * @author paul
  */
-public class Keyboard 
+public final class Keyboard 
 {
     /**
      * Static instance of the keyboard to be used.

@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
  * Static wrapper class for the MouseInputObject.
  * @author paul
  */
-public class Mouse 
+public final class Mouse 
 {
     /**
      * MouseInput object to be used for this static instance of the mouse.

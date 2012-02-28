@@ -3,14 +3,14 @@ package game.framework;
 public class MathHelper
 {
     /**
-     * Clamps a float value between a min and a max value.
-     * If the value is below min, value is set to min.
-     * If the value is above max, value is set to max.
-     * If the value is min < value < max then we leave it alone.
-     * @param value
-     * @param min
-     * @param max
-     * @return Returns the clampped value.
+     * Clamps a float value between a min and a max value. <br />
+     * If the value is below min, value is set to min. <br />
+     * If the value is above max, value is set to max. <br />
+     * If the value is min < value < max then we leave it alone. <br />
+     * @param value Value to be clamped.
+     * @param min Minimum value the value can be.
+     * @param max Maximum value the value can be.
+     * @return Returns the clamped value.
      */
     public static float clamp(float value, float min, float max)
     {
@@ -27,9 +27,9 @@ public class MathHelper
      * If the value is below min, value is set to min.
      * If the value is above max, value is set to max.
      * If the value is min < value < max then we leave it alone.
-     * @param value
-     * @param min
-     * @param max
+     * @param value Value to be clamped.
+     * @param min Minimum value the value can be.
+     * @param max Maximum value the value can be.
      * @return Returns the clamped value.
      */
     public static int clamp(int value, int min, int max)
@@ -73,8 +73,8 @@ public class MathHelper
     /**
      * Check to see if a float value is smaller than the min value.
      * If it is below min, value is set to min.
-     * @param value
-     * @param min
+     * @param value Value to check.
+     * @param min Minimum value the value can be.
      * @return Returns the evaluated value.
      */
     public static float min(float value, float min)
@@ -86,8 +86,8 @@ public class MathHelper
     /**
      * Check to see if a integer value is smaller than the min value.
      * If it is below min, value is set to min.
-     * @param value
-     * @param min
+     * @param value Value to check.
+     * @param min Minimum value the value can be.
      * @return Returns the evaluated value.
      */
     public static int min(int value, int min)
@@ -99,8 +99,8 @@ public class MathHelper
     /**
      * Check to see if a float value is larger than the max value.
      * If it is above max, value is set to max.
-     * @param value
-     * @param max
+     * @param value Value to check.
+     * @param max Maximum value the value can be.
      * @return Returns the evaluated value.
      */
     public static float max(float value, float max)
@@ -111,8 +111,8 @@ public class MathHelper
     /**
      * Check to see if a integer value is larger than the max value.
      * If it is above max, value is set to max.
-     * @param value
-     * @param max
+     * @param value Value to check.
+     * @param max Maximum value the value can be.
      * @return Returns the evaluated value.
      */
     public static int max(int value, int max)

@@ -421,20 +421,7 @@ public class Matrix implements Serializable
      */
     public static int rank(Matrix a)
     {
-        Matrix rref = Matrix.rref(a);
-        int rank = 0;
-        for(int j = 0; j < rref.ROWS; ++j)
-        {
-            for(int i = 0; i < rref.COLUMNS; ++i)
-            {
-                if(rref.data[j][i] == 0)
-                {
-                    ++rank;
-                    break;
-                }
-            }
-        }
-        return rank;
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     /**
@@ -455,48 +442,7 @@ public class Matrix implements Serializable
      */
     public static Matrix ref(Matrix a)
     {
-        // Search to see if we have any rows that are all zero.
-        // If there are any rows that contain all zero, we will swap them.
-        float[][] ws = Matrix.swapZeros(a.data);
-        // Check to see if a11 is zero.
-        if(ws[0][0] == 0)
-            // try to find a row that the first element is not zero.
-            for(int i = 1; i < ws.length; ++i)
-                if(ws[i][0] != 0)
-                    Matrix.swapRows(ws, 0, i);
-        // Use gaussian elimination to reduce the rows.
-        float[] tempRow;
-        int pivot = 0;
-        // Start Work!
-        for(int i = 0; i < ws.length; i++)
-        {
-            // Find the pivot(first non-zero entry in the row)
-            for(int k = 0; k < ws[0].length; k++)
-            {
-                // Found a Pivot
-                if(ws[i][k] > 0)
-                {
-                    pivot = k;
-                    break;
-                }
-            }
-            // Operate on the row if it does notcontain all zeros.
-            if(!Matrix.zeroRow(ws, i))
-            {
-                // multiply the row by the inverse of the pivot
-                tempRow = Matrix.multiplyRow(ws[i], 1 / ws[i][pivot]);
-                // Replace the row by its scaled Value
-                Matrix.replaceRow(ws, i, tempRow);
-                // Convert Values under the pivot to zero.
-                for(int j = i + 1; j < ws.length; j++)
-                {
-                    tempRow = Matrix.multiplyRow(ws[i], -1 * ws[j][pivot]);
-                    tempRow = Matrix.addRow(tempRow, ws[j]);
-                    Matrix.replaceRow(ws, j, tempRow);
-                }
-            }
-        }
-        return new Matrix(ws);
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     /**
@@ -517,48 +463,7 @@ public class Matrix implements Serializable
      */
     public static Matrix rref(Matrix a)
     {
-        /**
-         * All Columns where a pivot exists, the pivot must by the only non-zero value
-         * in that column.
-         */
-        Matrix ref = Matrix.ref(a);
-        float[][] ws = ref.data;
-        float[] tempRow;
-        int pivotIndex = 0;
-        boolean pivotExists = false;
-        // Go to each row
-        for(int j = 0; j < ref.ROWS; ++j)
-        {
-            // Search for pivot
-            for(int i = 0; i < ref.COLUMNS; ++i)
-            {
-                // If a pivot was found break.
-                if(ws[j][i] == 1)
-                {
-                    pivotIndex = i;
-                    pivotExists = true;
-                    break;
-                }
-            }
-            // If a pivot exists check the contents of the column.
-            if(pivotExists)
-            {
-                // Search the column for other non-zero values.
-                for(int k = 0; k < ref.ROWS; ++k)
-                {
-                    // If we found a non-zero value in the column we need to remove it.
-                    if(k != j && ws[k][pivotIndex] != 0)
-                    {
-                        tempRow = Matrix.multiplyRow(ws[j], -1 * ws[k][pivotIndex]);
-                        tempRow = Matrix.addRow(tempRow, ws[k]);
-                        Matrix.replaceRow(ws, k, tempRow);
-                    }
-                }
-            }
-            // Reset the pivot exists flag
-            pivotExists = false;
-        }
-        return new Matrix(ws);
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     /**
@@ -620,19 +525,14 @@ public class Matrix implements Serializable
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="To-String">
+    /**
+     * Produces a String representation of the Matrix.
+     * @return Returns the String representation of the Matrix.
+     */
     @Override
     public String toString()
     {
-        String out = "";
-        for(int j = 0; j < this.ROWS; ++j)
-        {
-            for(int i = 0; i < this.COLUMNS; ++i)
-            {
-                out += this.data[j][i] + " ";
-            }
-            out += "\n";
-        }
-        return out;
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     //</editor-fold>
     
@@ -644,15 +544,7 @@ public class Matrix implements Serializable
      */
     public static Matrix transpose(Matrix a)
     {
-        float[][] t = new float[a.COLUMNS][a.ROWS];
-        for(int j = 0; j < a.ROWS; ++j)
-        {
-            for(int i = 0; i < a.COLUMNS; ++i)
-            {
-                t[i][j] = a.data[j][i];
-            }
-        }
-        return new Matrix(t);
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     /**

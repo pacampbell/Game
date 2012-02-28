@@ -1,7 +1,6 @@
 package game.framework;
 
 import java.io.Serializable;
-import java.util.Arrays;
 
 /**
  * A generalized Matrix with n x m dimensions.
@@ -19,9 +18,9 @@ public class Matrix implements Serializable
 {
     //<editor-fold defaultstate="collapsed" desc="Properties">
     /**
-     * 2D array of floats representing the data in the Matrix.
+     * Array of floats representing the data in the Matrix.
      */
-    public final float[][] data;
+    public final float[] data;
     
     /**
      * A integer that contains the number of rows in the Matrix.
@@ -37,14 +36,19 @@ public class Matrix implements Serializable
     //<editor-fold defaultstate="collapsed" desc="Constructors">
     /**
      * Complete Constructor / Default Constructor
-     * Takes a 2d-array of floats and creates a new NMatrix with the data.
-     * @param data 
+     * Takes a array of floats and creates a new Matrix with the data.
+     * @param data An array of floats containing the data of the Matrix.
+     * @param rows Integer representing the number of rows in the Matrix.
+     * @param columns Integer representing the number of columns in the Matrix.
      */
-    public Matrix(float[][] data)
+    public Matrix(float[] data, int rows, int columns)
     {
+        // If we have bad data throw a RuntimeException.
+        if(data == null || rows < 1 || columns < 1)
+            throw new InvalidDimensionsException();
         this.data = data;
-        this.ROWS = data.length;
-        this.COLUMNS = data[0].length;
+        this.ROWS = rows;
+        this.COLUMNS = columns;
     }
     
     /**
@@ -54,7 +58,7 @@ public class Matrix implements Serializable
      */
     public Matrix(Matrix a)
     {
-        this(a.data);
+        this(a.data, a.ROWS, a.COLUMNS);
     }
     //</editor-fold>
     
@@ -68,17 +72,14 @@ public class Matrix implements Serializable
     public static Matrix add(Matrix a, Matrix b)
     {
         Matrix sum = null;
-        if(a.ROWS == b.ROWS && a.COLUMNS == b.COLUMNS)
+        if(a.data.length == b.data.length)
         {
-            float[][] ws = new float[a.ROWS][a.COLUMNS];
-            for(int j = 0; j < a.ROWS; ++j)
+            float[] ws = new float[a.data.length];
+            for (int i = 0; i < a.data.length; i++) 
             {
-                for(int i = 0; i < a.COLUMNS; ++i)
-                {
-                    ws[j][i] = a.data[j][i] + b.data[j][i];
-                }
+                ws[i] = a.data[i] + b.data[i];
             }
-            sum = new Matrix(ws);
+            sum = new Matrix(ws, a.ROWS, a.COLUMNS);
         }
         return sum;
     }
@@ -111,19 +112,14 @@ public class Matrix implements Serializable
      * Divides each component of a Matrix by a scalar value.
      * @param a A Matrix we want to divide.
      * @param scalar A scalar value we want to divide by.
-     * @return Returns a / scalar.
+     * @return Returns A / scalar.
      */
     public static Matrix divide(Matrix a, float scalar)
     {
-        float[][] ws = new float[a.ROWS][a.COLUMNS];
-        for(int j = 0; j < a.ROWS; ++j)
-        {
-            for(int i = 0; i < a.COLUMNS; ++i)
-            {
-                ws[j][i] = a.data[j][i] / scalar; 
-            }
-        }
-        return new Matrix(ws);
+        float[] ws = new float[a.data.length];
+        for(int i = 0; i < ws.length; i++)
+            ws[i] = a.data[i] / scalar;
+        return new Matrix(ws, a.ROWS, a.COLUMNS);
     }
     
     /**
@@ -140,22 +136,19 @@ public class Matrix implements Serializable
      * b Matrix divides a Matrix component wise.
      * @param a A Matrix we want to divide.
      * @param b A Matrix we want to divide. 
-     * @return Returns a / b.
+     * @return Returns A / B.
      */
     public static Matrix divide(Matrix a, Matrix b)
     {
         Matrix quotient = null;
-        if(a.ROWS == b.ROWS && a.COLUMNS == b.COLUMNS)
+        if(a.data.length == b.data.length)
         {
-            float[][] ws = new float[a.ROWS][a.COLUMNS];
-            for(int j = 0; j < a.ROWS; ++j)
+            float[] ws = new float[a.data.length];
+            for(int i = 0; i < ws.length; i++)
             {
-                for(int i = 0; i < a.COLUMNS; ++i)
-                {
-                    ws[j][i] = a.data[j][i] / b.data[j][i]; 
-                }
+                ws[i] = a.data[i] / b.data[i];
             }
-            quotient = new Matrix(ws);
+            quotient = new Matrix(ws, a.ROWS, a.COLUMNS);
         }
         return quotient;
     }
@@ -183,11 +176,17 @@ public class Matrix implements Serializable
         boolean equals = false;
         if(obj == this)
             equals = true;
-        else if(obj != false && obj instanceof Matrix)
+        else if(obj != null && obj instanceof Matrix)
         {
             Matrix that = (Matrix)obj;
-            if(Arrays.deepEquals(this.data, that.data))
+            if(this.data.length == that.data.length)
+            {
                 equals = true;
+                for(int i = 0; i < this.data.length; i++)
+                {
+                    equals &= (this.data[i] == that.data[i]);
+                }
+            }
         }
         return equals;
     }
@@ -335,15 +334,12 @@ public class Matrix implements Serializable
      * @param scalar A scalar value we want to multiply into the provided data.
      * @return Returns scalar * A
      */
-    private static float[][] multiply(float[][] a, float scalar)
+    private static float[] multiply(float[] a, float scalar)
     {
-        float[][] ws = new float[a.length][a[0].length];
-        for(int j = 0; j < a.length; ++j)
+        float[] ws = new float[a.length];
+        for(int i = 0; i < a.length; ++i)
         {
-            for(int i = 0; i < a[0].length; ++i)
-            {
-                ws[j][i] = a[j][i] * scalar;
-            }
+            ws[i] = a[i] * scalar; 
         }
         return ws;
     }
@@ -356,7 +352,7 @@ public class Matrix implements Serializable
      */
     public static Matrix multiply(Matrix a, float scalar)
     {
-        return new Matrix(Matrix.multiply(a.data, scalar));
+        return new Matrix(Matrix.multiply(a.data, scalar), a.ROWS, a.COLUMNS);
     }
     
     /**
@@ -373,23 +369,17 @@ public class Matrix implements Serializable
      * Helper Method for Multiplying the data of two matrices. 
      * @param a Data of a matrix we want to multiply.
      * @param b Data of a Matrix we want to multiply.
-     * @return Returns a * b;
+     * @return Returns a * b.
      */
-    private static float[][] multiply(float[][] a, float[][] b)
+    private static float[] multiply(float[] a, float[] b, int aRows, int aColumns, int bRows, int bColumns)
     {
-        float[][] product = null;
-        if(a[0].length == b.length)
+        float[] product = null;
+        if(aColumns == bRows)
         {
-            product = new float[a.length][b[0].length];
-            for(int j = 0; j < a.length; ++j)
+            product = new float[aRows * bColumns];
+            for(int k = 0; k < aRows; k++)
             {
-                for(int i = 0; i < b[0].length; ++i)
-                {
-                    for(int k = 0; k < a[0].length; ++k)
-                    {
-                        product[j][i] += a[j][k] * b[k][i]; 
-                    }
-                }
+                
             }
         }
         return product;
@@ -403,7 +393,13 @@ public class Matrix implements Serializable
      */
     public static Matrix multiply(Matrix a, Matrix b)
     {
-        return new Matrix(Matrix.multiply(a.data, b.data));
+        float[] mData = Matrix.multiply(a.data, b.data, a.ROWS, a.COLUMNS, b.ROWS, b.COLUMNS);
+        return new Matrix
+                (
+                    mData, 
+                    (mData != null) ? a.ROWS : 0, 
+                    (mData != null) ? b.COLUMNS : 0
+                );
     }
     
     /**
@@ -578,17 +574,15 @@ public class Matrix implements Serializable
     //<editor-fold defaultstate="collapsed" desc="Special Matrices">
     /**
      * nxn Identity Matrix
-     * @param n A integer defininf the size of the Identity Matrix.
+     * @param n Integer defining the size of the Identity Matrix.
      * @return Returns a nxn Identity Matrix.
      */
     public static Matrix identity(int n)
     {
-        float[][] ws = new float[n][n];
+        float[] ws = new float[n * n];
         for(int i = 0; i < n; ++i)
-        {
-            ws[i][i] = 1;
-        }
-        return new Matrix(ws);
+            ws[i * n] = 1;
+        return new Matrix(ws, n, n);
     }
     //</editor-fold>
     
@@ -601,20 +595,17 @@ public class Matrix implements Serializable
      */
     public static Matrix subtract(Matrix a, Matrix b)
     {
-        Matrix sum = null;
-        if(a.ROWS == b.ROWS && a.COLUMNS == b.COLUMNS)
+        Matrix difference = null;
+        if(a.data.length == b.data.length)
         {
-            float[][] ws = new float[a.ROWS][a.COLUMNS];
-            for(int j = 0; j < a.ROWS; ++j)
+            float[] ws = new float[a.data.length];
+            for (int i = 0; i < a.data.length; i++) 
             {
-                for(int i = 0; i < a.COLUMNS; ++i)
-                {
-                    ws[j][i] = a.data[j][i] - b.data[j][i];
-                }
+                ws[i] = a.data[i] - b.data[i];
             }
-            sum = new Matrix(ws);
+            difference = new Matrix(ws, a.ROWS, a.COLUMNS);
         }
-        return sum;
+        return difference;
     }
     
     /**
@@ -672,5 +663,29 @@ public class Matrix implements Serializable
     {
         return Matrix.transpose(this);
     }
-    //</editor-fold> 
+    //</editor-fold>
+    
+    /**
+     * Custom Exception for Matrix classes.
+     */
+    private class InvalidDimensionsException extends RuntimeException
+    {
+        /**
+         * Complete Constructor.
+         * @param msg String containing the message outputted to console.
+         */
+        public InvalidDimensionsException(String msg)
+        {
+            super(msg);
+        }
+        
+        /**
+         * Default Constructor.
+         * Echos out the text "The Dimensions of the Matrix are Invalid."
+         */
+        public InvalidDimensionsException()
+        {
+            super("The Dimensions of the Matrix are Invalid.");
+        }
+    }
 }

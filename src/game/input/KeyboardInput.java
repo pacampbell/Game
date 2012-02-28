@@ -36,6 +36,9 @@ public class KeyboardInput implements KeyListener
         }
     }
 
+    /**
+     * Polls the keyboard for new keys that might be pressed this update.
+     */
     public synchronized void poll()
     {
         for(int i = 0; i < KEY_COUNT; ++i)
@@ -58,17 +61,31 @@ public class KeyboardInput implements KeyListener
         }
     }
 
+    /**
+     * Checks to see if a key is being held down.
+     * @param keyCode ID for the key to be evaluated.
+     * @return Returns if the key is being held.
+     */
     public boolean keyDown(int keyCode)
     {
         return keys[keyCode] == KeyState.ONCE ||
                keys[keyCode] == KeyState.PRESSED;
     }
 
+    /**
+     * Checks to see if a key was pressed.
+     * @param keyCode ID for the key to be evaluated.
+     * @return Return is the key was pressed. 
+     */
     public boolean keyDownOnce(int keyCode)
     {
         return keys[keyCode] == KeyState.ONCE;
     }
 
+    /**
+     * Detects if a key was pressed for Swing/AWT components.
+     * @param e KeyEvent related to key that was pressed. 
+     */
     public synchronized void keyPressed(KeyEvent e)
     {
         int keyCode = e.getKeyCode();
@@ -78,6 +95,10 @@ public class KeyboardInput implements KeyListener
         }
     }
 
+    /**
+     * Detects if a key was released for Swing/AWT components.
+     * @param e KeyEvent related to key that was released.
+     */
     public synchronized void keyReleased(KeyEvent e)
     {
         int keyCode = e.getKeyCode();
@@ -87,8 +108,11 @@ public class KeyboardInput implements KeyListener
         }
     }
 
+    /**
+     * Void method. Not Implemented.
+     */
     public void keyTyped(KeyEvent e)
     {
-        // Not needed
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
 }

@@ -175,6 +175,7 @@ public class MathPad
     //<editor-fold defaultstate="collapsed" desc="Matrix Unit Test">
     public static void matrixTest()
     {
+        /*
         float[][] one = {
                             {1, 0, 1},
                             {1, 0, 1}
@@ -253,6 +254,8 @@ public class MathPad
         System.out.println(example5.ref());
         System.out.println("RREF");
         System.out.println(example5.rref());
+        * 
+        */
     }
     //</editor-fold>
     

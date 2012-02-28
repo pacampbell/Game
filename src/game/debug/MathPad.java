@@ -258,64 +258,8 @@ public class MathPad
     /**
      * Tests out Matrix3 operations.
      */
-    public static void matrix4Test()
+    public static void matrix3Test()
     {
-        Matrix3 m = Matrix3.identity();
-        System.out.println(m);
-        
-        float[][] one = {
-                            {1, 1, 1, 1},
-                            {1, 1, 1, 1},
-                            {1, 1, 1, 1},
-                            {1, 1, 1, 1}
-                        };
-        Matrix3 a = new Matrix3(one);
-        
-        System.out.println(a);
-        a = a.multiply(5.0f);
-        System.out.println(a);
-        
-        float[][] two = {
-                            {1, 2, 3, 4},
-                            {5, 6, 7, 8},
-                            {9, 1, 2, 3},
-                            {4, 5, 6, 7}
-                        };
-        
-        float[][] three = {
-                            {9, 8, 7, 6},
-                            {5, 4, 3, 2},
-                            {1, 9, 8, 7},
-                            {6, 5, 4, 3}
-                        };
-        
-        Matrix3 b = new Matrix3(two);
-        Matrix3 c = new Matrix3(three);
-        Matrix3 d = b.multiply(c);
-        System.out.println(d);
-        
-        float[][] four = {
-                            {3, 0, 2, -1},
-                            {1, 2, 0, -2},
-                            {4, 0, 6, -3},
-                            {5, 0, 2, 0}
-                        };
-        float det = Matrix3.determinant(new Matrix3(four));
-        System.out.println(det);
-        
-        Matrix3[] lud = Matrix3.luDecomposition(new Matrix3(four));
-        System.out.println("L");
-        System.out.println(lud[0]);
-        System.out.println("U");
-        System.out.println(lud[1]);
-        System.out.println("LU");
-        System.out.println(Matrix3.multiply(lud[0], lud[1]));
-        System.out.println("Determinant using LU: " + (lud[1].M11 * lud[1].M22 * lud[1].M33 * lud[1].M44));
-        
-        Matrix3 inverse = Matrix3.invert(new Matrix3(four));
-        System.out.println("Inverse");
-        System.out.println(inverse);
-        
     }
     //</editor-fold>
 }

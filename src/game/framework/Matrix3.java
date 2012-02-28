@@ -6,6 +6,8 @@ package game.framework;
  * <br />
  * <h1>Not Yet Implemented</h1>
  * <ul>
+ *  <li>Add</li>
+ *  <li>Constructors</li>
  *  <li>Create Billboard</li>
  *  <li>Create Constrained Billboard</li>
  *  <li>Create from Axis Angle</li>
@@ -27,9 +29,20 @@ package game.framework;
  *  <li>Create World</li>
  *  <li>Decompose</li>
  *  <li>Determinant</li>
+ *  <li>Divide</li>
+ *  <li>Equals</li>
+ *  <li>Identity</li>
  *  <li>Invert</li>
  *  <li>Linear Interpolation</li>
+ *  <li>LU Decomposition</li>
+ *  <li>Multiply</li>
+ *  <li>Negate</li>
+ *  <li>Row Echelon Form</li>
+ *  <li>Reduced Row Echelon Form</li>
+ *  <li>Subtract</li>
+ *  <li>To String</li>
  *  <li>Transform</li>
+ *  <li>Transpose</li>
  * </ul>
  * @version incomplete
  * @author paul
@@ -54,11 +67,6 @@ public class Matrix3
     public final float M13; 
     
     /**
-     * Value at row 1 column 4 of this Matrix.
-     */
-    public final float M14; 
-    
-    /**
      * Value at row 2 column 1 of this Matrix.
      */
     public final float M21; 
@@ -74,11 +82,6 @@ public class Matrix3
     public final float M23; 
     
     /**
-     * Value at row 2 column 4 of this Matrix.
-     */
-    public final float M24; 
-    
-    /**
      * Value at row 3 column 1 of this Matrix.
      */
     public final float M31; 
@@ -92,63 +95,17 @@ public class Matrix3
      * Value at row 3 column 3 of this Matrix.
      */
     public final float M33; 
-    
-    /**
-     * Value at row 3 column 4 of this Matrix.
-     */
-    public final float M34; 
-    
-    /**
-     * Value at row 4 column 1 of this Matrix.
-     */
-    public final float M41; 
-    
-    /**
-     * Value at row 4 column 2 of this Matrix.
-     */
-    public final float M42; 
-    
-    /**
-     * Value at row 4 column 3 of this Matrix.
-     */
-    public final float M43; 
-    
-    /**
-     * Value at row 4 column 4 of this Matrix.
-     */
-    public final float M44;
-    
-    /**
-     * Internal Representation of the matrix to simplify certain calculations.
-     */
-    private final float[][] data;
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Constructors">
     /**
      * Complete Constructor
      * Creates a Matrix with the float[][] provided.
-     * @param data An array of float[4][4] containing the representation of a Matrix. 
+     * @param data An array of float[9] containing the representation of a Matrix. 
      */
-    public Matrix3(float[][] data)
+    public Matrix3(float[] data)
     {
-        this.data = data;
-        this.M11 = data[0][0];
-        this.M12 = data[0][1];
-        this.M13 = data[0][2];
-        this.M14 = data[0][3];
-        this.M21 = data[1][0];
-        this.M22 = data[1][1];
-        this.M23 = data[1][2];
-        this.M24 = data[1][3];
-        this.M31 = data[2][0];
-        this.M32 = data[2][1];
-        this.M33 = data[2][2];
-        this.M34 = data[2][3];
-        this.M41 = data[3][0];
-        this.M42 = data[3][1]; 
-        this.M43 = data[3][2];
-        this.M44 = data[3][3];
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     /**
@@ -156,33 +113,18 @@ public class Matrix3
      * @param M11 Value at row 1 column 1 of Matrix.
      * @param M12 Value at row 1 column 2 of Matrix.
      * @param M13 Value at row 1 column 3 of Matrix.
-     * @param M14 Value at row 1 column 4 of Matrix.
      * @param M21 Value at row 2 column 1 of Matrix.
      * @param M22 Value at row 2 column 2 of Matrix.
      * @param M23 Value at row 2 column 3 of Matrix.
-     * @param M24 Value at row 2 column 4 of Matrix.
      * @param M31 Value at row 3 column 1 of Matrix.
      * @param M32 Value at row 3 column 2 of Matrix.
      * @param M33 Value at row 3 column 3 of Matrix.
-     * @param M34 Value at row 3 column 4 of Matrix.
-     * @param M41 Value at row 4 column 1 of Matrix.
-     * @param M42 Value at row 4 column 2 of Matrix.
-     * @param M43 Value at row 4 column 3 of Matrix.
-     * @param M44 Value at row 4 column 4 of Matrix. 
      */
-    public Matrix3(float M11, float M12, float M13, float M14, 
-                  float M21, float M22, float M23, float M24, 
-                  float M31, float M32, float M33, float M34, 
-                  float M41, float M42, float M43, float M44)
+    public Matrix3(float M11, float M12, float M13, 
+                   float M21, float M22, float M23, 
+                   float M31, float M32, float M33)
     {
-        this(
-                new float[][]
-                {
-                    {M11, M12, M13, M14},
-                    {M21, M22, M23, M24},
-                    {M31, M32, M33, M34},
-                    {M41, M42, M43, M44}
-                });
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     /**
@@ -192,12 +134,7 @@ public class Matrix3
      */
     public Matrix3(Matrix3 matrix)
     {
-        this(
-                matrix.M11, matrix.M12, matrix.M13, matrix.M14,
-                matrix.M21, matrix.M22, matrix.M23, matrix.M24,
-                matrix.M31, matrix.M32, matrix.M33, matrix.M34,
-                matrix.M41, matrix.M42, matrix.M43, matrix.M44
-            );
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     /**
@@ -212,25 +149,19 @@ public class Matrix3
     
     //<editor-fold defaultstate="collapsed" desc="Add">
     /**
-     * Performs addition with two matrices.
-     * @param a A Matrix we want to add.
-     * @param b A Matrix we want to add.
+     * Performs addition with two Matrix3.
+     * @param a A Matrix3 we want to add.
+     * @param b A Matrix3 we want to add.
      * @return Returns a + b.
      */
     public static Matrix3 add(Matrix3 a, Matrix3 b)
     {
-        return new Matrix3
-                (
-                    a.M11 + b.M11, a.M12 + b.M12, a.M13 + b.M13, a.M14 + b.M14,
-                    a.M21 + b.M21, a.M22 + b.M22, a.M23 + b.M23, a.M24 + b.M24,
-                    a.M31 + b.M31, a.M32 + b.M32, a.M33 + b.M33, a.M34 + b.M34,
-                    a.M41 + b.M41, a.M42 + b.M42, a.M43 + b.M43, a.M44 + b.M44
-                );
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     /**
-     * Performs addition with this Matrix and that Matrix.
-     * @param that A matrix we want to add.
+     * Performs addition with this Matrix3 and that Matrix3.
+     * @param that A Matrix3 we want to add.
      * @return Returns this + that.
      */
     public Matrix3 add(Matrix3 that)
@@ -381,17 +312,13 @@ public class Matrix3
     
     //<editor-fold defaultstate="collapsed" desc="Determinant">
     /**
-     * Calculates the determinant of the matrix.
-     * @param a A Matrix we want to find the determinant of.
-     * @return Returns det A.
+     * Calculates the determinant of the Matrix3.
+     * @param a A Matrix3 we want to find the determinant of.
+     * @return Returns DET(A).
      */
     public static float determinant(Matrix3 a)
     {
-        float r1 =  a.M11 * ((a.M22 * (a.M23 * a.M44 - a.M34 * a.M43)) - (a.M23 * (a.M32 * a.M44 - a.M34 * a.M42)) + (a.M24 * (a.M32 * a.M43 - a.M33 * a.M42))); 
-        float r2 = -a.M12 * ((a.M21 * (a.M33 * a.M44 - a.M34 * a.M43)) - (a.M22 * (a.M31 * a.M44 - a.M34 * a.M41)) + (a.M24 * (a.M31 * a.M42 - a.M32 * a.M41)));
-        float r3 =  a.M13 * ((a.M21 * (a.M32 * a.M44 - a.M34 * a.M42)) - (a.M22 * (a.M31 * a.M44 - a.M34 * a.M41)) + (a.M24 * (a.M31 * a.M42 - a.M32 * a.M41)));
-        float r4 = -a.M14 * ((a.M21 * (a.M32 * a.M43 - a.M33 * a.M42)) - (a.M22 * (a.M31 * a.M43 - a.M33 * a.M41)) + (a.M23 * (a.M31 * a.M42 - a.M32 * a.M41)));
-        return r1 + r2 + r3 + r4;
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     /**
@@ -406,24 +333,18 @@ public class Matrix3
     
     //<editor-fold defaultstate="collapsed" desc="Divide">
     /**
-     * Divides each component of a Matrix by a scalar value.
-     * @param a A Matrix we want to divide.
+     * Divides each component of a Matrix3 by a scalar value.
+     * @param a A Matrix3 we want to divide.
      * @param scalar A scalar value we want to divide by.
-     * @return Returns a / scalar.
+     * @return Returns A / scalar.
      */
     public static Matrix3 divide(Matrix3 a, float scalar)
     {
-        return new Matrix3
-                (
-                    a.M11 / scalar, a.M12 / scalar, a.M13 / scalar, a.M14 / scalar,
-                    a.M21 / scalar, a.M22 / scalar, a.M23 / scalar, a.M24 / scalar,
-                    a.M31 / scalar, a.M32 / scalar, a.M33 / scalar, a.M34 / scalar,
-                    a.M41 / scalar, a.M42 / scalar, a.M43 / scalar, a.M44 / scalar
-                );
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     /**
-     * Divides each component of this Matrix by a scalar value.
+     * Divides each component of this Matrix3 by a scalar value.
      * @param scalar A scalar value we want to divide by.
      * @return Returns this / scalar.
      */
@@ -433,25 +354,19 @@ public class Matrix3
     }
     
     /**
-     * Matrix b divides Matrix a component wise.
-     * @param a A Matrix we want to divide.
-     * @param b A Matrix we want to divide. 
-     * @return Returns a / b.
+     * Matrix3 b divides Matrix3 a component wise.
+     * @param a A Matrix3 we want to divide.
+     * @param b A Matrix3 we want to divide. 
+     * @return Returns A / B.
      */
     public static Matrix3 divide(Matrix3 a, Matrix3 b)
     {
-        return new Matrix3
-                (
-                    a.M11 / b.M11, a.M12 / b.M12, a.M13 / b.M13, a.M14 / b.M14,
-                    a.M21 / b.M21, a.M22 / b.M22, a.M23 / b.M23, a.M24 / b.M24,
-                    a.M31 / b.M31, a.M32 / b.M32, a.M33 / b.M33, a.M34 / b.M34,
-                    a.M41 / b.M41, a.M42 / b.M42, a.M43 / b.M43, a.M44 / b.M44
-                );
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     /**
-     * Matrix that divides Matrix this component wise.
-     * @param that A Matrix we want to divide.
+     * Matrix3 that divides Matrix3 this component wise.
+     * @param that A Matrix3 we want to divide.
      * @return Returns this / that.
      */
     public Matrix3 divide(Matrix3 that)
@@ -462,112 +377,31 @@ public class Matrix3
 
     //<editor-fold defaultstate="collapsed" desc="Equals">
     /**
-     * Checks to see if the Object provided is a matrix. 
-     * If so is it equals to this Matrix.
-     * @param obj An object believed to be a Matrix. 
+     * Checks the equality between this Matrix3 and an Object believed to be a Matrix3.
+     * @param obj An object believed to be a Matrix3. 
      * @return Returns this == that.
      */
     @Override
     public boolean equals(Object obj)
     {
-        boolean equals = false;
-        if(obj != null && obj instanceof Matrix3)
-        {
-            Matrix3 that = (Matrix3)obj;
-            if(this.M11 == that.M11 && this.M12 == that.M12 && this.M13 == that.M13 && this.M14 == that.M14 &&
-               this.M21 == that.M21 && this.M22 == that.M22 && this.M23 == that.M23 && this.M24 == that.M24 &&
-               this.M31 == that.M31 && this.M32 == that.M32 && this.M33 == that.M33 && this.M34 == that.M34 &&
-               this.M41 == that.M41 && this.M42 == that.M42 && this.M43 == that.M43 && this.M44 == that.M44)
-                equals = true;
-        }
-        return equals;
-        
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Hash Code">
-    /**
-     * Generates a hash code for this Matrix.
-     * Auto-Generated by the IDE.
-     * @return Returns the hash code for this Matrix.
-     */
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 73 * hash + Float.floatToIntBits(this.M11);
-        hash = 73 * hash + Float.floatToIntBits(this.M12);
-        hash = 73 * hash + Float.floatToIntBits(this.M13);
-        hash = 73 * hash + Float.floatToIntBits(this.M14);
-        hash = 73 * hash + Float.floatToIntBits(this.M21);
-        hash = 73 * hash + Float.floatToIntBits(this.M22);
-        hash = 73 * hash + Float.floatToIntBits(this.M23);
-        hash = 73 * hash + Float.floatToIntBits(this.M24);
-        hash = 73 * hash + Float.floatToIntBits(this.M31);
-        hash = 73 * hash + Float.floatToIntBits(this.M32);
-        hash = 73 * hash + Float.floatToIntBits(this.M33);
-        hash = 73 * hash + Float.floatToIntBits(this.M34);
-        hash = 73 * hash + Float.floatToIntBits(this.M41);
-        hash = 73 * hash + Float.floatToIntBits(this.M42);
-        hash = 73 * hash + Float.floatToIntBits(this.M43);
-        hash = 73 * hash + Float.floatToIntBits(this.M44);
-        return hash;
-    }
-    //</editor-fold>
-    
     //<editor-fold defaultstate="collapsed" desc="Invert">
     /**
-     * Finds the Inverse of a Matrix.
-     * @param a A Matrix we want to find the inverse of.
-     * @return Returns the inverse of a. If no inverse exists a null Matrix is returned.
+     * Finds the Inverse of a Matrix3.
+     * @param a A Matrix3 we want to find the inverse of.
+     * @return Returns the inverse of A. If no inverse exists a null Matrix3 is returned.
      */
     public static Matrix3 invert(Matrix3 a)
     {
-        Matrix3[] lud = Matrix3.luDecomposition(a);
-        Matrix3 inverse = null;
-        if((lud[1].M11 * lud[1].M22 * lud[1].M33 * lud[1].M44) != 0)
-        {
-            /**
-             * Solve L * Z = C
-             * Solve U * B = Z
-             * B = i-th Column of the Inverse Matrix
-             */
-            Matrix3 identity = Matrix3.identity();
-            float[] z = new float[4];
-            float[] c = new float[4];
-            float[] b = new float[4];
-            float[][] finverse = new float[4][4];
-            
-            for(int col = 0; col < z.length; ++col)
-            {
-                for(int row = 0; row < identity.data.length; ++row)
-                {
-                    c[row] = identity.data[row][col];
-                }
-                
-                z[0] = c[0]; // Z1 will always be equal to c1 at this stage.
-                z[1] = -(lud[0].M21 * z[0]);
-                z[2] = -(lud[0].M31 * z[0]) - (lud[0].M32 * z[1]);
-                z[3] = -(lud[0].M41 * z[0]) - lud[0].M42 * z[1] - lud[0].M43 * z[2]; 
-                
-                b[3] = z[3] / lud[1].M44;
-                b[2] = (z[2] - (lud[1].M34 * b[3])) / lud[1].M33;
-                b[1] = (z[1] - (lud[1].M23 * b[2]) - (lud[1].M24 * b[3])) / lud[1].M22;
-                b[0] = (z[0] - (lud[1].M12 * b[1]) - (lud[1].M13 * b[2]) - (lud[1].M14 * b[3])) /  lud[1].M11;
-                
-                for(int i = 0; i < b.length; ++i)
-                    finverse[i][col] = b[i];
-                
-                z = b = new float[4];
-            }
-            inverse = new Matrix3(finverse);
-            
-        }
-        return inverse;
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     /**
-     * Finds the Inverse of this Matrix.
-     * @return Returns the inverse of this Matrix.
+     * Finds the Inverse of this Matrix3.
+     * @return Returns the inverse of this Matrix3.
      */
     public Matrix3 invert()
     {
@@ -584,52 +418,18 @@ public class Matrix3
     
     //<editor-fold defaultstate="collapsed" desc="LU Decomposition">
     /**
-     * Performs LU Decomposition of a Matrix.
-     * @param a A Matrix we want to perform LU decomposition on.
-     * @return Returns an array containing a lower triangular Matrix L and a upper triangular Matrix U where LU = A.
+     * Performs LU Decomposition of a Matrix3.
+     * @param a A Matrix3 we want to perform LU decomposition on.
+     * @return Returns an array containing a lower triangular Matrix3 L and a upper triangular Matrix3 U where LU = A.
      */
     public static Matrix3[] luDecomposition(Matrix3 a)
     {
-        float l21 = a.M21 / a.M11;
-        float l31 = a.M31 / a.M11;
-        float l41 = a.M41 / a.M11;
-        
-        
-        float u22 = a.M22 - (l21 * a.M12);
-        float u23 = a.M23 - (l21 * a.M13);
-        float u24 = a.M24 - (l21 * a.M14);
-        
-        float l32 = (a.M32 - (l31 * a.M12)) / u22;
-        float u33 = a.M33 - (l31 * a.M13) - (l32 * u23);
-        float u34 = a.M34 - (l31 * a.M14) - (l32 * u24);
-        
-        float l42 = (a.M42 - (l41 * a.M12)) / u22;
-        float l43 = (a.M43 - (l41 * a.M13) - (l42 * u23)) / u33;
-        float u44 = a.M44 - (l41 * a.M14) - (l43 * u34);
-        
-        
-        Matrix3 l = new Matrix3(new float[][]
-        {
-            {1  ,   0,   0, 0},
-            {l21,   1,   0, 0},
-            {l31, l32,   1, 0},
-            {l41, l42, l43, 1}
-        });
-        
-        Matrix3 u = new Matrix3(new float[][]
-        {
-            {a.M11, a.M12, a.M13, a.M14},
-            {0    ,   u22,   u23,   u24},
-            {0    ,     0,   u33,   u34},
-            {0    ,     0,     0,   u44}
-        });
-        
-        return new Matrix3[]{l, u};
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     /**
-     * Performs LU Decomposition of this Matrix.
-     * @return Returns an array containing a lower triangular Matrix and a upper triangular Matrix.
+     * Performs LU Decomposition of this Matrix3.
+     * @return Returns an array containing a lower triangular Matrix3 and a upper triangular Matrix3.
      */
     public Matrix3[] luDecomposition()
     {
@@ -639,25 +439,19 @@ public class Matrix3
     
     //<editor-fold defaultstate="collapsed" desc="Multiply">
     /**
-     * Perform Matrix multiplication between two matrices.
-     * @param a A Matrix we want to multiply.
-     * @param b A matrix we want to multiply.
+     * Perform Matrix3 multiplication between two matrices.
+     * @param a A Matrix3 we want to multiply.
+     * @param b A matrix3 we want to multiply.
      * @return Returns a * b.
      */
     public static Matrix3 multiply(Matrix3 a, Matrix3 b)
     {
-        return new Matrix3
-                (
-                    (a.M11 * b.M11) + (a.M12 * b.M21) + (a.M13 * b.M31) + (a.M14 * b.M41), (a.M11 * b.M12) + (a.M12 * b.M22) + (a.M13 * b.M32) + (a.M14 * b.M42), (a.M11 * b.M13) + (a.M12 * b.M23) + (a.M13 * b.M33) + (a.M14 * b.M43), (a.M11 * b.M14) + (a.M12 * b.M24) + (a.M13 * b.M34) + (a.M14 * b.M44),   
-                    (a.M21 * b.M11) + (a.M22 * b.M21) + (a.M23 * b.M31) + (a.M24 * b.M41), (a.M21 * b.M12) + (a.M22 * b.M22) + (a.M23 * b.M32) + (a.M24 * b.M42), (a.M21 * b.M13) + (a.M22 * b.M23) + (a.M23 * b.M33) + (a.M24 * b.M43), (a.M21 * b.M14) + (a.M22 * b.M24) + (a.M23 * b.M34) + (a.M24 * b.M44),
-                    (a.M31 * b.M11) + (a.M32 * b.M21) + (a.M33 * b.M31) + (a.M34 * b.M41), (a.M31 * b.M12) + (a.M32 * b.M22) + (a.M33 * b.M32) + (a.M34 * b.M42), (a.M31 * b.M13) + (a.M32 * b.M23) + (a.M33 * b.M33) + (a.M34 * b.M43), (a.M31 * b.M14) + (a.M32 * b.M24) + (a.M33 * b.M34) + (a.M34 * b.M44),
-                    (a.M41 * b.M11) + (a.M42 * b.M21) + (a.M43 * b.M31) + (a.M44 * b.M41), (a.M41 * b.M12) + (a.M42 * b.M22) + (a.M43 * b.M32) + (a.M44 * b.M42), (a.M41 * b.M13) + (a.M42 * b.M23) + (a.M43 * b.M33) + (a.M44 * b.M43), (a.M41 * b.M14) + (a.M42 * b.M24) + (a.M43 * b.M34) + (a.M44 * b.M44)
-                );
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     /**
-     * Perform Matrix multiplication between this Matrix and that Matrix.
-     * @param that A Matrix we want to multiply.
+     * Perform Matrix3 multiplication between this Matrix3 and that Matrix3.
+     * @param that A Matrix3 we want to multiply.
      * @return Returns this * that.
      */
     public Matrix3 multiply(Matrix3 that)
@@ -666,24 +460,18 @@ public class Matrix3
     }
     
     /**
-     * Multiplies a scalar value into the Matrix.
-     * @param a A Matrix we want to multiply.
-     * @param scalar A scalar value we want to multiply into the provided Matrix.
+     * Multiplies a scalar value into the Matrix3.
+     * @param a A Matrix3 we want to multiply.
+     * @param scalar A scalar value we want to multiply into the provided Matrix3.
      * @return Returns scalar * a
      */
     public static Matrix3 multiply(Matrix3 a, float scalar)
     {
-        return new Matrix3
-                (
-                    scalar * a.M11, scalar * a.M12, scalar * a.M13, scalar * a.M14,
-                    scalar * a.M21, scalar * a.M22, scalar * a.M23, scalar * a.M24,
-                    scalar * a.M31, scalar * a.M32, scalar * a.M33, scalar * a.M34,
-                    scalar * a.M41, scalar * a.M42, scalar * a.M43, scalar * a.M44
-                );
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     /**
-     * Multiplies a scalar value into this Matrix.
-     * @param scalar A scalar value we want to multiply into the provided Matrix.
+     * Multiplies a scalar value into this Matrix3.
+     * @param scalar A scalar value we want to multiply into the provided Matrix3.
      * @return Returns scalar * this.
      */
     public Matrix3 multiply(float scalar)
@@ -693,27 +481,21 @@ public class Matrix3
     
     /**
      * Matrix Vector multiplication
-     * @param a A Matrix that we want to multiply.
-     * @param x A Vector4 that we want to multiply.
-     * @return Returns a Vector4 containing the product of Ax.
+     * @param a A Matrix3 that we want to multiply.
+     * @param x A Vector3 that we want to multiply.
+     * @return Returns a Vector3 containing the product of Ax.
      */
-    public static Vector4 multiply(Matrix3 a, Vector4 x)
+    public static Vector4 multiply(Matrix3 a, Vector3 x)
     {
-        return new Vector4
-                (
-                    a.M11 * x.x + a.M12 * x.y + a.M13 * x.z + a.M14 * x.w,
-                    a.M21 * x.x + a.M22 * x.y + a.M23 * x.z + a.M24 * x.w,
-                    a.M31 * x.x + a.M32 * x.y + a.M33 * x.z + a.M34 * x.w,
-                    a.M41 * x.x + a.M42 * x.y + a.M43 * x.z + a.M44 * x.w
-                );
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     /**
      * Matrix Vector multiplication
-     * @param v A Vector4 that we want to multiply with this Matrix.
-     * @return Returns a Vector4 containing the product of Ax.
+     * @param v A Vector3 that we want to multiply with this Matrix3.
+     * @return Returns a Vector3 containing the product of Ax.
      */
-    public Vector4 multiply(Vector4 x)
+    public Vector4 multiply(Vector3 x)
     {
         return Matrix3.multiply(this, x);
     }
@@ -721,23 +503,17 @@ public class Matrix3
     
     //<editor-fold defaultstate="collapsed" desc="Negate">
     /**
-     * Negates all the components of a Matrix.
-     * @param a A Matrix we want to negate.
-     * @return Returns -a.
+     * Negates all the components of a Matrix3.
+     * @param a A Matrix3 we want to negate.
+     * @return Returns -A.
      */
     public static Matrix3 negate(Matrix3 a)
     {
-        return new Matrix3
-                (
-                    -1 * a.M11, -1 * a.M12, -1 * a.M13, -1 * a.M14,
-                    -1 * a.M21, -1 * a.M22, -1 * a.M23, -1 * a.M24,
-                    -1 * a.M31, -1 * a.M32, -1 * a.M33, -1 * a.M34,
-                    -1 * a.M41, -1 * a.M42, -1 * a.M43, -1 * a.M44
-                );
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     /**
-     * Negates all the components of this Matrix.
+     * Negates all the components of this Matrix3.
      * @return Returns -this.
      */
     public Matrix3 negate()
@@ -746,26 +522,41 @@ public class Matrix3
     }
     //</editor-fold>
     
-    //<editor-fold defaultstate="collapsed" desc="Reduced Row Echelon Form">
+    //<editor-fold defaultstate="collapsed" desc="Row Echelon Form">
     /**
-     * Finds the Reduced Row Echelon Form(rref) of the provided Matrix.
-     * @param a A Matrix we want to find the rref of.
-     * @return Returns a Matrix in Reduced Row Echelon Form.
+     * Finds the Row Echelon Form of a Matrix3.
+     * @param a A Matrix3 to find the row echelon form of.
+     * @return Returns a Matrix3 representing the row echelon form of A.
      */
-    public static Matrix3 rref(Matrix3 a)
+    public static Matrix3 ref(Matrix3 a)
     {
-        Matrix3 rref = null;
-        float[][] ws = a.data; // Set the Working Set to the inital data.
-        
-        
-        
-        
-        return rref;
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     /**
-     * Finds the Reduced Row Echelon Form(rref) of this Matrix.
-     * @return Returns a Matrix in Reduced Row Echelon Form.
+     * Finds the Row Echelon Form of this Matrix3.
+     * @return Returns a Matrix3 representing the row echelon form of this.
+     */
+    public Matrix3 ref()
+    {
+        return Matrix3.ref(this);
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Reduced Row Echelon Form">
+    /**
+     * Finds the Reduced Row Echelon Form(rref) of the provided Matrix3.
+     * @param a A Matrix3 we want to find the rref of.
+     * @return Returns a Matrix3 in Reduced Row Echelon Form.
+     */
+    public static Matrix3 rref(Matrix3 a)
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    
+    /**
+     * Finds the Reduced Row Echelon Form(rref) of this Matrix3.
+     * @return Returns a Matrix3 in Reduced Row Echelon Form.
      */
     public Matrix3 rref()
     {
@@ -775,41 +566,29 @@ public class Matrix3
     
     //<editor-fold defaultstate="collapsed" desc="Special Matrices">
     /**
-     * @return Returns the identity of a 4x4 matrix. 
+     * @return Returns the identity of a Matrix3. 
      */
     public static Matrix3 identity()
     {
-        float temp[][] = {
-                            {1, 0, 0, 0},
-                            {0, 1, 0, 0},
-                            {0, 0, 1, 0},
-                            {0, 0, 0, 1}
-                         };
-        return new Matrix3(temp);
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Subtract">
     /**
      * Performs subtraction between two matrices.
-     * @param a A Matrix we want to subtract from.
-     * @param b A Matrix we want to subtract with.
+     * @param a A Matrix3 we want to subtract from.
+     * @param b A Matrix3 we want to subtract with.
      * @return Returns a - b.
      */
     public static Matrix3 subtract(Matrix3 a, Matrix3 b)
     {
-        return new Matrix3
-                (
-                    a.M11 - b.M11, a.M12 - b.M12, a.M13 - b.M13, a.M14 - b.M14,
-                    a.M21 - b.M21, a.M22 - b.M22, a.M23 - b.M23, a.M24 - b.M24,
-                    a.M31 - b.M31, a.M32 - b.M32, a.M33 - b.M33, a.M34 - b.M34,
-                    a.M41 - b.M41, a.M42 - b.M42, a.M43 - b.M43, a.M44 - b.M44
-                );
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     /**
-     * Subtracts that Matrix from this Matrix.
-     * @param that A matrix we want to subtract.
+     * Subtracts that Matrix3 from this Matrix3.
+     * @param that A Matrix3 we want to subtract.
      * @return Returns this - that.
      */
     public Matrix3 subtract(Matrix3 that)
@@ -820,15 +599,12 @@ public class Matrix3
     
     //<editor-fold defaultstate="collapsed" desc="To-String">
     /**
-     * @return Returns a String representation of a Matrix. 
+     * @return Returns a String representation of a Matrix3. 
      */
     @Override
     public String toString()
     {
-        return  M11 + " " + M12 + " " + M13 + " " + M14 + "\n" + 
-                M21 + " " + M22 + " " + M23 + " " + M24 + "\n" + 
-                M31 + " " + M32 + " " + M33 + " " + M34 + "\n" + 
-                M41 + " " + M42 + " " + M43 + " " + M44 + "\n";
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     //</editor-fold>
     
@@ -841,24 +617,18 @@ public class Matrix3
     
     //<editor-fold defaultstate="collapsed" desc="Transpose">
     /**
-     * Transposes the provided Matrix.
-     * @param a A Matrix we want to transpose.
-     * @return Returns the transpose of Matrix a.
+     * Transposes the provided Matrix3.
+     * @param a A Matrix3 we want to transpose.
+     * @return Returns the transpose of Matrix3 A.
      */
     public static Matrix3 transpose(Matrix3 a)
     {
-        return new Matrix3
-                (
-                    a.M11, a.M21, a.M31, a.M41,
-                    a.M12, a.M22, a.M32, a.M42,
-                    a.M13, a.M23, a.M33, a.M43,
-                    a.M14, a.M24, a.M34, a.M44
-                );
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     
     /**
-     * Transposes this Matrix.
-     * @return Returns the transpose of this Matrix.
+     * Transposes this Matrix3.
+     * @return Returns the transpose of this Matrix3.
      */
     public Matrix3 transpose()
     {

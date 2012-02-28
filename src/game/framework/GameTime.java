@@ -11,6 +11,10 @@ public class GameTime
     private long lCurrTime;
     private boolean stopped;
 
+    /**
+     * Complete Constructor.
+     * Initializes all fields to zero.
+     */
     public GameTime()
     {
         // Initalize Vars
@@ -24,6 +28,10 @@ public class GameTime
         this.stopped = false;
     }
 
+    /**
+     * Gets the total time elapsed in the program.
+     * @return Returns the total time passed since the program has started.
+     */
     public float getGameTime()
     {
         if(stopped)
@@ -36,17 +44,22 @@ public class GameTime
         }
     }
 
+    /**
+     * Gets the time passed since the last time the clock has been polled.
+     * @return Returns the time in milliseconds since the last update.
+     */
     public float getDeltaTime()
     {
         return (float)this.deltaTime;
     }
 
     /**
-     * Resets:
-     *  baseTime = System.currentTimeMillis();
-     *  prevTime = System.currentTimeMillis();
-     *  stopTime = 0
-     *  stopped  = false
+     * Resets the GameTime timer.
+     * Resets: <br />
+     *  baseTime = System.currentTimeMillis(); <br />
+     *  prevTime = System.currentTimeMillis(); <br />
+     *  stopTime = 0; <br />
+     *  stopped  = false; <br />
      */
     public void reset()
     {
@@ -58,7 +71,7 @@ public class GameTime
     }
 
     /**
-     * Starts the timer
+     * Starts the timer.
      */
     public void start()
     {
@@ -79,7 +92,7 @@ public class GameTime
     }
 
     /**
-     * Stops the timer
+     * Stops the timer.
      */
     public void stop()
     {

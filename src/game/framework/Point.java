@@ -1,5 +1,10 @@
 package game.framework;
 
+/**
+ * Point class representing a 2D-Point (x,y).
+ * @version incomplete
+ * @author paul
+ */
 public class Point
 {
     /**

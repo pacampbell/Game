@@ -19,7 +19,7 @@ public class Texture2D
      */
     public Texture2D(String path)
     {
-        this.contentLocation = "/resources/" + path;
+        this.contentLocation = path;
         this.loadImage(contentLocation);
     }
     

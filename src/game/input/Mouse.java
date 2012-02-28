@@ -70,31 +70,55 @@ public class Mouse
         return Mouse.buttonDown(key.KEYCODE);
     }
     
+    /**
+     * Detects if a mouse key was pressed for Swing/AWT components.
+     * @param e KeyEvent related to key that was pressed. 
+     */
     public static void mousePressed(MouseEvent e)
     {
         mouse.mousePressed(e);
     }
     
+    /**
+     * Detects if a mouse key was released for Swing/AWT components.
+     * @param e KeyEvent related to key that was released. 
+     */
     public static void mouseReleased(MouseEvent e)
     {
         mouse.mouseReleased(e);
     }
     
+    /**
+     * Detects if the mouse has entered a region for Swing/AWT components.
+     * @param e KeyEvent related to the mouse entering a region. 
+     */
     public static void mouseEntered(MouseEvent e)
     {
         mouse.mouseEntered(e);
     }
     
+    /**
+     * Detects if the mouse has exited a region for Swing/AWT components.
+     * @param e KeyEvent related to the mouse exiting a region. 
+     */
     public static void mouseExited(MouseEvent e)
     {
         mouse.mouseExited(e);
     }
     
+    /**
+     * Detects if the mouse has been dragged for Swing/AWT components.
+     * @param e KeyEvent related to the mouse being dragged. 
+     */
     public static void mouseDragged(MouseEvent e)
     {
         mouse.mouseDragged(e);
     }
     
+    /**
+     * Detects if the mouse has been moved for Swing/AWT components.
+     * @param e KeyEvent related to the mouse being moved. 
+     */
     public static void mouseMoved(MouseEvent e)
     {
         mouse.mouseMoved(e);

@@ -10,6 +10,11 @@ import java.io.Serializable;
  *  <li>Determinant</li>
  *  <li>Inverse</li>
  *  <li>LU-Decomposition</li>
+ *  <li>Multiply</li>
+ *  <li>Rank</li>
+ *  <li>Reduced Row Echelon Form</li>
+ *  <li>Row Echelon Form</li>
+ *  <li>Transpose</li>
  * </ul>
  * @version incomplete
  * @author mike, paul
@@ -557,6 +562,7 @@ public class Matrix implements Serializable
     }
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Invalid Dimensions Exception">
     /**
      * Custom Exception for Matrix classes.
      */
@@ -580,4 +586,5 @@ public class Matrix implements Serializable
             super("The Dimensions of the Matrix are Invalid.");
         }
     }
+    //</editor-fold>
 }

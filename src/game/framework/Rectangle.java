@@ -1,123 +1,193 @@
 package game.framework;
 
+/**
+ * Rectangle geometric primitive.
+ * Has a x-coordinate, y-coordinate, width, and height.
+ * <br />
+ * <h1>Not Yet Implemented</h1>
+ * <ul>
+ *  <li>Bottom</li>
+ *  <li>Center</li>
+ *  <li>Contains</li>
+ *  <li>Empty</li>
+ *  <li>Equals</li>
+ *  <li>Inflate</li>
+ *  <li>Intersects</li>
+ *  <li>Is Empty</li>
+ *  <li>Left</li>
+ *  <li>Location</li>
+ *  <li>Offset</li>
+ *  <li>Right</li>
+ *  <li>To String</li>
+ *  <li>Top</li>
+ *  <li>Unions</li>
+ * </ul>
+ * @version incomplete
+ * @author paul
+ */
 public class Rectangle
 {
-    public int width;
-    public int height;
-    public int x;
-    public int y;
-
-    //<editor-fold defaultstate="collapsed" desc="Constructors">
+    /**
+     * Integer representing the x-coordinate of the Rectangle.
+     */
+    public final int x;
+    
+    /**
+     * Integer representing the y-coordinate of the Rectangle.
+     */
+    public final int y;
+    
+    /**
+     * Integer representing the width of the Rectangle.
+     */
+    public final int width;
+    
+    /**
+     * Integer representing the height of the Rectangle.
+     */
+    public final int height;
+    
+    //<editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Complete Constructor
-     * @param x 
-     * @param y
-     * @param width
-     * @param height 
+     * @param x Integer representing the x-coordinate of the Rectangle.
+     * @param y Integer representing the y-coordinate of the Rectangle.
+     * @param width Integer representing the width of the Rectangle.
+     * @param height Integer representing the height of the Rectangle.
      */
     public Rectangle(int x, int y, int width, int height)
     {
+        this.x = x;
+        this.y = y;
         this.width = width;
         this.height = height;
-        this.x = x;
-        this.y = y;
     }
-
+    
     /**
-     * Empty Constructor
+     * Copy Constructor.
+     * Creates a copy of the provided Rectangle.
+     * @param rect A Rectangle to be copied.
      */
-    public Rectangle()
+    public Rectangle(Rectangle rect)
     {
-        this(0, 0, 0, 0);
-    }
-
-    /**
-     * Creates a rectangle with the provided width and height.
-     * @param width
-     * @param height 
-     */
-    public Rectangle(int width, int height)
-    {
-        this(0, 0, width, height);
+        this(rect.x, rect.y, rect.width, rect.height);
     }
     //</editor-fold>
-
-    //<editor-fold defaultstate="collapsed" desc="Getters for sides of Rectangle">
-    // Returns the y-coordinate of the top of the rectangle.
-    public int top()
+    
+    //<editor-fold defaultstate="collapsed" desc="Contains">
+    public boolean contains(int x, int y)
     {
-        return y;
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
-
-    // Returns the y-coordinate of the bottom of the rectangle.
+    
+    public boolean contains(Point p)
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    
+    public boolean contains(Rectangle rect)
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Equals">
+    public boolean equals(Object obj)
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Inflate">
+    public Rectangle inflate(int xScale, int yScale)
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Intersects">
+    public static boolean intersects(Rectangle a, Rectangle b)
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    
+    public boolean intersects(Rectangle that)
+    {
+        return Rectangle.intersects(this, that);
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Offset">
+    public Rectangle offset(int x, int y)
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Special Rectangles">
     public int bottom()
     {
-       return y + height;
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
-
-    // Returns the x-coordinate of the left side of the rectangle.
+    
+    public Point center()
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    
+    public static Rectangle empty()
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    
+    public static boolean isEmpty(Rectangle rect)
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    
+    public boolean isEmpty()
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    
     public int left()
     {
-        return x;
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
-
-    // Returns the x-coordinate of the right side of the rectangle.
+    
+    public Point location()
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    
     public int right()
     {
-        return x + width;
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    
+    public int top()
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
     //</editor-fold>
 
-    // Returns the center of the rectangle
-    public Point center()
-    {
-        int centerX = width / 2;
-        int centerY = height / 2;
-        return new Point(centerX + x, centerY + y);
-    }
-
-    // Sets all fields of the Rectangle to zero
-    public static Rectangle empty()
-    {
-        return new Rectangle();
-    }
-
-    // Checks to see if te rectangle is empty
-    public boolean isEmpty()
-    {
-        boolean result = false;
-        if(x == 0 && y == 0 && width == 0 && height == 0)
-            result = true;
-        return result;
-    }
-
-    // Sets the upper left corner (x,y) location of the rectangle
-    public void setLocation(int x, int y)
-    {
-        this.x = x;
-        this.y = y;
-    }
-
-    // Returns the upper left corner (x,y) location of the rectangle
-    public Point getLocation()
-    {
-        return new Point(x, y);
-    }
-
-    // Checks to see if another rectangle intersects this rectangle
-    public boolean intersects(Rectangle rectb)
-    {
-        return  !(
-                this.left()  > rectb.right()  ||
-                rectb.left() > this.right()   ||
-                this.top()   > rectb.bottom() ||
-                rectb.top()  > this.bottom()
-                );
-    }
-
+    //<editor-fold defaultstate="collapsed" desc="To String">
     @Override
     public String toString()
     {
-        return "Width: " + width + "\nHeight: " + height + "\nX: " + x + "\nY: " + y;
+        throw new UnsupportedOperationException("Not yet implemented.");
     }
+    //</editor-fold>
+    
+    //<editor-fold defaultstate="collapsed" desc="Union">
+    public static Rectangle union(Rectangle a, Rectangle b)
+    {
+        throw new UnsupportedOperationException("Not yet implemented.");
+    }
+    
+    public Rectangle union(Rectangle that)
+    {
+        return Rectangle.union(this, that);
+    }
+    //</editor-fold>
 }

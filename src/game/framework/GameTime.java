@@ -8,17 +8,19 @@ public class GameTime
     private long stopTime;
     private long prevTime;
     private long currTime;
+    private long lCurrTime;
     private boolean stopped;
 
     public GameTime()
     {
         // Initalize Vars
-        this.deltaTime = -1.0f;
+        this.deltaTime = 0.0f;
         this.baseTime = 0;
         this.pausedTime = 0;
         this.stopTime = 0;
         this.prevTime = 0;
         this.currTime = 0;
+        this.lCurrTime = 0;
         this.stopped = false;
     }
 
@@ -48,7 +50,7 @@ public class GameTime
      */
     public void reset()
     {
-        long lCurrTime = System.currentTimeMillis();
+        lCurrTime = System.currentTimeMillis();
         this.baseTime = lCurrTime;
         this.prevTime = lCurrTime;
         this.stopTime = 0;
@@ -83,7 +85,7 @@ public class GameTime
     {
         if(!stopped)
         {
-            long lCurrTime = System.currentTimeMillis();
+            lCurrTime = System.currentTimeMillis();
             this.stopTime = lCurrTime;
             this.stopped = true;
         }
@@ -102,7 +104,7 @@ public class GameTime
             return;
         }
 
-        long lCurrTime = System.currentTimeMillis();
+        lCurrTime = System.currentTimeMillis();
         this.currTime = lCurrTime;
 
         // Time difference between this frame and the previous.

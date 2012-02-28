@@ -171,7 +171,8 @@ public class MathPad
         System.out.println("a / b = " + q);
     }
     //</editor-fold>
-    
+
+    //<editor-fold defaultstate="collapsed" desc="Matrix Unit Test">
     public static void matrixTest()
     {
         float[][] one = {
@@ -253,6 +254,7 @@ public class MathPad
         System.out.println("RREF");
         System.out.println(example5.rref());
     }
+    //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Matrix3 Unit Test">
     /**

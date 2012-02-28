@@ -1,5 +1,7 @@
 package game.framework;
 
+import java.io.Serializable;
+
 /**
  * Rectangle geometric primitive.
  * Has a x-coordinate, y-coordinate, width, and height.
@@ -24,7 +26,7 @@ package game.framework;
  * @version incomplete
  * @author paul
  */
-public class Rectangle
+public class Rectangle implements Serializable
 {
     /**
      * Integer representing the x-coordinate of the Rectangle.

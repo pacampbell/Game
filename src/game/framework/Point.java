@@ -1,11 +1,13 @@
 package game.framework;
 
+import java.io.Serializable;
+
 /**
  * Point class representing a 2D-Point (x,y).
  * @version incomplete
  * @author paul
  */
-public class Point
+public class Point implements Serializable
 {
     /**
      * Integer representing the x-coordinate of a Point.
@@ -27,6 +29,15 @@ public class Point
     {
         this.x = x;
         this.y = y;
+    }
+    
+    /**
+     * Copy Constructor
+     * @param p A Point we want to make a copy of.
+     */
+    public Point(Point p)
+    {
+        this(p.x, p.y);
     }
 
     /**

@@ -184,6 +184,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
     @Override
     public void mouseClicked(MouseEvent e) 
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        // NOP
+        //throw new UnsupportedOperationException("Not yet implemented.");
     }
 }

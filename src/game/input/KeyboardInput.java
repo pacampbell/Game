@@ -113,6 +113,7 @@ public class KeyboardInput implements KeyListener
      */
     public void keyTyped(KeyEvent e)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        // NOP
+        //throw new UnsupportedOperationException("Not yet implemented.");
     }
 }

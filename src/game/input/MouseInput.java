@@ -1,6 +1,6 @@
 package game.input;
 
-import java.awt.Point;
+import game.framework.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -175,7 +175,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
     @Override
     public synchronized void mouseMoved(MouseEvent e) 
     {
-        currentPos = e.getPoint();
+        currentPos = new Point(e.getPoint().x, e.getPoint().y);
     }
 
     /**

@@ -63,20 +63,27 @@ public class Rectangle implements Serializable
      * @param obj A Object believed to be a Rectangle.
      * @return Returns this == that.
      */
-    public boolean equals(Object obj) {
-		boolean result = false;
-		
-		// Determine if the Object is a rectangle.
-		if(obj instanceof Rectangle) {
-		
-			// If it is, cast it to a new Rectangle and compare it with the given Rectangle.
-			Rectangle rectangle = (Rectangle)obj;
-			if((this.width == rectangle.width) && (this.height == rectangle.height)) { 
-				result = true;
-			}
-		} 
-
-		return result;
+    @Override
+    public boolean equals(Object obj) 
+    {
+        boolean result = false;	
+        if(obj != null)
+        {
+            // If they have the same address they must be the same object.
+            if(obj == this)
+                result = true;
+            // Determine if the Object is a rectangle.
+            else if(obj instanceof Rectangle) 
+            {	
+                // If it is, cast it to a new Rectangle and compare it with the given Rectangle.
+                Rectangle rectangle = (Rectangle)obj;
+                if((this.width == rectangle.width) && (this.height == rectangle.height)) 
+                { 
+                    result = true;
+                }
+            }
+        }
+        return result;
     }
     //</editor-fold>
     

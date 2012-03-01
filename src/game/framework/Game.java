@@ -23,8 +23,6 @@ public abstract class Game extends JFrame
     private boolean running;
     private Color background; // Background color to clear too
     private GameTime gameTime; // Keeps Track of time in the game
-    //protected KeyboardInput keyboard; // KeyboardInput
-    //protected MouseInput mouse; // MouseInput
     // Debug Variable (User needs to implement update and draw if they want to use)
     protected PerformanceTiming fps;
     
@@ -261,6 +259,7 @@ public abstract class Game extends JFrame
     /**
      * Unload assets needed for game
      */
+    
     public abstract void unloadContent(); 
     /**
      * Update Human interface states, game logic, etc.

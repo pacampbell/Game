@@ -13,7 +13,6 @@ package game.framework;
  *  <li>CreateFromYawPitchRoll</li>
  *  <li>Divide</li>
  *  <li>Dot Product</li>
- *  <li>Equals</li>
  *  <li>Inverse</li>
  *  <li>Linear Interpolation</li>
  *  <li>Magnitude</li>
@@ -22,7 +21,6 @@ package game.framework;
  *  <li>Negate</li>
  *  <li>Normalize</li>
  *  <li>Spherical Linear Interpolation</li>
- *  <li>To String</li>
  * </ul>
  * @version incomplete
  * @author paul
@@ -171,10 +169,27 @@ public class Quaternion
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Equals">
+    /**
+     * Checks to see if two Quaternion are equal to each other.
+     * @param obj Object believed to be a Quaternion.
+     * @return Returns this == that.
+     */
     @Override
     public boolean equals(Object obj)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        boolean equals = false;
+        if(obj != null)
+        {
+            if(this == obj)
+                equals = true;
+            else if(obj instanceof Quaternion)
+            {
+                Quaternion that = (Quaternion)obj;
+                equals = (this.x == that.x) && (this.y == that.y) && 
+                         (this.z == that.z) && (this.w == that.w); 
+            }
+        }
+        return equals;
     }
     //</editor-fold>
     

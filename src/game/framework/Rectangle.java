@@ -89,7 +89,7 @@ public class Rectangle implements Serializable
     
     //<editor-fold defaultstate="collapsed" desc="Inflate">
     /**
-     * Improper results; Method should inflate both sides; Not just one side. 
+     * TODO: Improper results; Method should inflate both sides; Not just one side. 
      * Pushes the edges of a Rectangle out by the provided values starting from the center.
      * @param r A Rectangle to inflate.
      * @param xScale Integer representing the horizontal scale.
@@ -133,42 +133,40 @@ public class Rectangle implements Serializable
     {
         int x=0, y=0, xWidth=0, yHeight=0;
 		
-		// Determine if b's x value is between a's left and right boundaries.
-		// If it is, set the x value of the new Rectangle to b's x value
-		// and set the width to (smaller right value - x value);
-		if(a.left() <= b.left() && b.left() <= a.right()){
-			
-			x = b.left();
-			xWidth = (a.right() < b.right()) ? (a.right() - x) : (b.right() - x); 			
-		}
-		
-		// Determine if a's x value is between b's left and right boundaries.
-		// If it is, set the x value of the new Rectangle to a's x value
-		// and set the width to (smaller right value - x value)
-		else if(b.left() <= a.left() && a.left() <= b.right()){
-			x = a.left();
-			xWidth = (a.right() < b.right()) ? (a.right() - x) : (b.right() - x); 			
-		} 
-		
-		// Determine if b's y value is between a's top and bottom boundaries.
-		// If it is, set the y value of the new Rectangle to b's y value
-		// and set the height to (smaller bottom value - y value)
-		if(a.top() <= b.top() && b.top() <= a.bottom()){			
-			y = b.top();
-			yHeight = (a.bottom() < b.bottom()) ? (a.bottom() - y) : (b.bottom() - y); 			
-		}
-		
-		// Determine if a's y value is between b's top and bottom boundaries.
-		// If it is, set the y value of the new Rectangle to a's y value
-		// and set the height to (smaller bottom value - y value)
-		else if(b.top() <= a.top() && a.top() <= b.bottom()){			
-			y = a.top();
-			yHeight = (b.bottom() < a.bottom()) ? (b.bottom() - y) : (a.bottom() - y); 			
-		}
+        // Determine if b's x value is between a's left and right boundaries.
+        // If it is, set the x value of the new Rectangle to b's x value
+        // and set the width to (smaller right value - x value);
+        if(a.left() <= b.left() && b.left() <= a.right()){		
+            x = b.left();
+            xWidth = (a.right() < b.right()) ? (a.right() - x) : (b.right() - x); 			
+        }
 
-		// Create a new Rectangle with the values found and return it.
-		Rectangle r = new Rectangle(x, y, xWidth, yHeight);		
-		return r;
+        // Determine if a's x value is between b's left and right boundaries.
+        // If it is, set the x value of the new Rectangle to a's x value
+        // and set the width to (smaller right value - x value)
+        else if(b.left() <= a.left() && a.left() <= b.right()){
+            x = a.left();
+            xWidth = (a.right() < b.right()) ? (a.right() - x) : (b.right() - x); 			
+        } 
+
+        // Determine if b's y value is between a's top and bottom boundaries.
+        // If it is, set the y value of the new Rectangle to b's y value
+        // and set the height to (smaller bottom value - y value)
+        if(a.top() <= b.top() && b.top() <= a.bottom()){			
+            y = b.top();
+            yHeight = (a.bottom() < b.bottom()) ? (a.bottom() - y) : (b.bottom() - y); 			
+        }
+
+        // Determine if a's y value is between b's top and bottom boundaries.
+        // If it is, set the y value of the new Rectangle to a's y value
+        // and set the height to (smaller bottom value - y value)
+        else if(b.top() <= a.top() && a.top() <= b.bottom()){			
+            y = a.top();
+            yHeight = (b.bottom() < a.bottom()) ? (b.bottom() - y) : (a.bottom() - y); 			
+        }
+
+        // Create a new Rectangle with the values found and return it.
+        return new Rectangle(x, y, xWidth, yHeight);
     }
     
     /**
@@ -183,6 +181,7 @@ public class Rectangle implements Serializable
     
     //<editor-fold defaultstate="collapsed" desc="Intersects">
     /**
+     * TODO: Method can be optimized.
      * Checks if two Rectangles intersects each other.
      * @param a A Rectangle.
      * @param b A Rectangle that may be intersecting a.
@@ -190,11 +189,10 @@ public class Rectangle implements Serializable
      */
     public static boolean intersects(Rectangle a, Rectangle b)
     {
-		boolean result = true;
-        Rectangle test = intersection(a, b);
-		
-		if(test.width ==0 || test.height ==0) result = false;
-		return result;
+        boolean result = true;
+        Rectangle test = intersection(a, b);	
+        if(test.width == 0 || test.height == 0) result = false;
+            return result;
     }
     
     /**
@@ -215,16 +213,16 @@ public class Rectangle implements Serializable
      */
     public static boolean intersects(Rectangle r, Point p)
     {
-		boolean result = false;
-		
-		// Determine if the Point p falls within the boundaries of Rectangle r.
-		if(r.left() <= p.x && p.x <= r.right()) {
-			if(r.bottom() <= p.y && p.y <= (r.top())) {
-				result = true;
-			}
-		}
-		        
-		return result;
+        boolean result = false;
+        // Determine if the Point p falls within the boundaries of Rectangle r.
+        if(r.left() <= p.x && p.x <= r.right()) 
+        {
+            if(r.bottom() <= p.y && p.y <= (r.top())) 
+            {
+                    result = true;
+            }
+        }
+        return result;
     }
     
     /**
@@ -248,9 +246,8 @@ public class Rectangle implements Serializable
      */
     public static Rectangle offset(Rectangle r, int x, int y)
     {
-		// Create a new Rectangle with identical dimensions but moved to given offset.
-		Rectangle rect = new Rectangle(x, y, r.width, r.height);
-        return rect;
+        // Create a new Rectangle with identical dimensions but moved to given offset.
+        return new Rectangle(x, y, r.width, r.height);
     }
     
     /**
@@ -294,8 +291,8 @@ public class Rectangle implements Serializable
      */
     public static int bottom(Rectangle r)
     {
-		// Calculate bottom of rectangle as y + height
-		return (r.y + r.height);
+        // Calculate bottom of rectangle as y + height
+        return (r.y + r.height);
     }
     
     /**
@@ -314,10 +311,9 @@ public class Rectangle implements Serializable
      */
     public static Point center(Rectangle r)
     {
-		// Calculate center of rectangle and return as a Point.
-		Point p = new Point((r.x + r.width/2), (r.y + r.height/2));
-		return p;
-	}
+        // Calculate center of rectangle and return as a Point.
+        return new Point((r.x + r.width/2), (r.y + r.height/2));
+    }
     
     /**
      * Finds the (x,y) position of the center of this Rectangle.
@@ -337,8 +333,8 @@ public class Rectangle implements Serializable
     public static boolean isEmpty(Rectangle rect)
     {
         boolean result = false;
-		if(rect.width == 0 || rect.height == 0) result = true;
-		return result;
+        if(rect.width == 0 || rect.height == 0) result = true;
+        return result;
     }
     
     /**
@@ -371,15 +367,15 @@ public class Rectangle implements Serializable
     }
     
     /**
+     * TODO: Could be optimized.
      * Gets the (x,y) position of the upper left side of a Rectangle.
      * @param r A Rectangle to find the location of.
      * @return Returns the (x,y) location of a Rectangle.
      */
     public static Point location(Rectangle r)
     {
-		// Return a point representing top left corner of the Rectangle.
-        Point p = new Point(r.left(), (r.top()));
-		return p;
+        // Return a point representing top left corner of the Rectangle.
+        return new Point(r.left(), r.top());
     }
     
     /**
@@ -398,8 +394,8 @@ public class Rectangle implements Serializable
      */
     public static int right(Rectangle r)
     {
-		// Calculate right boundary of rectangle as (x + width)
-        return (r.x + r.width);
+        // Calculate right boundary of rectangle as (x + width)
+        return r.x + r.width;
     }
     
     /**
@@ -418,8 +414,8 @@ public class Rectangle implements Serializable
      */
     public static int top(Rectangle r)
     {
-		// Calculate top boundary of rectangle as y
-        return (r.y);
+        // Calculate top boundary of rectangle as y
+        return r.y;
     }
     
     /**
@@ -439,10 +435,10 @@ public class Rectangle implements Serializable
     @Override
     public String toString()
     {
-		// Creates a String representation of the values of the rectangle
-		String result = String.format("X-Pos: %d, Y-Pos: %d, Width: %d, Height: %d", this.x, this.y, this.width, this.height);
-		return result;
-	}
+        // Creates a String representation of the values of the rectangle
+        String result = String.format("X-Pos: %d, Y-Pos: %d, Width: %d, Height: %d", this.x, this.y, this.width, this.height);
+        return result;
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Union">
@@ -456,17 +452,16 @@ public class Rectangle implements Serializable
     {
         int x = 0, y = 0, width = 0, height = 0;
 		
-		// Determine which boundary gives more area for the new rectangle
-		// and set that as the new value.
-		
-		x = (a.left() < b.left()) ? a.x : b.x;
-		y = (a.bottom() < b.bottom()) ? a.y : b.y;
-		width = (a.right() < b.right()) ? a.right() : b.right();
-		height = (a.top() < b.top()) ? b.top() : a.top();
-		
-		// Create a new Rectangle with the given values and return it.	
-		Rectangle r = new Rectangle(x, y, (width - x), (height - y));
-		return r;
+        // Determine which boundary gives more area for the new rectangle
+        // and set that as the new value.
+
+        x = (a.left() < b.left()) ? a.x : b.x;
+        y = (a.bottom() < b.bottom()) ? a.y : b.y;
+        width = (a.right() < b.right()) ? a.right() : b.right();
+        height = (a.top() < b.top()) ? b.top() : a.top();
+
+        // Create a new Rectangle with the given values and return it.	
+        return new Rectangle(x, y, (width - x), (height - y));
     }
     
     /**

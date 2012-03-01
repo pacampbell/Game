@@ -22,7 +22,6 @@ package game.framework;
  *  <li>Negate</li>
  *  <li>Normalize</li>
  *  <li>Spherical Linear Interpolation</li>
- *  <li>Subtract</li>
  *  <li>To String</li>
  * </ul>
  * @version incomplete
@@ -297,11 +296,22 @@ public class Quaternion
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Subtract">
+    /**
+     * Finds the difference between two Quaternion.
+     * @param a Quaternion to be subtracted from.
+     * @param b Quaternion to be subtracted by.
+     * @return Returns a - b.
+     */
     public static Quaternion subtract(Quaternion a, Quaternion b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return new Quaternion(a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w);
     }
     
+    /**
+     * Finds this difference between this Quaternion and that Quaternion.
+     * @param that Quaternion to be subtracted by.
+     * @return Returns this - that. 
+     */
     public Quaternion subtract(Quaternion that)
     {
         return Quaternion.subtract(this, that);
@@ -309,10 +319,14 @@ public class Quaternion
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="To String">
+    /**
+     * Creates a String representation of this Quaternion.
+     * @return Returns a String representing this Quaternion.
+     */
     @Override
     public String toString()
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return "(" + this.x + ", " + this.y + ", " + this.z + ", " + this.w + ")";
     }
     //</editor-fold>
 }

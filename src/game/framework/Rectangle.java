@@ -10,6 +10,7 @@ import java.io.Serializable;
  */
 public class Rectangle implements Serializable
 {
+    //<editor-fold defaultstate="collapsed" desc="Properties">
     /**
      * Integer representing the x-coordinate of the Rectangle.
      */
@@ -29,6 +30,7 @@ public class Rectangle implements Serializable
      * Integer representing the height of the Rectangle.
      */
     public final int height;
+    //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Constructor">
     /**

@@ -1,5 +1,6 @@
 package game.framework;
 
+import java.awt.Point;
 import java.io.Serializable;
 
 /**

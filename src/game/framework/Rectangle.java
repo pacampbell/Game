@@ -226,9 +226,9 @@ public class Rectangle implements Serializable
         return result;
         */ 
         return r.left() <= px    &&
-                px <= r.right()  &&
-                r.bottom() >= py &&
-                py >= r.top();
+               px <= r.right()   &&
+               r.bottom() >= py  &&
+               py >= r.top();
     }
     
     /**

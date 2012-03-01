@@ -5,26 +5,8 @@ import java.io.Serializable;
 /**
  * Rectangle geometric primitive.
  * Has a x-coordinate, y-coordinate, width, and height.
- * <br />
- * <h1>Not Yet Implemented</h1>
- * <ul>
- *  <li>Bottom</li>
- *  <li>Center</li>
- *  <li>Equals</li>
- *  <li>Inflate</li>
- *  <li>Intersection</li>
- *  <li>Intersects</li>
- *  <li>Is Empty</li>
- *  <li>Left</li>
- *  <li>Location</li>
- *  <li>Offset</li>
- *  <li>Right</li>
- *  <li>To String</li>
- *  <li>Top</li>
- *  <li>Union</li>
- * </ul>
- * @version incomplete
- * @author paul
+ * @version 0.1
+ * @author adam
  */
 public class Rectangle implements Serializable
 {
@@ -81,9 +63,20 @@ public class Rectangle implements Serializable
      * @param obj A Object believed to be a Rectangle.
      * @return Returns this == that.
      */
-    public boolean equals(Object obj)
-    {
-        throw new UnsupportedOperationException("Not yet implemented.");
+    public boolean equals(Object obj) {
+		boolean result = false;
+		
+		// Determine if the Object is a rectangle.
+		if(obj instanceof Rectangle) {
+		
+			// If it is, cast it to a new Rectangle and compare it with the given Rectangle.
+			Rectangle rectangle = (Rectangle)obj;
+			if((this.width == rectangle.width) && (this.height == rectangle.height)) { 
+				result = true;
+			}
+		} 
+
+		return result;
     }
     //</editor-fold>
     
@@ -95,9 +88,18 @@ public class Rectangle implements Serializable
      * @param yScale Integer representing the vertical scale.
      * @return Returns a new Rectangle scaled by the inputs.
      */
-    public static Rectangle inflate(Rectangle r, int xScale, int yScale)
-    {
-        throw new UnsupportedOperationException("Not yet implemented.");
+    public static Rectangle inflate(Rectangle r, int xScale, int yScale) {
+		int newWidth = 0, newHeight=0;
+		
+		// Determine the widths of the new Rectangle to return.
+		newWidth = r.width + xScale;
+		newHeight = r.height + yScale;
+		
+		// Create a new Rectangle with the original x and y positions, and the
+		// new width and height values.
+		Rectangle rect = new Rectangle (r.x, r.y, newWidth, newHeight);
+
+		return rect;
     }
     
     /**
@@ -121,7 +123,44 @@ public class Rectangle implements Serializable
      */
     public static Rectangle intersection(Rectangle a, Rectangle b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        int x=0, y=0, xWidth=0, yHeight=0;
+		
+		// Determine if b's x value is between a's left and right boundaries.
+		// If it is, set the x value of the new Rectangle to b's x value
+		// and set the width to (smaller right value - x value);
+		if(a.left() <= b.left() && b.left() <= a.right()){
+			
+			x = b.left();
+			xWidth = (a.right() < b.right()) ? (a.right() - x) : (b.right() - x); 			
+		}
+		
+		// Determine if a's x value is between b's left and right boundaries.
+		// If it is, set the x value of the new Rectangle to a's x value
+		// and set the width to (smaller right value - x value)
+		else if(b.left() <= a.left() && a.left() <= b.right()){
+			x = a.left();
+			xWidth = (a.right() < b.right()) ? (a.right() - x) : (b.right() - x); 			
+		} 
+		
+		// Determine if b's y value is between a's top and bottom boundaries.
+		// If it is, set the y value of the new Rectangle to b's y value
+		// and set the height to (smaller bottom value - y value)
+		if(a.top() <= b.top() && b.top() <= a.bottom()){			
+			y = b.top();
+			yHeight = (a.bottom() < b.bottom()) ? (a.bottom() - y) : (b.bottom() - y); 			
+		}
+		
+		// Determine if a's y value is between b's top and bottom boundaries.
+		// If it is, set the y value of the new Rectangle to a's y value
+		// and set the height to (smaller bottom value - y value)
+		else if(b.top() <= a.top() && a.top() <= b.bottom()){			
+			y = a.top();
+			yHeight = (b.bottom() < a.bottom()) ? (b.bottom() - y) : (a.bottom() - y); 			
+		}
+
+		// Create a new Rectangle with the values found and return it.
+		Rectangle r = new Rectangle(x, y, xWidth, yHeight);		
+		return r;
     }
     
     /**
@@ -129,8 +168,7 @@ public class Rectangle implements Serializable
      * @param that A Rectangle that may intersect this.
      * @return Returns a new Rectangle representing this intersect that.
      */
-    public Rectangle intersection(Rectangle that)
-    {
+    public Rectangle intersection(Rectangle that) {
         return Rectangle.intersection(this, that);
     }
     //</editor-fold>
@@ -144,7 +182,11 @@ public class Rectangle implements Serializable
      */
     public static boolean intersects(Rectangle a, Rectangle b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+		boolean result = true;
+        Rectangle test = intersection(a, b);
+		
+		if(test.width ==0 || test.height ==0) result = false;
+		return result;
     }
     
     /**
@@ -165,7 +207,16 @@ public class Rectangle implements Serializable
      */
     public static boolean intersects(Rectangle r, Point p)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+		boolean result = false;
+		
+		// Determine if the Point p falls within the boundaries of Rectangle r.
+		if(r.left() <= p.x && p.x <= r.right()) {
+			if(r.bottom() <= p.y && p.y <= (r.top())) {
+				result = true;
+			}
+		}
+		        
+		return result;
     }
     
     /**
@@ -189,7 +240,9 @@ public class Rectangle implements Serializable
      */
     public static Rectangle offset(Rectangle r, int x, int y)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+		// Create a new Rectangle with identical dimensions but moved to given offset.
+		Rectangle rect = new Rectangle(x, y, r.width, r.height);
+        return rect;
     }
     
     /**
@@ -233,7 +286,8 @@ public class Rectangle implements Serializable
      */
     public static int bottom(Rectangle r)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+		// Calculate bottom of rectangle as y + height
+		return (r.y + r.height);
     }
     
     /**
@@ -252,8 +306,10 @@ public class Rectangle implements Serializable
      */
     public static Point center(Rectangle r)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
-    }
+		// Calculate center of rectangle and return as a Point.
+		Point p = new Point((r.x + r.width/2), (r.y + r.height/2));
+		return p;
+	}
     
     /**
      * Finds the (x,y) position of the center of this Rectangle.
@@ -272,7 +328,9 @@ public class Rectangle implements Serializable
      */
     public static boolean isEmpty(Rectangle rect)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        boolean result = false;
+		if(rect.width == 0 || rect.height == 0) result = true;
+		return result;
     }
     
     /**
@@ -292,7 +350,7 @@ public class Rectangle implements Serializable
      */
     public static int left(Rectangle r)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return r.x;
     }
     
     /**
@@ -311,7 +369,9 @@ public class Rectangle implements Serializable
      */
     public static Point location(Rectangle r)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+		// Return a point representing top left corner of the Rectangle.
+        Point p = new Point(r.left(), (r.top()));
+		return p;
     }
     
     /**
@@ -330,7 +390,8 @@ public class Rectangle implements Serializable
      */
     public static int right(Rectangle r)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+		// Calculate right boundary of rectangle as (x + width)
+        return (r.x + r.width);
     }
     
     /**
@@ -349,7 +410,8 @@ public class Rectangle implements Serializable
      */
     public static int top(Rectangle r)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+		// Calculate top boundary of rectangle as y
+        return (r.y);
     }
     
     /**
@@ -369,8 +431,10 @@ public class Rectangle implements Serializable
     @Override
     public String toString()
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
-    }
+		// Creates a String representation of the values of the rectangle
+		String result = String.format("X-Pos: %d, Y-Pos: %d, Width: %d, Height: %d", this.x, this.y, this.width, this.height);
+		return result;
+	}
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Union">
@@ -382,7 +446,19 @@ public class Rectangle implements Serializable
      */
     public static Rectangle union(Rectangle a, Rectangle b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        int x = 0, y = 0, width = 0, height = 0;
+		
+		// Determine which boundary gives more area for the new rectangle
+		// and set that as the new value.
+		
+		x = (a.left() < b.left()) ? a.x : b.x;
+		y = (a.bottom() < b.bottom()) ? a.y : b.y;
+		width = (a.right() < b.right()) ? a.right() : b.right();
+		height = (a.top() < b.top()) ? b.top() : a.top();
+		
+		// Create a new Rectangle with the given values and return it.	
+		Rectangle r = new Rectangle(x, y, (width - x), (height - y));
+		return r;
     }
     
     /**

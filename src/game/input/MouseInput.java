@@ -175,7 +175,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
     @Override
     public synchronized void mouseMoved(MouseEvent e) 
     {
-        currentPos = new Point(e.getPoint().x, e.getPoint().y);
+        currentPos = e.getPoint();
     }
 
     /**

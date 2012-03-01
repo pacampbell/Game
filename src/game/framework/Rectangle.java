@@ -206,23 +206,37 @@ public class Rectangle implements Serializable
     }
     
     /**
+     * Checks if the point represented by (px,py) intersect the provided Rectangle.
+     * @param r A Rectangle.
+     * @param px The x-coordinate of a point that may be intersecting the Rectangle.
+     * @param py The y-coordinate of a point that may be intersecting the Rectangle.
+     * @return Returns (px,py) intersect r.
+     */
+    public static boolean intersects(Rectangle r, int px, int py)
+    {
+        /*
+        boolean result = false;
+        // Determine if the Point p falls within the boundaries of Rectangle r.
+        if(r.left() <= px && px <= r.right()) 
+            if(r.bottom() <= py && py <= (r.top())) 
+                    result = true;
+        return result;
+        */ 
+        return r.left() <= px    &&
+                px <= r.right()  &&
+                r.bottom() >= py &&
+                py >= r.top();
+    }
+    
+    /**
      * Checks if a Point intersects a Rectangle.
      * @param r A Rectangle.
      * @param p A Point that may be intersecting a.
-     * @return Returns p intersect a.
+     * @return Returns p intersect r.
      */
     public static boolean intersects(Rectangle r, Point p)
     {
-        boolean result = false;
-        // Determine if the Point p falls within the boundaries of Rectangle r.
-        if(r.left() <= p.x && p.x <= r.right()) 
-        {
-            if(r.bottom() <= p.y && p.y <= (r.top())) 
-            {
-                    result = true;
-            }
-        }
-        return result;
+        return Rectangle.intersects(r, p.x, p.y);
     }
     
     /**

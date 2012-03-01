@@ -2,10 +2,10 @@ package game.debug;
 
 import game.framework.Game;
 import game.framework.GameTime;
-import game.framework.Point;
 import game.input.Keyboard;
 import game.input.Mouse;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 

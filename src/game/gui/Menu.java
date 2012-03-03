@@ -189,7 +189,7 @@ public class Menu extends GuiComponent
             switch(anchor)
             {
                 case BOTTOM:
-                    g2d.fillRect(openBoundingBox.x, openBoundingBox.y - openBoundingBox.height, openBoundingBox.width, openBoundingBox.height);
+                    g2d.fillRect(openBoundingBox.x, openBoundingBox.y - openBoundingBox.height - closedBoundingBox.height, openBoundingBox.width, openBoundingBox.height);
                     break;
                 default:
                 case TOP:
@@ -204,7 +204,7 @@ public class Menu extends GuiComponent
             switch(anchor)
             {
                 case BOTTOM:
-                    g2d.drawRect(openBoundingBox.x, openBoundingBox.y - openBoundingBox.height, openBoundingBox.width, openBoundingBox.height);
+                    g2d.drawRect(openBoundingBox.x, openBoundingBox.y - openBoundingBox.height - closedBoundingBox.height, openBoundingBox.width, openBoundingBox.height);
                     break;
                 default:
                 case TOP:

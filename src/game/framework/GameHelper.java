@@ -59,6 +59,16 @@ public class GameHelper
     }
     
     /**
+     * Sets the title of the Games JFrame
+     * @param title String representing the desired title of the JFrame.
+     */
+    public static void setTitle(String title)
+    {
+        if(window != null)
+            GameHelper.window.setTitle(title);
+    }
+    
+    /**
      * Sets the Main JFrame of project. 
      * @param frame The main JFrame 
      */

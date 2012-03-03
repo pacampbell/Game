@@ -23,14 +23,24 @@ public class Menu extends GuiComponent
     private MenuState menuState;
     private LinkedList<MenuItem> items;
     
-    public Menu(String LABEL, Color fontColor)
+    /**
+     * Complete Constructor.
+     * Creates a Menu.
+     * @param label String containing the LABEL of the Menu.
+     * @param fontColor Font color of all Menu labels.
+     */
+    public Menu(String label, Color fontColor)
     {
-        this.LABEL = LABEL;
+        this.LABEL = label;
         this.fontColor = fontColor;
         this.menuState = MenuState.CLOSED;
         this.items = new LinkedList<>();
     }
     
+    /**
+     * Creates a Menu.
+     * @param label String containing the LABEL of the Menu.
+     */
     public Menu(String label)
     {
         this(label, Color.WHITE);
@@ -96,6 +106,9 @@ public class Menu extends GuiComponent
         return closedWidth;
     }
 
+    /**
+     * Initializes all the MenuItems contained within the Menu and the Menu itself.
+     */
     @Override
     public void initialize() 
     {
@@ -113,13 +126,21 @@ public class Menu extends GuiComponent
         }
     }
 
+    /**
+     * Loads content for the MenuItems and the Menu.
+     */
     @Override
     public void loadContent(){}
 
+    /**
+     * Updates the logic of all the MenuItems and the Menu.
+     * @param gameTime GameTime object containing the timing of the current session.
+     */
     @Override
     public void update(GameTime gameTime) 
     {   
-        if(items.size() != 0)
+        // If the Menu has any items check to see if someone is clicking on it. 
+        if(items.size() > 0)
         {
             // Determine the User clicked on the menu.
             if(closedBoundingBox.intersects(Mouse.getPosition()) && Mouse.buttonDownOnce(MouseKeys.BUTTON_1))
@@ -128,6 +149,7 @@ public class Menu extends GuiComponent
                 menuState = MenuState.CLOSED;      
         }
 
+        // Check the State of the Menu
         switch(menuState)
         {
             case OPEN:
@@ -137,6 +159,10 @@ public class Menu extends GuiComponent
         }
     }
 
+    /**
+     * Draws the Menu.
+     * @param g2d Graphics2D object containing the drawable surface of the window.
+     */
     @Override
     public void draw(Graphics2D g2d) 
     {

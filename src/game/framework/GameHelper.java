@@ -45,6 +45,15 @@ public class GameHelper
     }
     
     /**
+     * Gets the Cursor of the JFrame.
+     * @return Returns the mouse cursor.
+     */
+    public static Cursor cursor()
+    {
+        return GameHelper.cursor;
+    }
+    
+    /**
      * Stores the width of the Game Window.
      * only to be used within the framework itself.
      * @param width Width of the Game Window.

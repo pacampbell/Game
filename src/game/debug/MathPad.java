@@ -1,7 +1,6 @@
 package game.debug;
 
 import game.framework.*;
-import java.awt.Point;
 
 /**
  * Place to test out Math classes without launching a Game Window.

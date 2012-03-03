@@ -215,9 +215,9 @@ public abstract class Game extends JFrame
         // Create off-screen drawing surface
         this.bi = gc.createCompatibleImage(width, height);
         // Set Properties in the GameHelper class
+        GameHelper.setWindow(this);
         GameHelper.setScreenWidth(width);
         GameHelper.setScreenHeight(height);
-        GameHelper.setCursor(this.getCursor());
     }
     
     /**

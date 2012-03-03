@@ -184,7 +184,6 @@ public class Rectangle implements Serializable
     
     //<editor-fold defaultstate="collapsed" desc="Intersects">
     /**
-     * TODO: Method can be optimized.
      * Checks if two Rectangles intersects each other.
      * @param a A Rectangle.
      * @param b A Rectangle that may be intersecting a.
@@ -389,7 +388,6 @@ public class Rectangle implements Serializable
     }
     
     /**
-     * TODO: Could be optimized.
      * Gets the (x,y) position of the upper left side of a Rectangle.
      * @param r A Rectangle to find the location of.
      * @return Returns the (x,y) location of a Rectangle.

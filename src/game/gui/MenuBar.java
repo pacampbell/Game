@@ -38,14 +38,15 @@ public class MenuBar extends GuiComponent
         // Objects for getting font metrics
         this.frc = new FontRenderContext(font.getTransform(), true, true);
         // Determine bounds based on the anchor
-        Vector2 position = determineAnchor(anchor); 
+        int height = (int)font.getStringBounds("H", frc).getHeight();
+        Vector2 position = determineAnchor(anchor, height);
         this.bounds = new Rectangle
         (
                 (int)position.x, 
                 (int)position.y, 
                 GameHelper.WIDTH(), 
-                (int)font.getStringBounds("H", frc).getHeight()
-        );
+                height
+        ); 
         // Create list to hold Menus
         this.menus = new LinkedList<>();
     }
@@ -168,15 +169,16 @@ public class MenuBar extends GuiComponent
     /**
      * Determines where the MenuBar should be positioned based on the provided anchor.
      * @param anchor Anchor enumeration defining where the MenuBar is located.
+     * @param height Integer representing the height of the MenuBar.
      * @return Returns a Vector2 containing the (x,y) coordinates of the upper-left side of the MenuBar.
      */
-    private Vector2 determineAnchor(Anchor anchor)
+    private Vector2 determineAnchor(Anchor anchor, int height)
     {
         Vector2 pos;
         switch(anchor)
         {
             case BOTTOM:
-                pos = new Vector2(0, GameHelper.HEIGHT() - bounds.height);
+                pos = new Vector2(0, GameHelper.HEIGHT() - height);
                 break;
             default:
                 System.out.println("Anchor: " + anchor + " is not supported.");

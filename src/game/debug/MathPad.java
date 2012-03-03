@@ -1,6 +1,7 @@
 package game.debug;
 
 import game.framework.*;
+import java.awt.Point;
 
 /**
  * Place to test out Math classes without launching a Game Window.
@@ -15,9 +16,116 @@ public class MathPad
         // Tests out Vector3 methods and prints the results.
         //MathPad.vector3Test();
         // Tests out Matrix methods and prints the results.
-        MathPad.matrixTest();
+        //MathPad.matrixTest();
         // Tests out Matrix3 methods and prints the results.
         //MathPad.matrix4Test();
+        // Tests out Rectangle Methods
+        rectTest();
+    }
+    
+    private static void rectTest()
+    {
+        final int AMOUNT = 2000;
+        long start;
+        float time1 = 0, time2 = 0;
+        
+        Rectangle[] rects = new Rectangle[AMOUNT];
+        Point[] points = new Point[AMOUNT];
+        long[][] aryTime1 = new long[AMOUNT][AMOUNT];
+        long[][] aryTime2 = new long[AMOUNT][AMOUNT];
+        
+        int x, y, width, height;
+        for(int i = 0; i < rects.length; i++)
+        {
+            x = (int)(Math.random() * 1000 + 1);
+            y = (int)(Math.random() * 1000 + 1);
+            width = (int)(Math.random() * 1000 + 1);
+            height = (int)(Math.random() * 1000 + 1);
+            rects[i] = new Rectangle(x, y, width, height);
+        }
+        
+        for(int i = 0; i < points.length; i++)
+        {
+            x = (int)(Math.random() * 1000 + 1);
+            y = (int)(Math.random() * 1000 + 1);
+            points[i] = new Point(x, y);
+        }
+        
+        /*
+        // My Intersection Test
+        for(int i = 0; i < rects.length; i++)
+        {
+            for(int j = 0; j < points.length; j++)
+            {
+                start = System.nanoTime();
+                Rectangle.intersects(rects[i], points[j].x, points[j].y);
+                aryTime1[i][j] = System.nanoTime() - start;
+            }
+        }
+        
+        // Test intersect method with adams implementation.
+        for(int i = 0; i < rects.length; i++)
+        {
+            for(int j = 0; j < points.length; j++)
+            {
+                start = System.nanoTime();
+                Rectangle.intersects_a(rects[i], points[j].x, points[j].y);
+                aryTime2[i][j] = System.nanoTime() - start;
+            }
+        }
+        * 
+        */
+        
+        /*
+        // Adams Test
+        for(int i = 0; i < rects.length; i++)
+        {
+            for(int j = 0; j < points.length; j++)
+            {
+                start = System.nanoTime();
+                Rectangle.location(rects[i]);
+                aryTime2[i][j] = System.nanoTime() - start;
+            }
+        }
+        * 
+        */
+        
+        
+        // My Test
+        for(int i = 0; i < rects.length; i++)
+        {
+            for(int j = 0; j < points.length; j++)
+            {
+                start = System.nanoTime();
+                Rectangle.location_p(rects[i]);
+                aryTime1[i][j] = System.nanoTime() - start;
+            }
+        }
+        
+        
+        // My Time
+        long sum = 0;
+        for(int i = 0; i < aryTime1.length; i++)
+        {
+            for(int j = 0; j < aryTime1[0].length; j++)
+            {
+                sum+= aryTime1[i][j];
+            }
+        }
+        time1 = sum / (float)aryTime1.length;
+        // Adams Time
+        sum = 0;
+        for(int i = 0; i < aryTime2.length; i++)
+        {
+            for(int j = 0; j < aryTime2[0].length; j++)
+            {
+                sum+= aryTime2[i][j];
+            }
+        }
+        time2 = sum / (float)aryTime2.length;
+        
+        System.out.println("Pauls avg Time: " + time1 + " nano; " + (time1 / (1000000f)) + " millis.");
+        System.out.println("Adams avg Time: " + time2 + " nano; " + (time2 / (1000000f)) + " millis.");
     }
     
     //<editor-fold defaultstate="collapsed" desc="Vector2 Unit Test">

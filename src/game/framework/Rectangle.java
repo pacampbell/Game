@@ -217,18 +217,12 @@ public class Rectangle implements Serializable
      */
     public static boolean intersects(Rectangle r, int px, int py)
     {
-        /*
         boolean result = false;
         // Determine if the Point p falls within the boundaries of Rectangle r.
         if(r.left() <= px && px <= r.right()) 
             if(r.bottom() <= py && py <= (r.top())) 
                     result = true;
         return result;
-        */ 
-        return r.left() <= px    &&
-               px <= r.right()   &&
-               r.bottom() >= py  &&
-               py >= r.top();
     }
     
     /**

@@ -29,16 +29,19 @@ public class MenuBar extends GuiComponent
      */
     public MenuBar(Anchor anchor, Font font, Color paneColor, Color borderColor)
     {
-        this.font = font;
-        this.WIDTH = GameHelper.WIDTH();
-        this.paneColor = paneColor;
-        this.borderColor = borderColor;
-        this.menus = new LinkedList<>();
         // Objects for getting font metrics
         this.frc = new FontRenderContext(font.getTransform(), true, true);
+        // Set Menu Height & Width
         this.HEIGHT = (int)font.getStringBounds("H", frc).getHeight();
+        this.WIDTH = GameHelper.WIDTH();
         // Determine The position based on the anchor
         this.position = determineAnchor(anchor);
+        // Set properties
+        this.font = font;
+        this.paneColor = paneColor;
+        this.borderColor = borderColor;
+        // Create list to hold Menus
+        this.menus = new LinkedList<>();
     }
    
     /**

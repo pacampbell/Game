@@ -12,16 +12,16 @@ import java.util.LinkedList;
 
 public class Menu extends GuiComponent 
 {
+    // Class Properties
+    public final String LABEL;
+    private MenuState menuState;
+    private LinkedList<MenuItem> items;
     // Values that need to be set by parent
     private Vector2 position;
     private Font font;
     private int closedWidth, closedHeight;
     private Color paneColor, borderColor, fontColor;
     private Rectangle closedBoundingBox, openBoundingBox;
-    // Class Properties
-    public final String LABEL;
-    private MenuState menuState;
-    private LinkedList<MenuItem> items;
     
     /**
      * Complete Constructor.

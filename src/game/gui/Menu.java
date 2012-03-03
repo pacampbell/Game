@@ -142,10 +142,6 @@ public class Menu extends GuiComponent
         // If the Menu has any items check to see if someone is clicking on it. 
         if(items.size() > 0)
         {
-            if(closedBoundingBox.intersects(Mouse.getPosition()))
-                this.fontColor = Color.YELLOW;
-            
-            /**
             // Determine the User clicked on the menu.
             if(closedBoundingBox.intersects(Mouse.getPosition()) && Mouse.buttonDownOnce(MouseKeys.BUTTON_1))
             {
@@ -156,8 +152,7 @@ public class Menu extends GuiComponent
             {
                 System.out.println("Closed");
                 menuState = MenuState.CLOSED;
-            }
-            */ 
+            } 
         }
 
         // Check the State of the Menu

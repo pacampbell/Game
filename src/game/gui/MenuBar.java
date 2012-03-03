@@ -19,9 +19,16 @@ public class MenuBar extends GuiComponent
     // Font Metrics
     private FontRenderContext frc;
     
-    public MenuBar(Vector2 position, Font font, Color paneColor, Color borderColor)
+    /**
+     * Complete Constructor.
+     * Creates a MenuBar with the desired properties. 
+     * @param anchor Anchor enumeration defining where the MenuBar is located.
+     * @param font Font used within the MenuBar.
+     * @param paneColor Color of the MenuBar.
+     * @param borderColor Color of the border of the MenuBar.
+     */
+    public MenuBar(Anchor anchor, Font font, Color paneColor, Color borderColor)
     {
-        this.position = position;
         this.font = font;
         this.WIDTH = GameHelper.WIDTH();
         this.paneColor = paneColor;
@@ -30,16 +37,33 @@ public class MenuBar extends GuiComponent
         // Objects for getting font metrics
         this.frc = new FontRenderContext(font.getTransform(), true, true);
         this.HEIGHT = (int)font.getStringBounds("H", frc).getHeight();
+        // Determine The position based on the anchor
+        this.position = determineAnchor(anchor);
     }
    
-    public MenuBar(Vector2 position)
+    /**
+     * Creates a MenuBar with the default properties anchored at a desired location.
+     * Defaults:
+     *   font: Times New Roman, Font.PLAIN, 16
+     *  color: Color.BLACK
+     * @param anchor Anchor enumeration defining where the MenuBar is located.
+     */
+    public MenuBar(Anchor anchor)
     {
-        this(position, new Font("Times New Roman", Font.PLAIN, 16), Color.GRAY, Color.BLACK);
+        this(anchor, new Font("Times New Roman", Font.PLAIN, 16), Color.GRAY, Color.BLACK);
     }
     
+    /**
+     * Default Constructor.
+     * Creates a MenuBar with the default properties anchored at the top.
+     * Defaults:
+     *  Anchor: Anchor.TOP
+     *    font: Times New Roman, Font.PLAIN, 16
+     *   color: Color.BLACK
+     */
     public MenuBar()
     {
-        this(Vector2.zero(), new Font("Times New Roman", Font.PLAIN, 16), Color.GRAY, Color.BLACK);
+        this(Anchor.TOP, new Font("Times New Roman", Font.PLAIN, 16), Color.GRAY, Color.BLACK);
     }
     
     /**
@@ -52,6 +76,9 @@ public class MenuBar extends GuiComponent
         this.menus.add(menu);
     }
 
+    /**
+     * Initialized all Menus in the MenuBar.
+     */
     @Override
     public void initialize() 
     {
@@ -65,7 +92,9 @@ public class MenuBar extends GuiComponent
             menus.get(i).setPosition(new Vector2(xPos, position.y));
             menus.get(i).setClosedDimensions
             (
-                (int)font.getStringBounds(menus.get(i).LABEL, frc).getWidth() + 20, // 10px padding on each side
+                // 10px padding on each side = "+ 20"
+                // TODO: Fix + 20 Magic Number
+                (int)font.getStringBounds(menus.get(i).LABEL, frc).getWidth() + 20,
                 HEIGHT
             );
             // Set Font and Color
@@ -79,24 +108,31 @@ public class MenuBar extends GuiComponent
             menu.initialize();
     }
 
+    /**
+     * Loads any content for MenuBar, and MenuBar menu content.
+     */
     @Override
     public void loadContent() 
     {
         for(Menu menu : menus)
-        {
             menu.loadContent();
-        }
     }
 
+    /**
+     * Updates the MenuBar and MenBar menus.
+     * @param gameTime GameTime object containing the timing of the current session.
+     */
     @Override
     public void update(GameTime gameTime) 
     {
         for(Menu menu : menus)
-        {
             menu.update(gameTime);
-        }
     }
 
+    /**
+     * Draws The MenuBar component.
+     * @param g2d Graphics2D object containing the drawable surface of the window.
+     */
     @Override
     public void draw(Graphics2D g2d) 
     {
@@ -110,8 +146,29 @@ public class MenuBar extends GuiComponent
         g2d.drawLine((int)position.x, HEIGHT, WIDTH, HEIGHT);
         // Draw The Menu's on this Menu Bar
         for(Menu menu : menus)
-        {
             menu.draw(g2d);
+    }
+    
+    /**
+     * Determines where the MenuBar should be positioned based on the provided anchor.
+     * @param anchor Anchor enumeration defining where the MenuBar is located.
+     * @return Returns a Vector2 containing the (x,y) coordinates of the upper-left side of the MenuBar.
+     */
+    private Vector2 determineAnchor(Anchor anchor)
+    {
+        Vector2 pos;
+        switch(anchor)
+        {
+            case BOTTOM:
+                pos = new Vector2(0, GameHelper.HEIGHT() - HEIGHT);
+                break;
+            default:
+                System.out.println("Anchor: " + anchor + " is not supported.");
+                System.out.println("Defaulting to Anchor.TOP");
+            case TOP:
+                pos = Vector2.zero();
+                break;
         }
-    }    
+        return pos;
+    }
 }

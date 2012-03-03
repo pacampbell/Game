@@ -113,11 +113,12 @@ public class Menu extends GuiComponent
     public void initialize() 
     {
         int yOffset;
+        // TODO: need to fix 200 width constant
+        this.openBoundingBox = new Rectangle((int)position.x, (int)position.y + closedHeight, 200, (closedHeight * items.size()) + items.size());
+        // Initialize MenuItems
         for(int i = 0; i < items.size(); ++i)
         {
-            // TODO: need to fix 200 width constant
             yOffset = (i + 1) * closedHeight;
-            this.openBoundingBox = new Rectangle((int)position.x, (int)position.y + closedHeight, 200, yOffset);
             items.get(i).setPosition(position.addY(yOffset + (i * 1))); // 1px space between menu items.
             items.get(i).setDimensions(200, closedHeight);
             items.get(i).setFont(font);

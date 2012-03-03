@@ -11,6 +11,7 @@ import java.util.LinkedList;
 
 public class MenuBar extends GuiComponent
 {
+    private Anchor anchor;
     private Vector2 position;
     private LinkedList<Menu> menus;
     private final int WIDTH, HEIGHT;
@@ -37,6 +38,7 @@ public class MenuBar extends GuiComponent
         // Determine The position based on the anchor
         this.position = determineAnchor(anchor);
         // Set properties
+        this.anchor = anchor;
         this.font = font;
         this.paneColor = paneColor;
         this.borderColor = borderColor;
@@ -146,7 +148,16 @@ public class MenuBar extends GuiComponent
         // Set The Color of the Border
         g2d.setColor(borderColor);
         // Draw The Border
-        g2d.drawLine((int)position.x, HEIGHT, WIDTH, HEIGHT);
+        switch(anchor)
+        {
+            case BOTTOM:
+                g2d.drawLine((int)position.x, (int)position.y, WIDTH, (int)position.y);
+                break;
+            case TOP:
+            default:
+                g2d.drawLine((int)position.x, HEIGHT, WIDTH, HEIGHT);
+                break;
+        }
         // Draw The Menu's on this Menu Bar
         for(Menu menu : menus)
             menu.draw(g2d);

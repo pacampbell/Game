@@ -116,7 +116,7 @@ public class Menu extends GuiComponent
         for(int i = 0; i < items.size(); ++i)
         {
             // TODO: need to fix 200 width constant
-            yOffset = (i + 1) * closedHeight;
+            yOffset = (i + 1) * closedHeight; //+ (i * 1); // Puts a 1px gap between menu items.
             this.openBoundingBox = new Rectangle((int)position.x, (int)position.y + closedHeight, 200, yOffset);
             items.get(i).setPosition(position.addY(yOffset));
             items.get(i).setDimensions(200, closedHeight);
@@ -142,11 +142,22 @@ public class Menu extends GuiComponent
         // If the Menu has any items check to see if someone is clicking on it. 
         if(items.size() > 0)
         {
+            if(closedBoundingBox.intersects(Mouse.getPosition()))
+                this.fontColor = Color.YELLOW;
+            
+            /**
             // Determine the User clicked on the menu.
             if(closedBoundingBox.intersects(Mouse.getPosition()) && Mouse.buttonDownOnce(MouseKeys.BUTTON_1))
+            {
+                System.out.println("Clicked");
                 menuState = MenuState.OPEN;
+            }
             if(menuState == MenuState.OPEN && !closedBoundingBox.intersects(Mouse.getPosition()) && !openBoundingBox.intersects(Mouse.getPosition()))
-                menuState = MenuState.CLOSED;      
+            {
+                System.out.println("Closed");
+                menuState = MenuState.CLOSED;
+            }
+            */ 
         }
 
         // Check the State of the Menu

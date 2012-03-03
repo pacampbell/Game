@@ -91,9 +91,6 @@ public class MenuBar extends GuiComponent
         int xPos = 0;
         for(int i = 0; i < menus.size(); ++i)
         {
-            for(int j = 0; j < i; ++j)
-                xPos += menus.get(j).getClosedWidth();
-            
             menus.get(i).setPosition(new Vector2(xPos, position.y));
             menus.get(i).setClosedDimensions
             (
@@ -105,8 +102,8 @@ public class MenuBar extends GuiComponent
             // Set Font and Color
             menus.get(i).setColors(paneColor, borderColor);
             menus.get(i).setFont(font);
-            // Reset xPos
-            xPos = 0;
+            // update the xPos offset
+            xPos += menus.get(i).getClosedWidth();
         }
         // Initialize Each Menus MenuItems
         for(Menu menu : menus)

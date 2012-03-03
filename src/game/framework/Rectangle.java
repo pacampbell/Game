@@ -218,9 +218,9 @@ public class Rectangle implements Serializable
     {
         boolean result = false;
         // Determine if the Point p falls within the boundaries of Rectangle r.
-        if(r.left() <= px && px <= r.right()) 
-            if(r.bottom() <= py && py <= (r.top())) 
-                    result = true;
+        if(r.left() <= px && px <= r.right())
+            if(r.top() <= py && py <= r.bottom())
+                result = true;
         return result;
     }
     

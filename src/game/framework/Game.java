@@ -217,6 +217,7 @@ public abstract class Game extends JFrame
         // Set Properties in the GameHelper class
         GameHelper.setScreenWidth(width);
         GameHelper.setScreenHeight(height);
+        GameHelper.setCursor(this.getCursor());
     }
     
     /**

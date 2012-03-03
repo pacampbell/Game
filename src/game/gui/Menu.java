@@ -145,15 +145,9 @@ public class Menu extends GuiComponent
         {
             // Determine the User clicked on the menu.
             if(closedBoundingBox.intersects(Mouse.getPosition()) && Mouse.buttonDownOnce(MouseKeys.BUTTON_1))
-            {
-                System.out.println("Clicked");
                 menuState = MenuState.OPEN;
-            }
             if(menuState == MenuState.OPEN && !closedBoundingBox.intersects(Mouse.getPosition()) && !openBoundingBox.intersects(Mouse.getPosition()))
-            {
-                System.out.println("Closed");
                 menuState = MenuState.CLOSED;
-            } 
         }
 
         // Check the State of the Menu

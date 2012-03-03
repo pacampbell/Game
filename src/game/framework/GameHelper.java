@@ -2,12 +2,24 @@ package game.framework;
 
 import java.awt.Cursor;
 import java.net.URL;
+import javax.swing.JFrame;
 
 public class GameHelper
 {
+    /**
+     * Static variable representing the width of the Game screen.
+     */
     private static int width = 0;
+    
+    /**
+     * Static variable representing the height of the Game screen.
+     */
     private static int height = 0;
-    private static Cursor cursor;
+    
+    /**
+     * Static Variable containing the JFrame of the Game.
+     */
+    private static JFrame window;
     
     /**
      * Uses a hack to return a path to a image file based on the operating system that is being used.
@@ -39,18 +51,20 @@ public class GameHelper
      * Stores the Cursor related to the JFrame of the program.
      * @param cursor The JFrames Cursor object.
      */
-    protected static void setCursor(Cursor cursor)
+    public static void setCursor(Cursor cursor)
     {
-        GameHelper.cursor = cursor;
+        // Check to make sure that the window was set
+        if(window != null)
+            GameHelper.window.setCursor(cursor);
     }
     
     /**
-     * Gets the Cursor of the JFrame.
-     * @return Returns the mouse cursor.
+     * Sets the Main JFrame of project. 
+     * @param frame The main JFrame 
      */
-    public static Cursor cursor()
+    protected static void setWindow(JFrame frame)
     {
-        return GameHelper.cursor;
+        GameHelper.window = frame;
     }
     
     /**

@@ -1,11 +1,13 @@
 package game.framework;
 
+import java.awt.Cursor;
 import java.net.URL;
 
 public class GameHelper
 {
     private static int width = 0;
     private static int height = 0;
+    private static Cursor cursor;
     
     /**
      * Uses a hack to return a path to a image file based on the operating system that is being used.
@@ -31,6 +33,15 @@ public class GameHelper
         {
             return systemIndependentPath;
         }
+    }
+    
+    /**
+     * Stores the Cursor related to the JFrame of the program.
+     * @param cursor The JFrames Cursor object.
+     */
+    protected static void setCursor(Cursor cursor)
+    {
+        GameHelper.cursor = cursor;
     }
     
     /**

@@ -17,6 +17,7 @@ public class Menu extends GuiComponent
     private MenuState menuState;
     private LinkedList<MenuItem> items;
     // Values that need to be set by parent
+    private Anchor anchor;
     private Vector2 position;
     private Font font;
     private int closedWidth, closedHeight;
@@ -53,6 +54,15 @@ public class Menu extends GuiComponent
     public void add(MenuItem menuItem)
     {
         items.add(menuItem);
+    }
+    
+    /**
+     * Sets where the parent MenuBar is anchored at.
+     * @param anchor Enumeration representing where the MenuBar is anchored at.
+     */
+    protected void setAnchor(Anchor anchor)
+    {
+        this.anchor = anchor;
     }
     
     /**
@@ -175,11 +185,32 @@ public class Menu extends GuiComponent
         if(items.size() > 0 && menuState == MenuState.OPEN)
         {
             g2d.setColor(paneColor);
-            g2d.fillRect(openBoundingBox.x, openBoundingBox.y, openBoundingBox.width, openBoundingBox.height);
+            // Draw The Menu pane.
+            switch(anchor)
+            {
+                case BOTTOM:
+                    g2d.fillRect(openBoundingBox.x, openBoundingBox.y - openBoundingBox.height, openBoundingBox.width, openBoundingBox.height);
+                    break;
+                default:
+                case TOP:
+                    g2d.fillRect(openBoundingBox.x, openBoundingBox.y, openBoundingBox.width, openBoundingBox.height);
+                    break;
+            }
+            // Draw The Menu Items.
             for(MenuItem item : items)
                 item.draw(g2d);
+            // Draw The Border around the Menu.
             g2d.setColor(borderColor);
-            g2d.drawRect(openBoundingBox.x, openBoundingBox.y, openBoundingBox.width, openBoundingBox.height);
+            switch(anchor)
+            {
+                case BOTTOM:
+                    g2d.drawRect(openBoundingBox.x, openBoundingBox.y - openBoundingBox.height, openBoundingBox.width, openBoundingBox.height);
+                    break;
+                default:
+                case TOP:
+                    g2d.drawRect(openBoundingBox.x, openBoundingBox.y, openBoundingBox.width, openBoundingBox.height);
+                    break;
+            }
         }
     }
 }

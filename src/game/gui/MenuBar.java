@@ -2,6 +2,7 @@ package game.gui;
 
 import game.framework.GameHelper;
 import game.framework.GameTime;
+import game.framework.Rectangle;
 import game.framework.Vector2;
 import java.awt.Color;
 import java.awt.Font;
@@ -12,9 +13,8 @@ import java.util.LinkedList;
 public class MenuBar extends GuiComponent
 {
     private Anchor anchor;
-    private Vector2 position;
+    private Rectangle bounds;
     private LinkedList<Menu> menus;
-    private final int WIDTH, HEIGHT;
     private Color paneColor, borderColor;
     private Font font;
     // Font Metrics
@@ -37,11 +37,15 @@ public class MenuBar extends GuiComponent
         this.borderColor = borderColor;
         // Objects for getting font metrics
         this.frc = new FontRenderContext(font.getTransform(), true, true);
-        // Set Menu Height & Width
-        this.HEIGHT = (int)font.getStringBounds("H", frc).getHeight();
-        this.WIDTH = GameHelper.WIDTH();
-        // Determine The position based on the anchor
-        this.position = determineAnchor(anchor);
+        // Determine bounds based on the anchor
+        Vector2 position = determineAnchor(anchor); 
+        this.bounds = new Rectangle
+        (
+                (int)position.x, 
+                (int)position.y, 
+                GameHelper.WIDTH(), 
+                (int)font.getStringBounds("H", frc).getHeight()
+        );
         // Create list to hold Menus
         this.menus = new LinkedList<>();
     }
@@ -92,13 +96,13 @@ public class MenuBar extends GuiComponent
         for(int i = 0; i < menus.size(); ++i)
         {
             menus.get(i).setAnchor(anchor);
-            menus.get(i).setPosition(new Vector2(xPos, position.y));
+            menus.get(i).setPosition(new Vector2(xPos, bounds.y));
             menus.get(i).setClosedDimensions
             (
                 // 10px padding on each side = "+ 20"
                 // TODO: Fix + 20 Magic Number
                 (int)font.getStringBounds(menus.get(i).LABEL, frc).getWidth() + 20,
-                HEIGHT
+                bounds.height
             );
             // Set Font and Color
             menus.get(i).setColors(paneColor, borderColor);
@@ -142,18 +146,18 @@ public class MenuBar extends GuiComponent
         // Set the paneColor of the MenuBar
         g2d.setColor(paneColor);
         // Fill The Menu Bar
-        g2d.fillRect((int)position.x, (int)position.y, WIDTH, HEIGHT);
+        g2d.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
         // Set The Color of the Border
         g2d.setColor(borderColor);
         // Draw The Border
         switch(anchor)
         {
             case BOTTOM:
-                g2d.drawLine((int)position.x, (int)position.y, WIDTH, (int)position.y);
+                g2d.drawLine(bounds.x, bounds.y, bounds.width, bounds.y);
                 break;
             case TOP:
             default:
-                g2d.drawLine((int)position.x, HEIGHT, WIDTH, HEIGHT);
+                g2d.drawLine(bounds.x, bounds.height, bounds.width, bounds.height);
                 break;
         }
         // Draw The Menu's on this Menu Bar
@@ -172,7 +176,7 @@ public class MenuBar extends GuiComponent
         switch(anchor)
         {
             case BOTTOM:
-                pos = new Vector2(0, GameHelper.HEIGHT() - HEIGHT);
+                pos = new Vector2(0, GameHelper.HEIGHT() - bounds.height);
                 break;
             default:
                 System.out.println("Anchor: " + anchor + " is not supported.");

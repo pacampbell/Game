@@ -116,9 +116,9 @@ public class Menu extends GuiComponent
         for(int i = 0; i < items.size(); ++i)
         {
             // TODO: need to fix 200 width constant
-            yOffset = (i + 1) * closedHeight; //+ (i * 1); // Puts a 1px gap between menu items.
+            yOffset = (i + 1) * closedHeight;
             this.openBoundingBox = new Rectangle((int)position.x, (int)position.y + closedHeight, 200, yOffset);
-            items.get(i).setPosition(position.addY(yOffset));
+            items.get(i).setPosition(position.addY(yOffset + (i * 1))); // 1px space between menu items.
             items.get(i).setDimensions(200, closedHeight);
             items.get(i).setFont(font);
             items.get(i).setFontColor(fontColor);

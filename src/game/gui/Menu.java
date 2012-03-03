@@ -169,7 +169,8 @@ public class Menu extends GuiComponent
     {
         g2d.setFont(font);
         g2d.setColor(fontColor);
-        g2d.drawString(LABEL, position.x + 10, 15);
+        // TODO: FIX Magic Padding Numbers + 10 and + 15
+        g2d.drawString(LABEL, position.x + 10, position.y + 15);
         // If the menu is open draw that piece as well
         if(items.size() > 0 && menuState == MenuState.OPEN)
         {

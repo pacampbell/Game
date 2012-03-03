@@ -91,6 +91,7 @@ public class MenuBar extends GuiComponent
         int xPos = 0;
         for(int i = 0; i < menus.size(); ++i)
         {
+            menus.get(i).setAnchor(anchor);
             menus.get(i).setPosition(new Vector2(xPos, position.y));
             menus.get(i).setClosedDimensions
             (

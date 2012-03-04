@@ -2,7 +2,6 @@ package game.gui;
 
 import game.framework.GameTime;
 import game.framework.Rectangle;
-import game.framework.Vector2;
 import game.input.Mouse;
 import game.input.MouseKeys;
 import java.awt.Color;

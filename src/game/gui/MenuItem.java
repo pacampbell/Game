@@ -11,9 +11,9 @@ import java.awt.Graphics2D;
 
 public abstract class MenuItem extends GuiComponent 
 {
-    private Vector2 position;
     private final String LABEL;
     // Properties to be set by parent items
+    private Anchor anchor;
     private Font font;
     private Color fontColor;
     private Rectangle bounds;
@@ -28,22 +28,17 @@ public abstract class MenuItem extends GuiComponent
     }
     
     /**
-     * Sets the dimensions of this MenuItem.
-     * @param width Width of this MenuItem.
-     * @param height Height of this MenuItem.
+     * Sets properties from parent class.
+     * @param anchor Enumeration defining where the Parent MenuBar is anchored.
+     * @param x Integer representing the x-coordinate of this MenuItem.
+     * @param y Integer representing the y-coordinate of this MenuItem.
+     * @param width Integer representing the width of this MenuItem.
+     * @param height Integer representing the height of this MenuItem.
      */
-    protected void setDimensions(int width, int height)
+    protected void setProperties(Anchor anchor, int x, int y, int width, int height)
     {
-        this.bounds = new Rectangle((int)position.x, (int)position.y, width, height);
-    }
-    
-    /**
-     * Sets the position of this MenuItem.
-     * @param position A Vector2 containing the position of this MenuItem.
-     */
-    protected void setPosition(Vector2 position)
-    {
-        this.position = position;
+        this.anchor = anchor;
+        this.bounds = new Rectangle(x, y, width, height);
     }
     
     /**
@@ -102,7 +97,7 @@ public abstract class MenuItem extends GuiComponent
     {
         g2d.setFont(font);
         g2d.setColor(fontColor);
-        g2d.drawString(LABEL, position.x + 5, position.y + 15);
+        g2d.drawString(LABEL, bounds.x + 5, bounds.y + 15);
     }
     
     /**

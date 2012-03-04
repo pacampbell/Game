@@ -130,7 +130,7 @@ public class Menu extends GuiComponent
         // Initialize MenuItems
         for(int i = 0; i < items.size(); ++i)
         {
-            yOffset = (i + 1) * closedBoundingBox.height;
+            yOffset = i * closedBoundingBox.height;
             items.get(i).setProperties
             (
                 anchor, 

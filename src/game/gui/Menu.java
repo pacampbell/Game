@@ -2,7 +2,6 @@ package game.gui;
 
 import game.framework.GameTime;
 import game.framework.Rectangle;
-import game.framework.Vector2;
 import game.input.Mouse;
 import game.input.MouseKeys;
 import java.awt.Color;
@@ -18,9 +17,7 @@ public class Menu extends GuiComponent
     private LinkedList<MenuItem> items;
     // Values that need to be set by parent
     private Anchor anchor;
-    //private Vector2 position;
     private Font font;
-    //private int closedWidth, closedHeight;
     private Color paneColor, borderColor, fontColor;
     private Rectangle closedBoundingBox, openBoundingBox;
     
@@ -57,15 +54,6 @@ public class Menu extends GuiComponent
     }
     
     /**
-     * Sets where the parent MenuBar is anchored at.
-     * @param anchor Enumeration representing where the MenuBar is anchored at.
-     */
-    protected void setAnchor(Anchor anchor)
-    {
-        this.anchor = anchor;
-    }
-    
-    /**
      * Sets The Color and Border Color of the menu.
      * This is set by the parent object MenuBar.
      * @param paneColor Color of the Menu pane.
@@ -84,8 +72,24 @@ public class Menu extends GuiComponent
      */
     protected void setProperties(Anchor anchor, int x, int y, int closedWidth, int closedHeight)
     {
-        this.closedBoundingBox = new Rectangle(x, y, closedWidth, closedHeight);
         this.anchor = anchor;
+        this.closedBoundingBox = new Rectangle(x, y, closedWidth, closedHeight);
+        // TODO: need to fix 200 width constant
+        this.openBoundingBox = new Rectangle
+        (
+            closedBoundingBox.x, 
+            closedBoundingBox.y + closedBoundingBox.height, 
+            200, 
+            (closedBoundingBox.height * items.size()) + items.size()
+        );
+    }
+    
+    /**
+     * Returns the width of the menu when it is closed.
+     */
+    public int getClosedWidth()
+    {
+        return closedBoundingBox.width;
     }
     
     /**
@@ -104,8 +108,6 @@ public class Menu extends GuiComponent
     public void initialize() 
     {
         int yOffset;
-        // TODO: need to fix 200 width constant
-        this.openBoundingBox = new Rectangle(closedBoundingBox.x, closedBoundingBox.y + closedBoundingBox.height, 200, (closedBoundingBox.height * items.size()) + items.size());
         // Initialize MenuItems
         for(int i = 0; i < items.size(); ++i)
         {

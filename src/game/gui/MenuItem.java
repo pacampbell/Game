@@ -8,7 +8,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 
-public abstract class MenuItem extends GuiComponent 
+public class MenuItem extends GuiComponent 
 {
     private final String LABEL;
     // Properties to be set by parent items

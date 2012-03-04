@@ -68,7 +68,10 @@ public class Menu extends GuiComponent
     /**
      * Sets properties from parent class.
      * @param anchor Enumeration defining where the Parent MenuBar is anchored.
-     * @param parentBounds Rectangle defining the position and bounds of the Parent MenuBar. 
+     * @param x Integer representing the x-coordinate of this MenuItem.
+     * @param y Integer representing the y-coordinate of this MenuItem.
+     * @param closedWidth Integer representing the width of this MenuItem.
+     * @param closedHeight Integer representing the height of this MenuItem.
      */
     protected void setProperties(Anchor anchor, int x, int y, int closedWidth, int closedHeight)
     {
@@ -112,8 +115,15 @@ public class Menu extends GuiComponent
         for(int i = 0; i < items.size(); ++i)
         {
             yOffset = (i + 1) * closedBoundingBox.height;
-            //items.get(i).setPosition(position.addY(yOffset + (i * 1))); // 1px space between menu items.
-            items.get(i).setDimensions(200, closedBoundingBox.height);
+            items.get(i).setProperties
+            (
+                anchor, 
+                closedBoundingBox.x, 
+                closedBoundingBox.y + yOffset + (i * 1), 
+                // TODO: FIX 200 width for menu.
+                200, 
+                closedBoundingBox.height
+            );
             items.get(i).setFont(font);
             items.get(i).setFontColor(fontColor);
             items.get(i).initialize();

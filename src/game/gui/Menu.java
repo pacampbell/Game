@@ -18,9 +18,9 @@ public class Menu extends GuiComponent
     private LinkedList<MenuItem> items;
     // Values that need to be set by parent
     private Anchor anchor;
-    private Vector2 position;
+    //private Vector2 position;
     private Font font;
-    private int closedWidth, closedHeight;
+    //private int closedWidth, closedHeight;
     private Color paneColor, borderColor, fontColor;
     private Rectangle closedBoundingBox, openBoundingBox;
     
@@ -77,17 +77,10 @@ public class Menu extends GuiComponent
         this.borderColor = borderColor;
     }
     
-    /**
-     * Sets the height of the Menu when it is closed. 
-     * This is set by the parent object MenuBar.
-     * @param closedWidth Width of the closed Menu.
-     * @param closedHeight Height of the closed Menu.
-     */
-    protected void setClosedDimensions(int closedWidth, int closedHeight)
+    protected void setProperties(Anchor anchor, Rectangle parentBounds)
     {
-        this.closedWidth = closedWidth;
-        this.closedHeight = closedHeight;
-        this.closedBoundingBox = new Rectangle((int)position.x, (int)position.y, closedWidth, closedHeight);
+        this.closedBoundingBox = parentBounds;
+        
     }
     
     /**
@@ -100,23 +93,6 @@ public class Menu extends GuiComponent
     }
     
     /**
-     * Sets the position of the Menu
-     * @param position Position of the Menu.
-     */
-    protected void setPosition(Vector2 position)
-    {
-        this.position = position;
-    }
-    
-    /**
-     * @return Returns the width of the Menu when it is closed. 
-     */
-    public int getClosedWidth()
-    {
-        return closedWidth;
-    }
-
-    /**
      * Initializes all the MenuItems contained within the Menu and the Menu itself.
      */
     @Override
@@ -124,13 +100,13 @@ public class Menu extends GuiComponent
     {
         int yOffset;
         // TODO: need to fix 200 width constant
-        this.openBoundingBox = new Rectangle((int)position.x, (int)position.y + closedHeight, 200, (closedHeight * items.size()) + items.size());
+        this.openBoundingBox = new Rectangle(closedBoundingBox.x, closedBoundingBox.y + closedBoundingBox.height, 200, (closedBoundingBox.height * items.size()) + items.size());
         // Initialize MenuItems
         for(int i = 0; i < items.size(); ++i)
         {
-            yOffset = (i + 1) * closedHeight;
-            items.get(i).setPosition(position.addY(yOffset + (i * 1))); // 1px space between menu items.
-            items.get(i).setDimensions(200, closedHeight);
+            yOffset = (i + 1) * closedBoundingBox.height;
+            //items.get(i).setPosition(position.addY(yOffset + (i * 1))); // 1px space between menu items.
+            items.get(i).setDimensions(200, closedBoundingBox.height);
             items.get(i).setFont(font);
             items.get(i).setFontColor(fontColor);
             items.get(i).initialize();
@@ -180,7 +156,7 @@ public class Menu extends GuiComponent
         g2d.setFont(font);
         g2d.setColor(fontColor);
         // TODO: FIX Magic Padding Numbers + 10 and + 15
-        g2d.drawString(LABEL, position.x + 10, position.y + 15);
+        g2d.drawString(LABEL, closedBoundingBox.x + 10, closedBoundingBox.y + 15);
         // If the menu is open draw that piece as well
         if(items.size() > 0 && menuState == MenuState.OPEN)
         {

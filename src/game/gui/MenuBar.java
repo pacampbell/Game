@@ -96,13 +96,14 @@ public class MenuBar extends GuiComponent
         int xPos = 0;
         for(int i = 0; i < menus.size(); ++i)
         {
-            menus.get(i).setAnchor(anchor);
-            menus.get(i).setPosition(new Vector2(xPos, bounds.y));
-            menus.get(i).setClosedDimensions
+            menus.get(i).setProperties
             (
+                anchor, 
+                xPos, 
+                bounds.y, 
                 // 10px padding on each side = "+ 20"
                 // TODO: Fix + 20 Magic Number
-                (int)font.getStringBounds(menus.get(i).LABEL, frc).getWidth() + 20,
+                (int)font.getStringBounds(menus.get(i).LABEL, frc).getWidth() + 20, 
                 bounds.height
             );
             // Set Font and Color

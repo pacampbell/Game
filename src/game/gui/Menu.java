@@ -77,10 +77,15 @@ public class Menu extends GuiComponent
         this.borderColor = borderColor;
     }
     
+    /**
+     * Sets properties from parent class.
+     * @param anchor Enumeration defining where the Parent MenuBar is anchored.
+     * @param parentBounds Rectangle defining the position and bounds of the Parent MenuBar. 
+     */
     protected void setProperties(Anchor anchor, Rectangle parentBounds)
     {
         this.closedBoundingBox = parentBounds;
-        
+        this.anchor = anchor;
     }
     
     /**

@@ -15,15 +15,27 @@ public class MenuItem extends GuiComponent
     private Anchor anchor;
     private Rectangle bounds;
     protected Font font;
-    protected Color fontColor;
+    protected Color fontColor, hoverColor;
         
     /**
      * Complete Constructor
-     * @param LABEL Text label that is displayed in the Menu.
+     * @param LABEL String containing the desired label for the MenuItem.
+     * @param hoverColor Text color when the mouse is over this MenuItem.
      */
-    public MenuItem(String LABEL)
+    public MenuItem(String label, Color hoverColor)
     {
-        this.LABEL = LABEL;
+        this.LABEL = label;
+        this.hoverColor = hoverColor;
+    }
+    
+    /**
+     * Creates a MenuItem with the desired label.
+     * Defaults hoverColor to yellow.
+     * @param label String containing the desired label for the MenuItem.
+     */
+    public MenuItem(String label)
+    {
+        this(label, Color.YELLOW);
     }
     
     /**
@@ -79,6 +91,7 @@ public class MenuItem extends GuiComponent
     {
         if(bounds.intersects(Mouse.getPosition()))
         {
+            fontColor = hoverColor;
             // If the mouse is hovering over the item perform a action.
             onHover();
             // If the mouse is clicking the item perform a action.

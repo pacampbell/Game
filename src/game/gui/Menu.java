@@ -134,8 +134,8 @@ public class Menu extends GuiComponent
             items.get(i).setProperties
             (
                 anchor, 
-                closedBoundingBox.x, 
-                closedBoundingBox.y + yOffset + (i * 1), 
+                openBoundingBox.x, 
+                openBoundingBox.y + yOffset + (i * 1), 
                 // TODO: FIX 200 width for menu.
                 200, 
                 closedBoundingBox.height

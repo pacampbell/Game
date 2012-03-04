@@ -44,7 +44,11 @@ public class Texture2D
         URL systemIndependentPath = getClass().getResource(path);
         try
         {
-            this.bufferedImage = ImageIO.read(systemIndependentPath);
+            // If the URL was unsuccessfully made make a last attempt to create a URL.
+            if(systemIndependentPath == null)
+                this.bufferedImage = ImageIO.read(new URL("file:" + path));
+            else
+                this.bufferedImage = ImageIO.read(systemIndependentPath);
             loaded = true;
         }
         catch(Exception ex)

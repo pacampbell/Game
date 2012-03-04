@@ -82,9 +82,9 @@ public class Menu extends GuiComponent
      * @param anchor Enumeration defining where the Parent MenuBar is anchored.
      * @param parentBounds Rectangle defining the position and bounds of the Parent MenuBar. 
      */
-    protected void setProperties(Anchor anchor, Rectangle parentBounds)
+    protected void setProperties(Anchor anchor, int x, int y, int closedWidth, int closedHeight)
     {
-        this.closedBoundingBox = parentBounds;
+        this.closedBoundingBox = new Rectangle(x, y, closedWidth, closedHeight);
         this.anchor = anchor;
     }
     

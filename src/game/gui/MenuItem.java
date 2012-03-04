@@ -13,9 +13,9 @@ public abstract class MenuItem extends GuiComponent
     private final String LABEL;
     // Properties to be set by parent items
     private Anchor anchor;
-    private Font font;
-    private Color fontColor;
     private Rectangle bounds;
+    protected Font font;
+    protected Color fontColor;
         
     /**
      * Complete Constructor
@@ -79,9 +79,11 @@ public abstract class MenuItem extends GuiComponent
     {
         if(bounds.intersects(Mouse.getPosition()))
         {
-            fontColor = Color.YELLOW;
+            // If the mouse is hovering over the item perform a action.
+            onHover();
+            // If the mouse is clicking the item perform a action.
             if(Mouse.buttonDownOnce(MouseKeys.BUTTON_1))
-                action();
+                onClick();
         }    
         else
             fontColor = Color.WHITE;
@@ -100,7 +102,12 @@ public abstract class MenuItem extends GuiComponent
     }
     
     /**
-     * Method to to be invoked by actions on the menu.
+     * Method to to be invoked when a MenuItem is clicked.
      */
-    protected abstract void action();
+    protected void onClick(){};
+    
+    /**
+     * Method to be invoked when a MenuItem is being hovered over.
+     */
+    protected void onHover(){};
 }

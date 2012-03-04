@@ -78,13 +78,29 @@ public class Menu extends GuiComponent
         this.anchor = anchor;
         this.closedBoundingBox = new Rectangle(x, y, closedWidth, closedHeight);
         // TODO: need to fix 200 width constant
-        this.openBoundingBox = new Rectangle
-        (
-            closedBoundingBox.x, 
-            closedBoundingBox.y + closedBoundingBox.height, 
-            200, 
-            (closedBoundingBox.height * items.size()) + items.size()
-        );
+        int openHeight = (closedHeight * items.size()) + items.size();
+        switch(anchor)
+        {
+            default:
+            case TOP:
+                this.openBoundingBox = new Rectangle
+                (
+                    closedBoundingBox.x, 
+                    closedBoundingBox.y + closedBoundingBox.height, 
+                    200, 
+                    openHeight
+                );
+                break;
+            case BOTTOM:
+                this.openBoundingBox = new Rectangle
+                (
+                    closedBoundingBox.x, 
+                    closedBoundingBox.y - openHeight, 
+                    200, 
+                    openHeight
+                );
+                break;
+        }
     }
     
     /**
@@ -179,31 +195,13 @@ public class Menu extends GuiComponent
         {
             g2d.setColor(paneColor);
             // Draw The Menu pane.
-            switch(anchor)
-            {
-                case BOTTOM:
-                    g2d.fillRect(openBoundingBox.x, openBoundingBox.y - openBoundingBox.height - closedBoundingBox.height, openBoundingBox.width, openBoundingBox.height);
-                    break;
-                default:
-                case TOP:
-                    g2d.fillRect(openBoundingBox.x, openBoundingBox.y, openBoundingBox.width, openBoundingBox.height);
-                    break;
-            }
+            g2d.fillRect(openBoundingBox.x, openBoundingBox.y, openBoundingBox.width, openBoundingBox.height);
             // Draw The Menu Items.
             for(MenuItem item : items)
                 item.draw(g2d);
             // Draw The Border around the Menu.
             g2d.setColor(borderColor);
-            switch(anchor)
-            {
-                case BOTTOM:
-                    g2d.drawRect(openBoundingBox.x, openBoundingBox.y - openBoundingBox.height - closedBoundingBox.height, openBoundingBox.width, openBoundingBox.height);
-                    break;
-                default:
-                case TOP:
-                    g2d.drawRect(openBoundingBox.x, openBoundingBox.y, openBoundingBox.width, openBoundingBox.height);
-                    break;
-            }
+            g2d.drawRect(openBoundingBox.x, openBoundingBox.y, openBoundingBox.width, openBoundingBox.height);
         }
     }
 }

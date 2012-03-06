@@ -12,7 +12,7 @@ public class PerformanceTiming
     private float mspf;
     private float t_base;
     private Color textColor;
-    public Vector2 position;
+    private Vector2 position;
     
     /**
      * Default Constructor
@@ -66,5 +66,24 @@ public class PerformanceTiming
     public void setTextColor(Color color)
     {
         this.textColor = color;
+    }
+    
+    /**
+     * Sets the position of this PerformanceTiming object.
+     * @param position Vector2 containing the position of this PerformanceTiming object.
+     */
+    public void setPosition(Vector2 position)
+    {
+        this.position = position;
+    }
+    
+    /**
+     * Sets the position of this PerformanceTiming object.
+     * @param x Float containing the desired x-coordinate of this PerformanceTiming object. 
+     * @param y Float containing the desired y-coordinate of this PerformanceTiming object.
+     */
+    public void setPosition(float x, float y)
+    {
+        this.setPosition(new Vector2(x, y));
     }
 }

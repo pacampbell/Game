@@ -14,16 +14,15 @@ public class FontHelper
     public static Font loadFont(String path, float size)
     {
         Font font = null;
-        String fName = "/resources/" + path;
         try
         {
-            InputStream is = FontHelper.class.getResourceAsStream(fName);
+            InputStream is = FontHelper.class.getResourceAsStream(path);
             font = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(size);
         } 
         catch (Exception ex) 
         {
             ex.printStackTrace();
-            System.err.println(fName + " not loaded. Using serif font.");
+            System.err.println(path + " not loaded. Using serif font.");
             font = new Font("serif", Font.PLAIN, 24);
         }
         return font;

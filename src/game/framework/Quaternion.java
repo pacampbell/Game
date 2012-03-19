@@ -18,7 +18,6 @@ package game.framework;
  *  <li>Magnitude Squared</li>
  *  <li>Multiply</li>
  *  <li>Negate</li>
- *  <li>Normalize</li>
  *  <li>Spherical Linear Interpolation</li>
  * </ul>
  * @version incomplete
@@ -301,11 +300,21 @@ public class Quaternion
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Normalize">
+    /**
+     * Normalizes the provided Quaternion.
+     * @param q A Quaternion to be normalized.
+     * @return Returns q normalized.
+     */
     public static Quaternion normalize(Quaternion q)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        float unit = (float)Math.sqrt((q.x * q.x) + (q.y * q.y) + (q.z * q.z) + (q.w * q.w));
+        return new Quaternion(q.x / unit, q.y / unit, q.z / unit, q.w / unit);
     }
     
+    /**
+     * Normalizes this Quaternion.
+     * @return Returns this Quaternion normalized.
+     */
     public Quaternion normalize()
     {
         return Quaternion.normalize(this);

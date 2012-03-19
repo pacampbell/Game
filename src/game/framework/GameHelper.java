@@ -59,6 +59,18 @@ public class GameHelper
     }
     
     /**
+     * Gets the cursor of the current JFrame.
+     * @return Returns the Cursor associated with the current Game JFrame.
+     */
+    public static Cursor getCursor()
+    {
+        Cursor cursor = Cursor.getDefaultCursor();
+        if(window != null)
+            cursor = GameHelper.window.getCursor();
+        return cursor;
+    }
+    
+    /**
      * Sets the title of the Games JFrame
      * @param title String representing the desired title of the JFrame.
      */

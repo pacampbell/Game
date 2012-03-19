@@ -14,8 +14,6 @@ package game.framework;
  *  <li>Divide</li>
  *  <li>Inverse</li>
  *  <li>Linear Interpolation</li>
- *  <li>Magnitude</li>
- *  <li>Magnitude Squared</li>
  *  <li>Multiply</li>
  *  <li>Negate</li>
  *  <li>Spherical Linear Interpolation</li>
@@ -230,11 +228,20 @@ public class Quaternion
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Magnitude">
+    /**
+     * Finds the magnitude of the Quaternion.
+     * @param q A Quaternion to find the magnitude of.
+     * @return Returns the magnitude of the Quaternion. 
+     */
     public static float magnitude(Quaternion q)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return (float)Math.sqrt(Quaternion.magnitudeSquared(q));
     }
     
+    /**
+     * Finds the magnitude of this Quaternion.
+     * @return Returns the magnitude of this Quaternion. 
+     */
     public float magnitude()
     {
         return Quaternion.magnitude(this);
@@ -242,11 +249,20 @@ public class Quaternion
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Magnitude Squared">
+    /**
+     * Finds the magnitude squared of the Quaternion.
+     * @param q A Quaternion to find the magnitude squared of.
+     * @return Returns the magnitude squared of the Quaternion. 
+     */
     public static float magnitudeSquared(Quaternion q)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return (q.x * q.x) + (q.y * q.y) + (q.z * q.z) + (q.w * q.w); 
     }
     
+    /**
+     * Finds the magnitude squared of this Quaternion.
+     * @return Returns the magnitude squared of this Quaternion. 
+     */
     public float magnitudeSquared()
     {
         return Quaternion.magnitudeSquared(this);
@@ -307,8 +323,8 @@ public class Quaternion
      */
     public static Quaternion normalize(Quaternion q)
     {
-        float unit = (float)Math.sqrt((q.x * q.x) + (q.y * q.y) + (q.z * q.z) + (q.w * q.w));
-        return new Quaternion(q.x / unit, q.y / unit, q.z / unit, q.w / unit);
+        float magnitude = Quaternion.magnitude(q);
+        return new Quaternion(q.x / magnitude, q.y / magnitude, q.z / magnitude, q.w / magnitude);
     }
     
     /**

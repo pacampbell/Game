@@ -12,7 +12,6 @@ package game.framework;
  *  <li>CreateFromRotationMatrix</li>
  *  <li>CreateFromYawPitchRoll</li>
  *  <li>Divide</li>
- *  <li>Dot Product</li>
  *  <li>Inverse</li>
  *  <li>Linear Interpolation</li>
  *  <li>Magnitude</li>

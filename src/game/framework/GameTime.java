@@ -52,6 +52,15 @@ public class GameTime
     {
         return (float)this.deltaTime;
     }
+    
+    /**
+     * Gets the time passed since the last time the clock has been polled.
+     * @return Returns the time in seconds since the last update.
+     */
+    public float getDeltaTimeSeconds()
+    {
+        return (float)this.deltaTime / 1000.0f;
+    }
 
     /**
      * Resets the GameTime timer.

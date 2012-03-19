@@ -15,7 +15,6 @@ package game.framework;
  *  <li>Inverse</li>
  *  <li>Linear Interpolation</li>
  *  <li>Multiply</li>
- *  <li>Negate</li>
  *  <li>Spherical Linear Interpolation</li>
  * </ul>
  * @version incomplete
@@ -304,11 +303,20 @@ public class Quaternion
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Negate">
+    /**
+     * Negates the provided Quaternion.
+     * @param q Quaternion to be negated.
+     * @return Returns the negation of the provided Quaternion.
+     */
     public static Quaternion negate(Quaternion q)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return new Quaternion(-q.x, -q.y, -q.z, -q.w);
     }
     
+    /**
+     * Negates this Quaternion.
+     * @return Returns the negation of this Quaternion.
+     */
     public Quaternion negate()
     {
         return Quaternion.negate(this);

@@ -30,7 +30,7 @@ public class Texture2D
     public Texture2D(BufferedImage bufferedImage)
     {
         this.bufferedImage = bufferedImage;
-        this.contentLocation = null;
+        this.contentLocation = bufferedImage.toString();
     }
     
     /**

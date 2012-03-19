@@ -77,6 +77,15 @@ public class Texture2D
     }
     
     /**
+     * Gets the path of the Texture2D.
+     * @return Returns the path of the image used for the Texture2D.
+     */
+    public String getPath()
+    {
+        return this.contentLocation;
+    }
+    
+    /**
      * Resizes a Texture2D.
      * @param tex Texture2D you want to resize.
      * @param width The width of the resized image.

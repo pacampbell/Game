@@ -69,6 +69,18 @@ public class GameHelper
     }
     
     /**
+     * Gets the title of the JFrame.
+     * @return Returns the title of the Game JFrame.
+     */
+    public static String getTitle()
+    {
+        String title = "null";
+        if(window != null)
+            title = GameHelper.window.getTitle();
+        return title;
+    }
+    
+    /**
      * Sets the Main JFrame of project. 
      * @param frame The main JFrame 
      */

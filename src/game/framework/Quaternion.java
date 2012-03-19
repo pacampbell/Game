@@ -157,12 +157,27 @@ public class Quaternion
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Dot Product">
-    public static Quaternion dotProduct(Quaternion a, Quaternion b)
+    /**
+     * Performs the dot product between two Quaternion.
+     * Also known as the scalar product.
+     * The result of a dot product is a scalar value.
+     * @param a A Quaternion that we want to perform the dot product with.
+     * @param b A Quaternion that we want to perform the dot product with.
+     * @return Returns a dot b.
+     */
+    public static float dotProduct(Quaternion a, Quaternion b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return (a.x * b.x) + (a.y + b.y) + (a.z + b.z) + (a.w + b.w);
     }
     
-    public Quaternion dotProduct(Quaternion that)
+    /**
+     * Performs the dot product between this Quaternion and that Quaternion.
+     * Also known as the scalar product.
+     * The result of a dot product is a scalar value.
+     * @param that A Quaternion that we want to perform the dot product with.
+     * @return Returns this dot that.
+     */
+    public float dotProduct(Quaternion that)
     {
         return Quaternion.dotProduct(this, that);
     }

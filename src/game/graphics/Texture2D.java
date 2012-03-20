@@ -1,5 +1,6 @@
 package game.graphics;
 
+import game.framework.GameHelper;
 import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -57,6 +58,32 @@ public class Texture2D
             System.out.println("Could not load image: " + path);
         }
         return loaded;
+    }
+    
+    /**
+     * Utility to load a BufferedImage.
+     * If the utility fails a null BufferedImage is returned.
+     * @param path String containing the path to the image.
+     * @return Returns a BufferedImage containing the desired image.
+     */
+    public static BufferedImage loadBufferedImage(String path)
+    {
+        BufferedImage image;
+        URL systemIndependentPath = GameHelper.osIndependentFilePath(path);
+        try
+        {
+            // If the URL was unsuccessfully made make a last attempt to create a URL.
+            if(systemIndependentPath == null)
+                image = ImageIO.read(new URL("file:" + path));
+            else
+                image = ImageIO.read(systemIndependentPath);
+        }
+        catch(Exception ex)
+        {
+            image = null;
+            System.out.println("Could not load image: " + path);
+        }
+        return image;
     }
     
     /**

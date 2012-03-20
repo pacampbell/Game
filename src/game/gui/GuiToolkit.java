@@ -4,5 +4,5 @@ import java.util.LinkedList;
 
 public class GuiToolkit 
 {
-    public final LinkedList<GuiActions> callQueue = new LinkedList<>();
+    public static final LinkedList<GuiActions> callQueue = new LinkedList<>();
 }

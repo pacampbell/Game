@@ -11,7 +11,6 @@ package game.framework;
  *  <li>CreateFromAxisAngle</li>
  *  <li>CreateFromRotationMatrix</li>
  *  <li>CreateFromYawPitchRoll</li>
- *  <li>Divide</li>
  *  <li>Inverse</li>
  *  <li>Linear Interpolation</li>
  *  <li>Multiply</li>
@@ -140,11 +139,22 @@ public class Quaternion
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Divide">
+    /**
+     * Performs component wise division with two Quaternion. 
+     * @param a Quaternion to be divided.
+     * @param b Quaternion to divide by.
+     * @return Returns a new Quaternion with the components of a divided by the components of b.
+     */
     public static Quaternion divide(Quaternion a, Quaternion b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return new Quaternion(a.x / b.x, a.y / b.y, a.z / b.z, a.w / b.w);
     }
     
+    /**
+     * Divides this Quaternion component wise by that Quaternion.
+     * @param that Quaternion to divide by.
+     * @return Returns a new Quaternion with the components of this divided by the components of that.
+     */
     public Quaternion divide(Quaternion that)
     {
         return Quaternion.divide(this, that);

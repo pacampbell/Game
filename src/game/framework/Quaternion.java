@@ -13,7 +13,6 @@ package game.framework;
  *  <li>CreateFromYawPitchRoll</li>
  *  <li>Inverse</li>
  *  <li>Linear Interpolation</li>
- *  <li>Multiply</li>
  *  <li>Spherical Linear Interpolation</li>
  * </ul>
  * @version incomplete
@@ -291,21 +290,43 @@ public class Quaternion
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Multiply">
+    /**
+     * Scales the components of a by the components of b.
+     * @param a A Quaternion to be scaled.
+     * @param b A Quaternion to scale by.
+     * @return Returns a new Quaternion with the components of a scaled by the components of b.
+     */
     public static Quaternion multiply(Quaternion a, Quaternion b)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return new Quaternion(a.x * b.x, a.y * b.y, a.z * b.z, a.w * b.w);
     }
     
+    /**
+     * Scales the components of this by the components of that.
+     * @param that A Quaternion to scale by.
+     * @return Returns a new Quaternion with the components of this scaled by the components of that.
+     */
     public Quaternion multiply(Quaternion that)
     {
         return Quaternion.multiply(this, that);
     }
     
+    /**
+     * Scales a Quaternion by a scalar.
+     * @param q Quaternion to be scaled.
+     * @param scalar Float to scale the Quaternion by.
+     * @return Returns scalar * q
+     */
     public static Quaternion multiply(Quaternion q, float scalar)
     {
-        throw new UnsupportedOperationException("Not yet implemented.");
+        return new Quaternion(q.x * scalar, q.y * scalar, q.y * scalar, q.w * scalar);
     }
     
+    /**
+     * Scales this Quaternion by a scalar.
+     * @param scalar Float to scale the Quaternion by.
+     * @return Returns scalar * this.
+     */
     public Quaternion multiply(float scalar)
     {
         return Quaternion.multiply(this, scalar);

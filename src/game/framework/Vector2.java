@@ -808,7 +808,11 @@ public class Vector2 implements Serializable
      */
     public static Vector2 random()
     {
-        return new Vector2(MathHelper.random(Integer.MIN_VALUE, Integer.MAX_VALUE), MathHelper.random(Integer.MIN_VALUE, Integer.MAX_VALUE));
+        return new Vector2
+        (
+            MathHelper.random(-10000, 10000), 
+            MathHelper.random(-10000, 10000)
+        );
     }
     //</editor-fold>
     

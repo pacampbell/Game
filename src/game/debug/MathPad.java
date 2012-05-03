@@ -19,8 +19,11 @@ public class MathPad
         // Tests out Matrix3 methods and prints the results.
         //MathPad.matrix4Test();
         
+        for(int i = 0; i < 10; ++i)
+                System.out.println(MathHelper.random());
+        
         for(int i = 0; i < 1000; i++)
-            System.out.println(MathHelper.random(-10, -5));
+            System.out.println(Vector2.random());
         
     }
     

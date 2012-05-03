@@ -186,6 +186,6 @@ public class MathHelper
      */
     public static int random()
     {
-        return MathHelper.random(Integer.MAX_VALUE);
+        return MathHelper.random(Integer.MAX_VALUE - 1);
     }
 }

@@ -149,7 +149,7 @@ public class MathHelper
     }
     
     /**
-     * Generates a random number between a range.
+     * Generates a random number between a range inclusively.
      * @param min int value representing the minimum bound inclusively.
      * @param max int value representing the maximum bound inclusively.
      * @return Returns a random number k where min &#8804; k &#8804; max. 
@@ -171,7 +171,7 @@ public class MathHelper
     }
     
     /**
-     * Generates a random number between 0 and max.
+     * Generates a random number between 0 and max inclusive.
      * @param max int value representing the maximum bound inclusively.
      * @return Returns a random number k where 0 &#8804; k &#8804; max.
      */
@@ -181,7 +181,7 @@ public class MathHelper
     }
     
     /**
-     * Generates a random number between 0 and Integer.MAX_VALUE 
+     * Generates a random number between 0 and Integer.MAX_VALUE inclusive. 
      * @return Returns a random number k where 0 &#8804; k &#8804; Integer.MAX_VALUE. 
      */
     public static int random()

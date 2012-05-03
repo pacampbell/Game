@@ -169,4 +169,23 @@ public class MathHelper
             k = (int)((Math.random() * (max - min + 1)) + min);
         return k;
     }
+    
+    /**
+     * Generates a random number between 0 and max.
+     * @param max int value representing the maximum bound inclusively.
+     * @return Returns a random number k where 0 &#8804; k &#8804; max.
+     */
+    public static int random(int max)
+    {
+        return MathHelper.random(0, max);
+    }
+    
+    /**
+     * Generates a random number between 0 and Integer.MAX_VALUE 
+     * @return Returns a random number k where 0 &#8804; k &#8804; Integer.MAX_VALUE. 
+     */
+    public static int random()
+    {
+        return MathHelper.random(Integer.MAX_VALUE);
+    }
 }

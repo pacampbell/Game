@@ -18,6 +18,10 @@ public class MathPad
         //MathPad.matrixTest();
         // Tests out Matrix3 methods and prints the results.
         //MathPad.matrix4Test();
+        
+        for(int i = 0; i < 1000; i++)
+            System.out.println(MathHelper.random(-10, -5));
+        
     }
     
     //<editor-fold defaultstate="collapsed" desc="Vector2 Unit Test">

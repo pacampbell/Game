@@ -33,6 +33,42 @@ public class MathHelper
     }
     
     /**
+     * Do the dot product of two arrays
+     * @param a the first array
+     * @param b the second array
+     * @return the value of the dot product
+     */
+    public static int dotProduct(int[] a, int[] b){
+        int answer = 0;
+        
+        if(a.length == b.length){
+            for (int i = 0; i < a.length; i++) {
+                answer += (a[i] * b[i]);
+            }            
+        }else throw new IllegalArgumentException("can't use dotProduct with different sized vectors."
+                + "The two lengths were " + a.length + " and " + b.length);
+        return answer;
+    }
+    
+    /**
+     * Do the dot product of two arrays
+     * @param a the first array
+     * @param b the second array
+     * @return the value of the dot product
+     */
+    public static float dotProduct(float[] a, float[] b){
+        float answer = 0;
+        
+        if(a.length == b.length){
+            for (int i = 0; i < a.length; i++) {
+                answer += (a[i] * b[i]);
+            }            
+        }else throw new IllegalArgumentException("can't use dotProduct with different sized vectors."
+                + "The two lengths were " + a.length + " and " + b.length);
+        return answer;
+    }
+    
+    /**
      * Linear interpolation <br />
      * value1 + (value2 - value1) * amount
      * @param start A float value we want to interpolate with.
@@ -113,38 +149,24 @@ public class MathHelper
     }
     
     /**
-     * Do the dot product of two arrays
-     * @param a the first array
-     * @param b the second array
-     * @return the value of the dot product
+     * Generates a random number between a range.
+     * @param min int value representing the minimum bound inclusively.
+     * @param max int value representing the maximum bound inclusively.
+     * @return Returns a random number k where min &#8804; k &#8804; max. 
      */
-    public static int dotProduct(int[] a, int[] b){
-        int answer = 0;
-        
-        if(a.length == b.length){
-            for (int i = 0; i < a.length; i++) {
-                answer += (a[i] * b[i]);
-            }            
-        }else throw new IllegalArgumentException("can't use dotProduct with different sized vectors."
-                + "The two lengths were " + a.length + " and " + b.length);
-        return answer;
-    }
-    
-    /**
-     * Do the dot product of two arrays
-     * @param a the first array
-     * @param b the second array
-     * @return the value of the dot product
-     */
-    public static float dotProduct(float[] a, float[] b){
-        float answer = 0;
-        
-        if(a.length == b.length){
-            for (int i = 0; i < a.length; i++) {
-                answer += (a[i] * b[i]);
-            }            
-        }else throw new IllegalArgumentException("can't use dotProduct with different sized vectors."
-                + "The two lengths were " + a.length + " and " + b.length);
-        return answer;
+    public static int random(int min, int max)
+    {
+        int k;
+        if(min < 0 && max < 0)
+        {
+            min *= -1;
+            max *= -1;
+            k = (int)((Math.random() * (min - max + 1)) + max) * -1;
+        }
+        else if(min < 0)
+            k = (int)(Math.random() * (Math.abs(min) + max + 1)) - Math.abs(min);
+        else
+            k = (int)((Math.random() * (max - min + 1)) + min);
+        return k;
     }
 }

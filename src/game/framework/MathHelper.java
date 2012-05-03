@@ -14,18 +14,13 @@ public class MathHelper
      */
     public static float clamp(float value, float min, float max)
     {
-        float retVal = value;
-        if(value < min)
-            retVal = min;
-        if(value > max)
-            retVal = max;
-        return retVal;
+        return (value > max) ? max : (value < min) ? min : value;
     }
 
     /**
-     * Clamps a integer value between a min and a max value.
-     * If the value is below min, value is set to min.
-     * If the value is above max, value is set to max.
+     * Clamps a integer value between a min and a max value.<br />
+     * If the value is below min, value is set to min. <br />
+     * If the value is above max, value is set to max. <br />
      * If the value is min < value < max then we leave it alone.
      * @param value Value to be clamped.
      * @param min Minimum value the value can be.
@@ -34,40 +29,37 @@ public class MathHelper
      */
     public static int clamp(int value, int min, int max)
     {
-        int retVal = value;
-        if(value < min)
-            retVal = min;
-        if(value > max)
-            retVal = max;
-        return retVal;
+        return (value > max) ? max : (value < min) ? min : value;
     }
     
     /**
-     * Linear interpolation
+     * Linear interpolation <br />
      * value1 + (value2 - value1) * amount
-     * @param value1 A float value we want to interpolate with.
-     * @param value2 A float value we want to interpolate with.
+     * @param start A float value we want to interpolate with.
+     * @param end A float value we want to interpolate with.
      * @param amount A value between 0 and 1 indicating the weight of value2.
      * @return Returns the linear interpolation between two Vector2.
      */
-    public static float lerp(float value1, float value2, float amount)
+    public static float lerp(float start, float end, float amount)
     {
-        return value1 + (value2 - value1) * amount;
+        float v = start + (end - start) * amount; 
+        return amount >= 1 ? end : v;
     }
     
     /**
      * Performs a Smooth Step interpolation between two points.
-     * @param a A float value.
-     * @param b A float value.
+     * @param start A float value.
+     * @param end A float value.
      * @param amount A float value between zero and one.
      * @return Returns the interpolation between two values.
      */
-    public static float smoothStep(float a, float b, float amount)
+    public static float smoothStep(float start, float end, float amount)
     {
         // smoothStep(t) = 3t2 − 2t3
         amount = (amount * amount) * (3 - (2 * amount));
         // (A * v) + (B * (1 - v));
-        return (a * (1 - amount)) + (b * amount);
+        float v = (start * (1 - amount)) + (end * amount); 
+        return amount >= 1 ? end : v;
     }
     
     /**

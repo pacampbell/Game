@@ -270,23 +270,11 @@ public class Vector2 implements Serializable
      */
     public static Vector2 clamp(Vector2 vec, Vector2 min, Vector2 max)
     {
-        float newX = vec.x;
-        float newY = vec.y;
-        
-        // Clamp min and max x values
-        if(vec.x < min.x)
-            newX = min.x;
-        else if(vec.x > max.x)
-            newX = max.x;
-
-        // Clamp min and max y values
-        if(vec.y < min.y)
-            newY = min.y;
-        else if(vec.y > max.y)
-            newY = max.y;
-
-        // Return the Clamped Vector
-        return new Vector2(newX, newY);
+        return new Vector2
+        (
+            MathHelper.clamp(vec.x, min.x, max.x), 
+            MathHelper.clamp(vec.y, min.y, max.y)
+        );
     }
     
     /**
@@ -567,9 +555,11 @@ public class Vector2 implements Serializable
      */
     public static Vector2 lerp(Vector2 value1, Vector2 value2, float amount)
     {
-        float lerpX = value1.x + (value2.x - value1.x) * amount;
-        float lerpY = value1.y + (value2.y - value1.y) * amount;
-        return new Vector2(lerpX, lerpY);
+        return new Vector2
+        (
+            MathHelper.lerp(value1.x, value2.x, amount),
+            MathHelper.lerp(value1.y, value2.y, amount)
+        );
     }
     
     /**
@@ -581,9 +571,7 @@ public class Vector2 implements Serializable
      */
     public Vector2 lerp(Vector2 that, float amount)
     {
-        float lerpX = this.x + (that.x - this.x) * amount;
-        float lerpY = this.y + (that.y - this.y) * amount;
-        return new Vector2(lerpX, lerpY);
+        return Vector2.lerp(this, that, amount);
     }
     //</editor-fold>
     
@@ -838,10 +826,11 @@ public class Vector2 implements Serializable
      */
     public static Vector2 smoothStep(Vector2 a, Vector2 b, float amount)
     {
-        amount = (amount * amount) * (3 - (2 * amount));
-        float outX = (a.x * (1 - amount)) + (b.x * amount);
-        float outY = (a.y * (1 - amount)) + (b.y * amount);
-        return new Vector2(outX, outY);
+        return new Vector2
+        (
+            MathHelper.smoothStep(a.x, b.x, amount),
+            MathHelper.smoothStep(a.y, b.y, amount)
+        );
     }
     //</editor-fold>
     

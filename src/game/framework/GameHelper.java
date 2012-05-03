@@ -103,7 +103,7 @@ public class GameHelper
     
     /**
      * Stores the width of the Game Window.
-     * only to be used within the framework itself.
+     * Only to be used within the framework itself.
      * @param width Width of the Game Window.
      */
     protected static void setScreenWidth(int width)
@@ -113,7 +113,7 @@ public class GameHelper
     
     /**
      * Stores the height of the Game Window.
-     * only to be used within the framework itself.
+     * Only to be used within the framework itself.
      * @param width Height of the Game Window.
      */
     protected static void setScreenHeight(int height)
@@ -122,6 +122,7 @@ public class GameHelper
     }
     
     /**
+     * Gets the width of the game window in pixels.
      * @return Returns the width of the game window. 
      */
     public static int WIDTH()
@@ -130,6 +131,7 @@ public class GameHelper
     }
     
     /**
+     * Gets the height of the game window in pixels.
      * @return Returns the height of the game window. 
      */
     public static int HEIGHT()

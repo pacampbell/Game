@@ -405,32 +405,13 @@ public class Vector4 extends Vector3 implements Serializable
      */
     public static Vector4 clamp(Vector4 value, Vector4 min, Vector4 max)
     {
-        float newX = value.x;
-        float newY = value.y;
-        float newZ = value.z;
-        float newW = value.w;
-        // Clamp the x value between the min and max.
-        if(value.x < min.x)
-            newX = min.x;
-        else if(value.x > max.x)
-            newX = max.x;
-        // Clamp the y value between the min and max.
-        if(value.y < min.y)
-            newY = min.y;
-        else if(value.y > max.y)
-            newY = max.y;
-        // Clamp the z value between the min and max.
-        if(value.z < min.z)
-            newZ = min.z;
-        else if(value.z > max.z)
-            newZ = max.z;
-        // Clamp the w value between the min and max
-        if(value.w < min.w)
-            newW = min.w;
-        else if(value.w > max.w)
-            newW = max.w;
-        // Return the clamped Vector4
-        return new Vector4(newX, newY, newZ, newW);
+        return new Vector4
+        (
+            MathHelper.clamp(value.x, min.x, max.x), 
+            MathHelper.clamp(value.y, min.y, max.y),
+            MathHelper.clamp(value.z, min.z, max.z),
+            MathHelper.clamp(value.w, min.w, max.w)
+        );    
     }
     
     /**
@@ -706,11 +687,13 @@ public class Vector4 extends Vector3 implements Serializable
      */
     public static Vector4 lerp(Vector4 value1, Vector4 value2, float amount)
     {
-        float lerpX = value1.x + (value2.x - value1.x) * amount;
-        float lerpY = value1.y + (value2.y - value1.y) * amount;
-        float lerpZ = value1.z + (value2.z - value1.z) * amount;
-        float lerpW = value1.w + (value2.w - value1.w) * amount;
-        return new Vector4(lerpX, lerpY, lerpZ, lerpW);
+        return new Vector4
+        (
+            MathHelper.lerp(value1.x, value2.x, amount),
+            MathHelper.lerp(value1.y, value2.y, amount),
+            MathHelper.lerp(value1.z, value2.z, amount),
+            MathHelper.lerp(value1.w, value2.w, amount)
+        );
     }
     
     /**
@@ -903,12 +886,13 @@ public class Vector4 extends Vector3 implements Serializable
      */
     public static Vector4 smoothStep(Vector4 a, Vector4 b, float amount)
     {
-        amount = (amount * amount) * (3 - (2 * amount));
-        float outX = (a.x * (1 - amount)) + (b.x * amount);
-        float outY = (a.y * (1 - amount)) + (b.y * amount);
-        float outZ = (a.z * (1 - amount)) + (b.z * amount);
-        float outW = (a.w * (1 - amount)) + (b.w * amount);
-        return new Vector4(outX, outY, outZ, outW);
+        return new Vector4
+        (
+            MathHelper.smoothStep(a.x, b.x, amount),
+            MathHelper.smoothStep(a.y, b.y, amount),
+            MathHelper.smoothStep(a.z, b.z, amount),
+            MathHelper.smoothStep(a.w, b.w, amount)
+        );
     }
     //</editor-fold>
     

@@ -17,8 +17,8 @@ public abstract class Game extends JFrame
     private GraphicsConfiguration gc;
     private BufferedImage bi;
     // Window Settings
-    public int width;
-    public int height;
+    private int width;
+    private int height;
     // Game Loop Variables
     private boolean running;
     private Color background; // Background color to clear too

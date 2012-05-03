@@ -13,7 +13,7 @@ public class FontHelper
      */
     public static Font loadFont(String path, float size)
     {
-        Font font = null;
+        Font font;
         try
         {
             InputStream is = FontHelper.class.getResourceAsStream(path);

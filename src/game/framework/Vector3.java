@@ -319,26 +319,12 @@ public class Vector3 extends Vector2 implements Serializable
      */
     public static Vector3 clamp(Vector3 value, Vector3 min, Vector3 max)
     {
-        float newX = value.x;
-        float newY = value.y;
-        float newZ = value.z;
-        // Clamp the x value between the min and max.
-        if(value.x < min.x)
-            newX = min.x;
-        else if(value.x > max.x)
-            newX = max.x;
-        // Clamp the y value between the min and max.
-        if(value.y < min.y)
-            newY = min.y;
-        else if(value.y > max.y)
-            newY = max.y;
-        // Clamp the z value between the min and max.
-        if(value.z < min.z)
-            newZ = min.z;
-        else if(value.z > max.z)
-            newZ = max.z;
-        // Return the clamped Vector3
-        return new Vector3(newX, newY, newZ);
+        return new Vector3
+        (
+            MathHelper.clamp(value.x, min.x, max.x), 
+            MathHelper.clamp(value.y, min.y, max.y),
+            MathHelper.clamp(value.z, min.z, max.z)
+        );
     }
     
     /**
@@ -722,10 +708,12 @@ public class Vector3 extends Vector2 implements Serializable
      */
     public static Vector3 lerp(Vector3 value1, Vector3 value2, float amount)
     {
-        float lerpX = value1.x + (value2.x - value1.x) * amount;
-        float lerpY = value1.y + (value2.y - value1.y) * amount;
-        float lerpZ = value1.z + (value2.z - value1.z) * amount;
-        return new Vector3(lerpX, lerpY, lerpZ);
+        return new Vector3
+        (
+            MathHelper.lerp(value1.x, value2.x, amount),
+            MathHelper.lerp(value1.y, value2.y, amount),
+            MathHelper.lerp(value1.z, value2.z, amount)
+        );
     }
     
     /**
@@ -975,12 +963,13 @@ public class Vector3 extends Vector2 implements Serializable
      */
     public static Vector3 smoothStep(Vector3 a, Vector3 b, float amount)
     {
-        amount = (amount * amount) * (3 - (2 * amount));
-        float outX = (a.x * (1 - amount)) + (b.x * amount);
-        float outY = (a.y * (1 - amount)) + (b.y * amount);
-        float outZ = (a.z * (1 - amount)) + (b.z * amount);
-        return new Vector3(outX, outY, outZ);
-    }
+        return new Vector3
+        (
+            MathHelper.smoothStep(a.x, b.x, amount),
+            MathHelper.smoothStep(a.y, b.y, amount),
+            MathHelper.smoothStep(a.z, b.z, amount)
+        );
+     }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Special Vectors">

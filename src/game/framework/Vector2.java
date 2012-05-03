@@ -803,7 +803,7 @@ public class Vector2 implements Serializable
     
     //<editor-fold defaultstate="collapsed" desc="Random Vector2">
     /**
-     * Generates a Vector2 with random values for components.
+     * Generates a Vector2 with random values for components from [-10000,10000].
      * @return Returns a new Vector2 with its x and y components set randomly.
      */
     public static Vector2 random()

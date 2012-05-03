@@ -873,6 +873,17 @@ public class Vector4 extends Vector3 implements Serializable
         return Vector4.normalize(this);
     }
     //</editor-fold>
+   
+    //<editor-fold defaultstate="collapsed" desc="Random Vector4">
+    /**
+     * Generates a Vector4 with random values for components from [-10000,10000].
+     * @return Returns a new Vector4 with its x, y, z, and w components set randomly.
+     */
+    public static Vector4 random()
+    {
+        return new Vector4(Vector3.random(), MathHelper.random(-10000, 10000));
+    }
+    //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="Smooth Step">
     /**

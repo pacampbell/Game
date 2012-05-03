@@ -938,6 +938,17 @@ public class Vector3 extends Vector2 implements Serializable
     }
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="Random Vector3">
+    /**
+     * Generates a Vector3 with random values for components from [-10000,10000].
+     * @return Returns a new Vector3 with its x, y, and z components set randomly.
+     */
+    public static Vector3 random()
+    {
+        return new Vector3(Vector2.random(), MathHelper.random(-10000, 10000));
+    }
+    //</editor-fold>
+    
     //<editor-fold defaultstate="collapsed" desc="Reflection">
     /**
      * r = i - (2 * n * dot(i, n))

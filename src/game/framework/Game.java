@@ -221,8 +221,26 @@ public abstract class Game extends JFrame
     }
     
     /**
+     * Sets the color the canvas clears to.
+     * @param background Desired color to set the canvas clear color to.
+     */
+    public final void setBackgroundColor(Color background)
+    {
+        this.background = background;
+    }
+    
+    /**
+     * Gets the color that is used to clear the screen with.
+     * @return Returns the background clear color. 
+     */
+    public final Color getBackgroundColor()
+    {
+        return this.background;
+    }
+    
+    /**
      * Used to set the width of the game window
-     * @param width 
+     * @param width Integer containing the desired width of game screen in pixels.
      */
     public final void setWidth(int width)
     {
@@ -232,7 +250,7 @@ public abstract class Game extends JFrame
     
     /**
      * Used to set the height of the game window
-     * @param height 
+     * @param height Integer containing the desired height of game screen in pixels. 
      */
     public final void setHeight(int height)
     {
@@ -242,8 +260,8 @@ public abstract class Game extends JFrame
     
     /**
      * Sets the dimensions of the game window
-     * @param width
-     * @param height 
+     * @param width Integer containing the desired width of game screen in pixels.
+     * @param height Integer containing the desired height of game screen in pixels.
      */
     public final void setDimensions(int width, int height)
     {
@@ -281,14 +299,16 @@ public abstract class Game extends JFrame
     public void initialize()
     {
         running = true;
-        background = new Color(100, 149, 237); // Default is Cornflower blue
-        //keyboard = new KeyboardInput(); // Keyboard polling
-        this.addKeyListener(Keyboard.keyboard); // Add Keyboard
+        // Default is Cornflower blue
+        background = (background == null) ? background = new Color(100, 149, 237) : background;
+        // Add Keyboard
+        this.addKeyListener(Keyboard.keyboard);
         this.canvas.addKeyListener(Keyboard.keyboard);
-        //mouse = new MouseInput(); // Mouse input
+        // Add Mouse
         this.canvas.addMouseListener(Mouse.mouse);
         this.canvas.addMouseMotionListener(Mouse.mouse);
-        gameTime = new GameTime(); // Create GameTime object
+        // Create GameTime object
+        gameTime = new GameTime();
     }
 
     /**
@@ -297,8 +317,8 @@ public abstract class Game extends JFrame
      */
     public void draw(Graphics2D g2d)
     {
-        // Clear Background
-        g2d.setColor(background); // Cornflower blue by default
+        // Clear Background; Cornflower blue by default
+        g2d.setColor(background);
         g2d.fillRect(0, 0, width, height);
     }
     // </editor-fold>

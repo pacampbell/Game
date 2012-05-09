@@ -4,7 +4,6 @@ import game.input.Keyboard;
 import game.input.Mouse;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 import java.awt.image.VolatileImage;
 import javax.swing.JFrame;
 
@@ -16,7 +15,6 @@ public abstract class Game extends JFrame
     private GraphicsEnvironment ge;
     private GraphicsDevice gd;
     private GraphicsConfiguration gc;
-    //private BufferedImage bi;
     private VolatileImage vi;
     // Window Settings
     private int width;
@@ -126,7 +124,6 @@ public abstract class Game extends JFrame
                 // Update Game Logic
                 update(gameTime);
                 // clear back buffer...
-                //g2d = bi.createGraphics();
                 g2d = vi.createGraphics();
                 // Draw 
                 draw(g2d);
@@ -134,7 +131,6 @@ public abstract class Game extends JFrame
                 Toolkit.getDefaultToolkit().sync();
                 // Blit image and flip...
                 graphics = buffer.getDrawGraphics();
-                //graphics.drawImage(bi, 0, 0, null);
                 graphics.drawImage(vi, 0, 0, null);
                 if(!buffer.contentsLost())
                   buffer.show();
@@ -217,7 +213,6 @@ public abstract class Game extends JFrame
         this.gd = ge.getDefaultScreenDevice();
         this.gc = gd.getDefaultConfiguration();
         // Create off-screen drawing surface
-        //this.bi = gc.createCompatibleImage(width, height);
         this.vi = gc.createCompatibleVolatileImage(width, height);
         // Set Properties in the GameHelper class
         GameHelper.setWindow(this);

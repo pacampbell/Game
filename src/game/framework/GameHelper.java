@@ -1,6 +1,7 @@
 package game.framework;
 
 import java.awt.Cursor;
+import java.awt.Graphics2D;
 import java.net.URL;
 import javax.swing.JFrame;
 
@@ -20,6 +21,11 @@ public class GameHelper
      * Static Variable containing the JFrame of the Game.
      */
     private static JFrame window;
+    
+    /**
+     * Static Variable containing the current Graphics2D context.
+     */
+    private static Graphics2D graphicsContext;
     
     /**
      * Uses a hack to return a path to a image file based on the operating system that is being used.
@@ -68,6 +74,28 @@ public class GameHelper
         if(window != null)
             cursor = GameHelper.window.getCursor();
         return cursor;
+    }
+    
+    /**
+     * Sets the current Graphics2D object so it can be accessed out of the draw method.
+     * This is helpful for font processing.
+     * @param g2d Graphics2D object of the current scene.
+     */
+    protected static void setG2D(Graphics2D g2d)
+    {
+        GameHelper.graphicsContext = g2d;
+    }
+    
+    /**
+     * Returns the current Graphics2D object of the scene.
+     * @return Returns the current Graphics2D object that is in use.
+     */
+    public static Graphics2D getG2D()
+    {
+        Graphics2D g2d = null;
+        if(graphicsContext != null)
+            g2d = graphicsContext;
+        return g2d;
     }
     
     /**

@@ -125,6 +125,8 @@ public abstract class Game extends JFrame
                 update(gameTime);
                 // clear back buffer...
                 g2d = vi.createGraphics();
+                // Set Graphics Context for Font Processing
+                GameHelper.setG2D(g2d);
                 // Draw 
                 draw(g2d);
                 // Sync Screen For Linux/Mac

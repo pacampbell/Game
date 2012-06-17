@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 
 /**
  * Abstract class representing the general structure of a Game.
- * @author null
+ * @author paul.
  */
 public abstract class Game extends JFrame
 {

@@ -9,6 +9,13 @@ import javax.swing.JFrame;
 
 /**
  * Abstract class representing the general structure of a Game.
+ * Provides all the boilerplate code for initializing and creating the Window,
+ * and the environment for a Game project. A user simply needs to extend this class
+ * and implement the initialize, loadContent, unloadContent, update, and draw methods.
+ * For the project to function properly the user must also call to super initialize, update,
+ * and draw methods. Once doing so properly when the project is run you should see a window
+ * with a blue background(Assuming you didn't change the color). If all went as expected,
+ * congratulations! you can now begin programming your graphical application.
  * @author paul.
  */
 public abstract class Game extends JFrame

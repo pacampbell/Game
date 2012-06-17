@@ -7,6 +7,10 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.VolatileImage;
 import javax.swing.JFrame;
 
+/**
+ * Abstract class representing the general structure of a Game.
+ * @author null
+ */
 public abstract class Game extends JFrame
 {
     // Window Initalization Vars

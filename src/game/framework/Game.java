@@ -309,6 +309,8 @@ public abstract class Game extends JFrame
         this.canvas.addMouseMotionListener(Mouse.mouse);
         // Create GameTime object
         gameTime = new GameTime();
+        // Create the Graphics2D context to be used for font metrics.
+        FontHelper.initialize();
     }
 
     /**

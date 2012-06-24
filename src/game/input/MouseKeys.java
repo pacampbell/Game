@@ -3,7 +3,7 @@ package game.input;
 public enum MouseKeys 
 {
     /**
-     * Button_1 represents the right mouse button.
+     * Button_1 represents the left mouse button.
      */
     BUTTON_1(1), 
     
@@ -13,7 +13,7 @@ public enum MouseKeys
     BUTTON_2(2), 
     
     /**
-     * Button_3 represents the left mouse button.
+     * Button_3 represents the right mouse button.
      */
     BUTTON_3(3);
     

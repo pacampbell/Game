@@ -43,7 +43,7 @@ public class FontHelper
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice gd = ge.getDefaultScreenDevice();
         GraphicsConfiguration gc = gd.getDefaultConfiguration();
-        VolatileImage vi = gc.createCompatibleVolatileImage(0, 0);
+        VolatileImage vi = gc.createCompatibleVolatileImage(1, 1); // 1x1 px Windows fix
         g = vi.createGraphics();
     }
     

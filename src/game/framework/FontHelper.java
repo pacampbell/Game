@@ -21,9 +21,9 @@ public class FontHelper
     public static Font loadFont(String path, float size)
     {
         Font font;
-        try
+        try(InputStream is = FontHelper.class.getResourceAsStream(path))
         {
-            InputStream is = FontHelper.class.getResourceAsStream(path);
+            //InputStream ;
             font = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(size);
         } 
         catch (Exception ex) 

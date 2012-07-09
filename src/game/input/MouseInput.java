@@ -47,7 +47,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
     /**
      * Polls the mouse for new buttons that might be pressed this update.
      */
-    public synchronized void poll() 
+    public void poll() 
     {
         // Save the current location
         mousePos = new Point(currentPos);
@@ -123,7 +123,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
      * @param e KeyEvent related to key that was pressed. 
      */
     @Override
-    public synchronized void mousePressed(MouseEvent e) 
+    public void mousePressed(MouseEvent e) 
     {
         state[ e.getButton() - 1] = true;
     }
@@ -133,7 +133,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
      * @param e KeyEvent related to key that was released. 
      */
     @Override
-    public synchronized void mouseReleased(MouseEvent e) 
+    public void mouseReleased(MouseEvent e) 
     {
         state[ e.getButton() - 1] = false;
     }
@@ -143,7 +143,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
      * @param e KeyEvent related to the mouse entering a region. 
      */
     @Override
-    public synchronized void mouseEntered(MouseEvent e) 
+    public void mouseEntered(MouseEvent e) 
     {
         mouseMoved(e);
     }
@@ -153,7 +153,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
      * @param e KeyEvent related to the mouse exiting a region. 
      */
     @Override
-    public synchronized void mouseExited(MouseEvent e) 
+    public void mouseExited(MouseEvent e) 
     {
         mouseMoved(e);
     }
@@ -163,7 +163,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
      * @param e KeyEvent related to the mouse being dragged. 
      */
     @Override
-    public synchronized void mouseDragged(MouseEvent e)
+    public void mouseDragged(MouseEvent e)
     {
         mouseMoved(e);
     }
@@ -173,7 +173,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
      * @param e KeyEvent related to the mouse being moved. 
      */
     @Override
-    public synchronized void mouseMoved(MouseEvent e) 
+    public void mouseMoved(MouseEvent e) 
     {
         currentPos = e.getPoint();
     }

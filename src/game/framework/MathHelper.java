@@ -1,5 +1,7 @@
 package game.framework;
 
+import java.awt.Color;
+
 public class MathHelper
 {
     /**
@@ -74,12 +76,36 @@ public class MathHelper
      * @param start A float value we want to interpolate with.
      * @param end A float value we want to interpolate with.
      * @param amount A value between 0 and 1 indicating the weight of value2.
-     * @return Returns the linear interpolation between two Vector2.
+     * @return Returns the linear interpolation between two floats.
      */
     public static float lerp(float start, float end, float amount)
     {
         float v = start + (end - start) * amount; 
         return amount >= 1 ? end : v;
+    }
+    
+    /**
+     * Linear interpolation <br />
+     * value1 + (value2 - value1) * amount
+     * @param start A Color we want to interpolate with.
+     * @param end A Color we want to interpolate with.
+     * @param amount A value between 0 and 1 indicating the weight of value2.
+     * @return Returns the linear interpolation between two Colors.
+     */
+    public static Color lerp(Color start, Color end, float amount)
+    {
+        Color color = null;
+        if(amount >= 1)
+            color = end;
+        else
+        {
+            int r = (int)MathHelper.lerp((float)start.getRed(), (float)end.getRed(), amount);
+            int g = (int)MathHelper.lerp((float)start.getGreen(), (float)end.getGreen(), amount);
+            int b = (int)MathHelper.lerp((float)start.getBlue(), (float)end.getBlue(), amount);
+            int a = (int)MathHelper.lerp((float)start.getAlpha(), (float)end.getAlpha(), amount);
+            color = new Color(r, g, b, a);
+        }
+        return color;
     }
     
     /**

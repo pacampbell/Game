@@ -3,6 +3,7 @@ package game.debug;
 import game.framework.GameTime;
 import game.framework.Vector2;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 
 public class PerformanceTiming 
@@ -13,6 +14,7 @@ public class PerformanceTiming
     private float t_base;
     private Color textColor;
     private Vector2 position;
+    private Font font;
     
     /**
      * Default Constructor
@@ -26,6 +28,7 @@ public class PerformanceTiming
         this.t_base = 0;
         this.textColor = Color.WHITE;
         this.position = new Vector2(10, 20);
+        this.font = new Font(Font.SERIF, Font.PLAIN, 14);
     }
 
     /**
@@ -52,7 +55,7 @@ public class PerformanceTiming
      */
     public void draw(Graphics2D g2d)
     {
-        g2d.setFont(null);
+        g2d.setFont(font);
         // Sets the Color to draw
         g2d.setColor(textColor);
         // Draw the statistics on the screen

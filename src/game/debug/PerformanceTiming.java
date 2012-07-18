@@ -52,6 +52,7 @@ public class PerformanceTiming
      */
     public void draw(Graphics2D g2d)
     {
+        g2d.setFont(null);
         // Sets the Color to draw
         g2d.setColor(textColor);
         // Draw the statistics on the screen

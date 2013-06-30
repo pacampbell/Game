@@ -440,7 +440,7 @@ public class Vector2 implements Serializable
                 equal = true;
             else if(object instanceof Vector2) {
                 Vector2 that = (Vector2)object;
-                result = Vector2.equals(this, that);
+                equal = Vector2.equals(this, that);
             }
         }
         return equal;
@@ -514,7 +514,7 @@ public class Vector2 implements Serializable
     /**
      * Linear interpolation
      * value1 + (value2 - value1) * amount
-     * @param value2 A Vector2 we want to interpolate with this Vector2.
+     * @param that A Vector2 we want to interpolate with this Vector2.
      * @param amount A value between 0 and 1 indicating the weight of value2.
      * @return Returns the linear interpolation between two Vector2.
      */

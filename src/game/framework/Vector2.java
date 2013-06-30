@@ -120,31 +120,7 @@ public class Vector2 implements Serializable
     {
         return Vector2.add(this, new Vector2(x, y));
     }
-    
-    /**
-     * Performs addition with this Vector2 and the x and y values provided.
-     * Converts integer arguments to float.
-     * @param x The x component we want to add to this Vector2.
-     * @param y The y component we want to add to this Vector2.
-     * @return Returns a Vector2 with x added to this.x and y added to this.y
-     */
-    public Vector2 add(int x, float y)
-    {
-        return Vector2.add(this, new Vector2((float)x, y));
-    }
-    
-    /**
-     * Performs addition with this Vector2 and the x and y values provided.
-     * Converts integer arguments to float.
-     * @param x The x component we want to add to this Vector2.
-     * @param y The y component we want to add to this Vector2.
-     * @return Returns a Vector2 with x added to this.x and y added to this.y
-     */
-    public Vector2 add(float x, int y)
-    {
-        return Vector2.add(this, new Vector2(x, (float)y));
-    }
-    
+
     /**
      * Performs addition with this Vector2 and the x and y values provided.
      * Converts integer arguments to float.
@@ -458,13 +434,16 @@ public class Vector2 implements Serializable
     @Override
     public boolean equals(Object object)
     {
-        boolean result = false;
-        if(object != null && object instanceof Vector2)
-        {
-            Vector2 that = (Vector2)object;
-            result = Vector2.equals(this, that);
+        boolean equal = false;
+        if(object != null) {
+            if(object == this)
+                equal = true;
+            else if(object instanceof Vector2) {
+                Vector2 that = (Vector2)object;
+                result = Vector2.equals(this, that);
+            }
         }
-        return result;
+        return equal;
     }
 
     /**
@@ -868,31 +847,7 @@ public class Vector2 implements Serializable
     {
         return Vector2.subtract(this, new Vector2(x, y));
     }
-    
-    /**
-     * Performs subtraction with this Vector2 and the x and y values provided.
-     * Converts integer arguments to float.
-     * @param x The x component we want to subtract from this Vector2.
-     * @param y The y component we want to subtract from this Vector2.
-     * @return Returns a Vector2 with x subtracted from this.x and y subtracted from this.y
-     */
-    public Vector2 subtract(int x, float y)
-    {
-        return Vector2.subtract(this, new Vector2((float)x, y));
-    }
-    
-    /**
-     * Performs subtraction with this Vector2 and the x and y values provided.
-     * Converts integer arguments to float.
-     * @param x The x component we want to subtract from this Vector2.
-     * @param y The y component we want to subtract from this Vector2.
-     * @return Returns a Vector2 with x subtracted from this.x and y subtracted from this.y
-     */
-    public Vector2 subtract(float x, int y)
-    {
-        return Vector2.subtract(this, new Vector2(x, (float)y));
-    }
-    
+
     /**
      * Performs subtraction with this Vector2 and the x and y values provided.
      * Converts integer arguments to float.

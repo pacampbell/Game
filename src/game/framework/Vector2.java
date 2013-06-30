@@ -448,8 +448,8 @@ public class Vector2 implements Serializable
 
     /**
      * Checks the equality between two Vector2
-     * @param veca A Vector2 that we want to compare.
-     * @param vecb A Vector2 that we want to compare.
+     * @param a A Vector2 that we want to compare.
+     * @param b A Vector2 that we want to compare.
      * @return Returns the result of the comparison between the two Vector2.
      */
     public static boolean equals(Vector2 a, Vector2 b)

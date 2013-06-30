@@ -6,6 +6,11 @@ import game.input.Keyboard;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
+/**
+ * Base template for a project. This is the bare minimum needed to start project
+ * that extends the Game class.
+ * @author paul
+ */
 public class Template extends Game
 {
     /**
@@ -17,7 +22,7 @@ public class Template extends Game
     {
         // Initalize stuff in Base
         super.initialize();
-        // TODO:
+        // TODO: Any Variables that need to be initialized at startup should go here.
     }
 
     /**
@@ -28,10 +33,9 @@ public class Template extends Game
     public void loadContent()
     {
         // All Resources should be placed in the resource folder
-        // A "/resource/" is appened to the path.
-        // To load an image; Texture2D texture = new Texture2D("path");
+        // To load a BufferedImage; BufferedImage texture = ImageHelper.load("path");
         // This file should load on all OS inside the jar :)
-        // TODO:
+        // TODO: Any Content that needs to be loaded should be done here.
     }
 
     /**
@@ -42,7 +46,7 @@ public class Template extends Game
     @Override
     public void unloadContent()
     {
-        // TODO:
+        // TODO: Any Content that needs to be disposed should be done here.
     }
 
     /**
@@ -55,7 +59,7 @@ public class Template extends Game
     {
         // Call base class
         super.update(gameTime);
-        // TODO:
+        // TODO: Any logic for the program should be performed in this method.
         this.fps.update(gameTime);
         //<editor-fold defaultstate="collapsed" desc="System & Menu Keys">
         if(Keyboard.keyDownOnce(KeyEvent.VK_ESCAPE))
@@ -74,7 +78,7 @@ public class Template extends Game
     {
         // Call Base Class to clear Screen
         super.draw(g2d);
-        // TODO:
+        // TODO: Any Drawing routines should be performed in this method. Try to keep logic in the update loop.
         this.fps.draw(g2d);
     }
     
@@ -85,7 +89,7 @@ public class Template extends Game
     public static void main(String[] args)
     {
         Template game  = new Template();
-        game.setTitle("Game");
+        game.setTitle("Template - Program");
         game.setDimensions(800, 600);
         game.run();
     }

@@ -1,7 +1,7 @@
 package game.framework;
 
+import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Graphics2D;
 import java.net.URL;
 import javax.swing.JFrame;
 

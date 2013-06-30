@@ -12,6 +12,10 @@ target
 build
 dist
 private
+nbproject
+
+# IDEA
+.idea
 
 # Compiled source #
 ###################

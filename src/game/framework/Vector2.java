@@ -452,12 +452,9 @@ public class Vector2 implements Serializable
      * @param vecb A Vector2 that we want to compare.
      * @return Returns the result of the comparison between the two Vector2.
      */
-    public static boolean equals(Vector2 veca, Vector2 vecb)
+    public static boolean equals(Vector2 a, Vector2 b)
     {
-        boolean result = false;
-        if(veca.x == vecb.x && veca.y == vecb.y)
-            result = true;
-        return result;
+        return a.x == b.x && a.y == b.y;
     }
 
     /**

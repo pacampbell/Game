@@ -27,7 +27,6 @@ public class Vector2 implements Serializable
      */
     public final float y;
     
-    //<editor-fold defaultstate="collapsed" desc="Constructors">
     /**
      * Complete Constructor
      * @param x x component of the Vector2
@@ -88,9 +87,7 @@ public class Vector2 implements Serializable
     {
         this(vec.x, vec.y);
     }
-    //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Add">
+
     /**
      * Performs Vector2 Addition on two Vector2
      * and returns a new Vector2
@@ -199,9 +196,7 @@ public class Vector2 implements Serializable
     {
         return Vector2.add(this, new Vector2(0.0f, (float)y));
     }
-    //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Barycentric">
     /**
      * The Vector2 Barycentric method takes three vectors specifying the Cartesian coordinates of the triangle vertices, V1, V2, and V3), and 
      * two areal coordinates b2 and b3 of some point P (b2 is the amount1 argument, and b3 is the amount2 argument). <br />
@@ -229,9 +224,7 @@ public class Vector2 implements Serializable
         float py = (b1 * v1.y) + (b2 * v2.y) + (b3 * v3.y);
         return new Vector2(px, py);
     }
-    //</editor-fold>
- 
-    //<editor-fold defaultstate="collapsed" desc="CatmullRom">
+
     /**
      * Definition found @ http://paulbourke.net/miscellaneous/interpolation/ & http://forums.indiegamer.com/showthread.php?4905-Teach-me-splines-for&p=66079#post66079
      * Performs a Catmull-Rom interpolation with the provided points.
@@ -257,9 +250,7 @@ public class Vector2 implements Serializable
                     (-p0.y + 3.0f * p1.y - 3.0f * p2.y + p3.y) * t3);
         return new Vector2(outX, outY);
     }
-    //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Clamp">
+
     /**
      * Clamps a Vector2 between a min Vector2 and a max Vector2
      * and returns the modified Vector2
@@ -288,9 +279,7 @@ public class Vector2 implements Serializable
     {
         return Vector2.clamp(this, min, max);
     }
-    //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Direction Cosine">
+
     /**
      * Computes the angle between the Vector2 and the x-axis 
      * @param vec Vector2 we want to find the angle with respect to the x-axis.
@@ -328,9 +317,7 @@ public class Vector2 implements Serializable
     {
         return Vector2.directionBeta(this);
     }
-    //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Distance">
     /**
      * Calculates the distance between two Vector2
      * @param veca A Vector2 we want to find the distance between.
@@ -351,9 +338,7 @@ public class Vector2 implements Serializable
     {
         return Vector2.distance(this, that);
     }
-    //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Distance Squared">
     /**
      * Calculates the distance between two Vector2 squared.
      * @param veca A Vector2 we want to find the distance squared between.
@@ -374,9 +359,7 @@ public class Vector2 implements Serializable
     {
         return Vector2.distanceSquared(this, that);
     }
-    //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Division">
     /**
      * Performs scalar division between a Vector2 and a scalar. 
      * @param vec A Vector2 we want to divide.
@@ -441,9 +424,7 @@ public class Vector2 implements Serializable
     {
         return Vector2.divide(this, that);
     }
-    //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Dot Product">
+
     /**
      * Performs the dot product between two Vector2's.
      * Also known as the scalar product.
@@ -468,9 +449,7 @@ public class Vector2 implements Serializable
     {
         return Vector2.dotProduct(this, that);
     }
-    //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Equals">
+
     /**
      * Checks if Vector B is equal with this Vector2.
      * @param object An object that is believed to be a Vector2.
@@ -501,9 +480,7 @@ public class Vector2 implements Serializable
             result = true;
         return result;
     }
-    //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Hash Code">
+
     /**
      * @return Returns a hash code for the object
      */
@@ -515,9 +492,7 @@ public class Vector2 implements Serializable
         hash = 61 * hash + Float.floatToIntBits(this.y);
         return hash;
     }
-    //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Hermite">
     /**
      * Definition found @ http://cubic.org/docs/hermite.htm
      * Performs a Hermite spline interpolation.
@@ -542,9 +517,7 @@ public class Vector2 implements Serializable
         outY = (h1 * p1.y) + (h2 * p2.y) + (h3 * t1.y) + (h4 * t2.y);
         return new Vector2(outX, outY);
     }
-    //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Linear Interpolation">
+
     /**
      * Linear interpolation
      * value1 + (value2 - value1) * amount
@@ -573,9 +546,7 @@ public class Vector2 implements Serializable
     {
         return Vector2.lerp(this, that, amount);
     }
-    //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Magnitude">
+
     /**
      * Computes the magnitude of a Vector2.
      * Magnitude is also known as the length of the vector.
@@ -595,9 +566,7 @@ public class Vector2 implements Serializable
     {
         return Vector2.magnitude(this);
     }
-    //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Magnitide Squared">
     /**
      * Calculates the magnitude of a Vector2 squared.
      * @return Returns the magnitude of the Vector2 squared.
@@ -615,9 +584,7 @@ public class Vector2 implements Serializable
     {
         return Vector2.magnitudeSquared(this);
     }
-    //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Max & Min">
     /**
      * Returns a Vector2 that contains the highest value
      * from each matching pair of components.
@@ -645,9 +612,7 @@ public class Vector2 implements Serializable
         float cy = (veca.y < vecb.y) ? veca.y : vecb.y;
         return new Vector2(cx, cy);
     }
-    //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Multiply">
     /**
      * Multiplies a Vector2 by a scalar
      * @param veca A Vector2 we want to multiply.
@@ -689,9 +654,7 @@ public class Vector2 implements Serializable
     {
         return Vector2.multiply(this, (float)scalar);
     }
-    //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Negate">
+
     /**
      * Returns a new Vector2 pointing in the opposite direction.
      * @param veca The Vector2 we want to negate.
@@ -710,9 +673,7 @@ public class Vector2 implements Serializable
     {
         return Vector2.negate(this);
     }
-    //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Normalize">
     /**
      * Normalizes a Vector2; Also know as the unit vector.
      * @param vec A Vector2 we want to normalize.
@@ -732,9 +693,7 @@ public class Vector2 implements Serializable
     {
         return Vector2.normalize(this);
     }
-    //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Perpendicular">
+
     /**
      * Creates a Vector2 perpendicular to the provided Vector2. 
      * @param a A Vector2 we want to find a perpendicular Vector2 of.
@@ -753,9 +712,7 @@ public class Vector2 implements Serializable
     {
         return Vector2.perpendicular(this);
     }
-    //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Projection">
     /**
      * Calculates the scalar projection of b onto a.
      * @param a A Vector2 we want to project onto.
@@ -799,9 +756,7 @@ public class Vector2 implements Serializable
     {
         return Vector2.vectorProjection(this, that);
     }
-    //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Random Vector2">
+
     /**
      * Generates a Vector2 with random values for components from [-10000,10000].
      * @return Returns a new Vector2 with its x and y components set randomly.
@@ -814,9 +769,7 @@ public class Vector2 implements Serializable
             MathHelper.random(-10000, 10000)
         );
     }
-    //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Reflect">
+
     /**
      * r = i - (2 * n * dot(i, n))
      * @param incident Incident vector
@@ -827,9 +780,7 @@ public class Vector2 implements Serializable
     {   
         return incident.subtract(Vector2.multiply(normal, 2.0f).multiply(Vector2.dotProduct(incident, normal)));
     }
-    //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Smooth Step">
+
     /**
      * Performs a Smooth Step interpolation between two points.
      * Traditional: smoothstep(t) = 3t2 − 2t3
@@ -847,9 +798,7 @@ public class Vector2 implements Serializable
             MathHelper.smoothStep(a.y, b.y, amount)
         );
     }
-    //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Special Vectors">
+
     /**
      * Returns a special type of vector; The one vector <1,1>
      * @return returns the special one vector.
@@ -886,9 +835,7 @@ public class Vector2 implements Serializable
     {
         return new Vector2(0.0f, 0.0f);
     }
-    //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="Subtraction">
     /**
      * Performs Vector2 Subtraction on two Vector2
      * and returns a new Vector2
@@ -997,9 +944,7 @@ public class Vector2 implements Serializable
     {
         return Vector2.subtract(this, new Vector2(0.0f, (float)y));
     }
-    //</editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc="To String">
     /**
      * Converts the Vector2 to a string. <x,y>
      * @return Returns a string representing the Vector2.
@@ -1009,16 +954,12 @@ public class Vector2 implements Serializable
     {
         return "<" + x + "," + y + ">";
     }
-    //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Transform">
+
     public static Vector2 transform()
     {
         throw new UnsupportedOperationException("Not yet implemented.");
     }
-    //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Wedge Product">
+
     /**
      * Performs the wedge product with two Vector2.
      * Calculates the signed area of the parallelogram created using the two Vector2. 
@@ -1040,5 +981,4 @@ public class Vector2 implements Serializable
     {
         return Vector2.wedgeProduct(this, that);
     }
-    //</editor-fold>
 }

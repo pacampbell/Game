@@ -1,5 +1,7 @@
 package test.framework;
 
+import game.framework.Vector2;
+import junit.framework.Assert;
 import org.junit.Test;
 
 /**
@@ -68,7 +70,21 @@ public class Vector2Test {
 
     @Test
     public void testEquals() throws Exception {
-
+        Vector2 a = new Vector2(1,1);
+        Vector2 b = new Vector2(1,1);
+        Vector2 c = new Vector2(-1,-1);
+        // Assert for null
+        Assert.assertNotNull(a);
+        Assert.assertNotNull(b);
+        Assert.assertNotNull(c);
+        // Check the object equal
+        Assert.assertTrue(a.equals(b));
+        Assert.assertFalse(a.equals(c));
+        Assert.assertFalse(b.equals(c));
+        // Check the static equal
+        Assert.assertTrue(Vector2.equals(a,b));
+        Assert.assertFalse(Vector2.equals(c,a));
+        Assert.assertFalse(Vector2.equals(c,b));
     }
 
     @Test

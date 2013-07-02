@@ -10,17 +10,68 @@ import org.junit.Test;
 public class Vector2Test {
     @Test
     public void testAdd() throws Exception {
-
+        // Two initial Vectors
+        Vector2 a = new Vector2(1,2);
+        Vector2 b = new Vector2(3,4);
+        // The sum of what a + b should equal
+        Vector2 ab = new Vector2(4,6);
+        // Perform the add operation
+        Vector2 c = a.add(b);
+        Vector2 d = Vector2.add(a,b);
+        Vector2 e = a.add(3,4);
+        Vector2 f = a.add(3.0f, 4.0f);
+        // Check to make sure none of the variables are null
+        Assert.assertNotNull(a);
+        Assert.assertNotNull(b);
+        Assert.assertNotNull(c);
+        Assert.assertNotNull(d);
+        Assert.assertNotNull(e);
+        Assert.assertNotNull(f);
+        Assert.assertNotNull(ab);
+        // Validate the answers for Vec2_A + Vec2_b
+        Assert.assertEquals(ab, c);
+        Assert.assertEquals(ab, d);
+        // Validate Answers for Vec2_A.add(3,4)
+        Assert.assertEquals(ab, e);
+        Assert.assertEquals(ab, f);
     }
 
     @Test
     public void testAddX() throws Exception {
-
+        // Initial Vector
+        Vector2 a = new Vector2(1,1);
+        // Expected result
+        Vector2 aa = new Vector2(2,1);
+        // Operations
+        Vector2 b = a.addX(1);
+        Vector2 c = a.addX(1.0f);
+        // Make sure no variables are null
+        Assert.assertNotNull(a);
+        Assert.assertNotNull(b);
+        Assert.assertNotNull(c);
+        Assert.assertNotNull(aa);
+        // Validate Answers
+        Assert.assertEquals(aa, b);
+        Assert.assertEquals(aa, c);
     }
 
     @Test
     public void testAddY() throws Exception {
-
+        // Initial Vector
+        Vector2 a = new Vector2(1,1);
+        // Expected result
+        Vector2 aa = new Vector2(1,2);
+        // Operations
+        Vector2 b = a.addY(1);
+        Vector2 c = a.addY(1.0f);
+        // Make sure no variables are null
+        Assert.assertNotNull(a);
+        Assert.assertNotNull(b);
+        Assert.assertNotNull(c);
+        Assert.assertNotNull(aa);
+        // Validate Answers
+        Assert.assertEquals(aa, b);
+        Assert.assertEquals(aa, c);
     }
 
     @Test
@@ -79,12 +130,12 @@ public class Vector2Test {
         Assert.assertNotNull(c);
         // Check the object equal
         Assert.assertTrue(a.equals(b));
-        Assert.assertFalse(a.equals(c));
-        Assert.assertFalse(b.equals(c));
+        Assert.assertTrue(!a.equals(c));
+        Assert.assertTrue(!b.equals(c));
         // Check the static equal
         Assert.assertTrue(Vector2.equals(a,b));
-        Assert.assertFalse(Vector2.equals(c,a));
-        Assert.assertFalse(Vector2.equals(c,b));
+        Assert.assertTrue(!Vector2.equals(c,a));
+        Assert.assertTrue(!Vector2.equals(c,b));
     }
 
     @Test
@@ -167,7 +218,13 @@ public class Vector2Test {
 
     @Test
     public void testOne() throws Exception {
-
+        // Expected Value
+        Vector2 a = new Vector2(1,1);
+        // Make sure Vectors are not null
+        Assert.assertNotNull(a);
+        Assert.assertNotNull(Vector2.one());
+        // Test The value
+        Assert.assertEquals(a, Vector2.one());
     }
 
     @Test

@@ -454,8 +454,8 @@ public class Vector2 implements Serializable
      */
     public static boolean equals(Vector2 a, Vector2 b)
     {
-        // return a.x == b.x && a.y == b.y;
-        return a.hashCode() == b.hashCode();
+        return a.x == b.x && a.y == b.y;
+        //return a.hashCode() == b.hashCode();
     }
 
     /**

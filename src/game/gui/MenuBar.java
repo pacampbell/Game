@@ -10,7 +10,7 @@ import java.awt.Graphics2D;
 import java.awt.font.FontRenderContext;
 import java.util.LinkedList;
 
-public class MenuBar extends GuiComponent
+public class MenuBar implements GuiComponent
 {
     private Anchor anchor;
     private Rectangle bounds;

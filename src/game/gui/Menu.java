@@ -9,7 +9,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.util.LinkedList;
 
-public class Menu extends GuiComponent 
+public class Menu implements GuiComponent 
 {
     // Class Properties
     public final String LABEL;

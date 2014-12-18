@@ -92,7 +92,6 @@ public class Rectangle implements Serializable
     
     //<editor-fold defaultstate="collapsed" desc="Inflate">
     /**
-     * TODO: Improper results; Method should inflate both sides; Not just one side. 
      * Pushes the edges of a Rectangle out by the provided values starting from the center.
      * @param r A Rectangle to inflate.
      * @param xScale Integer representing the horizontal scale.
@@ -100,15 +99,19 @@ public class Rectangle implements Serializable
      * @return Returns a new Rectangle inflated by the inputs.
      */
     public static Rectangle inflate(Rectangle r, int xScale, int yScale) {
-		int newWidth = 0, newHeight=0;
-		
+		int newWidth, newHeight, newX, newY;
+                
 		// Determine the widths of the new Rectangle to return.
 		newWidth = r.width + xScale;
 		newHeight = r.height + yScale;
+                
+                // Determine the new position (central anchor point inflation)
+                newX = r.x - xScale/2;
+                newY = r.y - yScale/2;
 		
 		// Create a new Rectangle with the original x and y positions, and the
 		// new width and height values.
-		Rectangle rect = new Rectangle (r.x, r.y, newWidth, newHeight);
+		Rectangle rect = new Rectangle (newX, newY, newWidth, newHeight);
 
 		return rect;
     }

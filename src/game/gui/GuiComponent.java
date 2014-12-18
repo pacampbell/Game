@@ -3,7 +3,7 @@ package game.gui;
 import game.framework.GameTime;
 import java.awt.Graphics2D;
 
-public abstract class GuiComponent 
+public interface GuiComponent 
 {
     public abstract void initialize();
     public abstract void loadContent();

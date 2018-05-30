@@ -94,7 +94,7 @@ public abstract class Game extends JFrame
         {
             // Creates the game window and double buffer
             createWindow();
-            // Initialize anything if you need too
+            // Initialize anything if you need to
             initialize();
             // Start the game loop
             gameLoop();
@@ -201,7 +201,7 @@ public abstract class Game extends JFrame
      */
     private void createWindow()
     {
-        // Set Frame Propertys
+        // Set Frame Properties
         this.setIgnoreRepaint(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);

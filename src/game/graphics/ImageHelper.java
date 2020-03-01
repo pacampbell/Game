@@ -4,7 +4,10 @@ import game.framework.GameHelper;
 import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
+import java.awt.image.BufferedImageOp;
 import java.net.URL;
 import javax.imageio.ImageIO;
 
@@ -49,18 +52,10 @@ public class ImageHelper
      */
     public static BufferedImage resize(BufferedImage tex, int width, int height)
     {
-        int type = tex.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : tex.getType();
-        BufferedImage resizedImage = new BufferedImage(width, height, type);
-	Graphics2D g = resizedImage.createGraphics();
-	g.setComposite(AlphaComposite.Src);
-	g.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
-	RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-	g.setRenderingHint(RenderingHints.KEY_RENDERING,
-	RenderingHints.VALUE_RENDER_QUALITY);
-	g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-	RenderingHints.VALUE_ANTIALIAS_ON);
-        g.drawImage(tex, 0, 0, width, height, null);
-	g.dispose();
-        return resizedImage;
+        AffineTransform transform = AffineTransform.getScaleInstance((double) tex.getWidth() / width, (double) tex.getHeight() / height);
+        AffineTransformOp transformOp = new AffineTransformOp(transform, AffineTransformOp.TYPE_BILINEAR);
+        BufferedImage dst = new BufferedImage(width, height, tex.getType() == 0 ? BufferedImage.TYPE_INT_ARGB : tex.getType());
+
+        return transformOp.filter(tex, dst);
     }
 }

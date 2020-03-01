@@ -1,11 +1,12 @@
 package game.debug;
 
 import game.framework.Vector2;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.Random;
-import javax.swing.JFrame;
 
 /*
  * This is an example of a simple windowed render loop

@@ -1,7 +1,8 @@
 package game.gui;
 
 import game.framework.GameTime;
-import java.awt.Graphics2D;
+
+import java.awt.*;
 
 public interface GuiComponent 
 {

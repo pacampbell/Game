@@ -1,7 +1,5 @@
 package game.framework;
 
-import java.awt.Color;
-
 public class MathHelper
 {
     /**

@@ -3,7 +3,8 @@ package game.debug;
 import game.framework.Game;
 import game.framework.GameTime;
 import game.input.Keyboard;
-import java.awt.Graphics2D;
+
+import java.awt.*;
 import java.awt.event.KeyEvent;
 
 /**

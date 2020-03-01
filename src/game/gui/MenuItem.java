@@ -4,9 +4,8 @@ import game.framework.GameTime;
 import game.framework.Rectangle;
 import game.input.Mouse;
 import game.input.MouseKeys;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
+
+import java.awt.*;
 
 public class MenuItem implements GuiComponent 
 {

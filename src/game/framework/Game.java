@@ -1,11 +1,13 @@
 package game.framework;
+
 import game.debug.PerformanceTiming;
 import game.input.Keyboard;
 import game.input.Mouse;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.VolatileImage;
-import javax.swing.JFrame;
 
 /**
  * Abstract class representing the general structure of a Game.

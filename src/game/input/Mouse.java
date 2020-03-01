@@ -1,6 +1,6 @@
 package game.input;
 
-import java.awt.Point;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 
 /**

@@ -47,3 +47,8 @@ private
 ehthumbs.db
 Icon?
 Thumbs.db
+
+# Jetbrains IntelliJ Idea project files #
+#########################################
+/.idea/
+Game.iml

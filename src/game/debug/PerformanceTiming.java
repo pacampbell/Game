@@ -2,9 +2,8 @@ package game.debug;
 
 import game.framework.GameTime;
 import game.framework.Vector2;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
+
+import java.awt.*;
 
 public class PerformanceTiming 
 {

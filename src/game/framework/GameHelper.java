@@ -1,9 +1,8 @@
 package game.framework;
 
-import java.awt.Color;
-import java.awt.Cursor;
+import javax.swing.*;
+import java.awt.*;
 import java.net.URL;
-import javax.swing.JFrame;
 
 public class GameHelper
 {

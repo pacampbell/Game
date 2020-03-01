@@ -1,8 +1,8 @@
 package game.debug;
 
 import game.framework.Vector2;
-import java.awt.Color;
-import java.awt.Graphics2D;
+
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Debug

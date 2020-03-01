@@ -1,6 +1,8 @@
 package game.debug;
 
-import game.framework.*;
+import game.framework.MathHelper;
+import game.framework.Vector2;
+import game.framework.Vector3;
 
 /**
  * Place to test out Math classes without launching a Game Window.

@@ -1,6 +1,6 @@
 package game.framework;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * Helper class for dealing with Java Color objects.

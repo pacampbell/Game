@@ -1,15 +1,12 @@
 package game.graphics;
 
 import game.framework.GameHelper;
-import java.awt.AlphaComposite;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+
+import javax.imageio.ImageIO;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
 import java.net.URL;
-import javax.imageio.ImageIO;
 
 /**
  * Utility class to assist in loading, and manipulating buffered images.

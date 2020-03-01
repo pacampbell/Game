@@ -4,7 +4,8 @@ import game.framework.Game;
 import game.framework.GameTime;
 import game.input.Keyboard;
 import game.input.Mouse;
-import java.awt.Graphics2D;
+
+import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class TestFramework extends Game

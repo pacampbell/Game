@@ -1,12 +1,11 @@
 package game.graphics;
 
 import game.framework.GameHelper;
-import java.awt.AlphaComposite;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.net.URL;
-import javax.imageio.ImageIO;
 
 public class Texture2D
 {

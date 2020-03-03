@@ -18,10 +18,10 @@ public class MenuBar implements GuiComponent
     private Font font;
     // Font Metrics
     private FontRenderContext frc;
-    
+
     /**
      * Complete Constructor.
-     * Creates a MenuBar with the desired properties. 
+     * Creates a MenuBar with the desired properties.
      * @param anchor Anchor enumeration defining where the MenuBar is located.
      * @param font Font used within the MenuBar.
      * @param paneColor Color of the MenuBar.
@@ -41,15 +41,15 @@ public class MenuBar implements GuiComponent
         Vector2 position = determineAnchor(anchor, height);
         this.bounds = new Rectangle
         (
-                (int)position.x, 
-                (int)position.y, 
-                GameHelper.WIDTH(), 
+                (int)position.x,
+                (int)position.y,
+                GameHelper.WIDTH(),
                 height
-        ); 
+        );
         // Create list to hold Menus
         this.menus = new LinkedList<>();
     }
-   
+
     /**
      * Creates a MenuBar with the default properties anchored at a desired location.
      * Defaults:
@@ -61,7 +61,7 @@ public class MenuBar implements GuiComponent
     {
         this(anchor, new Font("Times New Roman", Font.PLAIN, 16), Color.GRAY, Color.BLACK);
     }
-    
+
     /**
      * Default Constructor.
      * Creates a MenuBar with the default properties anchored at the top.
@@ -74,7 +74,7 @@ public class MenuBar implements GuiComponent
     {
         this(Anchor.TOP, new Font("Times New Roman", Font.PLAIN, 16), Color.GRAY, Color.BLACK);
     }
-    
+
     /**
      * Adds a Menu to the MenuBar.
      * @param menu A Menu to be added to the MenuBar.
@@ -89,20 +89,20 @@ public class MenuBar implements GuiComponent
      * Initialized all Menus in the MenuBar.
      */
     @Override
-    public void initialize() 
+    public void initialize()
     {
-        // Initialize all the Menu items. 
+        // Initialize all the Menu items.
         int xPos = 0;
         for(int i = 0; i < menus.size(); ++i)
         {
             menus.get(i).setProperties
             (
-                anchor, 
-                xPos, 
-                bounds.y, 
+                anchor,
+                xPos,
+                bounds.y,
                 // 10px padding on each side = "+ 20"
                 // TODO: Fix + 20 Magic Number
-                (int)font.getStringBounds(menus.get(i).LABEL, frc).getWidth() + 20, 
+                (int)font.getStringBounds(menus.get(i).LABEL, frc).getWidth() + 20,
                 bounds.height
             );
             // Set Font and Color
@@ -120,7 +120,7 @@ public class MenuBar implements GuiComponent
      * Loads any content for MenuBar, and MenuBar menu content.
      */
     @Override
-    public void loadContent() 
+    public void loadContent()
     {
         for(Menu menu : menus)
             menu.loadContent();
@@ -131,7 +131,7 @@ public class MenuBar implements GuiComponent
      * @param gameTime GameTime object containing the timing of the current session.
      */
     @Override
-    public void update(GameTime gameTime) 
+    public void update(GameTime gameTime)
     {
         for(Menu menu : menus)
             menu.update(gameTime);
@@ -142,7 +142,7 @@ public class MenuBar implements GuiComponent
      * @param g2d Graphics2D object containing the drawable surface of the window.
      */
     @Override
-    public void draw(Graphics2D g2d) 
+    public void draw(Graphics2D g2d)
     {
         // Set the paneColor of the MenuBar
         g2d.setColor(paneColor);
@@ -165,7 +165,7 @@ public class MenuBar implements GuiComponent
         for(Menu menu : menus)
             menu.draw(g2d);
     }
-    
+
     /**
      * Determines where the MenuBar should be positioned based on the provided anchor.
      * @param anchor Anchor enumeration defining where the MenuBar is located.

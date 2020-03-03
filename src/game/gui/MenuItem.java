@@ -7,7 +7,7 @@ import game.input.MouseKeys;
 
 import java.awt.*;
 
-public class MenuItem implements GuiComponent 
+public class MenuItem implements GuiComponent
 {
     private final String LABEL;
     // Properties to be set by parent items
@@ -15,7 +15,7 @@ public class MenuItem implements GuiComponent
     private Rectangle bounds;
     protected Font font;
     protected Color fontColor, hoverColor;
-        
+
     /**
      * Complete Constructor
      * @param LABEL String containing the desired label for the MenuItem.
@@ -26,7 +26,7 @@ public class MenuItem implements GuiComponent
         this.LABEL = label;
         this.hoverColor = hoverColor;
     }
-    
+
     /**
      * Creates a MenuItem with the desired label.
      * Defaults hoverColor to yellow.
@@ -36,7 +36,7 @@ public class MenuItem implements GuiComponent
     {
         this(label, Color.YELLOW);
     }
-    
+
     /**
      * Sets properties from parent class.
      * @param anchor Enumeration defining where the Parent MenuBar is anchored.
@@ -50,7 +50,7 @@ public class MenuItem implements GuiComponent
         this.anchor = anchor;
         this.bounds = new Rectangle(x, y, width, height);
     }
-    
+
     /**
      * Sets the font color of this MenuItem.
      * @param fontColor Desired Color of the font.
@@ -59,7 +59,7 @@ public class MenuItem implements GuiComponent
     {
         this.fontColor = fontColor;
     }
-    
+
     /**
      * Sets the font of this MenuItem.
      * @param font Desired font to draw the label with.
@@ -86,7 +86,7 @@ public class MenuItem implements GuiComponent
      * @param gameTime GameTime object containing the current time in game.
      */
     @Override
-    public void update(GameTime gameTime) 
+    public void update(GameTime gameTime)
     {
         if(bounds.intersects(Mouse.getPosition()))
         {
@@ -96,7 +96,7 @@ public class MenuItem implements GuiComponent
             // If the mouse is clicking the item perform a action.
             if(Mouse.buttonDownOnce(MouseKeys.BUTTON_1))
                 onClick();
-        }    
+        }
         else
             fontColor = Color.WHITE;
     }
@@ -106,18 +106,18 @@ public class MenuItem implements GuiComponent
      * @param g2d Graphics2D object to draw this MenuItem
      */
     @Override
-    public void draw(Graphics2D g2d) 
+    public void draw(Graphics2D g2d)
     {
         g2d.setFont(font);
         g2d.setColor(fontColor);
         g2d.drawString(LABEL, bounds.x + 5, bounds.y + 15);
     }
-    
+
     /**
      * Method to to be invoked when a MenuItem is clicked.
      */
     protected void onClick(){};
-    
+
     /**
      * Method to be invoked when a MenuItem is being hovered over.
      */

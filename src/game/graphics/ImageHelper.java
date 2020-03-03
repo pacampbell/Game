@@ -12,7 +12,7 @@ import java.net.URL;
  * Utility class to assist in loading, and manipulating buffered images.
  * @author paul
  */
-public class ImageHelper 
+public class ImageHelper
 {
     /**
      * Utility to load a BufferedImage.
@@ -39,7 +39,7 @@ public class ImageHelper
         }
         return image;
     }
-    
+
     /**
      * Resizes a BufferedImage.
      * @param tex BufferedImage to be resized.

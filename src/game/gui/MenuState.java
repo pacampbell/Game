@@ -1,6 +1,6 @@
 package game.gui;
 
-public enum MenuState 
+public enum MenuState
 {
     OPEN,
     CLOSED

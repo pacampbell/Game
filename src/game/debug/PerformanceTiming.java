@@ -5,7 +5,7 @@ import game.framework.Vector2;
 
 import java.awt.*;
 
-public class PerformanceTiming 
+public class PerformanceTiming
 {
     private int frameCount;
     private float fps;
@@ -14,7 +14,7 @@ public class PerformanceTiming
     private Color textColor;
     private Vector2 position;
     private Font font;
-    
+
     /**
      * Default Constructor
      * Sets default values to all variables
@@ -32,7 +32,7 @@ public class PerformanceTiming
 
     /**
      * Updates the timing statistics
-     * @param gameTime 
+     * @param gameTime
      */
     public void update(GameTime gameTime)
     {
@@ -50,7 +50,7 @@ public class PerformanceTiming
 
     /**
      * Draws the timing statistics
-     * @param g2d 
+     * @param g2d
      */
     public void draw(Graphics2D g2d)
     {
@@ -64,13 +64,13 @@ public class PerformanceTiming
 
     /**
      * Sets the color of the text for the screen
-     * @param color 
+     * @param color
      */
     public void setTextColor(Color color)
     {
         this.textColor = color;
     }
-    
+
     /**
      * Sets the position of this PerformanceTiming object.
      * @param position Vector2 containing the position of this PerformanceTiming object.
@@ -79,10 +79,10 @@ public class PerformanceTiming
     {
         this.position = position;
     }
-    
+
     /**
      * Sets the position of this PerformanceTiming object.
-     * @param x Float containing the desired x-coordinate of this PerformanceTiming object. 
+     * @param x Float containing the desired x-coordinate of this PerformanceTiming object.
      * @param y Float containing the desired y-coordinate of this PerformanceTiming object.
      */
     public void setPosition(float x, float y)

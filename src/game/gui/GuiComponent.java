@@ -4,7 +4,7 @@ import game.framework.GameTime;
 
 import java.awt.*;
 
-public interface GuiComponent 
+public interface GuiComponent
 {
     public abstract void initialize();
     public abstract void loadContent();

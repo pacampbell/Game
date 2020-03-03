@@ -1,6 +1,6 @@
 package game.gui;
 
-public enum Anchor 
+public enum Anchor
 {
     TOP,
     BOTTOM,

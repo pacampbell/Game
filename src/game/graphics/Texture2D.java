@@ -11,7 +11,7 @@ public class Texture2D
 {
     private BufferedImage bufferedImage;
     private final String contentLocation;
-    
+
     /**
      * Complete Constructor
      * Easy way to store and load images for your program.
@@ -22,7 +22,7 @@ public class Texture2D
         this.contentLocation = path;
         this.loadImage(contentLocation);
     }
-    
+
     /**
      * Easy way to store and load images for your program.
      * @param bufferedImage BufferedImage you want to turn into a Texture2D.
@@ -32,7 +32,7 @@ public class Texture2D
         this.bufferedImage = bufferedImage;
         this.contentLocation = bufferedImage.toString();
     }
-    
+
     /**
      * Takes a path and loads the image regardless of the OS in use.
      * @param path Path to the image you want to load.
@@ -58,7 +58,7 @@ public class Texture2D
         }
         return loaded;
     }
-    
+
     /**
      * Utility to load a BufferedImage.
      * If the utility fails a null BufferedImage is returned.
@@ -84,15 +84,15 @@ public class Texture2D
         }
         return image;
     }
-    
+
     /**
-     * @return Returns the BufferedImage held in this Texture2D. 
+     * @return Returns the BufferedImage held in this Texture2D.
      */
     public BufferedImage getImage()
     {
         return this.bufferedImage;
     }
-    
+
     /**
      * Sets the BufferedImage in the Texture2D
      * @param bufferedImage BufferedImage to be stored in this Texture2D.
@@ -101,7 +101,7 @@ public class Texture2D
     {
         this.bufferedImage = bufferedImage;
     }
-    
+
     /**
      * Gets the path of the Texture2D.
      * @return Returns the path of the image used for the Texture2D.
@@ -110,7 +110,7 @@ public class Texture2D
     {
         return this.contentLocation;
     }
-    
+
     /**
      * Resizes a Texture2D.
      * @param tex Texture2D you want to resize.
@@ -134,7 +134,7 @@ public class Texture2D
 	g.dispose();
         return new Texture2D(resizedImage);
     }
-    
+
     /**
      * Resizes a BufferedImage
      * @param bi A BufferedImage to be resized.

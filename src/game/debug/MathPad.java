@@ -8,7 +8,7 @@ import game.framework.Vector3;
  * Place to test out Math classes without launching a Game Window.
  * @author paul
  */
-public class MathPad 
+public class MathPad
 {
     public static void main(String[] args)
     {
@@ -20,24 +20,24 @@ public class MathPad
         //MathPad.matrixTest();
         // Tests out Matrix3 methods and prints the results.
         //MathPad.matrix4Test();
-        
+
         for(int i = 0; i < 10; ++i)
                 System.out.println(MathHelper.random());
-        
+
         for(int i = 0; i < 1000; i++)
             System.out.println(Vector2.random());
-        
+
     }
-    
+
     //<editor-fold defaultstate="collapsed" desc="Vector2 Unit Test">
     public static void vector2Test()
     {
         Vector2 a = new Vector2(1, 2);
         Vector2 b = new Vector2(3, 4);
-        
+
         Vector2 c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v;
         float s1, s2, s3, s4, s5;
-        
+
         // Add the two vectors together
         c = Vector2.add(a, b);
         // Subtract the two vectors from each other
@@ -81,7 +81,7 @@ public class MathPad
         // Hermite, and Smooth Step
         u = Vector2.hermite(a, b, c, d, 0.6f);
         v = Vector2.smoothStep(a, b, 0.35f);
-        
+
         System.out.println("a + b = " + c);
         System.out.println("b - c = " + d);
         System.out.println("-1 * d = " + e);
@@ -105,7 +105,7 @@ public class MathPad
         System.out.println("Catmull-Rom: " + t);
         System.out.println("Hermite: " + u);
         System.out.println("Smooth Step: " + v);
-        
+
         System.out.println("SmoothStep a -> b: " + MathHelper.smoothStep(3.0f, 55.0f, 0.35f));
     }
     //</editor-fold>
@@ -119,10 +119,10 @@ public class MathPad
     {
         Vector3 a = new Vector3(1, 2, 0);
         Vector3 b = new Vector3(3, 4, 0);
-        
+
         Vector3 c, d, e, f, g, h, i, j, k, l, m, n, o, p, q;
         float s1, s2, s3, s4, s5;
-        
+
         // Add the two vectors together
         c = Vector3.add(a, b);
         // Subtract the two vectors from each other
@@ -159,7 +159,7 @@ public class MathPad
         o = a.divide(0.0f);
         p = Vector3.divide(a, 5.0f);
         q = Vector3.divide(a, b);
-        
+
         System.out.println("a + b = " + c);
         System.out.println("b - c = " + d);
         System.out.println("-1 * d = " + e);
@@ -189,31 +189,31 @@ public class MathPad
                             {1, 0, 1},
                             {1, 0, 1}
                         };
-        
+
         float[][] two = {
             {5, 4, 3},
             {2, 1, 0}
         };
-        
+
         float[][] three = {
             {1,2,3},
             {4,5,6},
             {7,8,9}
         };
-        
+
         float[][] four ={
             {1,2},
             {3,4},
             {5,6}
         };
-        
+
         float[][] zeros ={
             {1, 2, 3, 4},
             {0, 0, 0, 0},
             {5, 6, 7, 8},
             {0, 0, 0, 0}
         };
-        
+
         float[][] five ={
             {7, 2, 0, 1},
             {4, 9, 3, -3},
@@ -221,20 +221,20 @@ public class MathPad
             {0, 0, 0, 0},
             {5, 8, 13, 21}
         };
-        
+
         float[][] six = {
             {1, -1, 1, 3},
             {2, 1, -3, 5},
             {4, 1, -1, 11},
         };
-        
+
         float[][] ex5 = {
             {2, 4, -1, 5, -2},
             {-4, -5, 3, -8, 1},
             {2, -5, -4, 1, 8},
             {-6, 0, 7, -3, 1}
         };
-        
+
         Matrix a = new Matrix(one);
         Matrix b = new Matrix(two);
         Matrix c = new Matrix(three);
@@ -243,7 +243,7 @@ public class MathPad
         Matrix e = new Matrix(five);
         Matrix f = new Matrix(six);
         Matrix example5 = new Matrix(ex5);
-        
+
         System.out.println("A");
         System.out.println(a);
         System.out.println("B");
@@ -263,11 +263,11 @@ public class MathPad
         System.out.println(example5.ref());
         System.out.println("RREF");
         System.out.println(example5.rref());
-        * 
+        *
         */
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Matrix3 Unit Test">
     /**
      * Tests out Matrix3 operations.

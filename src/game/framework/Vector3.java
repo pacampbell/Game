@@ -17,10 +17,10 @@ public class Vector3 extends Vector2 implements Serializable
 {
     /**
      * The z component of the Vector3.
-     * Also referred to as k component in vectorial notation. 
+     * Also referred to as k component in vectorial notation.
      */
     public final float z;
-    
+
     //<editor-fold defaultstate="collapsed" desc="Constructors">
     /**
      * Complete Constructor
@@ -34,7 +34,7 @@ public class Vector3 extends Vector2 implements Serializable
         super(x, y);
         this.z = z;
     }
-    
+
     /**
      * Converts integer arguments to float.
      * Sets x, y, and z components of Vector3
@@ -46,7 +46,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         this((float)x, (float)y, (float)z);
     }
-    
+
     /**
      * Sets x, y, and z components of Vector3 to value.
      * @param value Float value used to set all components to.
@@ -55,17 +55,17 @@ public class Vector3 extends Vector2 implements Serializable
     {
         this(value, value, value);
     }
-    
+
     /**
-     * Converts integer arguments to float. 
+     * Converts integer arguments to float.
      * Sets x, y, and z components of Vector3 to value.
      * @param value Integer value used to set all components to.
      */
     public Vector3(int value)
     {
-       this((float)value, (float)value, (float)value); 
+       this((float)value, (float)value, (float)value);
     }
-    
+
     /**
      * Empty Constructor
      * sets all components of Vector3 to zero.
@@ -74,7 +74,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         this(0.0f, 0.0f, 0.0f);
     }
-    
+
     /**
      * Takes a Vector2 and converts it into a Vector3.
      * @param vec2 Vector2 to be change to a Vector3.
@@ -83,7 +83,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         this(vec2.x, vec2.y, 0.0f);
     }
-    
+
     /**
      * Takes a Vector2 and float and converts it into a Vector3.
      * @param vec2 Vector2 to be change to a Vector3.
@@ -93,7 +93,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         this(vec2.x, vec2.y, z);
     }
-    
+
     /**
      * Copy Constructor
      * Make a copy of the Vector3 provided.
@@ -104,7 +104,7 @@ public class Vector3 extends Vector2 implements Serializable
         this(vec3.x, vec3.y, vec3.z);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Add">
     /**
      * Performs Vector3 Addition on two Vector3
@@ -116,7 +116,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return new Vector3(a.x + b.x, a.y + b.y, a.z + b.z);
     }
-    
+
     /**
      * Performs Vector3 Addition between a Vector3 and a Vector2
      * @param a Vector3 to be added
@@ -127,9 +127,9 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.add(a, new Vector3(b));
     }
-    
+
     /**
-     * Performs addition with this Vector3 
+     * Performs addition with this Vector3
      * @param that Vector3 to be added
      * @return Returns a new Vector3 with the result of this + that
      */
@@ -137,9 +137,9 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.add(this, that);
     }
-    
+
     /**
-     * Performs addition with this Vector3 
+     * Performs addition with this Vector3
      * @param that Vector2 to be added
      * @return Returns a new Vector3 with the result of this + that
      */
@@ -148,7 +148,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.add(this, new Vector3(that));
     }
-    
+
     /**
      * Performs addition with this Vector3 and the x, y, and z values provided.
      * @param x The x component we want to add to this Vector3.
@@ -160,7 +160,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.add(this, new Vector3(x, y, z));
     }
-    
+
     /**
      * Performs addition with this Vector3 and the x, y, and z values provided.
      * Converts integer arguments to float.
@@ -173,7 +173,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.add(this, new Vector3(x, y, z));
     }
-    
+
     /**
      * Performs addition with this Vector3 and the x, y, and z values provided.
      * Converts integer arguments to float.
@@ -185,7 +185,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.add(this, new Vector3(vec, z));
     }
-    
+
     /**
      * Adds the value provided to the x component.
      * @param x The x component we want to add to this Vector3.
@@ -196,7 +196,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.add(this, new Vector3(x, 0.0f, 0.0f));
     }
-    
+
     /**
      * Adds the value provided to the x component.
      * Converts integer arguments to float.
@@ -208,7 +208,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.add(this, new Vector3((float)x, 0.0f, 0.0f));
     }
-    
+
     /**
      * Adds the value provided to the x component.
      * @param y The y component we want to add to this Vector3.
@@ -219,7 +219,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.add(this, new Vector3(0.0f, y, 0.0f));
     }
-    
+
     /**
      * Adds the value provided to the x component.
      * Converts integer arguments to float.
@@ -231,7 +231,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.add(this, new Vector3(0.0f, (float)y, 0.0f));
     }
-    
+
     /**
      * Adds the value provided to the z component.
      * @param z The z component we want to add to this Vector3.
@@ -241,7 +241,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.add(this, new Vector3(0.0f, 0.0f, z));
     }
-    
+
     /**
      * Adds the value provided to the z component.
      * Converts integer arguments to float.
@@ -253,11 +253,11 @@ public class Vector3 extends Vector2 implements Serializable
         return Vector3.add(this, new Vector3(0.0f, 0.0f, (float)z));
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Barycentric">
     /**
-     * The Vector3 Barycentric method takes three vectors specifying the Cartesian coordinates of the triangle 
-     * vertices, V1, V2, and V3), and two areal coordinates b2 and b3 of some point P (b2 is the amount1 argument 
+     * The Vector3 Barycentric method takes three vectors specifying the Cartesian coordinates of the triangle
+     * vertices, V1, V2, and V3), and two areal coordinates b2 and b3 of some point P (b2 is the amount1 argument
      * and b3 is the amount2 argument). The b2 coordinate relates to vertex V2, and the b3coordinate relates to V3.
      * @param v1 A Vector3 representing a vertex of a triangle.
      * @param v2 A Vector3 representing a vertex of a triangle.
@@ -275,7 +275,7 @@ public class Vector3 extends Vector2 implements Serializable
         return new Vector3(px, py, pz);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="CatmulRom">
     /**
      * Definition found @ http://paulbourke.net/miscellaneous/interpolation/ & http://forums.indiegamer.com/showthread.php?4905-Teach-me-splines-for&p=66079#post66079
@@ -294,21 +294,21 @@ public class Vector3 extends Vector2 implements Serializable
                     (-p0.x + p2.x) * t +
                     (2.0f * p0.x - 5.0f * p1.x + 4 * p2.x - p3.x) * t2 +
                     (-p0.x + 3.0f * p1.x - 3.0f * p2.x + p3.x) * t3);
-        
+
         float outY = 0.5f * ((2.0f * p1.y) +
                     (-p0.y + p2.y) * t +
                     (2.0f * p0.y - 5.0f * p1.y + 4 * p2.y - p3.y) * t2 +
                     (-p0.y + 3.0f * p1.y - 3.0f * p2.y + p3.y) * t3);
-        
+
         float outZ = 0.5f * ((2.0f * p1.z) +
                     (-p0.z + p2.z) * t +
                     (2.0f * p0.z - 5.0f * p1.z + 4 * p2.z - p3.z) * t2 +
                     (-p0.z + 3.0f * p1.z - 3.0f * p2.z + p3.z) * t3);
-        
+
         return new Vector3(outX, outY, outZ);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Clamp">
     /**
      * Clamps a Vector3 between a min Vector3 and a max Vector3
@@ -321,12 +321,12 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return new Vector3
         (
-            MathHelper.clamp(value.x, min.x, max.x), 
+            MathHelper.clamp(value.x, min.x, max.x),
             MathHelper.clamp(value.y, min.y, max.y),
             MathHelper.clamp(value.z, min.z, max.z)
         );
     }
-    
+
     /**
      * Clamps this Vector3 between a min Vector3 and a max Vector3
      * @param min A Vector3 containing the minimum values.
@@ -338,14 +338,14 @@ public class Vector3 extends Vector2 implements Serializable
         return Vector3.clamp(this, min, max);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Cross Product">
     /**
      * Performs the cross product between two Vector3
      * You have u = {ux, uy, uz}
      * You have v = {vx, vy, vz}
      * Then uxv = (uyvz - uzvy, uzvx - uxvz, uxvy - uyvx)
-     * @param u Vector3 
+     * @param u Vector3
      * @param v Vector3
      * @return Returns the result of the cross product as a Vector3.
      */
@@ -356,7 +356,7 @@ public class Vector3 extends Vector2 implements Serializable
         float newZ = (u.x * v.y) - (u.y * v.x);
         return new Vector3(newX, newY, newZ);
     }
-    
+
     /**
      * Performs the cross product between a Vector3 and a Vector2.
      * @param u Vector3
@@ -367,7 +367,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.crossProduct(u, new Vector3(v));
     }
-    
+
     /**
      * Performs the cross product between a Vector2 and a Vector3.
      * @param u Vector2
@@ -378,7 +378,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.crossProduct(new Vector3(u), v);
     }
-    
+
     /**
      * Performs the cross product between two Vector2.
      * @param u Vector2
@@ -389,7 +389,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.crossProduct(new Vector3(u), new Vector3(v));
     }
-    
+
     /**
      * Performs the cross product with this Vector3
      * @param that Vector3
@@ -399,7 +399,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.crossProduct(this, that);
     }
-    
+
     /**
      * Performs the cross product with this Vector3
      * @param that Vector2
@@ -410,10 +410,10 @@ public class Vector3 extends Vector2 implements Serializable
         return Vector3.crossProduct(this, new Vector3(that));
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Direction Cosine">
     /**
-     * Computes the angle between the Vector3 and the x-axis 
+     * Computes the angle between the Vector3 and the x-axis
      * @param vec Vector3 we want to find the angle with respect to the x-axis.
      * @return Returns the angle between the Vector3 and the x-axis in radians.
      */
@@ -421,9 +421,9 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return (float)Math.acos(vec.x / Vector3.magnitude(vec));
     }
-    
+
     /**
-     * Computes the angle between this Vector3 and the x-axis 
+     * Computes the angle between this Vector3 and the x-axis
      * @return Returns the angle between this Vector3 and the x-axis in radians.
      */
     @Override
@@ -431,9 +431,9 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.directionAlpha(this);
     }
-    
+
     /**
-     * Computes the angle between the Vector3 and the y-axis 
+     * Computes the angle between the Vector3 and the y-axis
      * @param vec Vector3 we want to find the angle with respect to the y-axis.
      * @return Returns the angle between the Vector3 and the y-axis in radians.
      */
@@ -441,9 +441,9 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return (float)Math.acos(vec.y / Vector3.magnitude(vec));
     }
-    
+
     /**
-     * Computes the angle between this Vector3 and the y-axis 
+     * Computes the angle between this Vector3 and the y-axis
      * @return Returns the angle between this Vector3 and the y-axis in radians.
      */
     @Override
@@ -451,9 +451,9 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.directionBeta(this);
     }
-    
+
     /**
-     * Computes the angle between the Vector3 and the z-axis 
+     * Computes the angle between the Vector3 and the z-axis
      * @param vec Vector3 we want to find the angle with respect to the z-axis.
      * @return Returns the angle between the Vector3 and the z-axis in radians.
      */
@@ -461,9 +461,9 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return (float)Math.acos(vec.z / Vector3.magnitude(vec));
     }
-    
+
     /**
-     * Computes the angle between this Vector3 and the z-axis 
+     * Computes the angle between this Vector3 and the z-axis
      * @return Returns the angle between this Vector3 and the z-axis in radians.
      */
     public float directionGamma()
@@ -471,7 +471,7 @@ public class Vector3 extends Vector2 implements Serializable
         return Vector3.directionGamma(this);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Distance">
     /**
      * Computes the distance between two Vector3.
@@ -483,7 +483,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.subtract(a, b).magnitude();
     }
-    
+
     /**
      * Computes the distance between this and that.
      * @param that A Vector3 we want to compute the distance with this.
@@ -494,7 +494,7 @@ public class Vector3 extends Vector2 implements Serializable
         return Vector3.distance(this, that);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Distance Squared">
     /**
      * Computes the distance between two Vector3 squared.
@@ -506,7 +506,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.subtract(a, b).magnitudeSquared();
     }
-    
+
     /**
      * Computes the distance between this and that squared.
      * @param that A Vector3 we want to compute the distance squared with this.
@@ -517,10 +517,10 @@ public class Vector3 extends Vector2 implements Serializable
         return Vector3.distanceSquared(this, that);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Division">
     /**
-     * Performs scalar division between a Vector3 and a scalar. 
+     * Performs scalar division between a Vector3 and a scalar.
      * @param vec A Vector3 we want to divide.
      * @param scalar A scalar we want to divide the Vector3 by.
      * @return Returns a new Vector3 divide by the scalar.
@@ -529,9 +529,9 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return new Vector3(vec.x / scalar, vec.y / scalar, vec.z / scalar);
     }
-    
+
     /**
-     * Performs scalar division between a Vector3 and a scalar. 
+     * Performs scalar division between a Vector3 and a scalar.
      * Converts integer arguments to float.
      * @param vec A Vector3 we want to divide.
      * @param scalar A scalar we want to divide the Vector3 by.
@@ -541,9 +541,9 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.divide(vec, scalar);
     }
-    
+
     /**
-     * Performs scalar division between this Vector3 and a scalar. 
+     * Performs scalar division between this Vector3 and a scalar.
      * @param scalar A scalar we want to divide the Vector3 by.
      * @return Returns a new Vector3 divide by the scalar.
      */
@@ -552,9 +552,9 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.divide(this, scalar);
     }
-    
+
     /**
-     * Performs scalar division between this Vector3 and a scalar. 
+     * Performs scalar division between this Vector3 and a scalar.
      * Converts integer arguments to float.
      * @param scalar A scalar we want to divide the Vector3 by.
      * @return Returns a new Vector3 divide by the scalar.
@@ -564,7 +564,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.divide(this, (float)scalar);
     }
-    
+
     /**
      * Performs scalar division component wise between two Vector3's
      * @param a A Vector3 we want to divide.
@@ -575,7 +575,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return new Vector3(a.x / b.x, a.y / b.y, a.z / b.z);
     }
-    
+
     /**
      * Performs scalar division component wise between this Vector3 and that Vector3
      * @param that A Vector3 we want to divide by.
@@ -586,7 +586,7 @@ public class Vector3 extends Vector2 implements Serializable
         return Vector3.divide(this, that);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Dot product">
     /**
      * Performs the dot product between two Vector3's.
@@ -600,7 +600,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return (a.x + b.x) + (a.y + b.y) + (a.z + b.z);
     }
-    
+
     /**
      * Performs the dot product between a Vector3 and a Vector2.
      * Also known as the scalar product.
@@ -613,7 +613,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.dotProduct(a, new Vector3(b));
     }
-    
+
     /**
      * Performs the dot product between this Vector3 and that Vector3.
      * @param that A Vector3 we want to perform the dot product on.
@@ -623,7 +623,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.dotProduct(this, that);
     }
-    
+
     /**
      * Performs the dot product between this Vector3 and that Vector2.
      * @param that A Vector2 we want to perform the dot product on.
@@ -635,7 +635,7 @@ public class Vector3 extends Vector2 implements Serializable
         return Vector3.dotProduct(this, new Vector3(that));
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Equals">
     /**
      * Checks if Vector B is equal with this Vector3.
@@ -653,7 +653,7 @@ public class Vector3 extends Vector2 implements Serializable
         }
         return result;
     }
-    
+
     /**
      * Checks the equality between two Vector3
      * @param veca A Vector3 that we want to compare.
@@ -668,7 +668,7 @@ public class Vector3 extends Vector2 implements Serializable
         return result;
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Hermite">
     /**
      * Definition found @ http://cubic.org/docs/hermite.htm
@@ -683,7 +683,7 @@ public class Vector3 extends Vector2 implements Serializable
     public static Vector3 hermite(Vector3 p1, Vector3 t1, Vector3 p2, Vector3 t2, float amount)
     {
         float h1, h2, h3, h4, amount2, amount3, outX, outY, outZ;
-        
+
         amount2 = amount * amount; // amount^2
         amount3 = amount2 * amount; // amount^3
         h1 = (2 * amount3) - (3 * amount2) + 1; // weight for p1
@@ -696,7 +696,7 @@ public class Vector3 extends Vector2 implements Serializable
         return new Vector3(outX, outY, outZ);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Linear Interpolation">
     /**
      * Linear interpolation
@@ -715,7 +715,7 @@ public class Vector3 extends Vector2 implements Serializable
             MathHelper.lerp(value1.z, value2.z, amount)
         );
     }
-    
+
     /**
      * Linear interpolation
      * value1 + (value2 - value1) * amount
@@ -728,7 +728,7 @@ public class Vector3 extends Vector2 implements Serializable
         return Vector3.lerp(this, that, amount);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Magnitude">
     /**
      * Computes the magnitude of a Vector3.
@@ -739,7 +739,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return (float)Math.sqrt(a.magnitudeSquared());
     }
-    
+
     /**
      * Computes the magnitude of this Vector3.
      * @return Returns the magnitude of this Vector3.
@@ -750,7 +750,7 @@ public class Vector3 extends Vector2 implements Serializable
         return Vector3.magnitude(this);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Magnitude Squared">
     /**
      * Computes the magnitude squared of a Vector3
@@ -761,7 +761,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return (a.x * a.x) + (a.y * a.y) + (a.z * a.z);
     }
-    
+
     /**
      * Computes the magnitude squared of this Vector3
      * @return Returns the magnitude squared this Vector3.
@@ -772,7 +772,7 @@ public class Vector3 extends Vector2 implements Serializable
         return Vector3.magnitudeSquared(this);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Max & Min">
     /**
      * @param veca A Vector3 we want to find a max value from.
@@ -786,7 +786,7 @@ public class Vector3 extends Vector2 implements Serializable
         float mz = (a.z > b.z) ? a.z : b.z;
         return new Vector3(mx, my, mz);
     }
-    
+
     /**
      * @param veca A Vector3 we want to find a min value from.
      * @param vecb A Vector3 we want to find a min value from.
@@ -800,7 +800,7 @@ public class Vector3 extends Vector2 implements Serializable
         return new Vector3(mx, my, mz);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Multiply">
     /**
      * Multiplies a Vector3 by a scalar
@@ -812,7 +812,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return new Vector3(a.x * scalar, a.y * scalar, a.z * scalar);
     }
-    
+
     /**
      * Multiplies a Vector3 by a scalar
      * Converts integer values to float.
@@ -824,7 +824,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.multiply(a, (float)scalar);
     }
-    
+
     /**
      * Multiplies this Vector3 by a scalar
      * @param scalar A scalar value we want to multiply into this Vector3.
@@ -835,7 +835,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.multiply(this, scalar);
     }
-    
+
     /**
      * Multiplies this Vector3 by a scalar
      * Converts integer values to float.
@@ -848,7 +848,7 @@ public class Vector3 extends Vector2 implements Serializable
         return Vector3.multiply(this, (float)scalar);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Negate">
     /**
      * @param a The Vector3 we want to negate.
@@ -858,7 +858,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return new Vector3(a.x * -1.0f, a.y * -1.0f, a.z * -1.0f);
     }
-    
+
     /**
      * @return Returns this Vector3 that has been negated.
      */
@@ -868,7 +868,7 @@ public class Vector3 extends Vector2 implements Serializable
         return Vector3.negate(this);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Normalize">
     /**
      * Normalizes a input Vector3
@@ -880,7 +880,7 @@ public class Vector3 extends Vector2 implements Serializable
         float magnitude = vec.magnitude();
         return new Vector3(vec.x / magnitude, vec.y / magnitude, vec.z / magnitude);
     }
-    
+
     /**
      * Normalizes this Vector3
      * @return Returns this Vector3 normalized.
@@ -891,7 +891,7 @@ public class Vector3 extends Vector2 implements Serializable
         return Vector3.normalize(this);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Projection">
     /**
      * Calculates the scalar projection of b onto a.
@@ -903,17 +903,17 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.dotProduct(a, b) / Vector3.magnitude(a);
     }
-    
+
     /**
      * Calculates the scalar projection of that onto this.
      * @param that A Vector3 we want to project.
      * @return Returns the scalar projection of that onto this.
-     */ 
+     */
     public float scalarProjection(Vector3 that)
     {
         return Vector3.scalarProjection(this, that);
     }
-    
+
     /**
      * Calculates the vector projection of b onto a.
      * @param a A Vector3 we want to project onto.
@@ -926,7 +926,7 @@ public class Vector3 extends Vector2 implements Serializable
         Vector3 normal = Vector3.normalize(a);
         return Vector3.multiply(normal, scalar);
     }
-    
+
     /**
      * Calculates the vector projection of that onto this.
      * @param that A Vector3 we want project.
@@ -937,7 +937,7 @@ public class Vector3 extends Vector2 implements Serializable
         return Vector3.vectorProjection(this, that);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Random Vector3">
     /**
      * Generates a Vector3 with random values for components from [-10000,10000].
@@ -948,7 +948,7 @@ public class Vector3 extends Vector2 implements Serializable
         return new Vector3(Vector2.random(), MathHelper.random(-10000, 10000));
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Reflection">
     /**
      * r = i - (2 * n * dot(i, n))
@@ -961,12 +961,12 @@ public class Vector3 extends Vector2 implements Serializable
         return incident.subtract(Vector3.multiply(normal, 2.0f).multiply(Vector3.dotProduct(incident, normal)));
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Smooth Step">
     /**
      * Performs a Smooth Step interpolation between two points.
      * Traditional: smoothstep(t) = 3t2 − 2t3
-     * Ken Perlin: smootherstep(t) = 6t5 − 15t4 + 10t3 
+     * Ken Perlin: smootherstep(t) = 6t5 − 15t4 + 10t3
      * @param a A Vector3 containing the starting point.
      * @param b A Vector3 containing the ending point.
      * @param amount A float value between zero and one.
@@ -982,7 +982,7 @@ public class Vector3 extends Vector2 implements Serializable
         );
      }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Special Vectors">
     /**
      * Special type of Vector3; The One vector, <1.0, 1.0 ,1.0>
@@ -992,7 +992,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return new Vector3(1.0f);
     }
-    
+
     /**
      * Returns the unit vector for the x-axis. <1.0, 0.0, 0.0>
      * @return Returns a Vector3 with the x component set to 1.0.
@@ -1001,7 +1001,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return new Vector3(1.0f, 0.0f, 0.0f);
     }
-    
+
     /**
      * Returns the unit vector for the y-axis. <0.0, 1.0, 0.0>
      * @return Returns a Vector3 with the y component set to 1.0.
@@ -1029,7 +1029,7 @@ public class Vector3 extends Vector2 implements Serializable
         return new Vector3(0.0f);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Subtract">
     /**
      * Performs Vector3 Subtraction on two Vector3
@@ -1041,7 +1041,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return new Vector3(a.x - b.x, a.y - b.y, a.z - b.z);
     }
-    
+
     /**
      * Performs Vector3 Subtraction on a Vector3 and a Vector2
      * @param veca A Vector3 to be subtracted.
@@ -1052,7 +1052,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.subtract(a, new Vector3(b));
     }
-    
+
     /**
      * Performs Vector3 Subtraction on a Vector2 and a Vector3
      * @param veca A Vector2 to be subtracted.
@@ -1063,7 +1063,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.subtract(new Vector3(a), b);
     }
-    
+
     /**
      * Subtracts a Vector3 from this
      * @param that A Vector3 to be subtracted.
@@ -1073,7 +1073,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.subtract(this, that);
     }
-    
+
     /**
      * Subtracts a Vector2 from this
      * @param that A Vector2 to be subtracted.
@@ -1084,7 +1084,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.subtract(this, new Vector3(that));
     }
-    
+
     /**
      * Creates a new Vector3 from a Vector2 and a z value and subtracts it from this.
      * @param a A Vector2 that we want to subtract.
@@ -1095,7 +1095,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.subtract(this, new Vector3(a, z));
     }
-    
+
     /**
      * Performs subtraction with this Vector3 and the x, y, and z values provided.
      * @param x The x component we want to subtract from this Vector3.
@@ -1107,7 +1107,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.subtract(this, new Vector3(x, y, z));
     }
-    
+
     /**
      * Performs subtraction with this Vector3 and the x, y, and z values provided.
      * Converts integer arguments to float.
@@ -1120,7 +1120,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.subtract(this, new Vector3(x, y, z));
     }
-    
+
     /**
      * Subtracts the value provided from the x component.
      * @param x The x component we want to subtract from this Vector3.
@@ -1131,7 +1131,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.subtract(this, new Vector3(x, 0.0f, 0.0f));
     }
-    
+
     /**
      * Subtracts the value provided from the x component.
      * @param x The x component we want to subtract from this Vector3.
@@ -1142,7 +1142,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.subtract(this, new Vector3(x, 0.0f, 0.0f));
     }
-    
+
     /**
      * Subtracts the value provided from the y component.
      * @param y The y component we want to subtract from this Vector3.
@@ -1153,7 +1153,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.subtract(this, new Vector3(0.0f, y, 0.0f));
     }
-    
+
     /**
      * Subtracts the value provided from the y component.
      * @param y The y component we want to subtract from this Vector3.
@@ -1164,7 +1164,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.subtract(this, new Vector3(0.0f, y, 0.0f));
     }
-    
+
     /**
      * Subtracts the value provided from the z component.
      * @param z The z component we want to subtract from this Vector3.
@@ -1174,7 +1174,7 @@ public class Vector3 extends Vector2 implements Serializable
     {
         return Vector3.subtract(this, new Vector3(0.0f, 0.0f, z));
     }
-    
+
     /**
      * Subtracts the value provided from the z component.
      * @param z The z component we want to subtract from this Vector3.
@@ -1185,7 +1185,7 @@ public class Vector3 extends Vector2 implements Serializable
         return Vector3.subtract(this, new Vector3(0.0f, 0.0f, z));
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="To String">
     /**
      * Converts this Vector3 to string. <x,y,z>
@@ -1197,7 +1197,7 @@ public class Vector3 extends Vector2 implements Serializable
         return "<" + this.x + "," + this.y + "," + this.z + ">";
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Transform">
     public static Vector3 transform()
     {

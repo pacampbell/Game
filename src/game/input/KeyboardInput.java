@@ -75,7 +75,7 @@ public class KeyboardInput implements KeyListener
     /**
      * Checks to see if a key was pressed.
      * @param keyCode ID for the key to be evaluated.
-     * @return Return is the key was pressed. 
+     * @return Return is the key was pressed.
      */
     public boolean keyDownOnce(int keyCode)
     {
@@ -84,7 +84,7 @@ public class KeyboardInput implements KeyListener
 
     /**
      * Detects if a key was pressed for Swing/AWT components.
-     * @param e KeyEvent related to key that was pressed. 
+     * @param e KeyEvent related to key that was pressed.
      */
     public synchronized void keyPressed(KeyEvent e)
     {

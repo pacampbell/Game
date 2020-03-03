@@ -10,17 +10,17 @@ public class GameHelper
      * Static variable representing the width of the Game screen.
      */
     private static int width = 0;
-    
+
     /**
      * Static variable representing the height of the Game screen.
      */
     private static int height = 0;
-    
+
     /**
      * Static Variable containing the JFrame of the Game.
      */
     private static JFrame window;
-    
+
     /**
      * Uses a hack to return a path to a image file based on the operating system that is being used.
      * @param path Relative path to the file that needs a path.
@@ -46,7 +46,7 @@ public class GameHelper
             return systemIndependentPath;
         }
     }
-    
+
     /**
      * Stores the Cursor related to the JFrame of the program.
      * @param cursor The JFrames Cursor object.
@@ -57,7 +57,7 @@ public class GameHelper
         if(window != null)
             GameHelper.window.setCursor(cursor);
     }
-    
+
     /**
      * Gets the cursor of the current JFrame.
      * @return Returns the Cursor associated with the current Game JFrame.
@@ -69,7 +69,7 @@ public class GameHelper
             cursor = GameHelper.window.getCursor();
         return cursor;
     }
-    
+
     /**
      * Sets the title of the Games JFrame
      * @param title String representing the desired title of the JFrame.
@@ -79,7 +79,7 @@ public class GameHelper
         if(window != null)
             GameHelper.window.setTitle(title);
     }
-    
+
     /**
      * Gets the title of the JFrame.
      * @return Returns the title of the Game JFrame.
@@ -91,16 +91,16 @@ public class GameHelper
             title = GameHelper.window.getTitle();
         return title;
     }
-    
+
     /**
-     * Sets the Main JFrame of project. 
-     * @param frame The main JFrame 
+     * Sets the Main JFrame of project.
+     * @param frame The main JFrame
      */
     protected static void setWindow(JFrame frame)
     {
         GameHelper.window = frame;
     }
-    
+
     /**
      * Stores the width of the Game Window.
      * Only to be used within the framework itself.
@@ -110,7 +110,7 @@ public class GameHelper
     {
         GameHelper.width = width;
     }
-    
+
     /**
      * Stores the height of the Game Window.
      * Only to be used within the framework itself.
@@ -120,19 +120,19 @@ public class GameHelper
     {
         GameHelper.height = height;
     }
-    
+
     /**
      * Gets the width of the game window in pixels.
-     * @return Returns the width of the game window. 
+     * @return Returns the width of the game window.
      */
     public static int WIDTH()
     {
         return GameHelper.width;
     }
-    
+
     /**
      * Gets the height of the game window in pixels.
-     * @return Returns the height of the game window. 
+     * @return Returns the height of the game window.
      */
     public static int HEIGHT()
     {

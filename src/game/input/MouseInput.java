@@ -23,7 +23,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
     // Polled mouse buttons
     private MouseState[] poll = null;
 
-    private enum MouseState 
+    private enum MouseState
     {
 
         RELEASED, // Not down
@@ -31,7 +31,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
         ONCE      // Down for the first time
     }
 
-    public MouseInput() 
+    public MouseInput()
     {
         // Create default mouse positions
         mousePos = new Point(0, 0);
@@ -47,7 +47,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
     /**
      * Polls the mouse for new buttons that might be pressed this update.
      */
-    public void poll() 
+    public void poll()
     {
         // Save the current location
         mousePos = new Point(currentPos);
@@ -55,7 +55,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
         for (int i = 0; i < BUTTON_COUNT; ++i) {
             // If the button is down for the first
             // time, it is ONCE, otherwise it is
-            // PRESSED.  
+            // PRESSED.
             if (state[ i]) {
                 if (poll[ i] == MouseState.RELEASED) {
                     poll[ i] = MouseState.ONCE;
@@ -70,9 +70,9 @@ public class MouseInput implements MouseListener, MouseMotionListener {
     }
 
     /**
-     * @return Returns a Point object containing the x, and y coordinates of the mouse. 
+     * @return Returns a Point object containing the x, and y coordinates of the mouse.
      */
-    public Point getPosition() 
+    public Point getPosition()
     {
         return mousePos;
     }
@@ -82,7 +82,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
      * @param button ID for the button to be evaluated.
      * @return Returns if the button is being held.
      */
-    public boolean buttonDownOnce(int button) 
+    public boolean buttonDownOnce(int button)
     {
         return poll[ button - 1] == MouseState.ONCE;
     }
@@ -92,7 +92,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
      * @param key MouseKey object containing the key code of the mouse button that is pressed.
      * @return Returns if the button is being held.
      */
-    public boolean buttonDownOnce(MouseKeys key) 
+    public boolean buttonDownOnce(MouseKeys key)
     {
         return buttonDownOnce(key.KEYCODE);
     }
@@ -102,7 +102,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
      * @param button ID for the button to be evaluated.
      * @return Returns if the button is down.
      */
-    public boolean buttonDown(int button) 
+    public boolean buttonDown(int button)
     {
         return poll[ button - 1] == MouseState.ONCE
                 || poll[ button - 1] == MouseState.PRESSED;
@@ -111,56 +111,56 @@ public class MouseInput implements MouseListener, MouseMotionListener {
     /**
      * Checks to see if a button on the mouse is pressed.
      * @param key MouseKey object containing the key code of the mouse button that is pressed.
-     * @return Returns if the button is down. 
+     * @return Returns if the button is down.
      */
-    public boolean buttonDown(MouseKeys key) 
+    public boolean buttonDown(MouseKeys key)
     {
         return buttonDown(key.KEYCODE);
     }
 
     /**
      * Detects if a mouse key was pressed for Swing/AWT components.
-     * @param e KeyEvent related to key that was pressed. 
+     * @param e KeyEvent related to key that was pressed.
      */
     @Override
-    public void mousePressed(MouseEvent e) 
+    public void mousePressed(MouseEvent e)
     {
         state[ e.getButton() - 1] = true;
     }
 
     /**
      * Detects if a mouse key was released for Swing/AWT components.
-     * @param e KeyEvent related to key that was released. 
+     * @param e KeyEvent related to key that was released.
      */
     @Override
-    public void mouseReleased(MouseEvent e) 
+    public void mouseReleased(MouseEvent e)
     {
         state[ e.getButton() - 1] = false;
     }
 
     /**
      * Detects if the mouse has entered a region for Swing/AWT components.
-     * @param e KeyEvent related to the mouse entering a region. 
+     * @param e KeyEvent related to the mouse entering a region.
      */
     @Override
-    public void mouseEntered(MouseEvent e) 
+    public void mouseEntered(MouseEvent e)
     {
         mouseMoved(e);
     }
 
     /**
      * Detects if the mouse has exited a region for Swing/AWT components.
-     * @param e KeyEvent related to the mouse exiting a region. 
+     * @param e KeyEvent related to the mouse exiting a region.
      */
     @Override
-    public void mouseExited(MouseEvent e) 
+    public void mouseExited(MouseEvent e)
     {
         mouseMoved(e);
     }
 
     /**
      * Detects if the mouse has been dragged for Swing/AWT components.
-     * @param e KeyEvent related to the mouse being dragged. 
+     * @param e KeyEvent related to the mouse being dragged.
      */
     @Override
     public void mouseDragged(MouseEvent e)
@@ -170,10 +170,10 @@ public class MouseInput implements MouseListener, MouseMotionListener {
 
     /**
      * Detects if the mouse has been moved for Swing/AWT components.
-     * @param e KeyEvent related to the mouse being moved. 
+     * @param e KeyEvent related to the mouse being moved.
      */
     @Override
-    public void mouseMoved(MouseEvent e) 
+    public void mouseMoved(MouseEvent e)
     {
         currentPos = e.getPoint();
     }
@@ -182,7 +182,7 @@ public class MouseInput implements MouseListener, MouseMotionListener {
      * Void Method; Not Implemented.
      */
     @Override
-    public void mouseClicked(MouseEvent e) 
+    public void mouseClicked(MouseEvent e)
     {
         // NOP
         //throw new UnsupportedOperationException("Not yet implemented.");

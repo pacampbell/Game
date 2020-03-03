@@ -4,7 +4,7 @@ package game.input;
  * Enumeration representing the different Events/Actions a mouse can perform.
  * @author paul
  */
-public enum MouseAction 
+public enum MouseAction
 {
     CLICK,
     DOUBLE_CLICK,

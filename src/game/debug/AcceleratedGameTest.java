@@ -11,11 +11,11 @@ import java.util.Random;
 /*
  * This is an example of a simple windowed render loop
  */
-public class AcceleratedGameTest 
+public class AcceleratedGameTest
 {
 
-    public static void main(String[] args) 
-    {   
+    public static void main(String[] args)
+    {
         Vector2 vec1 = new Vector2(1, 1);
         Vector2 vec2 = new Vector2(5, 1);
         Vector2 vec3 = new Vector2(3, 5);
@@ -23,9 +23,9 @@ public class AcceleratedGameTest
         float b3 = 0.6f;
         Vector2 bary = Vector2.barycentric(vec1, vec2, vec3, b2, b3);
         System.out.println(bary);
-        
-        
-        
+
+
+
         // Create game window...
         JFrame app = new JFrame("Accelerated Test");
         app.setIgnoreRepaint( true );
@@ -65,30 +65,30 @@ public class AcceleratedGameTest
         long totalTime = 0;
         long curTime = System.currentTimeMillis();
         long lastTime = curTime;
-                
-        while(true) 
+
+        while(true)
         {
-            try 
+            try
             {
                 // count Frames per second...
                 lastTime = curTime;
                 curTime = System.currentTimeMillis();
                 totalTime += curTime - lastTime;
-                if(totalTime > 1000) 
+                if(totalTime > 1000)
                 {
                     totalTime -= 1000;
                     fps = frames;
                     frames = 0;
-                } 
+                }
                 ++frames;
 
             // clear back buffer...
             g2d = bi.createGraphics();
             g2d.setColor( background );
             g2d.fillRect( 0, 0, 639, 479 );
-                                
+
             // draw some rectangles...
-            for(int i = 0; i < 20; ++i) 
+            for(int i = 0; i < 20; ++i)
             {
                 int r = rand.nextInt(256);
                 int g = rand.nextInt(256);
@@ -100,27 +100,27 @@ public class AcceleratedGameTest
                 int h = rand.nextInt( 480/2 );
                 g2d.fillRect( x, y, w, h );
             }
-                                
+
             // display frames per second...
             g2d.setFont( new Font( "Courier New", Font.PLAIN, 12 ) );
             g2d.setColor( Color.GREEN );
             g2d.drawString( String.format( "FPS: %s", fps ), 20, 20 );
-                                
+
             // Blit image and flip...
             graphics = buffer.getDrawGraphics();
             graphics.drawImage(bi, 0, 0, null);
             if(!buffer.contentsLost())
               buffer.show();
-                                
+
             // Let the OS have a little time...
             Thread.yield();
-          } 
-          finally 
+          }
+          finally
           {
             // release resources
-            if( graphics != null ) 
+            if( graphics != null )
                 graphics.dispose();
-            if( g2d != null ) 
+            if( g2d != null )
                 g2d.dispose();
             }
         }

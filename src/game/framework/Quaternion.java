@@ -1,7 +1,7 @@
 package game.framework;
 
 /**
- * Quaternion represents a 4D Vector. Used for rotation around 
+ * Quaternion represents a 4D Vector. Used for rotation around
  * an object about the (x, y, z) vector by the angle theta, where w = cos(theta/2).
  * <br />
  * <h1>Not Yet Implemented</h1>
@@ -18,30 +18,30 @@ package game.framework;
  * @version incomplete
  * @author paul
  */
-public class Quaternion 
-{   
+public class Quaternion
+{
     //<editor-fold defaultstate="collapsed" desc="Properties">
     /**
-     * The x value of the vector component of the Quaternion.  
+     * The x value of the vector component of the Quaternion.
      */
     public final float x;
-    
+
     /**
-     * The y value of the vector component of the Quaternion.  
+     * The y value of the vector component of the Quaternion.
      */
     public final float y;
-    
+
     /**
-     * The z value of the vector component of the Quaternion.  
+     * The z value of the vector component of the Quaternion.
      */
     public final float z;
- 
+
     /**
      * The rotation component of the Quaternion.
      */
     public final float w;
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Complete Constructor.
@@ -57,7 +57,7 @@ public class Quaternion
         this.z = z;
         this.w = w;
     }
-    
+
     /**
      * Creates a Quaternion with a Vector3 and a float value representing the rotation of the quaternion.
      * @param v Vector3 representing the x, y, z values of the Quaternion.
@@ -68,19 +68,19 @@ public class Quaternion
         this(v.x, v.y, v.z, w);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Add">
     /**
      * Adds two Quaternion together.
      * @param a Quaternion to be added.
      * @param b Quaternion to be added.
-     * @return Returns a + b. 
+     * @return Returns a + b.
      */
     public static Quaternion add(Quaternion a, Quaternion b)
     {
         return new Quaternion(a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w);
     }
-    
+
     /**
      * Adds this Quaternion with that Quaternion.
      * @param that Quaternion to be added.
@@ -91,55 +91,55 @@ public class Quaternion
         return Quaternion.add(this, that);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Concatenate">
     public static Quaternion concatenate(Quaternion a, Quaternion b)
     {
         throw new UnsupportedOperationException("Not yet implemented.");
     }
-    
+
     public Quaternion concatenate(Quaternion that)
     {
         return Quaternion.concatenate(this, that);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Conjugate">
     public static Quaternion conjugate(Quaternion q)
     {
         throw new UnsupportedOperationException("Not yet implemented.");
     }
-    
+
     public Quaternion conjugate()
     {
         return Quaternion.conjugate(this);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Create Axis From Angle">
     public static Quaternion createAxisFromAngle(Vector3 v, float angle)
     {
         throw new UnsupportedOperationException("Not yet implemented.");
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Create From Rotation Matrix">
     public static Quaternion createFromRotationMatrix(Matrix3 m)
     {
         throw new UnsupportedOperationException("Not yet implemented.");
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Create From Yaw Pitch Roll">
     public static Quaternion createFromYawPitchRoll(float yaw, float pitch, float roll)
     {
         throw new UnsupportedOperationException("Not yet implemented.");
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Divide">
     /**
-     * Performs component wise division with two Quaternion. 
+     * Performs component wise division with two Quaternion.
      * @param a Quaternion to be divided.
      * @param b Quaternion to divide by.
      * @return Returns a new Quaternion with the components of a divided by the components of b.
@@ -148,7 +148,7 @@ public class Quaternion
     {
         return new Quaternion(a.x / b.x, a.y / b.y, a.z / b.z, a.w / b.w);
     }
-    
+
     /**
      * Divides this Quaternion component wise by that Quaternion.
      * @param that Quaternion to divide by.
@@ -159,7 +159,7 @@ public class Quaternion
         return Quaternion.divide(this, that);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Dot Product">
     /**
      * Performs the dot product between two Quaternion.
@@ -173,7 +173,7 @@ public class Quaternion
     {
         return (a.x * b.x) + (a.y + b.y) + (a.z + b.z) + (a.w + b.w);
     }
-    
+
     /**
      * Performs the dot product between this Quaternion and that Quaternion.
      * Also known as the scalar product.
@@ -186,7 +186,7 @@ public class Quaternion
         return Quaternion.dotProduct(this, that);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Equals">
     /**
      * Checks to see if two Quaternion are equal to each other.
@@ -204,91 +204,91 @@ public class Quaternion
             else if(obj instanceof Quaternion)
             {
                 Quaternion that = (Quaternion)obj;
-                equals = (this.x == that.x) && (this.y == that.y) && 
-                         (this.z == that.z) && (this.w == that.w); 
+                equals = (this.x == that.x) && (this.y == that.y) &&
+                         (this.z == that.z) && (this.w == that.w);
             }
         }
         return equals;
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Identity">
     /**
      * Creates the Identity Quaternion.
-     * @return Returns a Quaternion with the components (0, 0, 0, 1). 
+     * @return Returns a Quaternion with the components (0, 0, 0, 1).
      */
     public static Quaternion identity()
     {
         return new Quaternion(0, 0, 0, 1);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Inverse">
     public static Quaternion inverse(Quaternion q)
     {
         throw new UnsupportedOperationException("Not yet implemented.");
     }
-    
+
     public Quaternion inverse()
     {
         return Quaternion.inverse(this);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Magnitude">
     /**
      * Finds the magnitude of the Quaternion.
      * @param q A Quaternion to find the magnitude of.
-     * @return Returns the magnitude of the Quaternion. 
+     * @return Returns the magnitude of the Quaternion.
      */
     public static float magnitude(Quaternion q)
     {
         return (float)Math.sqrt(Quaternion.magnitudeSquared(q));
     }
-    
+
     /**
      * Finds the magnitude of this Quaternion.
-     * @return Returns the magnitude of this Quaternion. 
+     * @return Returns the magnitude of this Quaternion.
      */
     public float magnitude()
     {
         return Quaternion.magnitude(this);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Magnitude Squared">
     /**
      * Finds the magnitude squared of the Quaternion.
      * @param q A Quaternion to find the magnitude squared of.
-     * @return Returns the magnitude squared of the Quaternion. 
+     * @return Returns the magnitude squared of the Quaternion.
      */
     public static float magnitudeSquared(Quaternion q)
     {
-        return (q.x * q.x) + (q.y * q.y) + (q.z * q.z) + (q.w * q.w); 
+        return (q.x * q.x) + (q.y * q.y) + (q.z * q.z) + (q.w * q.w);
     }
-    
+
     /**
      * Finds the magnitude squared of this Quaternion.
-     * @return Returns the magnitude squared of this Quaternion. 
+     * @return Returns the magnitude squared of this Quaternion.
      */
     public float magnitudeSquared()
     {
         return Quaternion.magnitudeSquared(this);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Linear Interpolation">
     public static float lerp(Quaternion a, Quaternion b, float amount)
     {
         throw new UnsupportedOperationException("Not yet implemented.");
     }
-    
+
     public float lerp(Quaternion that, float amount)
     {
         return Quaternion.lerp(this, that, amount);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Multiply">
     /**
      * Scales the components of a by the components of b.
@@ -300,7 +300,7 @@ public class Quaternion
     {
         return new Quaternion(a.x * b.x, a.y * b.y, a.z * b.z, a.w * b.w);
     }
-    
+
     /**
      * Scales the components of this by the components of that.
      * @param that A Quaternion to scale by.
@@ -310,7 +310,7 @@ public class Quaternion
     {
         return Quaternion.multiply(this, that);
     }
-    
+
     /**
      * Scales a Quaternion by a scalar.
      * @param q Quaternion to be scaled.
@@ -321,7 +321,7 @@ public class Quaternion
     {
         return new Quaternion(q.x * scalar, q.y * scalar, q.y * scalar, q.w * scalar);
     }
-    
+
     /**
      * Scales this Quaternion by a scalar.
      * @param scalar Float to scale the Quaternion by.
@@ -332,7 +332,7 @@ public class Quaternion
         return Quaternion.multiply(this, scalar);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Negate">
     /**
      * Negates the provided Quaternion.
@@ -343,7 +343,7 @@ public class Quaternion
     {
         return new Quaternion(-q.x, -q.y, -q.z, -q.w);
     }
-    
+
     /**
      * Negates this Quaternion.
      * @return Returns the negation of this Quaternion.
@@ -353,7 +353,7 @@ public class Quaternion
         return Quaternion.negate(this);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Normalize">
     /**
      * Normalizes the provided Quaternion.
@@ -365,7 +365,7 @@ public class Quaternion
         float magnitude = Quaternion.magnitude(q);
         return new Quaternion(q.x / magnitude, q.y / magnitude, q.z / magnitude, q.w / magnitude);
     }
-    
+
     /**
      * Normalizes this Quaternion.
      * @return Returns this Quaternion normalized.
@@ -375,19 +375,19 @@ public class Quaternion
         return Quaternion.normalize(this);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Spherical Linear Interpolation">
     public static Quaternion slerp(Quaternion a, Quaternion b, float amount)
     {
         throw new UnsupportedOperationException("Not yet implemented.");
     }
-    
+
     public Quaternion slerp(Quaternion that, float amount)
     {
         return Quaternion.slerp(this, that, amount);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Subtract">
     /**
      * Finds the difference between two Quaternion.
@@ -399,18 +399,18 @@ public class Quaternion
     {
         return new Quaternion(a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w);
     }
-    
+
     /**
      * Finds this difference between this Quaternion and that Quaternion.
      * @param that Quaternion to be subtracted by.
-     * @return Returns this - that. 
+     * @return Returns this - that.
      */
     public Quaternion subtract(Quaternion that)
     {
         return Quaternion.subtract(this, that);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="To String">
     /**
      * Creates a String representation of this Quaternion.

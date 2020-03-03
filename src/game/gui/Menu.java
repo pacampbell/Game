@@ -8,7 +8,7 @@ import game.input.MouseKeys;
 import java.awt.*;
 import java.util.LinkedList;
 
-public class Menu implements GuiComponent 
+public class Menu implements GuiComponent
 {
     // Class Properties
     public final String LABEL;
@@ -19,7 +19,7 @@ public class Menu implements GuiComponent
     private Font font;
     private Color paneColor, borderColor, fontColor;
     private Rectangle closedBoundingBox, openBoundingBox;
-    
+
     /**
      * Complete Constructor.
      * Creates a Menu.
@@ -33,7 +33,7 @@ public class Menu implements GuiComponent
         this.menuState = MenuState.CLOSED;
         this.items = new LinkedList<>();
     }
-    
+
     /**
      * Creates a Menu.
      * @param label String containing the LABEL of the Menu.
@@ -42,7 +42,7 @@ public class Menu implements GuiComponent
     {
         this(label, Color.WHITE);
     }
-    
+
     /**
      * Adds a menu item to be displayed when the menu is activated.
      * @param menuItem A MenuItem to be added to this Menu.
@@ -51,7 +51,7 @@ public class Menu implements GuiComponent
     {
         items.add(menuItem);
     }
-    
+
     /**
      * Sets The Color and Border Color of the menu.
      * This is set by the parent object MenuBar.
@@ -63,7 +63,7 @@ public class Menu implements GuiComponent
         this.paneColor = paneColor;
         this.borderColor = borderColor;
     }
-    
+
     /**
      * Sets properties from parent class.
      * @param anchor Enumeration defining where the Parent MenuBar is anchored.
@@ -84,24 +84,24 @@ public class Menu implements GuiComponent
             case TOP:
                 this.openBoundingBox = new Rectangle
                 (
-                    closedBoundingBox.x, 
-                    closedBoundingBox.y + closedBoundingBox.height, 
-                    200, 
+                    closedBoundingBox.x,
+                    closedBoundingBox.y + closedBoundingBox.height,
+                    200,
                     openHeight
                 );
                 break;
             case BOTTOM:
                 this.openBoundingBox = new Rectangle
                 (
-                    closedBoundingBox.x, 
-                    closedBoundingBox.y - openHeight, 
-                    200, 
+                    closedBoundingBox.x,
+                    closedBoundingBox.y - openHeight,
+                    200,
                     openHeight
                 );
                 break;
         }
     }
-    
+
     /**
      * Returns the width of the menu when it is closed.
      */
@@ -109,7 +109,7 @@ public class Menu implements GuiComponent
     {
         return closedBoundingBox.width;
     }
-    
+
     /**
      * Sets the font of the Menu.
      * @param font Font to be used for Menu Fonts
@@ -118,12 +118,12 @@ public class Menu implements GuiComponent
     {
         this.font = font;
     }
-    
+
     /**
      * Initializes all the MenuItems contained within the Menu and the Menu itself.
      */
     @Override
-    public void initialize() 
+    public void initialize()
     {
         int yOffset;
         // Initialize MenuItems
@@ -132,11 +132,11 @@ public class Menu implements GuiComponent
             yOffset = i * closedBoundingBox.height;
             items.get(i).setProperties
             (
-                anchor, 
-                openBoundingBox.x, 
-                openBoundingBox.y + yOffset + (i * 1), 
+                anchor,
+                openBoundingBox.x,
+                openBoundingBox.y + yOffset + (i * 1),
                 // TODO: FIX 200 width for menu.
-                200, 
+                200,
                 closedBoundingBox.height
             );
             items.get(i).setFont(font);
@@ -156,9 +156,9 @@ public class Menu implements GuiComponent
      * @param gameTime GameTime object containing the timing of the current session.
      */
     @Override
-    public void update(GameTime gameTime) 
-    {   
-        // If the Menu has any items check to see if someone is clicking on it. 
+    public void update(GameTime gameTime)
+    {
+        // If the Menu has any items check to see if someone is clicking on it.
         if(items.size() > 0)
         {
             // Determine the User clicked on the menu.
@@ -183,7 +183,7 @@ public class Menu implements GuiComponent
      * @param g2d Graphics2D object containing the drawable surface of the window.
      */
     @Override
-    public void draw(Graphics2D g2d) 
+    public void draw(Graphics2D g2d)
     {
         g2d.setFont(font);
         g2d.setColor(fontColor);

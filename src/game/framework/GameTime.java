@@ -17,7 +17,7 @@ public class GameTime
      */
     public GameTime()
     {
-        // Initalize Vars
+        // Initialize Vars
         this.deltaTime = 0.0f;
         this.baseTime = 0;
         this.pausedTime = 0;
@@ -52,7 +52,7 @@ public class GameTime
     {
         return (float)this.deltaTime;
     }
-    
+
     /**
      * Gets the time passed since the last time the clock has been polled.
      * @return Returns the time in seconds since the last update.
@@ -135,7 +135,7 @@ public class GameTime
         // Prepare for next frame.
         this.prevTime = this.currTime;
 
-        // Set to zero incase of inaccuracy
+        // Set to zero in case of inaccuracy
         if(this.deltaTime < 0.0f)
         {
             this.deltaTime = 0.0f;

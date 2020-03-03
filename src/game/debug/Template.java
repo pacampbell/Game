@@ -21,7 +21,7 @@ public class Template extends Game
     @Override
     public void initialize()
     {
-        // Initalize stuff in Base
+        // Initialize stuff in Base
         super.initialize();
         // TODO: Any Variables that need to be initialized at startup should go here.
     }
@@ -82,10 +82,10 @@ public class Template extends Game
         // TODO: Any Drawing routines should be performed in this method. Try to keep logic in the update loop.
         this.fps.draw(g2d);
     }
-    
+
     /**
      * Main Entrance into TestFramework
-     * @param args 
+     * @param args
      */
     public static void main(String[] args)
     {

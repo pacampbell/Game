@@ -22,7 +22,7 @@ import java.awt.image.VolatileImage;
  */
 public abstract class Game extends JFrame
 {
-    // Window Initalization Vars
+    // Window Initialization Vars
     private Canvas canvas;
     private BufferStrategy buffer;
     private GraphicsEnvironment ge;
@@ -38,7 +38,7 @@ public abstract class Game extends JFrame
     private GameTime gameTime; // Keeps Track of time in the game
     // Debug Variable (User needs to implement update and draw if they want to use)
     protected PerformanceTiming fps;
-    
+
     //<editor-fold defaultstate="collapsed" desc="Constructor">
     /**
      * Full Constructor
@@ -54,7 +54,7 @@ public abstract class Game extends JFrame
         this.width = width;
         this.height = height;
     }
-    
+
     /**
      * Sets default window title to "Game"
      * @param width Integer that represents the width of the screen.
@@ -64,7 +64,7 @@ public abstract class Game extends JFrame
     {
         this("Game", width, height);
     }
-    
+
     /**
      * Sets the window title to String provided.
      * Sets default window dimensions to 640 x 480.
@@ -74,7 +74,7 @@ public abstract class Game extends JFrame
     {
         this(title, 640, 480);
     }
-    
+
     /**
      * Empty Constructor.
      * Sets default window Dimensions to 640 x 480.
@@ -85,7 +85,7 @@ public abstract class Game extends JFrame
         this("Game", 640, 480);
     }
     //</editor-fold>
-        
+
     //<editor-fold defaultstate="collapsed" desc="Run">
     /**
      * Initialize Variables and starts up GameLoop
@@ -111,7 +111,7 @@ public abstract class Game extends JFrame
         }
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Game Loop">
     /**
      * Everything that happens in the program happens here. <br />
@@ -138,7 +138,7 @@ public abstract class Game extends JFrame
                 update(gameTime);
                 // clear back buffer...
                 g2d = vi.createGraphics();
-                // Draw 
+                // Draw
                 draw(g2d);
                 // Sync Screen For Linux/Mac
                 Toolkit.getDefaultToolkit().sync();
@@ -153,20 +153,20 @@ public abstract class Game extends JFrame
             finally
             {
                 // release resources
-                if(graphics != null) 
+                if(graphics != null)
                     graphics.dispose();
-                if(g2d != null) 
+                if(g2d != null)
                     g2d.dispose();
             }
         }
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Exit Game">
     /**
      * Proper way to exit/quit game
      * You can enter a certain error code to provide exit status text
-     * @param errorCode Integer containing the error code. 
+     * @param errorCode Integer containing the error code.
      */
     public static void exitGame(int errorCode)
     {
@@ -181,12 +181,12 @@ public abstract class Game extends JFrame
             default:
                 System.out.println("Unknown exit status...");
                 System.out.println("Quitting..");
-                break;  
+                break;
         }
         System.out.println("Exit Code: " + errorCode);
         System.exit(errorCode);
     }
-    
+
     /**
      * Default way to exit game.
      * Sets error code to Zero.
@@ -196,14 +196,14 @@ public abstract class Game extends JFrame
         Game.exitGame(0); // 0 is proper exit code
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Helper Methods">
     /**
      * Creates The Game Window with provided settings
      */
     private void createWindow()
     {
-        // Set Frame Propertys
+        // Set Frame Properties
         this.setIgnoreRepaint(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
@@ -232,7 +232,7 @@ public abstract class Game extends JFrame
         GameHelper.setScreenWidth(width);
         GameHelper.setScreenHeight(height);
     }
-    
+
     /**
      * Sets the color the canvas clears to.
      * @param background Desired color to set the canvas clear color to.
@@ -241,16 +241,16 @@ public abstract class Game extends JFrame
     {
         this.background = background;
     }
-    
+
     /**
      * Gets the color that is used to clear the screen with.
-     * @return Returns the background clear color. 
+     * @return Returns the background clear color.
      */
     public final Color getBackgroundColor()
     {
         return this.background;
     }
-    
+
     /**
      * Used to set the width of the game window
      * @param width Integer containing the desired width of game screen in pixels.
@@ -260,17 +260,17 @@ public abstract class Game extends JFrame
         this.width = width;
         GameHelper.setScreenWidth(width);
     }
-    
+
     /**
      * Used to set the height of the game window
-     * @param height Integer containing the desired height of game screen in pixels. 
+     * @param height Integer containing the desired height of game screen in pixels.
      */
     public final void setHeight(int height)
     {
         this.height = height;
         GameHelper.setScreenHeight(height);
     }
-    
+
     /**
      * Sets the dimensions of the game window
      * @param width Integer containing the desired width of game screen in pixels.
@@ -282,8 +282,8 @@ public abstract class Game extends JFrame
         this.setHeight(height);
     }
     //</editor-fold>
-    
-    //<editor-fold defaultstate="collapsed" desc="Overrideable Game Methods">
+
+    //<editor-fold defaultstate="collapsed" desc="Overridable Game Methods">
     /**
      * Load assets needed for game
      */
@@ -291,23 +291,23 @@ public abstract class Game extends JFrame
     /**
      * Unload assets needed for game
      */
-    
-    public abstract void unloadContent(); 
+
+    public abstract void unloadContent();
     /**
      * Update Human interface states, game logic, etc.
-     * Abstract Game handles updating Keyboard and Mouse polling. 
+     * Abstract Game handles updating Keyboard and Mouse polling.
      * @param gameTime GameTime object containing the timing of the current session.
      */
     public void update(GameTime gameTime)
     {
         // Poll the keyboard
-        Keyboard.poll(); 
+        Keyboard.poll();
         // Poll the mouse
         Mouse.poll();
     }
 
     /**
-     * Initializes the Window, Keyboard, Mouse, and GameTime objects.    
+     * Initializes the Window, Keyboard, Mouse, and GameTime objects.
      */
     public void initialize()
     {
@@ -328,7 +328,7 @@ public abstract class Game extends JFrame
 
     /**
      * Clears and draws the frame.
-     * @param g2d Graphics2D object containing the drawable surface of the window. 
+     * @param g2d Graphics2D object containing the drawable surface of the window.
      */
     public void draw(Graphics2D g2d)
     {

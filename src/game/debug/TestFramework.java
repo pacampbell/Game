@@ -17,7 +17,7 @@ public class TestFramework extends Game
     @Override
     public void initialize()
     {
-        // Initalize stuff in Base
+        // Initialize stuff in Base
         super.initialize();
         // TODO:
     }
@@ -30,7 +30,7 @@ public class TestFramework extends Game
     public void loadContent()
     {
         // All Resources should be placed in the resource folder
-        // A "/resource/" is appened to the path.
+        // A "/resource/" is appended to the path.
         // To load an image; Texture2D texture = new Texture2D("path");
         // This file should load on all OS inside the jar :)
         // TODO:
@@ -59,8 +59,8 @@ public class TestFramework extends Game
         super.update(gameTime);
         // TODO:
         this.fps.update(gameTime);
-        
-        
+
+
         //<editor-fold defaultstate="collapsed" desc="System & Menu Keys">
         if(Keyboard.keyDownOnce(KeyEvent.VK_ESCAPE))
         {
@@ -82,10 +82,10 @@ public class TestFramework extends Game
         this.fps.draw(g2d);
         g2d.drawString("Mouse: (" + Mouse.getPosition().x + "," + Mouse.getPosition().y + ")", 10, 60);
     }
-    
+
     /**
      * Main Entrance into TestFramework
-     * @param args 
+     * @param args
      */
     public static void main(String[] args)
     {

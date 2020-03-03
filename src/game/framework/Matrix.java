@@ -19,25 +19,25 @@ import java.io.Serializable;
  * @version incomplete
  * @author mike, paul
  */
-public class Matrix implements Serializable 
+public class Matrix implements Serializable
 {
     //<editor-fold defaultstate="collapsed" desc="Properties">
     /**
      * Array of floats representing the data in the Matrix.
      */
     public final float[] data;
-    
+
     /**
      * A integer that contains the number of rows in the Matrix.
      */
-    public final int ROWS; 
-    
+    public final int ROWS;
+
     /**
      * A integer that contains the number of columns in the Matrix.
      */
     public final int COLUMNS;
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Constructors">
     /**
      * Complete Constructor / Default Constructor
@@ -55,7 +55,7 @@ public class Matrix implements Serializable
         this.ROWS = rows;
         this.COLUMNS = columns;
     }
-    
+
     /**
      * Copy Constructor
      * Creates a copy of the matrix provided.
@@ -66,12 +66,12 @@ public class Matrix implements Serializable
         this(a.data, a.ROWS, a.COLUMNS);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Add">
     /**
      * Performs addition with two Matrices.
      * @param a A Matrix to be added.
-     * @param b A Matrix to be added. 
+     * @param b A Matrix to be added.
      * @return Returns a + b.
      */
     public static Matrix add(Matrix a, Matrix b)
@@ -80,7 +80,7 @@ public class Matrix implements Serializable
         if(a.data.length == b.data.length)
         {
             float[] ws = new float[a.data.length];
-            for (int i = 0; i < a.data.length; i++) 
+            for (int i = 0; i < a.data.length; i++)
             {
                 ws[i] = a.data[i] + b.data[i];
             }
@@ -88,7 +88,7 @@ public class Matrix implements Serializable
         }
         return sum;
     }
-    
+
     /**
      * Performs addition with this Matrix and that Matrix.
      * @param that A Matrix to be added.
@@ -99,19 +99,19 @@ public class Matrix implements Serializable
         return Matrix.add(this, that);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Determinant">
     public static float determinant(Matrix a)
     {
         throw new UnsupportedOperationException("Not yet implemented.");
     }
-    
+
     public float determinant()
     {
         return Matrix.determinant(this);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Divide">
     /**
      * Divides each component of a Matrix by a scalar value.
@@ -126,7 +126,7 @@ public class Matrix implements Serializable
             ws[i] = a.data[i] / scalar;
         return new Matrix(ws, a.ROWS, a.COLUMNS);
     }
-    
+
     /**
      * Divides each component of this Matrix by a scalar value.
      * @param scalar A scalar value we want to divide by.
@@ -136,11 +136,11 @@ public class Matrix implements Serializable
     {
         return Matrix.divide(this, scalar);
     }
-    
+
     /**
      * b Matrix divides a Matrix component wise.
      * @param a A Matrix we want to divide.
-     * @param b A Matrix we want to divide. 
+     * @param b A Matrix we want to divide.
      * @return Returns A / B.
      */
     public static Matrix divide(Matrix a, Matrix b)
@@ -157,7 +157,7 @@ public class Matrix implements Serializable
         }
         return quotient;
     }
-    
+
     /**
      * that Matrix divides this Matrix component wise.
      * @param that A Matrix we want to divide.
@@ -168,7 +168,7 @@ public class Matrix implements Serializable
         return Matrix.divide(this, that);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Equals">
     /**
      * Compares this Matrix with another Object believed to be a Matrix.
@@ -196,7 +196,7 @@ public class Matrix implements Serializable
         return equals;
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Helper Methods">
     /**
      * Adds the data of two rows together.
@@ -215,7 +215,7 @@ public class Matrix implements Serializable
         }
         return n_row;
     }
-    
+
     /**
      * Multiplies the data of a row by a scalar value.
      * @param row Data of a row to scale.
@@ -229,7 +229,7 @@ public class Matrix implements Serializable
             ws[i] = row[i] * scalar;
         return ws;
     }
-    
+
     /**
      * Replaces a row in a 2D-Array.
      * @param a Data of Matrix with row to be replaced.
@@ -240,7 +240,7 @@ public class Matrix implements Serializable
     {
         a[index] = row;
     }
-    
+
     /**
      * Debug Method prints out row contents
      */
@@ -250,10 +250,10 @@ public class Matrix implements Serializable
             System.out.print(row[i] + " ");
         System.out.println("");
     }
-    
+
     /**
      * Moves all rows containing all zero to the bottom of the Matrix.
-     * @param a A float[][] containing the data of a Matrix. 
+     * @param a A float[][] containing the data of a Matrix.
      * @return Returns A Matrix with zeros in the proper locations for methods like rref.
      */
     private static float[][] swapZeros(float[][] a)
@@ -270,7 +270,7 @@ public class Matrix implements Serializable
                     if(!Matrix.zeroRow(ws, j))
                     {
                         Matrix.swapRows(ws, i, j);
-                        --startIndex; // With Each successfull swap this zero row is now in place. 
+                        --startIndex; // With Each successful swap this zero row is now in place.
                         break;
                     }
                 }
@@ -279,7 +279,7 @@ public class Matrix implements Serializable
         }
         return ws;
     }
-    
+
     /**
      * Swaps the rows of a float[][].
      * @param a A float[][] containing the data we want to swap the rows of.
@@ -292,7 +292,7 @@ public class Matrix implements Serializable
         a[r1] = a[r2];
         a[r2] = temp;
     }
-    
+
     /**
      * Checks to see if a row is zero.
      * @param a A float[][] containing the data of a Matrix.
@@ -307,31 +307,31 @@ public class Matrix implements Serializable
         return zero;
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Inverse">
     public static Matrix inverse(Matrix a)
     {
         throw new UnsupportedOperationException("Not yet implemented.");
     }
-    
+
     public Matrix inverse()
     {
         return Matrix.inverse(this);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="LU Decomposition">
     public static Matrix[] luDecomposition(Matrix a)
     {
         throw new UnsupportedOperationException("Not yet implemented.");
     }
-    
+
     public Matrix[] luDecomposition()
     {
         return Matrix.luDecomposition(this);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Multiply">
     /**
      * Helper Method for multiplying the data of a Matrix
@@ -344,11 +344,11 @@ public class Matrix implements Serializable
         float[] ws = new float[a.length];
         for(int i = 0; i < a.length; ++i)
         {
-            ws[i] = a[i] * scalar; 
+            ws[i] = a[i] * scalar;
         }
         return ws;
     }
-    
+
     /**
      * Multiplies a scalar value into the Matrix.
      * @param a A Matrix we want to multiply.
@@ -359,7 +359,7 @@ public class Matrix implements Serializable
     {
         return new Matrix(Matrix.multiply(a.data, scalar), a.ROWS, a.COLUMNS);
     }
-    
+
     /**
      * Multiplies a scalar value into this Matrix.
      * @param scalar A scalar value we want to multiply into the provided Matrix.
@@ -369,9 +369,9 @@ public class Matrix implements Serializable
     {
         return Matrix.multiply(this, scalar);
     }
-    
+
     /**
-     * Helper Method for Multiplying the data of two matrices. 
+     * Helper Method for Multiplying the data of two matrices.
      * @param a Data of a matrix we want to multiply.
      * @param b Data of a Matrix we want to multiply.
      * @return Returns a * b.
@@ -384,12 +384,12 @@ public class Matrix implements Serializable
             product = new float[aRows * bColumns];
             for(int k = 0; k < aRows; k++)
             {
-                
+
             }
         }
         return product;
     }
-    
+
     /**
      * Perform Matrix multiplication between two matrices.
      * @param a A Matrix we want to multiply.
@@ -401,12 +401,12 @@ public class Matrix implements Serializable
         float[] mData = Matrix.multiply(a.data, b.data, a.ROWS, a.COLUMNS, b.ROWS, b.COLUMNS);
         return new Matrix
                 (
-                    mData, 
-                    (mData != null) ? a.ROWS : 0, 
+                    mData,
+                    (mData != null) ? a.ROWS : 0,
                     (mData != null) ? b.COLUMNS : 0
                 );
     }
-    
+
     /**
      * Perform Matrix multiplication between this Matrix and that Matrix.
      * @param that A Matrix we want to multiply.
@@ -417,7 +417,7 @@ public class Matrix implements Serializable
         return Matrix.multiply(this, that);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Rank">
     /**
      * Computes the rank of the provided Matrix.
@@ -428,7 +428,7 @@ public class Matrix implements Serializable
     {
         throw new UnsupportedOperationException("Not yet implemented.");
     }
-    
+
     /**
      * Computes the rank of this Matrix.
      * @return Returns the rank of this Matrix.
@@ -438,18 +438,18 @@ public class Matrix implements Serializable
         return Matrix.rank(this);
     }
     //</editor-fold>
- 
+
     //<editor-fold defaultstate="collapsed" desc="Row Echelon Form (ref)">
     /**
      * Finds the Row Echelon Form(ref) of the provided Matrix.
      * @param a A Matrix we want to find the Row Echelon Form of.
-     * @return Returns a Matrix in Row Echelon Form. 
+     * @return Returns a Matrix in Row Echelon Form.
      */
     public static Matrix ref(Matrix a)
     {
         throw new UnsupportedOperationException("Not yet implemented.");
     }
-    
+
     /**
      * Finds the Row Echelon Form(ref) of this Matrix.
      * @return Returns a Matrix in Row Echelon Form.
@@ -459,7 +459,7 @@ public class Matrix implements Serializable
         return Matrix.ref(this);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Reduced Row Echelon Form (rref)">
     /**
      * Finds the Reduced Row Echelon Form(rref) of the provided Matrix.
@@ -470,7 +470,7 @@ public class Matrix implements Serializable
     {
         throw new UnsupportedOperationException("Not yet implemented.");
     }
-    
+
     /**
      * Finds the Reduced Row Echelon Form(rref) of this Matrix.
      * @return Returns a Matrix in Reduced Row Echelon Form.
@@ -480,7 +480,7 @@ public class Matrix implements Serializable
         return Matrix.rref(this);
     }
     //</editor-fold>
- 
+
     //<editor-fold defaultstate="collapsed" desc="Special Matrices">
     /**
      * nxn Identity Matrix
@@ -495,12 +495,12 @@ public class Matrix implements Serializable
         return new Matrix(ws, n, n);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Subtract">
     /**
      * Performs subtraction between two Matrices.
      * @param a A Matrix to be subtracted from.
-     * @param b A Matrix to subtract by. 
+     * @param b A Matrix to subtract by.
      * @return Returns a - b.
      */
     public static Matrix subtract(Matrix a, Matrix b)
@@ -509,7 +509,7 @@ public class Matrix implements Serializable
         if(a.data.length == b.data.length)
         {
             float[] ws = new float[a.data.length];
-            for (int i = 0; i < a.data.length; i++) 
+            for (int i = 0; i < a.data.length; i++)
             {
                 ws[i] = a.data[i] - b.data[i];
             }
@@ -517,9 +517,9 @@ public class Matrix implements Serializable
         }
         return difference;
     }
-    
+
     /**
-     * Performs subtraction between this Matrix and that Matrix. 
+     * Performs subtraction between this Matrix and that Matrix.
      * @param that A Matrix to subtract by.
      * @return Returns this - that.
      */
@@ -528,7 +528,7 @@ public class Matrix implements Serializable
         return Matrix.subtract(this, that);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="To-String">
     /**
      * Produces a String representation of the Matrix.
@@ -540,7 +540,7 @@ public class Matrix implements Serializable
         throw new UnsupportedOperationException("Not yet implemented.");
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Transpose">
     /**
      * Creates the transpose of a Matrix.
@@ -551,7 +551,7 @@ public class Matrix implements Serializable
     {
         throw new UnsupportedOperationException("Not yet implemented.");
     }
-    
+
     /**
      * Creates the transpose of this Matrix.
      * @return Returns the transpose of this.
@@ -561,7 +561,7 @@ public class Matrix implements Serializable
         return Matrix.transpose(this);
     }
     //</editor-fold>
-    
+
     //<editor-fold defaultstate="collapsed" desc="Invalid Dimensions Exception">
     /**
      * Custom Exception for Matrix classes.
@@ -576,7 +576,7 @@ public class Matrix implements Serializable
         {
             super(msg);
         }
-        
+
         /**
          * Default Constructor.
          * Echos out the text "The Dimensions of the Matrix are Invalid."
